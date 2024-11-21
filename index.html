@@ -7,76 +7,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #121212;
-            --dark-surface: #1E1E1E;
+            --dark-bg: #0A0A0A;
+            --dark-surface: #121212;
             --dark-primary: #BB86FC;
             --dark-secondary: #03DAC6;
             --dark-text-primary: #FFFFFF;
             --dark-text-secondary: #B0B0B0;
+            --dark-shadow: rgba(0, 0, 0, 0.6);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--dark-bg);
             color: var(--dark-text-primary);
             line-height: 1.6;
         }
-
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
         /* Header Styling */
         .header {
             background-color: var(--dark-surface);
             padding: 4rem 0;
             text-align: center;
             border-bottom: 2px solid var(--dark-primary);
+            box-shadow: 0 4px 10px var(--dark-shadow);
         }
-
         .header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
             color: var(--dark-primary);
             margin-bottom: 0.5rem;
         }
-
         .header-subtitle {
             color: var(--dark-text-secondary);
             font-size: 1.2rem;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-
         /* Profile Summary */
         .profile-summary {
             background-color: var(--dark-surface);
             padding: 2rem;
             margin: 2rem 0;
             border-left: 4px solid var(--dark-secondary);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px var(--dark-shadow);
         }
-
         .profile-summary h2 {
             color: var(--dark-secondary);
             margin-bottom: 1rem;
             font-family: 'Playfair Display', serif;
         }
-
         /* Experience Section */
         .experience, .projects {
             margin-bottom: 2rem;
         }
-
         .section-title {
             color: var(--dark-primary);
             border-bottom: 2px solid var(--dark-primary);
@@ -84,59 +76,51 @@
             margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
         }
-
         .experience-item, .project-item {
             background-color: var(--dark-surface);
             border-left: 4px solid var(--dark-secondary);
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px var(--dark-shadow);
         }
-
         .experience-item:hover, .project-item:hover {
             transform: translateX(10px);
-            box-shadow: -4px 4px 6px rgba(0,0,0,0.3);
+            box-shadow: -4px 4px 6px var(--dark-shadow);
         }
-
         .experience-item h3, .project-item h3 {
             color: var(--dark-secondary);
             margin-bottom: 0.5rem;
         }
-
         .experience-item p, .project-item p {
             color: var(--dark-text-secondary);
         }
-
         .experience-item ul, .project-item ul {
             margin-left: 1.5rem;
             color: var(--dark-text-primary);
         }
-
         /* Contact Section */
         .contact {
             background-color: var(--dark-surface);
             padding: 3rem 0;
             text-align: center;
             border-top: 2px solid var(--dark-primary);
+            box-shadow: 0 -4px 10px var(--dark-shadow);
         }
-
         .contact h2 {
             color: var(--dark-primary);
             margin-bottom: 1rem;
             font-family: 'Playfair Display', serif;
         }
-
         .contact-info {
             color: var(--dark-text-secondary);
             margin-bottom: 1.5rem;
         }
-
         .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
         }
-
         .social-links a {
             color: var(--dark-secondary);
             text-decoration: none;
@@ -145,17 +129,14 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .social-links a:hover {
             color: var(--dark-primary);
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5rem;
             }
-            
             .container {
                 width: 95%;
                 padding: 0 10px;
@@ -170,13 +151,11 @@
             <p class="header-subtitle">AI/ML Developer | Intelligent Systems Architect</p>
         </div>
     </header>
-
     <div class="container">
         <section class="profile-summary">
             <h2>Professional Summary</h2>
             <p>A visionary AI/ML Engineer specializing in developing cutting-edge intelligent systems using large language models and advanced AI agents. With expertise in leveraging state-of-the-art frameworks, I craft innovative solutions that push the boundaries of artificial intelligence.</p>
         </section>
-
         <section class="experience">
             <h2 class="section-title">Professional Experience</h2>
             <div class="experience-item">
@@ -188,7 +167,6 @@
                     <li>Implemented sophisticated AI solutions using cutting-edge frameworks</li>
                 </ul>
             </div>
-
             <div class="experience-item">
                 <h3>AI/ML Developer</h3>
                 <p>Gaude Business & Infrastructure Solutions | June 2024 - July 2024</p>
@@ -199,7 +177,6 @@
                 </ul>
             </div>
         </section>
-
         <section class="projects">
             <h2 class="section-title">Key Projects</h2>
             <div class="project-item">
@@ -210,7 +187,6 @@
                     <li>Implemented advanced agent interactions for real-time flight management</li>
                 </ul>
             </div>
-
             <div class="project-item">
                 <h3>YouTube Content Q&A System</h3>
                 <p>April 2024 - May 2024 | LangChain, OpenAI Whisper</p>
@@ -221,7 +197,6 @@
             </div>
         </section>
     </div>
-
     <section class="contact">
         <div class="container">
             <h2>Get In Touch</h2>
