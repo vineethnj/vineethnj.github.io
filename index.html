@@ -3,76 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vineeth N - AI/ML Developer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Vineeth N - AI/ML Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .profile {
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: -50px auto 2rem;
+            max-width: 800px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .experience-item, .project-item {
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .experience-item h3, .project-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .experience-item p, .project-item p {
+            color: #666;
+        }
+
+        .contact {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Vineeth N - AI/ML Developer</h1>
-        <p>AI/ML Engineer | Large Language Models | AI Agents</p>
+        <div class="container">
+            <h1>Vineeth N</h1>
+            <p>AI/ML Developer | Large Language Models | AI Agent Specialist</p>
+        </div>
     </header>
 
-    <section id="about">
-        <h2>Professional Summary</h2>
-        <p>I am an AI/ML Developer with expertise in developing intelligent systems using large language models (LLMs) and AI agents. I specialize in leveraging frameworks like Langchain, CrewAI, and LlamaIndex to create innovative AI solutions. My work focuses on building context-aware, multi-modal AI experiences and advanced chatbot applications.</p>
-    </section>
+    <div class="container profile">
+        <h2 class="section-title">Professional Summary</h2>
+        <p>A passionate AI/ML Engineer with expertise in developing intelligent systems using large language models (LLMs) and AI agents. Skilled in leveraging cutting-edge frameworks to create innovative AI solutions that push the boundaries of intelligent technology.</p>
+    </div>
 
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        <div class="job">
-            <h3>AI/ML Engineer | Gaude Business & Infrastructure Solutions</h3>
-            <p>July 2024 - Present</p>
-            <ul>
-                <li>Developed and fine-tuned Large Language Models (LLMs) for custom chatbot applications</li>
-                <li>Engineered an agentic chatbot with real-time information retrieval capabilities</li>
-            </ul>
-        </div>
-        <div class="job">
-            <h3>AI/ML Developer | Gaude Business & Infrastructure Solutions</h3>
-            <p>June 2024 - July 2024</p>
-            <ul>
-                <li>Created LLM-powered chatbots and AI agents for diverse applications</li>
-                <li>Utilized Langchain, CrewAI, LangGraph, and LlamaIndex for advanced AI solutions</li>
-                <li>Developed web applications using Django, Flask, FastAPI, and Streamlit</li>
-            </ul>
-        </div>
-    </section>
+    <div class="container">
+        <section class="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-item">
+                <h3>AI/ML Engineer | Gaude Business & Infrastructure Solutions</h3>
+                <p>July 2024 - Present</p>
+                <ul>
+                    <li>Developed and fine-tuned Large Language Models for custom chatbot applications</li>
+                    <li>Engineered advanced agentic chatbots with real-time information retrieval</li>
+                </ul>
+            </div>
 
-    <section id="projects">
-        <h2>Key Projects</h2>
-        <div class="project">
-            <h3>Multi-Agent Flight Management System</h3>
-            <p>June 2024</p>
-            <ul>
-                <li>Developed a CrewAI-based system for flight coordination and management</li>
-                <li>Tech Stack: CrewAI, ChatGroq LLM, SerperDevTool, ScrapeWebsiteTool, Django</li>
-            </ul>
-        </div>
-        <div class="project">
-            <h3>YouTube Content Q&A System</h3>
-            <p>April 2024 - May 2024</p>
-            <ul>
-                <li>Created a system to extract, transcribe, and index YouTube video content for Q&A functionality</li>
-                <li>Tech Stack: LangChain, OpenAI Whisper, Python, FAISS vector database</li>
-            </ul>
-        </div>
-        <div class="project">
-            <h3>Automated Facebook Comment Response System</h3>
-            <p>June 2024</p>
-            <ul>
-                <li>Engineered an AI-driven system for automated, contextual responses to Facebook comments</li>
-                <li>Tech Stack: Llama, Facebook Graph API, JSON, Langdetect</li>
-            </ul>
-        </div>
-    </section>
+            <div class="experience-item">
+                <h3>AI/ML Developer | Gaude Business & Infrastructure Solutions</h3>
+                <p>June 2024 - July 2024</p>
+                <ul>
+                    <li>Created sophisticated LLM-powered chatbots and AI agents</li>
+                    <li>Implemented advanced AI solutions using Langchain, CrewAI, and LlamaIndex</li>
+                    <li>Developed robust web applications for AI system interfaces</li>
+                </ul>
+            </div>
+        </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: nvineeth672@gmail.com</p>
-        <p>Location: Kerala, India</p>
-        <div class="social-links">
-            <a href="https://github.com/vineethnj" target="_blank">GitHub</a>
-            <a href="https://huggingface.co/vineethn" target="_blank">Hugging Face</a>
+        <section class="projects">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="project-item">
+                <h3>Multi-Agent Flight Management System</h3>
+                <p>June 2024 | CrewAI, ChatGroq LLM, Django</p>
+                <ul>
+                    <li>Developed a sophisticated CrewAI-based system for comprehensive flight coordination</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3>YouTube Content Q&A System</h3>
+                <p>April 2024 - May 2024 | LangChain, OpenAI Whisper</p>
+                <ul>
+                    <li>Created an intelligent system for extracting and indexing YouTube video content</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>nvineeth672@gmail.com | +91 9995511967</p>
+            <div class="contact-links">
+                <a href="https://github.com/vineethnj" target="_blank">GitHub</a>
+                <a href="https://huggingface.co/vineethn" target="_blank">Hugging Face</a>
+            </div>
         </div>
     </section>
 </body>
