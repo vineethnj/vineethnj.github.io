@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vineeth N - AI/ML Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Vineeth N - AI/ML Developer Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #121212;
-            --dark-surface: #1E1E1E;
-            --dark-primary: #BB86FC;
-            --dark-secondary: #03DAC6;
-            --dark-text-primary: #FFFFFF;
-            --dark-text-secondary: #B0B0B0;
+            --dark-bg: #0F1624;
+            --dark-surface: #171F31;
+            --accent-1: #64FFDA;
+            --accent-2: #F15BB5;
+            --accent-3: #9B5DE5;
+            --dark-text-primary: #E6F1FF;
+            --dark-text-secondary: #8892B0;
+            --timeline-width: 6px;
+            --node-size: 22px;
         }
 
         * {
@@ -22,95 +25,293 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: var(--dark-text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
-
-        /* Header Styling */
+        /* Header Section */
         .header {
-            background-color: var(--dark-surface);
-            padding: 4rem 0;
+            padding: 5rem 0 3rem;
             text-align: center;
-            border-bottom: 2px solid var(--dark-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1), transparent 60%);
+            z-index: 0;
         }
 
         .header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--dark-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark-text-primary);
             margin-bottom: 0.5rem;
-        }
-        .header-subtitle {
-            color: var(--dark-text-secondary);
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
 
-        
-        /* Profile Summary */
+        .header-subtitle {
+            color: var(--accent-1);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
         .profile-summary {
             background-color: var(--dark-surface);
             padding: 2rem;
             margin: 2rem 0;
-            border-left: 4px solid var(--dark-secondary);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .profile-summary h2 {
-            color: var(--dark-secondary);
+            color: var(--accent-1);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Experience Section */
-        .experience, .projects {
+        /* Journey Timeline */
+        .journey-title {
+            text-align: center;
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .journey-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+        }
+
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-center {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--timeline-width);
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3));
+            z-index: 1;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 6rem;
+            position: relative;
+            min-height: 150px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--dark-surface);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            border-left: 4px solid var(--accent-1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            border-right: 4px solid var(--accent-2);
+        }
+
+        .timeline-item:nth-child(1) .timeline-content { border-color: var(--accent-1); }
+        .timeline-item:nth-child(2) .timeline-content { border-color: var(--accent-2); }
+        .timeline-item:nth-child(3) .timeline-content { border-color: var(--accent-3); }
+        .timeline-item:nth-child(4) .timeline-content { border-color: var(--accent-1); }
+
+        .timeline-node {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translate(-50%, -50%);
+            width: var(--node-size);
+            height: var(--node-size);
+            border-radius: 50%;
+            background-color: var(--dark-bg);
+            border: 4px solid var(--accent-1);
+            z-index: 3;
+        }
+
+        .timeline-item:nth-child(1) .timeline-node { border-color: var(--accent-1); }
+        .timeline-item:nth-child(2) .timeline-node { border-color: var(--accent-2); }
+        .timeline-item:nth-child(3) .timeline-node { border-color: var(--accent-3); }
+        .timeline-item:nth-child(4) .timeline-node { border-color: var(--accent-1); }
+
+        .timeline-connector {
+            position: absolute;
+            top: 30px;
+            width: calc(50% - var(--node-size)/2 - 5px);
+            height: 3px;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-connector {
+            right: 50%;
+            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
+        }
+
+        .timeline-item:nth-child(even) .timeline-connector {
+            left: 50%;
+            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
+        }
+
+        .timeline-item:nth-child(1) .timeline-connector { background: linear-gradient(90deg, var(--accent-1), var(--dark-bg)); }
+        .timeline-item:nth-child(2) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-2)); }
+        .timeline-item:nth-child(3) .timeline-connector { background: linear-gradient(90deg, var(--accent-3), var(--dark-bg)); }
+        .timeline-item:nth-child(4) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-1)); }
+
+        .timeline-date {
+            position: absolute;
+            top: -20px;
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: var(--dark-bg);
+            font-weight: 600;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: 0;
+            background-color: var(--accent-1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: 0;
+            background-color: var(--accent-2);
+        }
+
+        .timeline-item:nth-child(1) .timeline-date { background-color: var(--accent-1); }
+        .timeline-item:nth-child(2) .timeline-date { background-color: var(--accent-2); }
+        .timeline-item:nth-child(3) .timeline-date { background-color: var(--accent-3); }
+        .timeline-item:nth-child(4) .timeline-date { background-color: var(--accent-1); }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .timeline-item:nth-child(1) h3 { color: var(--accent-1); }
+        .timeline-item:nth-child(2) h3 { color: var(--accent-2); }
+        .timeline-item:nth-child(3) h3 { color: var(--accent-3); }
+        .timeline-item:nth-child(4) h3 { color: var(--accent-1); }
+
+        .timeline-content p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            margin-left: 1.5rem;
+            color: var(--dark-text-primary);
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            margin: 3rem 0;
+        }
+
+        .skills-title {
+            text-align: center;
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
             margin-bottom: 2rem;
         }
 
-        .section-title {
-            color: var(--dark-primary);
-            border-bottom: 2px solid var(--dark-primary);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-family: 'Playfair Display', serif;
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
-        
-        .experience-item, .project-item {
+
+        .skill-item {
             background-color: var(--dark-surface);
-            border-left: 4px solid var(--dark-secondary);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--dark-text-primary);
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
-        .experience-item:hover, .project-item:hover {
-            transform: translateX(10px);
-            box-shadow: -4px 4px 6px rgba(0,0,0,0.3);
+        .skill-item:nth-child(3n+1) {
+            border: 2px solid var(--accent-1);
         }
 
-        .experience-item h3, .project-item h3 {
-            color: var(--dark-secondary);
-            margin-bottom: 0.5rem;
+        .skill-item:nth-child(3n+2) {
+            border: 2px solid var(--accent-2);
         }
 
-        .experience-item p, .project-item p {
-            color: var(--dark-text-secondary);
+        .skill-item:nth-child(3n+3) {
+            border: 2px solid var(--accent-3);
         }
 
-        .experience-item ul, .project-item ul {
-            margin-left: 1.5rem;
-            color: var(--dark-text-primary);
+        .skill-item:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.2);
         }
 
         /* Contact Section */
@@ -118,37 +319,61 @@
             background-color: var(--dark-surface);
             padding: 3rem 0;
             text-align: center;
-            border-top: 2px solid var(--dark-primary);
+            border-radius: 10px;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(155, 93, 229, 0.1), transparent 70%);
+            z-index: 0;
         }
 
         .contact h2 {
-            color: var(--dark-primary);
+            color: var(--accent-3);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-info {
             color: var(--dark-text-secondary);
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .social-links a {
-            color: var(--dark-secondary);
+            color: var(--accent-1);
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            padding: 10px 20px;
+            border: 2px solid var(--accent-1);
+            border-radius: 5px;
         }
 
         .social-links a:hover {
-            color: var(--dark-primary);
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
         }
 
         /* Responsive Design */
@@ -161,6 +386,40 @@
                 width: 95%;
                 padding: 0 10px;
             }
+
+            .timeline-center {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+            }
+
+            .timeline-node {
+                left: 30px;
+            }
+
+            .timeline-connector {
+                display: none;
+            }
+
+            .timeline-date {
+                position: relative;
+                top: 0;
+                margin-bottom: 10px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 0;
+                right: auto;
+            }
         }
     </style>
 </head>
@@ -168,7 +427,7 @@
     <header class="header">
         <div class="container">
             <h1>VINEETH N</h1>
-            <p class="header-subtitle">AI/ML FULL STACK DEVELOPER AND ENGINEER </p>
+            <p class="header-subtitle">AI/ML FULL STACK DEVELOPER</p>
         </div>
     </header>
 
@@ -178,46 +437,82 @@
             <p>A visionary AI/ML Engineer specializing in developing cutting-edge intelligent systems using large language models and advanced AI agents. With expertise in leveraging state-of-the-art frameworks, I craft innovative solutions that push the boundaries of artificial intelligence.</p>
         </section>
 
-        <section class="experience">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-item">
-                <h3>AI/ML Engineer</h3>
-                <p>Gaude Business & Infrastructure Solutions | July 2024 - Present</p>
-                <ul>
-                    <li>Pioneered development of advanced LLM-powered chatbot applications</li>
-                    <li>Engineered intelligent agentic systems with real-time information retrieval</li>
-                    <li>Implemented sophisticated AI solutions using cutting-edge frameworks</li>
-                </ul>
+        <h2 class="journey-title">My AI/ML Journey</h2>
+        
+        <section class="timeline-container">
+            <div class="timeline-center"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">June 2024 - July 2024</span>
+                    <h3>AI/ML Developer</h3>
+                    <p>Gaude Business & Infrastructure Solutions</p>
+                    <ul>
+                        <li>Developed multi-modal AI experiences using Langchain and CrewAI</li>
+                        <li>Created robust web applications for AI system interfaces</li>
+                        <li>Designed automated workflows leveraging advanced LLM capabilities</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
             </div>
-            <div class="experience-item">
-                <h3>AI/ML Developer</h3>
-                <p>Gaude Business & Infrastructure Solutions | June 2024 - July 2024</p>
-                <ul>
-                    <li>Developed multi-modal AI experiences using Langchain and CrewAI</li>
-                    <li>Created robust web applications for AI system interfaces</li>
-                    <li>Designed automated workflows leveraging advanced LLM capabilities</li>
-                </ul>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">July 2024 - Present</span>
+                    <h3>AI/ML Engineer</h3>
+                    <p>Gaude Business & Infrastructure Solutions</p>
+                    <ul>
+                        <li>Pioneered development of advanced LLM-powered chatbot applications</li>
+                        <li>Engineered intelligent agentic systems with real-time information retrieval</li>
+                        <li>Implemented sophisticated AI solutions using cutting-edge frameworks</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">April 2024 - May 2024</span>
+                    <h3>YouTube Content Q&A System</h3>
+                    <p>Project | LangChain, OpenAI Whisper</p>
+                    <ul>
+                        <li>Created an intelligent system for extracting and indexing YouTube video content</li>
+                        <li>Implemented advanced natural language Q&A functionality</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">June 2024</span>
+                    <h3>Multi-Agent Flight Management System</h3>
+                    <p>Project | CrewAI, ChatGroq LLM, Django</p>
+                    <ul>
+                        <li>Developed a sophisticated CrewAI-based system for comprehensive flight coordination</li>
+                        <li>Implemented advanced agent interactions for real-time flight management</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
             </div>
         </section>
 
-        <section class="projects">
-            <h2 class="section-title">Key Projects</h2>
-            <div class="project-item">
-                <h3>Multi-Agent Flight Management System</h3>
-                <p>June 2024 | CrewAI, ChatGroq LLM, Django</p>
-                <ul>
-                    <li>Developed a sophisticated CrewAI-based system for comprehensive flight coordination</li>
-                    <li>Implemented advanced agent interactions for real-time flight management</li>
-                </ul>
-            </div>
-
-            <div class="project-item">
-                <h3>YouTube Content Q&A System</h3>
-                <p>April 2024 - May 2024 | LangChain, OpenAI Whisper</p>
-                <ul>
-                    <li>Created an intelligent system for extracting and indexing YouTube video content</li>
-                    <li>Implemented advanced natural language Q&A functionality</li>
-                </ul>
+        <section class="skills">
+            <h2 class="skills-title">Technical Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-item">Large Language Models</div>
+                <div class="skill-item">LangChain</div>
+                <div class="skill-item">CrewAI</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Django</div>
+                <div class="skill-item">AI Agents</div>
+                <div class="skill-item">Multi-modal AI</div>
+                <div class="skill-item">Full Stack Development</div>
+                <div class="skill-item">ChatGroq</div>
             </div>
         </section>
     </div>
