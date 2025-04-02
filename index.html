@@ -12,6 +12,7 @@
             --accent-1: #64FFDA;
             --accent-2: #F15BB5;
             --accent-3: #9B5DE5;
+            --accent-4: #FCA311;
             --dark-text-primary: #E6F1FF;
             --dark-text-secondary: #8892B0;
             --timeline-width: 6px;
@@ -77,6 +78,14 @@
             z-index: 1;
         }
 
+        .location-info {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
         .profile-summary {
             background-color: var(--dark-surface);
             padding: 2rem;
@@ -126,7 +135,7 @@
             transform: translateX(-50%);
             width: var(--timeline-width);
             height: 100%;
-            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3));
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
             z-index: 1;
         }
 
@@ -174,7 +183,9 @@
         .timeline-item:nth-child(1) .timeline-content { border-color: var(--accent-1); }
         .timeline-item:nth-child(2) .timeline-content { border-color: var(--accent-2); }
         .timeline-item:nth-child(3) .timeline-content { border-color: var(--accent-3); }
-        .timeline-item:nth-child(4) .timeline-content { border-color: var(--accent-1); }
+        .timeline-item:nth-child(4) .timeline-content { border-color: var(--accent-4); }
+        .timeline-item:nth-child(5) .timeline-content { border-color: var(--accent-1); }
+        .timeline-item:nth-child(6) .timeline-content { border-color: var(--accent-2); }
 
         .timeline-node {
             position: absolute;
@@ -192,7 +203,9 @@
         .timeline-item:nth-child(1) .timeline-node { border-color: var(--accent-1); }
         .timeline-item:nth-child(2) .timeline-node { border-color: var(--accent-2); }
         .timeline-item:nth-child(3) .timeline-node { border-color: var(--accent-3); }
-        .timeline-item:nth-child(4) .timeline-node { border-color: var(--accent-1); }
+        .timeline-item:nth-child(4) .timeline-node { border-color: var(--accent-4); }
+        .timeline-item:nth-child(5) .timeline-node { border-color: var(--accent-1); }
+        .timeline-item:nth-child(6) .timeline-node { border-color: var(--accent-2); }
 
         .timeline-connector {
             position: absolute;
@@ -215,7 +228,9 @@
         .timeline-item:nth-child(1) .timeline-connector { background: linear-gradient(90deg, var(--accent-1), var(--dark-bg)); }
         .timeline-item:nth-child(2) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-2)); }
         .timeline-item:nth-child(3) .timeline-connector { background: linear-gradient(90deg, var(--accent-3), var(--dark-bg)); }
-        .timeline-item:nth-child(4) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-1)); }
+        .timeline-item:nth-child(4) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-4)); }
+        .timeline-item:nth-child(5) .timeline-connector { background: linear-gradient(90deg, var(--accent-1), var(--dark-bg)); }
+        .timeline-item:nth-child(6) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-2)); }
 
         .timeline-date {
             position: absolute;
@@ -240,7 +255,9 @@
         .timeline-item:nth-child(1) .timeline-date { background-color: var(--accent-1); }
         .timeline-item:nth-child(2) .timeline-date { background-color: var(--accent-2); }
         .timeline-item:nth-child(3) .timeline-date { background-color: var(--accent-3); }
-        .timeline-item:nth-child(4) .timeline-date { background-color: var(--accent-1); }
+        .timeline-item:nth-child(4) .timeline-date { background-color: var(--accent-4); }
+        .timeline-item:nth-child(5) .timeline-date { background-color: var(--accent-1); }
+        .timeline-item:nth-child(6) .timeline-date { background-color: var(--accent-2); }
 
         .timeline-content h3 {
             margin-bottom: 10px;
@@ -250,7 +267,9 @@
         .timeline-item:nth-child(1) h3 { color: var(--accent-1); }
         .timeline-item:nth-child(2) h3 { color: var(--accent-2); }
         .timeline-item:nth-child(3) h3 { color: var(--accent-3); }
-        .timeline-item:nth-child(4) h3 { color: var(--accent-1); }
+        .timeline-item:nth-child(4) h3 { color: var(--accent-4); }
+        .timeline-item:nth-child(5) h3 { color: var(--accent-1); }
+        .timeline-item:nth-child(6) h3 { color: var(--accent-2); }
 
         .timeline-content p {
             color: var(--dark-text-secondary);
@@ -268,6 +287,87 @@
             font-size: 0.95rem;
         }
 
+        /* Education Section */
+        .education {
+            background-color: var(--dark-surface);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 10px;
+            position: relative;
+            border-left: 4px solid var(--accent-3);
+        }
+
+        .education h2 {
+            color: var(--accent-3);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .education-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .education-item {
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-3);
+        }
+
+        .education-item h3 {
+            color: var(--dark-text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            margin: 3rem 0;
+        }
+
+        .certifications h2 {
+            color: var(--accent-4);
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .cert-item {
+            background-color: var(--dark-surface);
+            padding: 1rem;
+            border-radius: 8px;
+            width: calc(50% - 15px);
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--accent-4);
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+        }
+
+        .cert-item h3 {
+            color: var(--accent-4);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cert-item p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* Skills Section */
         .skills {
             margin: 3rem 0;
@@ -281,10 +381,22 @@
             margin-bottom: 2rem;
         }
 
+        .skills-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-category h3 {
+            color: var(--accent-2);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--accent-2);
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
         .skills-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 15px;
         }
 
@@ -297,16 +409,20 @@
             transition: all 0.3s ease;
         }
 
-        .skill-item:nth-child(3n+1) {
+        .skill-category-1 .skill-item {
             border: 2px solid var(--accent-1);
         }
 
-        .skill-item:nth-child(3n+2) {
+        .skill-category-2 .skill-item {
             border: 2px solid var(--accent-2);
         }
 
-        .skill-item:nth-child(3n+3) {
+        .skill-category-3 .skill-item {
             border: 2px solid var(--accent-3);
+        }
+
+        .skill-category-4 .skill-item {
+            border: 2px solid var(--accent-4);
         }
 
         .skill-item:hover {
@@ -420,6 +536,10 @@
                 left: 0;
                 right: auto;
             }
+
+            .cert-item {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -428,13 +548,14 @@
         <div class="container">
             <h1>VINEETH N</h1>
             <p class="header-subtitle">AI/ML FULL STACK DEVELOPER</p>
+            <p class="location-info">Kerala, India — +91 9995511967 — nvineeth672@gmail.com</p>
         </div>
     </header>
 
     <div class="container">
         <section class="profile-summary">
             <h2>Professional Summary</h2>
-            <p>A visionary AI/ML Engineer specializing in developing cutting-edge intelligent systems using large language models and advanced AI agents. With expertise in leveraging state-of-the-art frameworks, I craft innovative solutions that push the boundaries of artificial intelligence.</p>
+            <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs with 8 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex. I specialize in developing cutting-edge intelligent systems that push the boundaries of artificial intelligence.</p>
         </section>
 
         <h2 class="journey-title">My AI/ML Journey</h2>
@@ -444,13 +565,15 @@
             
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <span class="timeline-date">June 2024 - July 2024</span>
-                    <h3>AI/ML Developer</h3>
+                    <span class="timeline-date">June 2024 - Present</span>
+                    <h3>AI/ML Engineer</h3>
                     <p>Gaude Business & Infrastructure Solutions</p>
                     <ul>
-                        <li>Developed multi-modal AI experiences using Langchain and CrewAI</li>
-                        <li>Created robust web applications for AI system interfaces</li>
-                        <li>Designed automated workflows leveraging advanced LLM capabilities</li>
+                        <li>Designed and developed an AI-powered chatbot using advanced LLM-RAG architecture</li>
+                        <li>Built an agentic LLM-RAG chatbot utilizing LangChain and CrewAI frameworks</li>
+                        <li>Enabled PDF document upload with context-specific QA capabilities</li>
+                        <li>Integrated live internet search for real-time information retrieval</li>
+                        <li>Added email functionality for sending generated outputs</li>
                     </ul>
                 </div>
                 <div class="timeline-node"></div>
@@ -459,13 +582,59 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <span class="timeline-date">July 2024 - Present</span>
-                    <h3>AI/ML Engineer</h3>
-                    <p>Gaude Business & Infrastructure Solutions</p>
+                    <span class="timeline-date">Recent</span>
+                    <h3>Game Simulation with AI Agents</h3>
+                    <p>Project | LangGraph, Python, Llama</p>
                     <ul>
-                        <li>Pioneered development of advanced LLM-powered chatbot applications</li>
-                        <li>Engineered intelligent agentic systems with real-time information retrieval</li>
-                        <li>Implemented sophisticated AI solutions using cutting-edge frameworks</li>
+                        <li>Designed and implemented a game simulation environment</li>
+                        <li>Explored complex decision-making processes and multi-agent interactions</li>
+                        <li>Utilized LangGraph for agent communication and coordination</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Recent</span>
+                    <h3>LLM Finetuning</h3>
+                    <p>Project | Unsloth, Hugging Face Transformers</p>
+                    <ul>
+                        <li>Fine-tuned LLaMA-3.2-3B and Mistral-7B models using Unsloth framework</li>
+                        <li>Specialized in Malayalam language adaptation</li>
+                        <li>Used Alpaca Malayalam Instruct dataset for training</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Recent</span>
+                    <h3>AI-Powered Chatbot</h3>
+                    <p>Project | LLMs, LangChain, RAG</p>
+                    <ul>
+                        <li>Developed a comprehensive chatbot leveraging LLMs and RAG methodology</li>
+                        <li>Implemented document upload with context-aware QA capabilities</li>
+                        <li>Integrated live internet access for real-time information</li>
+                        <li>Added email functionality using natural language queries</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">June 2024</span>
+                    <h3>Multi-Agent Flight Management System</h3>
+                    <p>Project | CrewAI, ChatGroq LLM, Django</p>
+                    <ul>
+                        <li>Developed a sophisticated CrewAI-based system for flight coordination</li>
+                        <li>Implemented advanced agent interactions for real-time flight management</li>
+                        <li>Utilized Django for the web interface</li>
                     </ul>
                 </div>
                 <div class="timeline-node"></div>
@@ -480,20 +649,7 @@
                     <ul>
                         <li>Created an intelligent system for extracting and indexing YouTube video content</li>
                         <li>Implemented advanced natural language Q&A functionality</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">June 2024</span>
-                    <h3>Multi-Agent Flight Management System</h3>
-                    <p>Project | CrewAI, ChatGroq LLM, Django</p>
-                    <ul>
-                        <li>Developed a sophisticated CrewAI-based system for comprehensive flight coordination</li>
-                        <li>Implemented advanced agent interactions for real-time flight management</li>
+                        <li>Used OpenAI Whisper for accurate transcription</li>
                     </ul>
                 </div>
                 <div class="timeline-node"></div>
@@ -501,18 +657,79 @@
             </div>
         </section>
 
+        <section class="education">
+            <h2>Education</h2>
+            <div class="education-content">
+                <div class="education-item">
+                    <h3>Bachelor of Computer Application</h3>
+                    <p>Michaels Institute of Management and Technology, University of Kerala</p>
+                    <p>2021 - 2024</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="certifications">
+            <h2>Certifications</h2>
+            <div class="certifications-container">
+                <div class="cert-item">
+                    <h3>Multi AI Agent Systems with CrewAI</h3>
+                    <p>Deeplearning.ai</p>
+                </div>
+                <div class="cert-item">
+                    <h3>AI Agents in LangGraph</h3>
+                    <p>Deeplearning.ai</p>
+                </div>
+                <div class="cert-item">
+                    <h3>Pretraining LLMs</h3>
+                    <p>Deeplearning.ai</p>
+                </div>
+                <div class="cert-item">
+                    <h3>IBM Data Science Professional Certificate</h3>
+                    <p>Coursera</p>
+                </div>
+            </div>
+        </section>
+
         <section class="skills">
             <h2 class="skills-title">Technical Expertise</h2>
-            <div class="skills-container">
-                <div class="skill-item">Large Language Models</div>
-                <div class="skill-item">LangChain</div>
-                <div class="skill-item">CrewAI</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Django</div>
-                <div class="skill-item">AI Agents</div>
-                <div class="skill-item">Multi-modal AI</div>
-                <div class="skill-item">Full Stack Development</div>
-                <div class="skill-item">ChatGroq</div>
+            
+            <div class="skills-category skill-category-1">
+                <h3>AI/ML</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Machine Learning</div>
+                    <div class="skill-item">Generative AI</div>
+                    <div class="skill-item">AI Agents</div>
+                    <div class="skill-item">Large Language Models (LLMs)</div>
+                </div>
+            </div>
+
+            <div class="skills-category skill-category-2">
+                <h3>Frameworks</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Langchain</div>
+                    <div class="skill-item">CrewAI</div>
+                    <div class="skill-item">LlamaIndex</div>
+                    <div class="skill-item">LangGraph</div>
+                    <div class="skill-item">Scikit-Learn</div>
+                    <div class="skill-item">TensorFlow</div>
+                    <div class="skill-item">PyTorch</div>
+                </div>
+            </div>
+
+            <div class="skills-category skill-category-3">
+                <h3>Web Development</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Django</div>
+                    <div class="skill-item">Flask</div>
+                </div>
+            </div>
+
+            <div class="skills-category skill-category-4">
+                <h3>Programming</h3>
+                <div class="skills-container">
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">SQL</div>
+                </div>
             </div>
         </section>
     </div>
