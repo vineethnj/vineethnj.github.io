@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vineeth N - AI/ML Developer Journey</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <style>
         :root {
             --dark-bg: #0F1624;
@@ -18,13 +19,13 @@
             --timeline-width: 6px;
             --node-size: 22px;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
@@ -32,14 +33,14 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
+        
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
+        
         /* Header Section */
         .header {
             padding: 5rem 0 3rem;
@@ -47,7 +48,7 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         .header::before {
             content: '';
             position: absolute;
@@ -57,8 +58,20 @@
             height: 100%;
             background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1), transparent 60%);
             z-index: 0;
+            animation: pulse 8s ease-in-out infinite alternate;
         }
-
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+        
         .header h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 3.5rem;
@@ -67,8 +80,9 @@
             margin-bottom: 0.5rem;
             position: relative;
             z-index: 1;
+            animation: fadeInDown 1.2s ease-out;
         }
-
+        
         .header-subtitle {
             color: var(--accent-1);
             font-size: 1.2rem;
@@ -76,16 +90,40 @@
             text-transform: uppercase;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
         }
-
+        
         .location-info {
             color: var(--dark-text-secondary);
             font-size: 0.9rem;
             margin-top: 0.5rem;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 1.2s ease-out 0.6s both;
         }
-
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .profile-summary {
             background-color: var(--dark-surface);
             padding: 2rem;
@@ -94,14 +132,49 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
             z-index: 1;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            overflow: hidden;
         }
-
+        
+        .profile-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+            transform-origin: 0 0;
+            transform: scaleX(0);
+            transition: transform 0.6s ease-out;
+        }
+        
+        .profile-summary:hover::before {
+            transform: scaleX(1);
+        }
+        
         .profile-summary h2 {
             color: var(--accent-1);
             margin-bottom: 1rem;
             font-family: 'Montserrat', sans-serif;
+            position: relative;
         }
-
+        
+        .profile-summary h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-1);
+            transition: width 0.4s ease;
+        }
+        
+        .profile-summary:hover h2::after {
+            width: 100px;
+        }
+        
         /* Journey Timeline */
         .journey-title {
             text-align: center;
@@ -111,7 +184,7 @@
             margin: 3rem 0;
             position: relative;
         }
-
+        
         .journey-title::after {
             content: '';
             position: absolute;
@@ -121,13 +194,26 @@
             width: 100px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+            animation: gradientShift 3s ease infinite;
         }
-
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
         .timeline-container {
             position: relative;
             padding: 2rem 0;
         }
-
+        
         .timeline-center {
             position: absolute;
             top: 0;
@@ -137,23 +223,42 @@
             height: 100%;
             background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
             z-index: 1;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            animation: timelinePulse 3s infinite alternate;
         }
-
+        
+        @keyframes timelinePulse {
+            from {
+                box-shadow: 0 0 5px rgba(100, 255, 218, 0.3);
+            }
+            to {
+                box-shadow: 0 0 15px rgba(100, 255, 218, 0.7);
+            }
+        }
+        
         .timeline-item {
             display: flex;
             margin-bottom: 6rem;
             position: relative;
             min-height: 150px;
+            opacity: 0.3;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .timeline-item:nth-child(odd) {
             flex-direction: row;
         }
-
+        
         .timeline-item:nth-child(even) {
             flex-direction: row-reverse;
         }
-
+        
         .timeline-content {
             width: 45%;
             padding: 1.5rem;
@@ -162,31 +267,72 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             position: relative;
             z-index: 2;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            overflow: hidden;
         }
-
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(100, 255, 218, 0.05);
+            z-index: -1;
+            transition: width 0.4s ease;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: 0;
+        }
+        
         .timeline-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
-
+        
+        .timeline-content:hover::before {
+            width: 100%;
+        }
+        
         .timeline-item:nth-child(odd) .timeline-content {
             margin-right: auto;
             border-left: 4px solid var(--accent-1);
         }
-
+        
         .timeline-item:nth-child(even) .timeline-content {
             margin-left: auto;
             border-right: 4px solid var(--accent-2);
         }
-
-        .timeline-item:nth-child(1) .timeline-content { border-color: var(--accent-1); }
-        .timeline-item:nth-child(2) .timeline-content { border-color: var(--accent-2); }
-        .timeline-item:nth-child(3) .timeline-content { border-color: var(--accent-3); }
-        .timeline-item:nth-child(4) .timeline-content { border-color: var(--accent-4); }
-        .timeline-item:nth-child(5) .timeline-content { border-color: var(--accent-1); }
-        .timeline-item:nth-child(6) .timeline-content { border-color: var(--accent-2); }
-
+        
+        .timeline-item:nth-child(1) .timeline-content {
+            border-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(2) .timeline-content {
+            border-color: var(--accent-2);
+        }
+        
+        .timeline-item:nth-child(3) .timeline-content {
+            border-color: var(--accent-3);
+        }
+        
+        .timeline-item:nth-child(4) .timeline-content {
+            border-color: var(--accent-4);
+        }
+        
+        .timeline-item:nth-child(5) .timeline-content {
+            border-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(6) .timeline-content {
+            border-color: var(--accent-2);
+        }
+        
         .timeline-node {
             position: absolute;
             left: 50%;
@@ -198,40 +344,98 @@
             background-color: var(--dark-bg);
             border: 4px solid var(--accent-1);
             z-index: 3;
+            transition: all 0.3s ease;
+            animation: nodeScale 2s infinite alternate;
         }
-
-        .timeline-item:nth-child(1) .timeline-node { border-color: var(--accent-1); }
-        .timeline-item:nth-child(2) .timeline-node { border-color: var(--accent-2); }
-        .timeline-item:nth-child(3) .timeline-node { border-color: var(--accent-3); }
-        .timeline-item:nth-child(4) .timeline-node { border-color: var(--accent-4); }
-        .timeline-item:nth-child(5) .timeline-node { border-color: var(--accent-1); }
-        .timeline-item:nth-child(6) .timeline-node { border-color: var(--accent-2); }
-
+        
+        @keyframes nodeScale {
+            from {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+        
+        .timeline-item:hover .timeline-node {
+            transform: translate(-50%, -50%) scale(1.3);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.8);
+        }
+        
+        .timeline-item:nth-child(1) .timeline-node {
+            border-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(2) .timeline-node {
+            border-color: var(--accent-2);
+        }
+        
+        .timeline-item:nth-child(3) .timeline-node {
+            border-color: var(--accent-3);
+        }
+        
+        .timeline-item:nth-child(4) .timeline-node {
+            border-color: var(--accent-4);
+        }
+        
+        .timeline-item:nth-child(5) .timeline-node {
+            border-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(6) .timeline-node {
+            border-color: var(--accent-2);
+        }
+        
         .timeline-connector {
             position: absolute;
             top: 30px;
             width: calc(50% - var(--node-size)/2 - 5px);
             height: 3px;
             z-index: 2;
+            transform: scaleX(0);
+            transition: transform 1s ease;
         }
-
+        
+        .timeline-item.visible .timeline-connector {
+            transform: scaleX(1);
+        }
+        
         .timeline-item:nth-child(odd) .timeline-connector {
             right: 50%;
+            transform-origin: right;
             background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
         }
-
+        
         .timeline-item:nth-child(even) .timeline-connector {
             left: 50%;
+            transform-origin: left;
             background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
         }
-
-        .timeline-item:nth-child(1) .timeline-connector { background: linear-gradient(90deg, var(--accent-1), var(--dark-bg)); }
-        .timeline-item:nth-child(2) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-2)); }
-        .timeline-item:nth-child(3) .timeline-connector { background: linear-gradient(90deg, var(--accent-3), var(--dark-bg)); }
-        .timeline-item:nth-child(4) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-4)); }
-        .timeline-item:nth-child(5) .timeline-connector { background: linear-gradient(90deg, var(--accent-1), var(--dark-bg)); }
-        .timeline-item:nth-child(6) .timeline-connector { background: linear-gradient(90deg, var(--dark-bg), var(--accent-2)); }
-
+        
+        .timeline-item:nth-child(1) .timeline-connector {
+            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
+        }
+        
+        .timeline-item:nth-child(2) .timeline-connector {
+            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
+        }
+        
+        .timeline-item:nth-child(3) .timeline-connector {
+            background: linear-gradient(90deg, var(--accent-3), var(--dark-bg));
+        }
+        
+        .timeline-item:nth-child(4) .timeline-connector {
+            background: linear-gradient(90deg, var(--dark-bg), var(--accent-4));
+        }
+        
+        .timeline-item:nth-child(5) .timeline-connector {
+            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
+        }
+        
+        .timeline-item:nth-child(6) .timeline-connector {
+            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
+        }
+        
         .timeline-date {
             position: absolute;
             top: -20px;
@@ -240,53 +444,157 @@
             border-radius: 4px;
             color: var(--dark-bg);
             font-weight: 600;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
+        .timeline-item:hover .timeline-date {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
         .timeline-item:nth-child(odd) .timeline-date {
             right: 0;
             background-color: var(--accent-1);
         }
-
+        
         .timeline-item:nth-child(even) .timeline-date {
             left: 0;
             background-color: var(--accent-2);
         }
-
-        .timeline-item:nth-child(1) .timeline-date { background-color: var(--accent-1); }
-        .timeline-item:nth-child(2) .timeline-date { background-color: var(--accent-2); }
-        .timeline-item:nth-child(3) .timeline-date { background-color: var(--accent-3); }
-        .timeline-item:nth-child(4) .timeline-date { background-color: var(--accent-4); }
-        .timeline-item:nth-child(5) .timeline-date { background-color: var(--accent-1); }
-        .timeline-item:nth-child(6) .timeline-date { background-color: var(--accent-2); }
-
+        
+        .timeline-item:nth-child(1) .timeline-date {
+            background-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(2) .timeline-date {
+            background-color: var(--accent-2);
+        }
+        
+        .timeline-item:nth-child(3) .timeline-date {
+            background-color: var(--accent-3);
+        }
+        
+        .timeline-item:nth-child(4) .timeline-date {
+            background-color: var(--accent-4);
+        }
+        
+        .timeline-item:nth-child(5) .timeline-date {
+            background-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(6) .timeline-date {
+            background-color: var(--accent-2);
+        }
+        
         .timeline-content h3 {
             margin-bottom: 10px;
             font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
         }
-
-        .timeline-item:nth-child(1) h3 { color: var(--accent-1); }
-        .timeline-item:nth-child(2) h3 { color: var(--accent-2); }
-        .timeline-item:nth-child(3) h3 { color: var(--accent-3); }
-        .timeline-item:nth-child(4) h3 { color: var(--accent-4); }
-        .timeline-item:nth-child(5) h3 { color: var(--accent-1); }
-        .timeline-item:nth-child(6) h3 { color: var(--accent-2); }
-
+        
+        .timeline-content h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            transition: width 0.4s ease;
+        }
+        
+        .timeline-content:hover h3::after {
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(1) h3 {
+            color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(1) h3::after {
+            background-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(2) h3 {
+            color: var(--accent-2);
+        }
+        
+        .timeline-item:nth-child(2) h3::after {
+            background-color: var(--accent-2);
+        }
+        
+        .timeline-item:nth-child(3) h3 {
+            color: var(--accent-3);
+        }
+        
+        .timeline-item:nth-child(3) h3::after {
+            background-color: var(--accent-3);
+        }
+        
+        .timeline-item:nth-child(4) h3 {
+            color: var(--accent-4);
+        }
+        
+        .timeline-item:nth-child(4) h3::after {
+            background-color: var(--accent-4);
+        }
+        
+        .timeline-item:nth-child(5) h3 {
+            color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(5) h3::after {
+            background-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(6) h3 {
+            color: var(--accent-2);
+        }
+        
+        .timeline-item:nth-child(6) h3::after {
+            background-color: var(--accent-2);
+        }
+        
         .timeline-content p {
             color: var(--dark-text-secondary);
             font-size: 0.9rem;
             margin-bottom: 10px;
         }
-
+        
         .timeline-content ul {
             margin-left: 1.5rem;
             color: var(--dark-text-primary);
         }
-
+        
         .timeline-content ul li {
             margin-bottom: 5px;
             font-size: 0.95rem;
+            position: relative;
+            transition: transform 0.3s ease;
         }
-
+        
+        .timeline-content ul li::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent-1);
+            transform: scale(0);
+            transition: transform 0.3s ease 0.1s;
+        }
+        
+        .timeline-content:hover ul li::before {
+            transform: scale(1);
+        }
+        
+        .timeline-content:hover ul li {
+            transform: translateX(5px);
+        }
+        
         /* Education Section */
         .education {
             background-color: var(--dark-surface);
@@ -295,96 +603,234 @@
             border-radius: 10px;
             position: relative;
             border-left: 4px solid var(--accent-3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
-
+        
+        .education::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-3), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+        
+        .education:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .education:hover::before {
+            transform: scaleX(1);
+        }
+        
         .education h2 {
             color: var(--accent-3);
             margin-bottom: 1rem;
             font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
         }
-
+        
+        .education h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-3);
+            transition: width 0.4s ease;
+        }
+        
+        .education:hover h2::after {
+            width: 100%;
+        }
+        
         .education-content {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-
+        
         .education-item {
             padding-left: 1rem;
             border-left: 2px solid var(--accent-3);
+            transition: transform 0.3s ease, padding-left 0.3s ease;
         }
-
+        
+        .education-item:hover {
+            transform: translateX(10px);
+            padding-left: 1.5rem;
+        }
+        
         .education-item h3 {
             color: var(--dark-text-primary);
             margin-bottom: 0.3rem;
+            transition: color 0.3s ease;
         }
-
+        
+        .education-item:hover h3 {
+            color: var(--accent-3);
+        }
+        
         .education-item p {
             color: var(--dark-text-secondary);
             font-size: 0.9rem;
         }
-
+        
         /* Certifications Section */
         .certifications {
             margin: 3rem 0;
         }
-
+        
         .certifications h2 {
             color: var(--accent-4);
             margin-bottom: 1.5rem;
             font-family: 'Montserrat', sans-serif;
             text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
-
+        
+        .certifications h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-4), transparent);
+        }
+        
         .certifications-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
+            perspective: 1000px;
         }
-
+        
         .cert-item {
             background-color: var(--dark-surface);
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             width: calc(50% - 15px);
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-left: 3px solid var(--accent-4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform-style: preserve-3d;
         }
-
+        
+        .cert-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(252, 163, 17, 0.1) 0%, transparent 100%);
+            transform: translateZ(-10px);
+            z-index: -1;
+        }
+        
         .cert-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-
+        
+        .cert-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, transparent 50%, var(--accent-4) 50%);
+            border-radius: 0 0 8px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cert-item:hover::after {
+            opacity: 1;
+        }
+        
         .cert-item h3 {
             color: var(--accent-4);
             margin-bottom: 0.5rem;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
         }
-
+        
+        .cert-item h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-4);
+            transition: width 0.4s ease;
+        }
+        
+        .cert-item:hover h3::after {
+            width: 100%;
+        }
+        
         .cert-item p {
             color: var(--dark-text-secondary);
             font-size: 0.9rem;
         }
-
+        
         /* Skills Section */
         .skills {
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
-
+        
         .skills-title {
             text-align: center;
             color: var(--accent-1);
             font-family: 'Montserrat', sans-serif;
             font-size: 2rem;
             margin-bottom: 2rem;
+            position: relative;
         }
-
+        
+        .skills-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+        }
+        
         .skills-category {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
+        
+        .skills-category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .skills-category h3 {
             color: var(--accent-2);
             margin-bottom: 1rem;
@@ -392,44 +838,81 @@
             border-bottom: 1px solid var(--accent-2);
             padding-bottom: 0.3rem;
             display: inline-block;
+            position: relative;
         }
-
+        
+        .skills-category h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-2);
+            transition: width 0.5s ease;
+            z-index: 1;
+        }
+        
+        .skills-category:hover h3::before {
+            width: 100%;
+        }
+        
         .skills-container {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
         }
-
+        
         .skill-item {
             background-color: var(--dark-surface);
             padding: 10px 20px;
             border-radius: 30px;
             color: var(--dark-text-primary);
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
+        
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        
+        .skill-item:hover::before {
+            transform: translateX(0);
+        }
+        
         .skill-category-1 .skill-item {
             border: 2px solid var(--accent-1);
         }
-
+        
         .skill-category-2 .skill-item {
             border: 2px solid var(--accent-2);
         }
-
+        
         .skill-category-3 .skill-item {
             border: 2px solid var(--accent-3);
         }
-
+        
         .skill-category-4 .skill-item {
             border: 2px solid var(--accent-4);
         }
-
+        
         .skill-item:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
+        
         /* Contact Section */
         .contact {
             background-color: var(--dark-surface);
@@ -439,8 +922,9 @@
             margin-top: 4rem;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-
+        
         .contact::before {
             content: '';
             position: absolute;
@@ -450,298 +934,520 @@
             height: 100%;
             background: radial-gradient(circle at 50% 0%, rgba(155, 93, 229, 0.1), transparent 70%);
             z-index: 0;
+            animation: contactGlow 8s infinite alternate;
         }
-
+        
+        @keyframes contactGlow {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
         .contact h2 {
             color: var(--accent-3);
             margin-bottom: 1rem;
             font-family: 'Montserrat', sans-serif;
             position: relative;
-            z-index: 1;
-        }
-
-        .contact-info {
-            color: var(--dark-text-secondary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links a {
-            color: var(--accent-1);
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 10px 20px;
-            border: 2px solid var(--accent-1);
-            border-radius: 5px;
-        }
-
-        .social-links a:hover {
-            background-color: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .container {
-                width: 95%;
-                padding: 0 10px;
-            }
-
-            .timeline-center {
-                left: 30px;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-                padding-left: 60px;
-            }
-
-            .timeline-content {
-                width: 100%;
-                margin: 0 !important;
-            }
-
-            .timeline-node {
-                left: 30px;
-            }
-
-            .timeline-connector {
-                display: none;
-            }
-
-            .timeline-date {
-                position: relative;
-                top: 0;
-                margin-bottom: 10px;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-date,
-            .timeline-item:nth-child(even) .timeline-date {
-                left: 0;
-                right: auto;
-            }
-
-            .cert-item {
-                width: 100%;
-            }
-        }
-    </style>
+            z-index:
+            margin-bottom: 1rem;
+           font-family: 'Montserrat', sans-serif;
+           position: relative;
+           z-index: 1;
+           display: inline-block;
+       }
+       
+       .contact h2::after {
+           content: '';
+           position: absolute;
+           bottom: -8px;
+           left: 0;
+           width: 0;
+           height: 2px;
+           background-color: var(--accent-3);
+           transition: width 0.6s ease;
+       }
+       
+       .contact:hover h2::after {
+           width: 100%;
+       }
+       
+       .contact-info {
+           color: var(--dark-text-secondary);
+           margin-bottom: 1.5rem;
+           position: relative;
+           z-index: 1;
+       }
+       
+       .social-links {
+           display: flex;
+           justify-content: center;
+           gap: 2rem;
+           position: relative;
+           z-index: 1;
+       }
+       
+       .social-links a {
+           color: var(--accent-1);
+           text-decoration: none;
+           font-weight: bold;
+           transition: all 0.4s ease;
+           text-transform: uppercase;
+           letter-spacing: 1px;
+           padding: 10px 20px;
+           border: 2px solid var(--accent-1);
+           border-radius: 5px;
+           position: relative;
+           overflow: hidden;
+       }
+       
+       .social-links a::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 0;
+           height: 100%;
+           background-color: rgba(100, 255, 218, 0.1);
+           transition: width 0.4s ease;
+           z-index: -1;
+       }
+       
+       .social-links a:hover::before {
+           width: 100%;
+       }
+       
+       .social-links a:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+       }
+       
+       /* Responsive Design */
+       @media (max-width: 768px) {
+           .header h1 {
+               font-size: 2.5rem;
+           }
+           
+           .container {
+               width: 95%;
+               padding: 0 10px;
+           }
+           
+           .timeline-center {
+               left: 30px;
+           }
+           
+           .timeline-item {
+               flex-direction: column !important;
+               padding-left: 60px;
+               margin-bottom: 3rem;
+           }
+           
+           .timeline-content {
+               width: 100%;
+               margin: 0 !important;
+           }
+           
+           .timeline-node {
+               left: 30px;
+           }
+           
+           .timeline-connector {
+               display: none;
+           }
+           
+           .timeline-date {
+               position: relative;
+               top: 0;
+               margin-bottom: 10px;
+           }
+           
+           .timeline-item:nth-child(odd) .timeline-date, 
+           .timeline-item:nth-child(even) .timeline-date {
+               left: 0;
+               right: auto;
+           }
+           
+           .cert-item {
+               width: 100%;
+           }
+           
+           .social-links {
+               flex-direction: column;
+               gap: 1rem;
+               align-items: center;
+           }
+       }
+       
+       /* Scrollbar styling */
+       ::-webkit-scrollbar {
+           width: 10px;
+       }
+       
+       ::-webkit-scrollbar-track {
+           background: var(--dark-bg);
+       }
+       
+       ::-webkit-scrollbar-thumb {
+           background: var(--dark-surface);
+           border-radius: 5px;
+           border: 2px solid var(--dark-bg);
+       }
+       
+       ::-webkit-scrollbar-thumb:hover {
+           background: var(--accent-1);
+       }
+       
+       /* Loading animation */
+       .loader {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: var(--dark-bg);
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           z-index: 9999;
+           transition: opacity 0.6s ease, visibility 0.6s ease;
+       }
+       
+       .loader.hidden {
+           opacity: 0;
+           visibility: hidden;
+       }
+       
+       .loader-content {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .loader-spinner {
+           width: 60px;
+           height: 60px;
+           border: 5px solid rgba(100, 255, 218, 0.1);
+           border-top: 5px solid var(--accent-1);
+           border-radius: 50%;
+           animation: spin 1s linear infinite;
+           margin-bottom: 20px;
+       }
+       
+       @keyframes spin {
+           0% { transform: rotate(0deg); }
+           100% { transform: rotate(360deg); }
+       }
+       
+       .loader-text {
+           color: var(--accent-1);
+           font-family: 'Montserrat', sans-serif;
+           letter-spacing: 3px;
+           font-size: 1.2rem;
+       }
+   </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>VINEETH N</h1>
-            <p class="header-subtitle">AI/ML ENGINEER</p>
-            <p class="location-info">Kerala, India — +91 9995511967 — nvineeth672@gmail.com</p>
-        </div>
-    </header>
+   <!-- Loading Screen -->
+   <div class="loader">
+       <div class="loader-content">
+           <div class="loader-spinner"></div>
+           <div class="loader-text">LOADING</div>
+       </div>
+   </div>
 
-    <div class="container">
-        <section class="profile-summary">
-            <h2>Professional Summary</h2>
-            <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs AGENTS with 10 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex. I specialize in developing cutting-edge intelligent systems that push the boundaries of artificial intelligence.</p>
-        </section>
+   <header class="header">
+       <div class="container">
+           <h1>VINEETH N</h1>
+           <p class="header-subtitle">AI/ML ENGINEER</p>
+           <p class="location-info">Kerala, India — +91 9995511967 — nvineeth672@gmail.com</p>
+       </div>
+   </header>
 
-        <h2 class="journey-title">My AI/ML Journey</h2>
-        
-        <section class="timeline-container">
-            <div class="timeline-center"></div>
-            
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">June 2024 - Present</span>
-                    <h3>AI/ML Engineer</h3>
-                    <p>Gaude Business & Infrastructure Solutions</p>
-                    <ul>
-                        <li>Designed and developed an AI-powered chatbot using advanced LLM-RAG architecture</li>
-                        <li>Built an agentic LLM-RAG chatbot utilizing LangChain and CrewAI frameworks</li>
-                        <li>Enabled PDF document upload with context-specific QA capabilities</li>
-                        <li>Integrated live internet search for real-time information retrieval</li>
-                        <li>Added email functionality for sending generated outputs</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
+   <div class="container">
+       <section class="profile-summary" data-aos="fade-up" data-aos-duration="1000">
+           <h2>Professional Summary</h2>
+           <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs AGENTS with 10 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex. I specialize in developing cutting-edge intelligent systems that push the boundaries of artificial intelligence.</p>
+       </section>
 
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">Recent</span>
-                    <h3>Game Simulation with AI Agents</h3>
-                    <p>Project | LangGraph, Python, Llama</p>
-                    <ul>
-                        <li>Designed and implemented a game simulation environment</li>
-                        <li>Explored complex decision-making processes and multi-agent interactions</li>
-                        <li>Utilized LangGraph for agent communication and coordination</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
+       <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">My AI/ML Journey</h2>
+       <section class="timeline-container">
+           <div class="timeline-center"></div>
+           
+           <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="300">
+               <div class="timeline-content">
+                   <span class="timeline-date">June 2024 - Present</span>
+                   <h3>AI/ML Engineer</h3>
+                   <p>Gaude Business & Infrastructure Solutions</p>
+                   <ul>
+                       <li>Designed and developed an AI-powered chatbot using advanced LLM-RAG architecture</li>
+                       <li>Built an agentic LLM-RAG chatbot utilizing LangChain and CrewAI frameworks</li>
+                       <li>Enabled PDF document upload with context-specific QA capabilities</li>
+                       <li>Integrated live internet search for real-time information retrieval</li>
+                       <li>Added email functionality for sending generated outputs</li>
+                   </ul>
+               </div>
+               <div class="timeline-node"></div>
+               <div class="timeline-connector"></div>
+           </div>
 
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">Recent</span>
-                    <h3>LLM Finetuning</h3>
-                    <p>Project | Unsloth, Hugging Face Transformers</p>
-                    <ul>
-                        <li>Fine-tuned LLaMA-3.2-3B and Mistral-7B models using Unsloth framework</li>
-                        <li>Specialized in Malayalam language adaptation</li>
-                        <li>Used Alpaca Malayalam Instruct dataset for training</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
+           <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="300">
+               <div class="timeline-content">
+                   <span class="timeline-date">Recent</span>
+                   <h3>Game Simulation with AI Agents</h3>
+                   <p>Project | LangGraph, Python, Llama</p>
+                   <ul>
+                       <li>Designed and implemented a game simulation environment</li>
+                       <li>Explored complex decision-making processes and multi-agent interactions</li>
+                       <li>Utilized LangGraph for agent communication and coordination</li>
+                   </ul>
+               </div>
+               <div class="timeline-node"></div>
+               <div class="timeline-connector"></div>
+           </div>
 
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">Recent</span>
-                    <h3>AI-Powered Chatbot</h3>
-                    <p>Project | LLMs, LangChain, RAG</p>
-                    <ul>
-                        <li>Developed a comprehensive chatbot leveraging LLMs and RAG methodology</li>
-                        <li>Implemented document upload with context-aware QA capabilities</li>
-                        <li>Integrated live internet access for real-time information</li>
-                        <li>Added email functionality using natural language queries</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
+           <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" data-aos-offset="300">
+               <div class="timeline-content">
+                   <span class="timeline-date">Recent</span>
+                   <h3>LLM Finetuning</h3>
+                   <p>Project | Unsloth, Hugging Face Transformers</p>
+                   <ul>
+                       <li>Fine-tuned LLaMA-3.2-3B and Mistral-7B models using Unsloth framework</li>
+                       <li>Specialized in Malayalam language adaptation</li>
+                       <li>Used Alpaca Malayalam Instruct dataset for training</li>
+                   </ul>
+               </div>
+               <div class="timeline-node"></div>
+               <div class="timeline-connector"></div>
+           </div>
 
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">June 2024</span>
-                    <h3>Multi-Agent Flight Management System</h3>
-                    <p>Project | CrewAI, ChatGroq LLM, Django</p>
-                    <ul>
-                        <li>Developed a sophisticated CrewAI-based system for flight coordination</li>
-                        <li>Implemented advanced agent interactions for real-time flight management</li>
-                        <li>Utilized Django for the web interface</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
+           <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400" data-aos-offset="300">
+               <div class="timeline-content">
+                   <span class="timeline-date">Recent</span>
+                   <h3>AI-Powered Chatbot</h3>
+                   <p>Project | LLMs, LangChain, RAG</p>
+                   <ul>
+                       <li>Developed a comprehensive chatbot leveraging LLMs and RAG methodology</li>
+                       <li>Implemented document upload with context-aware QA capabilities</li>
+                       <li>Integrated live internet access for real-time information</li>
+                       <li>Added email functionality using natural language queries</li>
+                   </ul>
+               </div>
+               <div class="timeline-node"></div>
+               <div class="timeline-connector"></div>
+           </div>
 
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">April 2024 - May 2024</span>
-                    <h3>YouTube Content Q&A System</h3>
-                    <p>Project | LangChain, OpenAI Whisper</p>
-                    <ul>
-                        <li>Created an intelligent system for extracting and indexing YouTube video content</li>
-                        <li>Implemented advanced natural language Q&A functionality</li>
-                        <li>Used OpenAI Whisper for accurate transcription</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-        </section>
+           <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-offset="300">
+               <div class="timeline-content">
+                   <span class="timeline-date">June 2024</span>
+                   <h3>Multi-Agent Flight Management System</h3>
+                   <p>Project | CrewAI, ChatGroq LLM, Django</p>
+                   <ul>
+                       <li>Developed a sophisticated CrewAI-based system for flight coordination</li>
+                       <li>Implemented advanced agent interactions for real-time flight management</li>
+                       <li>Utilized Django for the web interface</li>
+                   </ul>
+               </div>
+               <div class="timeline-node"></div>
+               <div class="timeline-connector"></div>
+           </div>
 
-        <section class="education">
-            <h2>Education</h2>
-            <div class="education-content">
-                <div class="education-item">
-                    <h3>Bachelor of Computer Application</h3>
-                    <p>Michaels Institute of Management and Technology, University of Kerala</p>
-                    <p>2021 - 2024</p>
-                </div>
-            </div>
-        </section>
+           <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600" data-aos-offset="300">
+               <div class="timeline-content">
+                   <span class="timeline-date">April 2024 - May 2024</span>
+                   <h3>YouTube Content Q&A System</h3>
+                   <p>Project | LangChain, OpenAI Whisper</p>
+                   <ul>
+                       <li>Created an intelligent system for extracting and indexing YouTube video content</li>
+                       <li>Implemented advanced natural language Q&A functionality</li>
+                       <li>Used OpenAI Whisper for accurate transcription</li>
+                   </ul>
+               </div>
+               <div class="timeline-node"></div>
+               <div class="timeline-connector"></div>
+           </div>
+       </section>
 
-        <section class="certifications">
-            <h2>Certifications</h2>
-            <div class="certifications-container">
-                <div class="cert-item">
-                    <h3>Multi AI Agent Systems with CrewAI</h3>
-                    <p>Deeplearning.ai</p>
-                </div>
-                <div class="cert-item">
-                    <h3>AI Agents in LangGraph</h3>
-                    <p>Deeplearning.ai</p>
-                </div>
-                <div class="cert-item">
-                    <h3>Pretraining LLMs</h3>
-                    <p>Deeplearning.ai</p>
-                </div>
-                <div class="cert-item">
-                    <h3>IBM Data Science Professional Certificate</h3>
-                    <p>Coursera</p>
-                </div>
-            </div>
-        </section>
+       <section class="education" data-aos="fade-up" data-aos-duration="1000">
+           <h2>Education</h2>
+           <div class="education-content">
+               <div class="education-item">
+                   <h3>Bachelor of Computer Application</h3>
+                   <p>Michaels Institute of Management and Technology, University of Kerala</p>
+                   <p>2021 - 2024</p>
+               </div>
+           </div>
+       </section>
 
-        <section class="skills">
-            <h2 class="skills-title">Technical Expertise</h2>
-            
-            <div class="skills-category skill-category-1">
-                <h3>AI/ML</h3>
-                <div class="skills-container">
-                    <div class="skill-item">Machine Learning</div>
-                    <div class="skill-item">Generative AI</div>
-                    <div class="skill-item">AI Agents</div>
-                    <div class="skill-item">Large Language Models (LLMs)</div>
-                </div>
-            </div>
+       <section class="certifications" data-aos="fade-up" data-aos-duration="1000">
+           <h2>Certifications</h2>
+           <div class="certifications-container">
+               <div class="cert-item" data-aos="flip-left" data-aos-delay="100">
+                   <h3>Multi AI Agent Systems with CrewAI</h3>
+                   <p>Deeplearning.ai</p>
+               </div>
+               <div class="cert-item" data-aos="flip-right" data-aos-delay="200">
+                   <h3>AI Agents in LangGraph</h3>
+                   <p>Deeplearning.ai</p>
+               </div>
+               <div class="cert-item" data-aos="flip-left" data-aos-delay="300">
+                   <h3>Pretraining LLMs</h3>
+                   <p>Deeplearning.ai</p>
+               </div>
+               <div class="cert-item" data-aos="flip-right" data-aos-delay="400">
+                   <h3>IBM Data Science Professional Certificate</h3>
+                   <p>Coursera</p>
+               </div>
+           </div>
+       </section>
 
-            <div class="skills-category skill-category-2">
-                <h3>Frameworks</h3>
-                <div class="skills-container">
-                    <div class="skill-item">Langchain</div>
-                    <div class="skill-item">CrewAI</div>
-                    <div class="skill-item">LlamaIndex</div>
-                    <div class="skill-item">LangGraph</div>
-                    <div class="skill-item">Scikit-Learn</div>
-                    <div class="skill-item">TensorFlow</div>
-                    <div class="skill-item">PyTorch</div>
-                </div>
-            </div>
+       <section class="skills">
+           <h2 class="skills-title" data-aos="fade-up" data-aos-duration="1000">Technical Expertise</h2>
+           
+           <div class="skills-category skill-category-1" data-aos="fade-up" data-aos-duration="1000">
+               <h3>AI/ML</h3>
+               <div class="skills-container">
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Machine Learning</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Generative AI</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">AI Agents</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">Large Language Models (LLMs)</div>
+               </div>
+           </div>
+           
+           <div class="skills-category skill-category-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+               <h3>Frameworks</h3>
+               <div class="skills-container">
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Langchain</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">CrewAI</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">LlamaIndex</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">LangGraph</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="300">Scikit-Learn</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="350">TensorFlow</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">PyTorch</div>
+               </div>
+           </div>
+           
+           <div class="skills-category skill-category-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+               <h3>Web Development</h3>
+               <div class="skills-container">
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Django</div>
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Flask</div>
+               </div>
+           </div>
+           
+           <div class="skills-category skill-category-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+               <h3>Programming</h3>
+               <div class="skills-container">
+                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Python</div>
+               </div>
+           </div>
+       </section>
+   </div>
 
-            <div class="skills-category skill-category-3">
-                <h3>Web Development</h3>
-                <div class="skills-container">
-                    <div class="skill-item">Django</div>
-                    <div class="skill-item">Flask</div>
-                </div>
-            </div>
+   <section class="contact" data-aos="fade-up" data-aos-duration="1000">
+       <div class="container">
+           <h2>Get In Touch</h2>
+           <p class="contact-info">nvineeth672@gmail.com | +91 9995511967</p>
+           <div class="social-links">
+               <a href="https://github.com/vineethnj" target="_blank" data-aos="fade-up" data-aos-delay="200">GitHub</a>
+               <a href="https://huggingface.co/vineethn" target="_blank" data-aos="fade-up" data-aos-delay="400">Hugging Face</a>
+           </div>
+       </div>
+   </section>
 
-            <div class="skills-category skill-category-4">
-                <h3>Programming</h3>
-                <div class="skills-container">
-                    <div class="skill-item">Python</div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <section class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="contact-info">nvineeth672@gmail.com | +91 9995511967</p>
-            <div class="social-links">
-                <a href="https://github.com/vineethnj" target="_blank">GitHub</a>
-                <a href="https://huggingface.co/vineethn" target="_blank">Hugging Face</a>
-            </div>
-        </div>
-    </section>
+   <!-- Scripts -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+   <script>
+       // Initialize AOS
+       document.addEventListener('DOMContentLoaded', function() {
+           AOS.init({
+               duration: 800,
+               easing: 'ease-in-out',
+               once: false,
+               mirror: false
+           });
+           
+           // Hide loader after page loads
+           setTimeout(function() {
+               document.querySelector('.loader').classList.add('hidden');
+           }, 1500);
+           
+           // Intersection Observer for timeline items
+           const timelineItems = document.querySelectorAll('.timeline-item');
+           const observer = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                   if (entry.isIntersecting) {
+                       entry.target.classList.add('visible');
+                   }
+               });
+           }, { threshold: 0.2 });
+           
+           timelineItems.forEach(item => {
+               observer.observe(item);
+           });
+           
+           // Intersection Observer for skills categories
+           const skillsCategories = document.querySelectorAll('.skills-category');
+           const skillsObserver = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                   if (entry.isIntersecting) {
+                       entry.target.classList.add('visible');
+                   }
+               });
+           }, { threshold: 0.2 });
+           
+           skillsCategories.forEach(category => {
+               skillsObserver.observe(category);
+           });
+           
+           // Typing effect for loader text
+           const loaderText = document.querySelector('.loader-text');
+           const text = loaderText.textContent;
+           loaderText.textContent = '';
+           
+           let charIndex = 0;
+           const typeWriter = () => {
+               if (charIndex < text.length) {
+                   loaderText.textContent += text.charAt(charIndex);
+                   charIndex++;
+                   setTimeout(typeWriter, 100);
+               } else {
+                   setTimeout(() => {
+                       loaderText.textContent = '';
+                       charIndex = 0;
+                       setTimeout(typeWriter, 500);
+                   }, 1000);
+               }
+           };
+           
+           typeWriter();
+           
+           // Mouse move parallax effect for header
+           const header = document.querySelector('.header');
+           header.addEventListener('mousemove', (e) => {
+               const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+               const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+               header.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+           });
+           
+           header.addEventListener('mouseleave', () => {
+               header.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+           });
+           
+           // Smooth scroll for links
+           document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+               anchor.addEventListener('click', function(e) {
+                   e.preventDefault();
+                   document.querySelector(this.getAttribute('href')).scrollIntoView({
+                       behavior: 'smooth'
+                   });
+               });
+           });
+       });
+   </script>
 </body>
 </html>
