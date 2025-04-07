@@ -309,30 +309,6 @@
             border-right: 4px solid var(--accent-2);
         }
         
-        .timeline-item:nth-child(1) .timeline-content {
-            border-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(2) .timeline-content {
-            border-color: var(--accent-2);
-        }
-        
-        .timeline-item:nth-child(3) .timeline-content {
-            border-color: var(--accent-3);
-        }
-        
-        .timeline-item:nth-child(4) .timeline-content {
-            border-color: var(--accent-4);
-        }
-        
-        .timeline-item:nth-child(5) .timeline-content {
-            border-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(6) .timeline-content {
-            border-color: var(--accent-2);
-        }
-        
         .timeline-node {
             position: absolute;
             left: 50%;
@@ -362,30 +338,6 @@
             box-shadow: 0 0 15px rgba(100, 255, 218, 0.8);
         }
         
-        .timeline-item:nth-child(1) .timeline-node {
-            border-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(2) .timeline-node {
-            border-color: var(--accent-2);
-        }
-        
-        .timeline-item:nth-child(3) .timeline-node {
-            border-color: var(--accent-3);
-        }
-        
-        .timeline-item:nth-child(4) .timeline-node {
-            border-color: var(--accent-4);
-        }
-        
-        .timeline-item:nth-child(5) .timeline-node {
-            border-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(6) .timeline-node {
-            border-color: var(--accent-2);
-        }
-        
         .timeline-connector {
             position: absolute;
             top: 30px;
@@ -409,30 +361,6 @@
         .timeline-item:nth-child(even) .timeline-connector {
             left: 50%;
             transform-origin: left;
-            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
-        }
-        
-        .timeline-item:nth-child(1) .timeline-connector {
-            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
-        }
-        
-        .timeline-item:nth-child(2) .timeline-connector {
-            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
-        }
-        
-        .timeline-item:nth-child(3) .timeline-connector {
-            background: linear-gradient(90deg, var(--accent-3), var(--dark-bg));
-        }
-        
-        .timeline-item:nth-child(4) .timeline-connector {
-            background: linear-gradient(90deg, var(--dark-bg), var(--accent-4));
-        }
-        
-        .timeline-item:nth-child(5) .timeline-connector {
-            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
-        }
-        
-        .timeline-item:nth-child(6) .timeline-connector {
             background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
         }
         
@@ -463,30 +391,6 @@
             background-color: var(--accent-2);
         }
         
-        .timeline-item:nth-child(1) .timeline-date {
-            background-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(2) .timeline-date {
-            background-color: var(--accent-2);
-        }
-        
-        .timeline-item:nth-child(3) .timeline-date {
-            background-color: var(--accent-3);
-        }
-        
-        .timeline-item:nth-child(4) .timeline-date {
-            background-color: var(--accent-4);
-        }
-        
-        .timeline-item:nth-child(5) .timeline-date {
-            background-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(6) .timeline-date {
-            background-color: var(--accent-2);
-        }
-        
         .timeline-content h3 {
             margin-bottom: 10px;
             font-family: 'Montserrat', sans-serif;
@@ -508,91 +412,73 @@
             width: 100%;
         }
         
-        .timeline-item:nth-child(1) h3 {
-            color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(1) h3::after {
-            background-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(2) h3 {
-            color: var(--accent-2);
-        }
-        
-        .timeline-item:nth-child(2) h3::after {
-            background-color: var(--accent-2);
-        }
-        
-        .timeline-item:nth-child(3) h3 {
-            color: var(--accent-3);
-        }
-        
-        .timeline-item:nth-child(3) h3::after {
-            background-color: var(--accent-3);
-        }
-        
-        .timeline-item:nth-child(4) h3 {
-            color: var(--accent-4);
-        }
-        
-        .timeline-item:nth-child(4) h3::after {
-            background-color: var(--accent-4);
-        }
-        
-        .timeline-item:nth-child(5) h3 {
-            color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(5) h3::after {
-            background-color: var(--accent-1);
-        }
-        
-        .timeline-item:nth-child(6) h3 {
-            color: var(--accent-2);
-        }
-        
-        .timeline-item:nth-child(6) h3::after {
-            background-color: var(--accent-2);
-        }
-        
         .timeline-content p {
             color: var(--dark-text-secondary);
             font-size: 0.9rem;
             margin-bottom: 10px;
         }
         
-        .timeline-content ul {
-            margin-left: 1.5rem;
-            color: var(--dark-text-primary);
-        }
-        
-        .timeline-content ul li {
-            margin-bottom: 5px;
-            font-size: 0.95rem;
+        /* Featured Projects Styling */
+        .projects-title {
+            text-align: center;
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0;
             position: relative;
-            transition: transform 0.3s ease;
         }
         
-        .timeline-content ul li::before {
+        .projects-title::after {
             content: '';
             position: absolute;
-            left: -15px;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--accent-1);
-            transform: scale(0);
-            transition: transform 0.3s ease 0.1s;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
         }
         
-        .timeline-content:hover ul li::before {
-            transform: scale(1);
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
         
-        .timeline-content:hover ul li {
-            transform: translateX(5px);
+        .project-item {
+            background-color: var(--dark-surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: calc(33.33% - 20px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 3px solid var(--accent-4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .project-item h3 {
+            color: var(--accent-4);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .project-item p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .project-item {
+                width: 100%;
+            }
         }
         
         /* Education Section */
@@ -953,501 +839,530 @@
             margin-bottom: 1rem;
             font-family: 'Montserrat', sans-serif;
             position: relative;
-            z-index:
-            margin-bottom: 1rem;
-           font-family: 'Montserrat', sans-serif;
-           position: relative;
-           z-index: 1;
-           display: inline-block;
-       }
-       
-       .contact h2::after {
-           content: '';
-           position: absolute;
-           bottom: -8px;
-           left: 0;
-           width: 0;
-           height: 2px;
-           background-color: var(--accent-3);
-           transition: width 0.6s ease;
-       }
-       
-       .contact:hover h2::after {
-           width: 100%;
-       }
-       
-       .contact-info {
-           color: var(--dark-text-secondary);
-           margin-bottom: 1.5rem;
-           position: relative;
-           z-index: 1;
-       }
-       
-       .social-links {
-           display: flex;
-           justify-content: center;
-           gap: 2rem;
-           position: relative;
-           z-index: 1;
-       }
-       
-       .social-links a {
-           color: var(--accent-1);
-           text-decoration: none;
-           font-weight: bold;
-           transition: all 0.4s ease;
-           text-transform: uppercase;
-           letter-spacing: 1px;
-           padding: 10px 20px;
-           border: 2px solid var(--accent-1);
-           border-radius: 5px;
-           position: relative;
-           overflow: hidden;
-       }
-       
-       .social-links a::before {
-           content: '';
-           position: absolute;
-           top: 0;
-           left: 0;
-           width: 0;
-           height: 100%;
-           background-color: rgba(100, 255, 218, 0.1);
-           transition: width 0.4s ease;
-           z-index: -1;
-       }
-       
-       .social-links a:hover::before {
-           width: 100%;
-       }
-       
-       .social-links a:hover {
-           transform: translateY(-5px);
-           box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-       }
-       
-       /* Responsive Design */
-       @media (max-width: 768px) {
-           .header h1 {
-               font-size: 2.5rem;
-           }
-           
-           .container {
-               width: 95%;
-               padding: 0 10px;
-           }
-           
-           .timeline-center {
-               left: 30px;
-           }
-           
-           .timeline-item {
-               flex-direction: column !important;
-               padding-left: 60px;
-               margin-bottom: 3rem;
-           }
-           
-           .timeline-content {
-               width: 100%;
-               margin: 0 !important;
-           }
-           
-           .timeline-node {
-               left: 30px;
-           }
-           
-           .timeline-connector {
-               display: none;
-           }
-           
-           .timeline-date {
-               position: relative;
-               top: 0;
-               margin-bottom: 10px;
-           }
-           
-           .timeline-item:nth-child(odd) .timeline-date, 
-           .timeline-item:nth-child(even) .timeline-date {
-               left: 0;
-               right: auto;
-           }
-           
-           .cert-item {
-               width: 100%;
-           }
-           
-           .social-links {
-               flex-direction: column;
-               gap: 1rem;
-               align-items: center;
-           }
-       }
-       
-       /* Scrollbar styling */
-       ::-webkit-scrollbar {
-           width: 10px;
-       }
-       
-       ::-webkit-scrollbar-track {
-           background: var(--dark-bg);
-       }
-       
-       ::-webkit-scrollbar-thumb {
-           background: var(--dark-surface);
-           border-radius: 5px;
-           border: 2px solid var(--dark-bg);
-       }
-       
-       ::-webkit-scrollbar-thumb:hover {
-           background: var(--accent-1);
-       }
-       
-       /* Loading animation */
-       .loader {
-           position: fixed;
-           top: 0;
-           left: 0;
-           width: 100%;
-           height: 100%;
-           background-color: var(--dark-bg);
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           z-index: 9999;
-           transition: opacity 0.6s ease, visibility 0.6s ease;
-       }
-       
-       .loader.hidden {
-           opacity: 0;
-           visibility: hidden;
-       }
-       
-       .loader-content {
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-       }
-       
-       .loader-spinner {
-           width: 60px;
-           height: 60px;
-           border: 5px solid rgba(100, 255, 218, 0.1);
-           border-top: 5px solid var(--accent-1);
-           border-radius: 50%;
-           animation: spin 1s linear infinite;
-           margin-bottom: 20px;
-       }
-       
-       @keyframes spin {
-           0% { transform: rotate(0deg); }
-           100% { transform: rotate(360deg); }
-       }
-       
-       .loader-text {
-           color: var(--accent-1);
-           font-family: 'Montserrat', sans-serif;
-           letter-spacing: 3px;
-           font-size: 1.2rem;
-       }
-   </style>
+            z-index: 1;
+        }
+        
+        .contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-3);
+            transition: width 0.6s ease;
+        }
+        
+        .contact:hover h2::after {
+            width: 100%;
+        }
+        
+        .contact-info {
+            color: var(--dark-text-secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-links a {
+            color: var(--accent-1);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border: 2px solid var(--accent-1);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(100, 255, 218, 0.1);
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+        
+        .social-links a:hover::before {
+            width: 100%;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .timeline-center {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 60px;
+                margin-bottom: 3rem;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+            }
+            
+            .timeline-node {
+                left: 30px;
+            }
+            
+            .timeline-connector {
+                display: none;
+            }
+            
+            .timeline-date {
+                position: relative;
+                top: 0;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-date, 
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 0;
+                right: auto;
+            }
+            
+            .cert-item {
+                width: 100%;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--dark-surface);
+            border-radius: 5px;
+            border: 2px solid var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-1);
+        }
+        
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(100, 255, 218, 0.1);
+            border-top: 5px solid var(--accent-1);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-   <!-- Loading Screen -->
-   <!-- Loading Screen -->
+    <!-- Loading Screen -->
     <div class="loader">
-      <div class="loader-content">
-        <div class="loader-spinner"></div>
-        <div class="loader-text">Welcome, നമസ്കാരം, नमस्ते</div>
-      </div>
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Welcome, നമസ്കാരം, नमस्ते</div>
+        </div>
     </div>
 
-   <header class="header">
-       <div class="container">
-           <h1>VINEETH N</h1>
-           <p class="header-subtitle">AI/ML ENGINEER</p>
-           <p class="location-info">Kerala, India — +91 9995511967 — nvineeth672@gmail.com</p>
-       </div>
-   </header>
+    <header class="header">
+        <div class="container">
+            <h1>VINEETH N</h1>
+            <p class="header-subtitle">AI/ML ENGINEER</p>
+            <p class="location-info">Kerala, India — +91 9995511967 — nvineeth672@gmail.com</p>
+        </div>
+    </header>
 
-   <div class="container">
-       <section class="profile-summary" data-aos="fade-up" data-aos-duration="1000">
-           <h2>Professional Summary</h2>
-           <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs AGENTS with 10 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex. I specialize in developing cutting-edge intelligent systems that push the boundaries of artificial intelligence.</p>
-       </section>
+    <div class="container">
+        <section class="profile-summary" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Professional Summary</h2>
+            <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs AGENTS with 10 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex.</p>
+        </section>
 
-       <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">My AI/ML Journey</h2>
-       <section class="timeline-container">
-           <div class="timeline-center"></div>
-           
-           <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="300">
-               <div class="timeline-content">
-                   <span class="timeline-date">June 2024 - Present</span>
-                   <h3>AI/ML Engineer</h3>
-                   <p>Gaude Business & Infrastructure Solutions</p>
-                   <ul>
-                       <li>Designed and developed an AI-powered chatbot using advanced LLM-RAG architecture</li>
-                       <li>Built an agentic LLM-RAG chatbot utilizing LangChain and CrewAI frameworks</li>
-                       <li>Enabled PDF document upload with context-specific QA capabilities</li>
-                       <li>Integrated live internet search for real-time information retrieval</li>
-                       <li>Added email functionality for sending generated outputs</li>
-                   </ul>
-               </div>
-               <div class="timeline-node"></div>
-               <div class="timeline-connector"></div>
-           </div>
 
-           <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="300">
-               <div class="timeline-content">
-                   <span class="timeline-date">Recent</span>
-                   <h3>Game Simulation with AI Agents</h3>
-                   <p>Project | LangGraph, Python, Llama</p>
-                   <ul>
-                       <li>Designed and implemented a game simulation environment</li>
-                       <li>Explored complex decision-making processes and multi-agent interactions</li>
-                       <li>Utilized LangGraph for agent communication and coordination</li>
-                   </ul>
-               </div>
-               <div class="timeline-node"></div>
-               <div class="timeline-connector"></div>
-           </div>
+        <!-- My Path to AI Section -->
+        <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">My Path to AI</h2>
+        <section class="timeline-container">
+            <div class="timeline-center"></div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000">
+                <div class="timeline-content">
+                    <span class="timeline-date">2018</span>
+                    <h3>The Spark</h3>
+                    <p>Ever since I was young, I’ve been excited to uncover my life’s purpose and make a meaningful impact. This curiosity set me on a path toward technology, though I didn’t know it yet.</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="timeline-content">
+                    <span class="timeline-date">2019</span>
+                    <h3>First Steps into Coding</h3>
+                    <p>I dove into coding to build applications, mastering logic and syntax. But debugging a loop for hours over a typo taught me patience—and that coding alone wasn’t my end goal.</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                <div class="timeline-content">
+                    <span class="timeline-date">2020</span>
+                    <h3>Introduction to AI</h3>
+                    <p>Discovering AI was like magic—machines learning and deciding on their own! I realized this could be the key to solving big problems, igniting my passion.</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                <div class="timeline-content">
+                    <span class="timeline-date">2021</span>
+                    <h3>Deep Dive into ML/DL</h3>
+                    <p>I immersed myself in machine learning and deep learning, tackling complex algorithms. It was tough but thrilling—every breakthrough felt like unlocking a new level.</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
+                <div class="timeline-content">
+                    <span class="timeline-date">2022</span>
+                    <h3>Hands-On Projects</h3>
+                    <p>I built intermediate AI apps, from classifiers to NLP systems, pouring in relentless effort. Each project deepened my skills and fueled my drive.</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
+                <div class="timeline-content">
+                    <span class="timeline-date">2023</span>
+                    <h3>Freelance AI Researcher</h3>
+                    <p>During my BCA, I freelanced as an AI Researcher at a startup, navigating a flawed education system. It was scary but invaluable—my first taste of real-world AI.</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="700">
+                <div class="timeline-content">
+                    <span class="timeline-date">2024 - Present</span>
+                    <h3>AI/ML</h3>
+                    <p>Now at Gaude Business & Infrastructure Solutions, I explore LLMs, AI agents, and frameworks like LangChain and CrewAI. I even sank into Django—surprisingly fun!</p>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+        </section>
 
-           <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" data-aos-offset="300">
-               <div class="timeline-content">
-                   <span class="timeline-date">Recent</span>
-                   <h3>LLM Finetuning</h3>
-                   <p>Project | Unsloth, Hugging Face Transformers</p>
-                   <ul>
-                       <li>Fine-tuned LLaMA-3.2-3B and Mistral-7B models using Unsloth framework</li>
-                       <li>Specialized in Malayalam language adaptation</li>
-                       <li>Used Alpaca Malayalam Instruct dataset for training</li>
-                   </ul>
-               </div>
-               <div class="timeline-node"></div>
-               <div class="timeline-connector"></div>
-           </div>
+        <!-- Featured Projects Section -->
+        <h2 class="projects-title" data-aos="fade-up" data-aos-duration="1000">Featured Projects</h2>
+        <section class="projects-container">
+            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <h3>Game Simulation with AI Agents</h3>
+                <p>Developed a game simulation environment with LangGraph, Python, and Llama, exploring multi-agent interactions and decision-making.</p>
+                <p><strong>Technologies:</strong> LangGraph, Python, Llama</p>
+            </div>
+            
+            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <h3>LLM Finetuning</h3>
+                <p>Fine-tuned LLaMA-3.2-3B and Mistral-7B models for Malayalam using Unsloth and Hugging Face Transformers.</p>
+                <p><strong>Technologies:</strong> Unsloth, Hugging Face Transformers, LLaMA, Mistral</p>
+            </div>
+            
+            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <h3>AI-Powered Chatbot</h3>
+                <p>Built a chatbot with LLMs, LangChain, and RAG, featuring document uploads, live search, and email capabilities.</p>
+                <p><strong>Technologies:</strong> LLMs, LangChain, RAG</p>
+            </div>
+            
+            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <h3>Multi-Agent Flight Management System</h3>
+                <p>Created a CrewAI-based flight coordination system with a Django web interface for real-time management.</p>
+                <p><strong>Technologies:</strong> CrewAI, ChatGroq LLM, Django</p>
+            </div>
+            
+            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                <h3>YouTube Content Q&A System</h3>
+                <p>Developed a system to index YouTube content with LangChain and OpenAI Whisper for natural language Q&A.</p>
+                <p><strong>Technologies:</strong> LangChain, OpenAI Whisper</p>
+            </div>
+        </section>
 
-           <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400" data-aos-offset="300">
-               <div class="timeline-content">
-                   <span class="timeline-date">Recent</span>
-                   <h3>AI-Powered Chatbot</h3>
-                   <p>Project | LLMs, LangChain, RAG</p>
-                   <ul>
-                       <li>Developed a comprehensive chatbot leveraging LLMs and RAG methodology</li>
-                       <li>Implemented document upload with context-aware QA capabilities</li>
-                       <li>Integrated live internet access for real-time information</li>
-                       <li>Added email functionality using natural language queries</li>
-                   </ul>
-               </div>
-               <div class="timeline-node"></div>
-               <div class="timeline-connector"></div>
-           </div>
+        <!-- Professional Experience Section (Updated My AI/ML Journey) -->
+        <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">Professional Experience</h2>
+        <section class="timeline-container">
+            <div class="timeline-center"></div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="300">
+                <div class="timeline-content">
+                    <span class="timeline-date">June 2024 - Present</span>
+                    <h3>AI/ML Engineer</h3>
+                    <p>Gaude Business & Infrastructure Solutions</p>
+                    <ul>
+                        <li>Designed and developed an AI-powered chatbot using advanced LLM-RAG architecture</li>
+                        <li>Built an agentic LLM-RAG chatbot utilizing LangChain and CrewAI frameworks</li>
+                        <li>Enabled PDF document upload with context-specific QA capabilities</li>
+                        <li>Integrated live internet search for real-time information retrieval</li>
+                        <li>Added email functionality for sending generated outputs</li>
+                    </ul>
+                </div>
+                <div class="timeline-node"></div>
+                <div class="timeline-connector"></div>
+            </div>
+        </section>
 
-           <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" data-aos-offset="300">
-               <div class="timeline-content">
-                   <span class="timeline-date">June 2024</span>
-                   <h3>Multi-Agent Flight Management System</h3>
-                   <p>Project | CrewAI, ChatGroq LLM, Django</p>
-                   <ul>
-                       <li>Developed a sophisticated CrewAI-based system for flight coordination</li>
-                       <li>Implemented advanced agent interactions for real-time flight management</li>
-                       <li>Utilized Django for the web interface</li>
-                   </ul>
-               </div>
-               <div class="timeline-node"></div>
-               <div class="timeline-connector"></div>
-           </div>
+        <section class="education" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Education</h2>
+            <div class="education-content">
+                <div class="education-item">
+                    <h3>Bachelor of Computer Application</h3>
+                    <p>Michaels Institute of Management and Technology, University of Kerala</p>
+                    <p>2021 - 2024</p>
+                </div>
+            </div>
+        </section>
 
-           <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600" data-aos-offset="300">
-               <div class="timeline-content">
-                   <span class="timeline-date">April 2024 - May 2024</span>
-                   <h3>YouTube Content Q&A System</h3>
-                   <p>Project | LangChain, OpenAI Whisper</p>
-                   <ul>
-                       <li>Created an intelligent system for extracting and indexing YouTube video content</li>
-                       <li>Implemented advanced natural language Q&A functionality</li>
-                       <li>Used OpenAI Whisper for accurate transcription</li>
-                   </ul>
-               </div>
-               <div class="timeline-node"></div>
-               <div class="timeline-connector"></div>
-           </div>
-       </section>
+        <section class="certifications" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Certifications</h2>
+            <div class="certifications-container">
+                <div class="cert-item" data-aos="flip-left" data-aos-delay="100">
+                    <h3>Multi AI Agent Systems with CrewAI</h3>
+                    <p>Deeplearning.ai</p>
+                </div>
+                <div class="cert-item" data-aos="flip-right" data-aos-delay="200">
+                    <h3>AI Agents in LangGraph</h3>
+                    <p>Deeplearning.ai</p>
+                </div>
+                <div class="cert-item" data-aos="flip-left" data-aos-delay="300">
+                    <h3>Pretraining LLMs</h3>
+                    <p>Deeplearning.ai</p>
+                </div>
+                <div class="cert-item" data-aos="flip-right" data-aos-delay="400">
+                    <h3>IBM Data Science Professional Certificate</h3>
+                    <p>Coursera</p>
+                </div>
+            </div>
+        </section>
 
-       <section class="education" data-aos="fade-up" data-aos-duration="1000">
-           <h2>Education</h2>
-           <div class="education-content">
-               <div class="education-item">
-                   <h3>Bachelor of Computer Application</h3>
-                   <p>Michaels Institute of Management and Technology, University of Kerala</p>
-                   <p>2021 - 2024</p>
-               </div>
-           </div>
-       </section>
+        <section class="skills">
+            <h2 class="skills-title" data-aos="fade-up" data-aos-duration="1000">Technical Expertise</h2>
+            
+            <div class="skills-category skill-category-1" data-aos="fade-up" data-aos-duration="1000">
+                <h3>AI/ML</h3>
+                <div class="skills-container">
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Machine Learning</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Generative AI</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">AI Agents</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">Large Language Models (LLMs)</div>
+                </div>
+            </div>
+            
+            <div class="skills-category skill-category-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <h3>Frameworks</h3>
+                <div class="skills-container">
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Langchain</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">CrewAI</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">LlamaIndex</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">LangGraph</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="300">Scikit-Learn</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="350">TensorFlow</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">PyTorch</div>
+                </div>
+            </div>
+            
+            <div class="skills-category skill-category-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <h3>Web Development</h3>
+                <div class="skills-container">
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Django</div>
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Flask</div>
+                </div>
+            </div>
+            
+            <div class="skills-category skill-category-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <h3>Programming</h3>
+                <div class="skills-container">
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Python</div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-       <section class="certifications" data-aos="fade-up" data-aos-duration="1000">
-           <h2>Certifications</h2>
-           <div class="certifications-container">
-               <div class="cert-item" data-aos="flip-left" data-aos-delay="100">
-                   <h3>Multi AI Agent Systems with CrewAI</h3>
-                   <p>Deeplearning.ai</p>
-               </div>
-               <div class="cert-item" data-aos="flip-right" data-aos-delay="200">
-                   <h3>AI Agents in LangGraph</h3>
-                   <p>Deeplearning.ai</p>
-               </div>
-               <div class="cert-item" data-aos="flip-left" data-aos-delay="300">
-                   <h3>Pretraining LLMs</h3>
-                   <p>Deeplearning.ai</p>
-               </div>
-               <div class="cert-item" data-aos="flip-right" data-aos-delay="400">
-                   <h3>IBM Data Science Professional Certificate</h3>
-                   <p>Coursera</p>
-               </div>
-           </div>
-       </section>
+    <section class="contact" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="contact-info">nvineeth672@gmail.com | +91 9995511967</p>
+            <div class="social-links">
+                <a href="https://github.com/vineethnj" target="_blank" data-aos="fade-up" data-aos-delay="200">GitHub</a>
+                <a href="https://huggingface.co/vineethn" target="_blank" data-aos="fade-up" data-aos-delay="400">Hugging Face</a>
+            </div>
+        </div>
+    </section>
 
-       <section class="skills">
-           <h2 class="skills-title" data-aos="fade-up" data-aos-duration="1000">Technical Expertise</h2>
-           
-           <div class="skills-category skill-category-1" data-aos="fade-up" data-aos-duration="1000">
-               <h3>AI/ML</h3>
-               <div class="skills-container">
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Machine Learning</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Generative AI</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">AI Agents</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">Large Language Models (LLMs)</div>
-               </div>
-           </div>
-           
-           <div class="skills-category skill-category-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-               <h3>Frameworks</h3>
-               <div class="skills-container">
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Langchain</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">CrewAI</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">LlamaIndex</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">LangGraph</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="300">Scikit-Learn</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="350">TensorFlow</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">PyTorch</div>
-               </div>
-           </div>
-           
-           <div class="skills-category skill-category-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-               <h3>Web Development</h3>
-               <div class="skills-container">
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Django</div>
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Flask</div>
-               </div>
-           </div>
-           
-           <div class="skills-category skill-category-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-               <h3>Programming</h3>
-               <div class="skills-container">
-                   <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Python</div>
-               </div>
-           </div>
-       </section>
-   </div>
-
-   <section class="contact" data-aos="fade-up" data-aos-duration="1000">
-       <div class="container">
-           <h2>Get In Touch</h2>
-           <p class="contact-info">nvineeth672@gmail.com | +91 9995511967</p>
-           <div class="social-links">
-               <a href="https://github.com/vineethnj" target="_blank" data-aos="fade-up" data-aos-delay="200">GitHub</a>
-               <a href="https://huggingface.co/vineethn" target="_blank" data-aos="fade-up" data-aos-delay="400">Hugging Face</a>
-           </div>
-       </div>
-   </section>
-
-   <!-- Scripts -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-   <script>
-       // Initialize AOS
-       document.addEventListener('DOMContentLoaded', function() {
-           AOS.init({
-               duration: 800,
-               easing: 'ease-in-out',
-               once: false,
-               mirror: false
-           });
-           
-           // Hide loader after page loads
-           setTimeout(function() {
-               document.querySelector('.loader').classList.add('hidden');
-           }, 1500);
-           
-           // Intersection Observer for timeline items
-           const timelineItems = document.querySelectorAll('.timeline-item');
-           const observer = new IntersectionObserver((entries) => {
-               entries.forEach(entry => {
-                   if (entry.isIntersecting) {
-                       entry.target.classList.add('visible');
-                   }
-               });
-           }, { threshold: 0.2 });
-           
-           timelineItems.forEach(item => {
-               observer.observe(item);
-           });
-           
-           // Intersection Observer for skills categories
-           const skillsCategories = document.querySelectorAll('.skills-category');
-           const skillsObserver = new IntersectionObserver((entries) => {
-               entries.forEach(entry => {
-                   if (entry.isIntersecting) {
-                       entry.target.classList.add('visible');
-                   }
-               });
-           }, { threshold: 0.2 });
-           
-           skillsCategories.forEach(category => {
-               skillsObserver.observe(category);
-           });
-           
-           // Typing effect for loader text
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: false,
+                mirror: false
+            });
+            
+            // Hide loader after page loads
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1500);
+            
+            // Intersection Observer for timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Intersection Observer for skills categories
+            const skillsCategories = document.querySelectorAll('.skills-category');
+            const skillsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            skillsCategories.forEach(category => {
+                skillsObserver.observe(category);
+            });
+            
             // Typing effect for loader text
             const loaderText = document.querySelector('.loader-text');
             const text = loaderText.textContent;
             loaderText.textContent = '';
             let charIndex = 0;
             const typeWriter = () => {
-              if (charIndex < text.length) {
-                loaderText.textContent += text.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 100);
-              } else {
-                setTimeout(() => {
-                  loaderText.textContent = '';
-                  charIndex = 0;
-                  setTimeout(typeWriter, 500);
-                }, 3000);
-              }
+                if (charIndex < text.length) {
+                    loaderText.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    setTimeout(() => {
+                        loaderText.textContent = '';
+                        charIndex = 0;
+                        setTimeout(typeWriter, 500);
+                    }, 3000);
+                }
             };
             typeWriter();
-           
-           // Mouse move parallax effect for header
-           const header = document.querySelector('.header');
-           header.addEventListener('mousemove', (e) => {
-               const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-               const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-               header.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-           });
-           
-           header.addEventListener('mouseleave', () => {
-               header.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-           });
-           
-           // Smooth scroll for links
-           document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-               anchor.addEventListener('click', function(e) {
-                   e.preventDefault();
-                   document.querySelector(this.getAttribute('href')).scrollIntoView({
-                       behavior: 'smooth'
-                   });
-               });
-           });
-       });
-   </script>
+            
+            // Mouse move parallax effect for header
+            const header = document.querySelector('.header');
+            header.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                header.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            header.addEventListener('mouseleave', () => {
+                header.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+            });
+            
+            // Smooth scroll for links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
