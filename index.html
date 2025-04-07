@@ -62,14 +62,8 @@
         }
         
         @keyframes pulse {
-            0% {
-                opacity: 0.3;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
+            0% { opacity: 0.3; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1.05); }
         }
         
         .header h1 {
@@ -103,25 +97,13 @@
         }
         
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .profile-summary {
@@ -198,15 +180,9 @@
         }
         
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .timeline-container {
@@ -228,12 +204,8 @@
         }
         
         @keyframes timelinePulse {
-            from {
-                box-shadow: 0 0 5px rgba(100, 255, 218, 0.3);
-            }
-            to {
-                box-shadow: 0 0 15px rgba(100, 255, 218, 0.7);
-            }
+            from { box-shadow: 0 0 5px rgba(100, 255, 218, 0.3); }
+            to { box-shadow: 0 0 15px rgba(100, 255, 218, 0.7); }
         }
         
         .timeline-item {
@@ -325,12 +297,8 @@
         }
         
         @keyframes nodeScale {
-            from {
-                transform: translate(-50%, -50%) scale(1);
-            }
-            to {
-                transform: translate(-50%, -50%) scale(1.2);
-            }
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(1.2); }
         }
         
         .timeline-item:hover .timeline-node {
@@ -824,14 +792,8 @@
         }
         
         @keyframes contactGlow {
-            0% {
-                opacity: 0.3;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
+            0% { opacity: 0.3; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
         }
         
         .contact h2 {
@@ -983,7 +945,7 @@
             background: var(--accent-1);
         }
         
-        /* Loading animation */
+        /* Loading Animation Styles */
         .loader {
             position: fixed;
             top: 0;
@@ -1003,42 +965,50 @@
             visibility: hidden;
         }
         
-        .loader-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .loader-spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(100, 255, 218, 0.1);
-            border-top: 5px solid var(--accent-1);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .loader-text {
-            color: var(--accent-1);
+        .loader-word {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
             font-family: 'Montserrat', sans-serif;
-            letter-spacing: 3px;
-            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeInOut 2s ease-in-out;
+        }
+        
+        .word-1 {
+            color: var(--accent-1);
+            animation-delay: 0s;
+        }
+        
+        .word-2 {
+            color: var(--accent-2);
+            animation-delay: 1s;
+        }
+        
+        .word-3 {
+            color: var(--accent-3);
+            animation-delay: 2s;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        }
+        
+        /* Remove unused styles */
+        .loader-content, .loader-spinner, .loader-text {
+            display: none; /* No longer needed */
         }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div class="loader-text">Welcome, നമസ്കാരം, नमस्ते</div>
-        </div>
+        <div class="loader-word word-1">Welcome</div>
+        <div class="loader-word word-2">നമസ്കാരം</div>
+        <div class="loader-word word-3">नमस्ते</div>
     </div>
 
     <header class="header">
@@ -1054,7 +1024,6 @@
             <h2>Professional Summary</h2>
             <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs AGENTS with 10 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex.</p>
         </section>
-
 
         <!-- My Path to AI Section -->
         <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">My Path to AI</h2>
@@ -1166,7 +1135,7 @@
             </div>
         </section>
 
-        <!-- Professional Experience Section (Updated My AI/ML Journey) -->
+        <!-- Professional Experience Section -->
         <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">Professional Experience</h2>
         <section class="timeline-container">
             <div class="timeline-center"></div>
@@ -1279,7 +1248,6 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
                 duration: 800,
@@ -1288,10 +1256,11 @@
                 mirror: false
             });
             
-            // Hide loader after page loads
-            setTimeout(function() {
+            // Hide loader after the last word's animation ends
+            const lastWord = document.querySelector('.loader-word.word-3');
+            lastWord.addEventListener('animationend', () => {
                 document.querySelector('.loader').classList.add('hidden');
-            }, 1500);
+            });
             
             // Intersection Observer for timeline items
             const timelineItems = document.querySelectorAll('.timeline-item');
@@ -1320,26 +1289,6 @@
             skillsCategories.forEach(category => {
                 skillsObserver.observe(category);
             });
-            
-            // Typing effect for loader text
-            const loaderText = document.querySelector('.loader-text');
-            const text = loaderText.textContent;
-            loaderText.textContent = '';
-            let charIndex = 0;
-            const typeWriter = () => {
-                if (charIndex < text.length) {
-                    loaderText.textContent += text.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeWriter, 100);
-                } else {
-                    setTimeout(() => {
-                        loaderText.textContent = '';
-                        charIndex = 0;
-                        setTimeout(typeWriter, 500);
-                    }, 3000);
-                }
-            };
-            typeWriter();
             
             // Mouse move parallax effect for header
             const header = document.querySelector('.header');
