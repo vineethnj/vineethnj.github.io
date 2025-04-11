@@ -241,64 +241,6 @@
         }
 
         /* Services Section */
-        <section id="services" class="services section-padding">
-    <div class="container">
-        <div class="section-title">
-            <h2>Our Services</h2>
-            <p>Professional locksmith solutions for all your security needs</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="https://img.icons8.com/color/96/000000/door-sensor-alarmed.png" alt="Residential Locksmith">
-                </div>
-                <h3>Residential Locksmith</h3>
-                <p>Secure your home with our comprehensive residential locksmith services.</p>
-                <ul class="service-list">
-                    <li>House lockouts</li>
-                    <li>Lock changes</li>
-                    <li>Lock repair & re-keying</li>
-                    <li>Digital deadbolts</li>
-                    <li>Keyless Entry Systems</li>
-                    <li>Locked bathroom door</li>
-                    <li>Rekey deadbolt</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="https://img.icons8.com/fluency/96/000000/building.png" alt="Commercial Locksmith">
-                </div>
-                <h3>Commercial Locksmith</h3>
-                <p>Enhance your business security with our professional commercial solutions.</p>
-                <ul class="service-list">
-                    <li>Office and business lockouts</li>
-                    <li>High-security deadbolts</li>
-                    <li>Key control systems</li>
-                    <li>Lock repair & re-keying</li>
-                    <li>Hardware Installation</li>
-                    <li>Commercial locks</li>
-                    <li>Commercial lock replacement</li>
-                    <li>Master commercial lock</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="https://img.icons8.com/ios-filled/96/000000/car-key.png" alt="Automotive Locksmith">
-                </div>
-                <h3>Automotive Locksmith</h3>
-                <p>Get back on the road quickly with our professional automotive locksmith services.</p>
-                <ul class="service-list">
-                    <li>All Major Models</li>
-                    <li>Vehicle Lockouts</li>
-                    <li>Ignition Repair</li>
-                    <li>Damaged Locks</li>
-                    <li>Car Key Replacement</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
         .section-title {
             text-align: center;
             margin-bottom: 4rem;
@@ -491,7 +433,7 @@
             color: #555;
         }
 
-        /* Testimonials Section - Adding this new section */
+        /* Testimonials Section */
         .testimonials {
             padding: 6rem 0;
             background-color: #fff;
@@ -577,6 +519,44 @@
         .service-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Areas We Serve Section */
+        .service-areas {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .areas-list {
+            list-style: none;
+        }
+
+        .areas-list li {
+            padding: 0.8rem 0;
+            font-size: 1.05rem;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .areas-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .areas-list li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
         }
 
         /* Gallery Section */
@@ -893,7 +873,8 @@
         /* Media Queries */
         @media (max-width: 1200px) {
             .services-grid,
-            .features-grid {
+            .features-grid,
+            .areas-grid {
                 gap: 2rem;
             }
         }
@@ -902,7 +883,8 @@
             .services-grid,
             .features-grid,
             .services-list,
-            .gallery-grid {
+            .gallery-grid,
+            .areas-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
@@ -954,7 +936,8 @@
             .services-grid,
             .features-grid,
             .services-list,
-            .gallery-grid {
+            .gallery-grid,
+            .areas-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
@@ -983,7 +966,8 @@
             .additional-services,
             .gallery,
             .contact,
-            .testimonials {
+            .testimonials,
+            .service-areas {
                 padding: 4rem 0;
             }
         }
@@ -1019,6 +1003,7 @@
                         <li><a href="#services">Services</a></li>
                         <li><a href="#why-us">Why Choose Us</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#service-areas">Service Areas</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1128,7 +1113,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section (New) -->
+    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section-padding">
         <div class="container">
             <div class="section-title">
@@ -1145,6 +1130,54 @@
                     <span class="testimonial-dot active" data-index="0"></span>
                     <span class="testimonial-dot" data-index="1"></span>
                     <span class="testimonial-dot" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas We Serve Section -->
+    <section id="service-areas" class="service-areas section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Areas We Serve</h2>
+                <p>Fast, reliable locksmith services throughout the Dallas metroplex</p>
+            </div>
+            <div class="areas-grid">
+                <div class="area-column">
+                    <ul class="areas-list">
+                        <li>Dallas</li>
+                        <li>Garland</li>
+                        <li>Plano</li>
+                        <li>Richardson</li>
+                        <li>Allen</li>
+                    </ul>
+                </div>
+                <div class="area-column">
+                    <ul class="areas-list">
+                        <li>McKinney</li>
+                        <li>Rockwall</li>
+                        <li>Mesquite</li>
+                        <li>Forney</li>
+                        <li>Terrell</li>
+                    </ul>
+                </div>
+                <div class="area-column">
+                    <ul class="areas-list">
+                        <li>Lavon</li>
+                        <li>Princeton</li>
+                        <li>Carrollton</li>
+                        <li>Irving</li>
+                        <li>Grand Prairie</li>
+                    </ul>
+                </div>
+                <div class="area-column">
+                    <ul class="areas-list">
+                        <li>Rowlett</li>
+                        <li>Sachse</li>
+                        <li>Wylie</li>
+                        <li>Addison</li>
+                        <li>Highland Park</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1303,6 +1336,7 @@
                     <a href="#services">Services</a>
                     <a href="#why-us">Why Choose Us</a>
                     <a href="#testimonials">Testimonials</a>
+                    <a href="#service-areas">Service Areas</a>
                     <a href="#gallery">Gallery</a>
                     <a href="#contact">Contact</a>
                 </div>
