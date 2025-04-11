@@ -88,41 +88,69 @@
             align-items: center;
         }
 
+        /* Updated Logo Styles */
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
             display: flex;
             align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
-        .logo img {
+        .logo-icon {
+            width: 42px;
             height: 42px;
             margin-right: 12px;
-        }
-
-        .logo span {
             color: var(--accent);
-            position: relative;
+            animation: key-rotate 8s infinite ease-in-out;
         }
 
-        .logo span::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
+        .logo-icon svg {
             width: 100%;
-            height: 2px;
-            background-color: var(--accent);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            height: 100%;
         }
 
-        .logo:hover span::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-size: 0.85em;
+        }
+
+        @keyframes key-rotate {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(5deg); }
+            40% { transform: rotate(-5deg); }
+            60% { transform: rotate(3deg); }
+            80% { transform: rotate(-3deg); }
+        }
+
+        .logo:hover .logo-icon {
+            animation: key-wiggle 0.5s ease-in-out;
+        }
+
+        @keyframes key-wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .mobile-toggle:hover {
+            color: var(--accent);
         }
 
         nav ul {
@@ -164,18 +192,6 @@
 
         nav a:hover::after {
             transform: scaleX(1);
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .mobile-toggle:hover {
-            color: var(--accent);
         }
 
         /* Hero Section */
@@ -492,35 +508,6 @@
             background-color: var(--accent);
         }
 
-        /* Additional Services Section */
-        .additional-services {
-            padding: 6rem 0;
-            background-color: var(--light);
-        }
-
-        .services-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .service-item {
-            background-color: white;
-            padding: 1.5rem 1.2rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-            font-weight: 500;
-            color: var(--dark);
-            border-left: 3px solid var(--accent);
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
         /* Areas We Serve Section */
         .service-areas {
             padding: 6rem 0;
@@ -557,6 +544,35 @@
         .areas-list li:hover {
             color: var(--primary);
             transform: translateX(5px);
+        }
+
+        /* Additional Services Section */
+        .additional-services {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-item {
+            background-color: white;
+            padding: 1.5rem 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            font-weight: 500;
+            color: var(--dark);
+            border-left: 3px solid var(--accent);
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         /* Gallery Section */
@@ -992,9 +1008,19 @@
     <header>
         <div class="container">
             <div class="header-content">
+                <!-- Updated Logo -->
                 <div class="logo">
-                    <img src="https://img.icons8.com/fluency/96/000000/key-security.png" alt="NearMe Locksmiths Logo">
-                    NearMe<span>Locksmiths</span>
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 11L7.5 11C7.5 11 4 11 4 8C4 5 7.5 5 7.5 5L19 5"></path>
+                            <circle cx="21" cy="8" r="2"></circle>
+                            <path d="M9 11L9 15"></path>
+                            <path d="M6 11L6 15"></path>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        NearMe<span>Locksmiths</span>
+                    </div>
                 </div>
                 <div class="mobile-toggle">☰</div>
                 <nav>
@@ -1064,8 +1090,16 @@
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://img.icons8.com/ios-filled/96/000000/car-key.png" alt="Automotive Locksmith">
-                    </div>
+                        <!-- Replace the non-working image with this SVG icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0056b3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M16 6l3 3-8.5 8.5-5 1.5 1.5-5L16 6z"/>
+                          <path d="M7 10.5l8.5 8.5"/>
+                          <path d="M16 6l-4-4 3-2 5 5-2 3z"/>
+                          <circle cx="15" cy="15" r="5" fill="none"/>
+                          <path d="M19 15a4 4 0 0 1-4 4"/>
+                          <path d="M20 9l-2 2"/>
+                        </svg>
+                      </div>
                     <h3>Automotive Locksmith</h3>
                     <p>Get back on the road quickly with our professional automotive locksmith services.</p>
                     <ul class="service-list">
@@ -1328,8 +1362,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
-                    <img src="https://img.icons8.com/fluency/96/000000/key-security.png" alt="NearMe Locksmiths Logo">
-                    NearMe<span>Locksmiths</span>
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 11L7.5 11C7.5 11 4 11 4 8C4 5 7.5 5 7.5 5L19 5"></path>
+                            <circle cx="21" cy="8" r="2"></circle>
+                            <path d="M9 11L9 15"></path>
+                            <path d="M6 11L6 15"></path>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        NearMe<span>Locksmiths</span>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <a href="#home">Home</a>
