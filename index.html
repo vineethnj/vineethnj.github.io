@@ -241,10 +241,63 @@
         }
 
         /* Services Section */
-        .services {
-            padding: 6rem 0;
-            background-color: var(--light);
-        }
+        <section id="services" class="services section-padding">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Professional locksmith solutions for all your security needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://img.icons8.com/color/96/000000/door-sensor-alarmed.png" alt="Residential Locksmith">
+                </div>
+                <h3>Residential Locksmith</h3>
+                <p>Secure your home with our comprehensive residential locksmith services.</p>
+                <ul class="service-list">
+                    <li>House lockouts</li>
+                    <li>Lock changes</li>
+                    <li>Lock repair & re-keying</li>
+                    <li>Digital deadbolts</li>
+                    <li>Keyless Entry Systems</li>
+                    <li>Locked bathroom door</li>
+                    <li>Rekey deadbolt</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://img.icons8.com/fluency/96/000000/building.png" alt="Commercial Locksmith">
+                </div>
+                <h3>Commercial Locksmith</h3>
+                <p>Enhance your business security with our professional commercial solutions.</p>
+                <ul class="service-list">
+                    <li>Office and business lockouts</li>
+                    <li>High-security deadbolts</li>
+                    <li>Key control systems</li>
+                    <li>Lock repair & re-keying</li>
+                    <li>Hardware Installation</li>
+                    <li>Commercial locks</li>
+                    <li>Commercial lock replacement</li>
+                    <li>Master commercial lock</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://img.icons8.com/color/96/000000/car-key.png" alt="Automotive Locksmith">
+                </div>
+                <h3>Automotive Locksmith</h3>
+                <p>Get back on the road quickly with our professional automotive locksmith services.</p>
+                <ul class="service-list">
+                    <li>All Major Models</li>
+                    <li>Vehicle Lockouts</li>
+                    <li>Ignition Repair</li>
+                    <li>Damaged Locks</li>
+                    <li>Car Key Replacement</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
         .section-title {
             text-align: center;
@@ -993,7 +1046,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/home-security.png" alt="Residential Locksmith">
+                        <img src="https://img.icons8.com/color/96/000000/door-sensor-alarmed.png" alt="Residential Locksmith">
                     </div>
                     <h3>Residential Locksmith</h3>
                     <p>Secure your home with our comprehensive residential locksmith services.</p>
@@ -1024,11 +1077,9 @@
                         <li>Master commercial lock</li>
                     </ul>
                 </div>
-
-
-                                <div class="service-card">
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/car-key.png" alt="Automotive Locksmith">
+                        <img src="https://img.icons8.com/color/96/000000/car-key.png" alt="Automotive Locksmith">
                     </div>
                     <h3>Automotive Locksmith</h3>
                     <p>Get back on the road quickly with our professional automotive locksmith services.</p>
@@ -1338,15 +1389,15 @@
             testimonialIndex = index;
             const contentElement = document.getElementById('testimonial-content');
             const authorElement = document.getElementById('testimonial-author');
-            
+
             // Fade out effect
             contentElement.style.opacity = 0;
             authorElement.style.opacity = 0;
-            
+
             setTimeout(() => {
                 contentElement.textContent = testimonials[testimonialIndex].content;
                 authorElement.textContent = testimonials[testimonialIndex].author;
-                
+
                 // Update active dot
                 document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
                     if (i === testimonialIndex) {
@@ -1355,7 +1406,7 @@
                         dot.classList.remove('active');
                     }
                 });
-                
+
                 // Fade in effect
                 contentElement.style.opacity = 1;
                 authorElement.style.opacity = 1;
