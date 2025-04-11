@@ -13,7 +13,7 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         /* Color Variables */
         :root {
             --primary: #0275d8;
@@ -22,12 +22,12 @@
             --light: #f8f9fa;
             --dark: #343a40;
         }
-        
+
         body {
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         /* Header Styles */
         header {
             background-color: var(--secondary);
@@ -39,60 +39,60 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: padding 0.3s, background-color 0.3s;
         }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
             height: 40px;
             margin-right: 10px;
         }
-        
+
         .logo span {
             color: var(--accent);
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav li {
             margin-left: 1.5rem;
         }
-        
+
         nav a {
             color: white;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         nav a:hover {
             color: var(--accent);
         }
-        
+
         .mobile-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
@@ -100,18 +100,18 @@
             padding: 12rem 2rem 8rem;
             text-align: center;
         }
-        
+
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
         }
-        
+
         .cta-button {
             display: inline-block;
             background-color: var(--accent);
@@ -122,34 +122,34 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
-        
+
         .cta-button:hover {
             background-color: var(--primary);
         }
-        
+
         /* Services Section */
         .services {
             padding: 5rem 0;
             background-color: var(--light);
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .section-title h2 {
             font-size: 2.2rem;
             color: var(--secondary);
             margin-bottom: 1rem;
         }
-        
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
-        
+
         .service-card {
             background-color: white;
             border-radius: 8px;
@@ -158,51 +158,51 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
-        
+
         .service-card:hover {
             transform: translateY(-10px);
         }
-        
+
         .service-icon {
             margin-bottom: 1.5rem;
         }
-        
+
         .service-icon img {
             width: 80px;
             height: 80px;
         }
-        
+
         .service-card h3 {
             margin-bottom: 1rem;
             color: var(--secondary);
         }
-        
+
         .service-list {
             list-style: none;
             text-align: left;
             margin-top: 1.5rem;
         }
-        
+
         .service-list li {
             margin-bottom: 0.8rem;
             position: relative;
             padding-left: 1.5rem;
         }
-        
+
         .service-list li::before {
             content: '→';
             color: var(--primary);
             position: absolute;
             left: 0;
         }
-        
+
         /* Why Choose Us Section */
         .why-us {
             padding: 5rem 0;
             background: url('https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
             position: relative;
         }
-        
+
         .why-us::before {
             content: "";
             position: absolute;
@@ -212,18 +212,18 @@
             height: 100%;
             background-color: rgba(255, 255, 255, 0.9);
         }
-        
+
         .why-us .container {
             position: relative;
             z-index: 1;
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
-        
+
         .feature-item {
             text-align: center;
             padding: 1.5rem;
@@ -231,28 +231,28 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
         .feature-icon {
             margin-bottom: 1rem;
         }
-        
+
         .feature-icon img {
             width: 60px;
             height: 60px;
         }
-        
+
         /* Additional Services Section */
         .additional-services {
             padding: 5rem 0;
             background-color: var(--light);
         }
-        
+
         .services-list {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
         }
-        
+
         .service-item {
             background-color: white;
             padding: 1rem;
@@ -260,71 +260,71 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .service-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
         /* Gallery Section */
         .gallery {
             padding: 5rem 0;
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
         }
-        
+
         .gallery-item {
             position: relative;
             overflow: hidden;
             height: 250px;
             border-radius: 8px;
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s;
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-        
+
         /* Contact Section */
         .contact {
             padding: 5rem 0;
             background-color: var(--secondary);
             color: white;
         }
-        
+
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
         }
-        
+
         .contact-form {
             background-color: white;
             padding: 2rem;
             border-radius: 8px;
             color: var(--dark);
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
-        
+
         .form-group input,
         .form-group textarea {
             width: 100%;
@@ -332,7 +332,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        
+
         .submit-button {
             background-color: var(--primary);
             color: white;
@@ -343,44 +343,44 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
-        
+
         .submit-button:hover {
             background-color: var(--accent);
         }
-        
+
         .contact-info {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .contact-item {
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
         }
-        
+
         .contact-icon {
             margin-right: 1rem;
         }
-        
+
         .contact-icon img {
             width: 30px;
             height: 30px;
         }
-        
+
         /* Map Section */
         .map {
             height: 400px;
             width: 100%;
         }
-        
+
         .map iframe {
             width: 100%;
             height: 100%;
             border: 0;
         }
-        
+
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -388,28 +388,28 @@
             padding: 2rem 0;
             text-align: center;
         }
-        
+
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .footer-links a {
             color: white;
             margin: 0 1rem;
             text-decoration: none;
         }
-        
+
         .footer-links a:hover {
             color: var(--accent);
         }
-        
+
         .social-icons {
             margin-top: 1rem;
         }
-        
+
         .social-icons a {
             display: inline-block;
             color: white;
@@ -423,11 +423,11 @@
             border-radius: 50%;
             transition: background-color 0.3s;
         }
-        
+
         .social-icons a:hover {
             background-color: var(--accent);
         }
-        
+
         /* Media Queries */
         @media (max-width: 992px) {
             .services-grid,
@@ -436,17 +436,17 @@
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .contact-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
             }
-            
+
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -457,27 +457,27 @@
                 background-color: var(--secondary);
                 padding: 1rem 0;
             }
-            
+
             nav ul.show {
                 display: flex;
             }
-            
+
             nav li {
                 margin: 0.5rem 0;
                 text-align: center;
             }
-            
+
             .services-grid,
             .features-grid,
             .services-list,
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .footer-content {
                 flex-direction: column;
             }
-            
+
             .footer-links {
                 margin-top: 1rem;
             }
@@ -644,16 +644,16 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1587613754760-cd9a285350fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Locksmith Service">
+                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.42_c4534c23.jpg" alt="Locksmith Service">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580893246395-52aead8960dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Smart Lock Installation">
+                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.41_178420af.jpg" alt="Smart Lock Installation">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1562980178-a46d2f4344c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Car Key Replacement">
+                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.41_34456c15.jpg" alt="Car Key Replacement">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580893211123-627e0262be3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Commercial Lock Installation">
+                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.41_84948d85.jpg" alt="Commercial Lock Installation">
                 </div>
             </div>
         </div>
@@ -795,20 +795,20 @@
         // Form Submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Get form values
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
-            
+
             // Simple form validation
             if (!name || !phone || !email || !service || !message) {
                 alert('Please fill in all fields');
                 return;
             }
-            
+
             // In a real implementation, you would send this data to a server
             alert('Thank you for your message! We will contact you shortly.');
             this.reset();
