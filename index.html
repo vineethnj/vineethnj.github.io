@@ -3,275 +3,666 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NearMe Locksmiths - Dallas' Trusted Key & Lock Experts</title>
-    <meta name="description" content="24/7 professional locksmith services in Dallas for automotive, residential & commercial needs. Fast response times and transparent pricing guaranteed.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Vineeth N - AI/ML Developer Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <style>
-        /* CSS Reset */
+        :root {
+            --dark-bg: #0F1624;
+            --dark-surface: #171F31;
+            --accent-1: #64FFDA;
+            --accent-2: #F15BB5;
+            --accent-3: #9B5DE5;
+            --accent-4: #FCA311;
+            --dark-text-primary: #E6F1FF;
+            --dark-text-secondary: #8892B0;
+            --timeline-width: 6px;
+            --node-size: 22px;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Color Variables */
-        :root {
-            --primary: #0056b3; /* Slightly darker blue for better contrast */
-            --secondary: #0a2351; /* Darker blue for more professional look */
-            --accent: #00b8e6; /* Brighter blue for accents */
-            --light: #f8f9fb; /* Slightly blue tint to light background */
-            --dark: #1e2a3a; /* Darker text for better readability */
-            --gray: #6c757d; /* Medium gray for secondary text */
-            --light-gray: #e9ecef; /* Light gray for borders */
-            --shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow */
-            --transition: all 0.3s ease; /* Smooth transitions */
-        }
-
+        
         body {
-            color: var(--dark);
-            line-height: 1.7;
-            font-family: 'Open Sans', sans-serif;
-            background-color: #fff;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: #4a4a4a;
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-1 { margin-top: 0.5rem; }
-        .mt-2 { margin-top: 1rem; }
-        .mt-3 { margin-top: 1.5rem; }
-        .mt-4 { margin-top: 2rem; }
-        .mt-5 { margin-top: 3rem; }
-
+        
         .container {
             width: 90%;
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 20px;
         }
-
-        .section-padding {
-            padding: 6rem 0;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--secondary);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            transition: padding 0.3s, background-color 0.3s;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Updated Logo Styles */
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            margin-right: 12px;
-            color: var(--accent);
-            animation: key-rotate 8s infinite ease-in-out;
-        }
-
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .logo-text span {
-            color: var(--accent);
-            font-size: 0.85em;
-        }
-
-        @keyframes key-rotate {
-            0%, 100% { transform: rotate(0deg); }
-            20% { transform: rotate(5deg); }
-            40% { transform: rotate(-5deg); }
-            60% { transform: rotate(3deg); }
-            80% { transform: rotate(-3deg); }
-        }
-
-        .logo:hover .logo-icon {
-            animation: key-wiggle 0.5s ease-in-out;
-        }
-
-        @keyframes key-wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-15deg); }
-            75% { transform: rotate(15deg); }
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .mobile-toggle:hover {
-            color: var(--accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav li {
-            margin-left: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        nav a:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Screenshot 2025-04-11 123612.png') center/cover;
-            color: white;
-            padding: 14rem 2rem 9rem;
+        
+        /* Header Section */
+        .header {
+            padding: 5rem 0 3rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
-
-        .hero::before {
+        
+        .header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(10, 35, 81, 0.9), rgba(0, 86, 179, 0.7));
-            opacity: 0.4;
+            background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1), transparent 60%);
+            z-index: 0;
+            animation: pulse 8s ease-in-out infinite alternate;
         }
-
-        .hero .container {
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark-text-primary);
+            margin-bottom: 0.5rem;
             position: relative;
             z-index: 1;
+            animation: fadeInDown 1.2s ease-out;
         }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            letter-spacing: 1px;
-        }
-
-        .hero p {
+        
+        .header-subtitle {
+            color: var(--accent-1);
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 184, 230, 0.4);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
         }
-
-        .cta-button:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 86, 179, 0.5);
+        
+        .location-info {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.2s ease-out 0.6s both;
         }
-
-        /* Services Section */
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-summary {
+            background-color: var(--dark-surface);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .profile-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+            transform-origin: 0 0;
+            transform: scaleX(0);
+            transition: transform 0.6s ease-out;
+        }
+        
+        .profile-summary:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .profile-summary h2 {
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
             position: relative;
         }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
+        
+        .profile-summary h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-1);
+            transition: width 0.4s ease;
+        }
+        
+        .profile-summary:hover h2::after {
+            width: 100px;
+        }
+        
+        /* Journey Timeline */
+        .journey-title {
+            text-align: center;
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .journey-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-center {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--timeline-width);
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            animation: timelinePulse 3s infinite alternate;
+        }
+        
+        @keyframes timelinePulse {
+            from { box-shadow: 0 0 5px rgba(100, 255, 218, 0.3); }
+            to { box-shadow: 0 0 15px rgba(100, 255, 218, 0.7); }
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 6rem;
+            position: relative;
+            min-height: 150px;
+            opacity: 0.3;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--dark-surface);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(100, 255, 218, 0.05);
+            z-index: -1;
+            transition: width 0.4s ease;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: 0;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .timeline-content:hover::before {
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            border-left: 4px solid var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            border-right: 4px solid var(--accent-2);
+        }
+        
+        .timeline-node {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translate(-50%, -50%);
+            width: var(--node-size);
+            height: var(--node-size);
+            border-radius: 50%;
+            background-color: var(--dark-bg);
+            border: 4px solid var(--accent-1);
+            z-index: 3;
+            transition: all 0.3s ease;
+            animation: nodeScale 2s infinite alternate;
+        }
+        
+        @keyframes nodeScale {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(1.2); }
+        }
+        
+        .timeline-item:hover .timeline-node {
+            transform: translate(-50%, -50%) scale(1.3);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.8);
+        }
+        
+        .timeline-connector {
+            position: absolute;
+            top: 30px;
+            width: calc(50% - var(--node-size)/2 - 5px);
+            height: 3px;
+            z-index: 2;
+            transform: scaleX(0);
+            transition: transform 1s ease;
+        }
+        
+        .timeline-item.visible .timeline-connector {
+            transform: scaleX(1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-connector {
+            right: 50%;
+            transform-origin: right;
+            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
+        }
+        
+        .timeline-item:nth-child(even) .timeline-connector {
+            left: 50%;
+            transform-origin: left;
+            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: -20px;
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: var(--dark-bg);
+            font-weight: 600;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-date {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: 0;
+            background-color: var(--accent-1);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            left: 0;
+            background-color: var(--accent-2);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
             position: relative;
             display: inline-block;
         }
-
-        .section-title h2::after {
+        
+        .timeline-content h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            transition: width 0.4s ease;
+        }
+        
+        .timeline-content:hover h3::after {
+            width: 100%;
+        }
+        
+        .timeline-content p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Featured Projects Styling */
+        .projects-title {
+            text-align: center;
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .projects-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+        }
+        
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .project-item {
+            background-color: var(--dark-surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: calc(33.33% - 20px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 3px solid var(--accent-4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .project-item h3 {
+            color: var(--accent-4);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .project-item p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .project-item {
+                width: 100%;
+            }
+        }
+        
+        /* Education Section */
+        .education {
+            background-color: var(--dark-surface);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 10px;
+            position: relative;
+            border-left: 4px solid var(--accent-3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .education::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-3), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+        
+        .education:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .education:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .education h2 {
+            color: var(--accent-3);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .education h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-3);
+            transition: width 0.4s ease;
+        }
+        
+        .education:hover h2::after {
+            width: 100%;
+        }
+        
+        .education-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .education-item {
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-3);
+            transition: transform 0.3s ease, padding-left 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateX(10px);
+            padding-left: 1.5rem;
+        }
+        
+        .education-item h3 {
+            color: var(--dark-text-primary);
+            margin-bottom: 0.3rem;
+            transition: color 0.3s ease;
+        }
+        
+        .education-item:hover h3 {
+            color: var(--accent-3);
+        }
+        
+        .education-item p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Certifications Section */
+        .certifications {
+            margin: 3rem 0;
+        }
+        
+        .certifications h2 {
+            color: var(--accent-4);
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .certifications h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-4), transparent);
+        }
+        
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            perspective: 1000px;
+        }
+        
+        .cert-item {
+            background-color: var(--dark-surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: calc(50% - 15px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 3px solid var(--accent-4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform-style: preserve-3d;
+        }
+        
+        .cert-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(252, 163, 17, 0.1) 0%, transparent 100%);
+            transform: translateZ(-10px);
+            z-index: -1;
+        }
+        
+        .cert-item:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .cert-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, transparent 50%, var(--accent-4) 50%);
+            border-radius: 0 0 8px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cert-item:hover::after {
+            opacity: 1;
+        }
+        
+        .cert-item h3 {
+            color: var(--accent-4);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cert-item h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-4);
+            transition: width 0.4s ease;
+        }
+        
+        .cert-item:hover h3::after {
+            width: 100%;
+        }
+        
+        .cert-item p {
+            color: var(--dark-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Skills Section */
+        .skills {
+            margin: 4rem 0;
+        }
+        
+        .skills-title {
+            text-align: center;
+            color: var(--accent-1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .skills-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -279,1234 +670,11 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--accent);
+            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
         }
-
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 1.5rem auto 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2.5rem 1.8rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-icon {
-            margin-bottom: 1.8rem;
-        }
-
-        .service-icon img {
-            width: 80px;
-            height: 80px;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover .service-icon img {
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            margin-bottom: 1.2rem;
-            color: var(--secondary);
-            font-size: 1.4rem;
-            position: relative;
-            padding-bottom: 12px;
-        }
-
-        .service-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .service-list {
-            list-style: none;
-            text-align: left;
-            margin-top: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .service-list li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-left: 1.8rem;
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        .service-list li::before {
-            content: '→';
-            color: var(--primary);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Why Choose Us Section */
-        .why-us {
-            padding: 6rem 0;
-            background: url('https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
-            position: relative;
-        }
-
-        .why-us::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(248, 249, 251, 0.9));
-        }
-
-        .why-us .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 2.5rem 1.8rem;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .feature-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-icon img {
-            width: 70px;
-            height: 70px;
-            transition: transform 0.3s;
-        }
-
-        .feature-item:hover .feature-icon img {
-            transform: scale(1.1);
-        }
-
-        .feature-item h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary);
-            font-size: 1.4rem;
-            position: relative;
-            padding-bottom: 12px;
-        }
-
-        .feature-item h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .feature-item p {
-            color: #555;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 6rem 0;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        .testimonial-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem;
-            position: relative;
-            background-color: var(--light);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-quote {
-            font-size: 4rem;
-            position: absolute;
-            top: -20px;
-            left: 30px;
-            color: var(--accent);
-            opacity: 0.4;
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-content {
-            font-size: 1.2rem;
-            font-style: italic;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        .testimonial-controls {
-            margin-top: 2rem;
-        }
-
-        .testimonial-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--light-gray);
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .testimonial-dot.active {
-            background-color: var(--accent);
-        }
-
-        /* Areas We Serve Section */
-        .service-areas {
-            padding: 6rem 0;
-            background-color: var(--light);
-        }
-
-        .areas-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .areas-list {
-            list-style: none;
-        }
-
-        .areas-list li {
-            padding: 0.8rem 0;
-            font-size: 1.05rem;
-            border-bottom: 1px solid var(--light-gray);
-            transition: all 0.3s ease;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .areas-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .areas-list li:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        /* Additional Services Section */
-        .additional-services {
-            padding: 6rem 0;
-            background-color: var(--light);
-        }
-
-        .services-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .service-item {
-            background-color: white;
-            padding: 1.5rem 1.2rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-            font-weight: 500;
-            color: var(--dark);
-            border-left: 3px solid var(--accent);
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Gallery Section */
-        .gallery {
-            padding: 6rem 0;
-            background-color: #fff;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            height: 250px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        
+        .skills-category {
+            margin-bottom: 2rem;
             opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 6rem 0;
-            background-color: var(--secondary);
-            color: white;
-            position: relative;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(10, 35, 81, 0.95), rgba(0, 86, 179, 0.9));
-        }
-
-        .contact .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-        }
-
-        .contact-form {
-            background-color: white;
-            padding: 3rem;
-            border-radius: 12px;
-            color: var(--dark);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
-        }
-
-        .contact-form h3 {
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            position: relative;
-            padding-bottom: 12px;
-            font-size: 1.8rem;
-        }
-
-        .contact-form h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.95rem;
-            border: 1px solid var(--light-gray);
-            border-radius: 8px;
-            font-family: 'Open Sans', sans-serif;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0, 184, 230, 0.1);
-        }
-
-        .submit-button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.95rem 2.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s, transform 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            width: 100%;
-            margin-top: 1rem;
-            text-transform: uppercase;
-        }
-
-        .submit-button:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: white;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 12px;
-        }
-
-        .contact-info h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        .contact-item {
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            margin-right: 1.2rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-
-        .contact-item:hover .contact-icon {
-            background-color: var(--accent);
-        }
-
-        .contact-icon img {
-            width: 28px;
-            height: 28px;
-        }
-
-        .contact-item p {
-            margin-bottom: 0.3rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-item strong {
-            color: white;
-            font-size: 1.1rem;
-        }
-
-        /* Map Section */
-        .map {
-            height: 450px;
-            width: 100%;
-        }
-
-        .map iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 0 2rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-links {
-            display: flex;
-        }
-
-        .footer-links a {
-            color: white;
-            margin: 0 1.2rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .footer-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .footer-links a:hover::after {
-            transform: scaleX(1);
-        }
-
-        .social-icons {
-            margin: 1.5rem 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 0.8rem;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .social-icons img {
-            width: 22px;
-            height: 22px;
-        }
-
-        .social-icons a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        footer p {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        /* Media Queries */
-        @media (max-width: 1200px) {
-            .services-grid,
-            .features-grid,
-            .areas-grid {
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .services-grid,
-            .features-grid,
-            .services-list,
-            .gallery-grid,
-            .areas-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--secondary);
-                padding: 1.5rem 0;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            nav li {
-                margin: 0.8rem 0;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .services-grid,
-            .features-grid,
-            .services-list,
-            .gallery-grid,
-            .areas-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                margin-top: 1.5rem;
-            }
-
-            .footer-links a {
-                margin: 0.5rem 0;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .section-padding,
-            .services,
-            .why-us,
-            .additional-services,
-            .gallery,
-            .contact,
-            .testimonials,
-            .service-areas {
-                padding: 4rem 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 12rem 1rem 7rem;
-            }
-
-            .gallery-item {
-                height: 200px;
-            }
-
-            .contact-form {
-                padding: 1.8rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <!-- Updated Logo -->
-                <div class="logo">
-                    <div class="logo-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 11L7.5 11C7.5 11 4 11 4 8C4 5 7.5 5 7.5 5L19 5"></path>
-                            <circle cx="21" cy="8" r="2"></circle>
-                            <path d="M9 11L9 15"></path>
-                            <path d="M6 11L6 15"></path>
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        NearMe<span>Locksmiths</span>
-                    </div>
-                </div>
-                <div class="mobile-toggle">☰</div>
-                <nav>
-                    <ul id="nav-menu">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#why-us">Why Choose Us</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#service-areas">Service Areas</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Dallas' Trusted Key & Lock Experts</h1>
-            <p>At NearMe Locksmiths, we're not just another lock-and-key service — we're your neighbors, your emergency heroes, and your go-to experts for fast, professional, and affordable locksmith services across Dallas and the surrounding areas.</p>
-            <a href="tel:+1234567890" class="cta-button">Call Now (123) 456-7890</a>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Professional locksmith solutions for all your security needs</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="https://img.icons8.com/color/96/000000/door-sensor-alarmed.png" alt="Residential Locksmith">
-                    </div>
-                    <h3>Residential Locksmith</h3>
-                    <p>Secure your home with our comprehensive residential locksmith services.</p>
-                    <ul class="service-list">
-                        <li>House lockouts</li>
-                        <li>Lock changes</li>
-                        <li>Lock repair & re-keying</li>
-                        <li>Digital deadbolts</li>
-                        <li>Keyless Entry Systems</li>
-                        <li>Locked bathroom door</li>
-                        <li>Rekey deadbolt</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/building.png" alt="Commercial Locksmith">
-                    </div>
-                    <h3>Commercial Locksmith</h3>
-                    <p>Enhance your business security with our professional commercial solutions.</p>
-                    <ul class="service-list">
-                        <li>Office and business lockouts</li>
-                        <li>High-security deadbolts</li>
-                        <li>Key control systems</li>
-                        <li>Lock repair & re-keying</li>
-                        <li>Hardware Installation</li>
-                        <li>Commercial locks</li>
-                        <li>Commercial lock replacement</li>
-                        <li>Master commercial lock</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <!-- Replace the non-working image with this SVG icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0056b3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M16 6l3 3-8.5 8.5-5 1.5 1.5-5L16 6z"/>
-                          <path d="M7 10.5l8.5 8.5"/>
-                          <path d="M16 6l-4-4 3-2 5 5-2 3z"/>
-                          <circle cx="15" cy="15" r="5" fill="none"/>
-                          <path d="M19 15a4 4 0 0 1-4 4"/>
-                          <path d="M20 9l-2 2"/>
-                        </svg>
-                      </div>
-                    <h3>Automotive Locksmith</h3>
-                    <p>Get back on the road quickly with our professional automotive locksmith services.</p>
-                    <ul class="service-list">
-                        <li>All Major Models</li>
-                        <li>Vehicle Lockouts</li>
-                        <li>Ignition Repair</li>
-                        <li>Damaged Locks</li>
-                        <li>Car Key Replacement</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section id="why-us" class="why-us section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Us</h2>
-                <p>The preferred choice for locksmith services in Dallas</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/clock.png" alt="24/7 Service">
-                    </div>
-                    <h3>24/7 Emergency Service</h3>
-                    <p>Fast response, anytime – we're available around the clock for your emergencies.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/certificate.png" alt="Licensed & Insured">
-                    </div>
-                    <h3>Licensed & Insured</h3>
-                    <p>Our local professionals are fully licensed and insured for your peace of mind.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/price-tag.png" alt="Transparent Pricing">
-                    </div>
-                    <h3>Transparent Pricing</h3>
-                    <p>Clear, upfront pricing with no hidden fees or surprise charges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Client Testimonials</h2>
-                <p>What our satisfied customers have to say</p>
-            </div>
-            <div class="testimonial-container">
-                <div class="testimonial-quote">"</div>
-                <div id="testimonial-content" class="testimonial-content">
-                    NearMe Locksmiths saved me when I was locked out of my car. They arrived in less than 20 minutes!
-                </div>
-                <div id="testimonial-author" class="testimonial-author">Sarah T.</div>
-                <div class="testimonial-controls">
-                    <span class="testimonial-dot active" data-index="0"></span>
-                    <span class="testimonial-dot" data-index="1"></span>
-                    <span class="testimonial-dot" data-index="2"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Areas We Serve Section -->
-    <section id="service-areas" class="service-areas section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Areas We Serve</h2>
-                <p>Fast, reliable locksmith services throughout the Dallas metroplex</p>
-            </div>
-            <div class="areas-grid">
-                <div class="area-column">
-                    <ul class="areas-list">
-                        <li>Dallas</li>
-                        <li>Garland</li>
-                        <li>Plano</li>
-                        <li>Richardson</li>
-                        <li>Allen</li>
-                    </ul>
-                </div>
-                <div class="area-column">
-                    <ul class="areas-list">
-                        <li>McKinney</li>
-                        <li>Rockwall</li>
-                        <li>Mesquite</li>
-                        <li>Forney</li>
-                        <li>Terrell</li>
-                    </ul>
-                </div>
-                <div class="area-column">
-                    <ul class="areas-list">
-                        <li>Lavon</li>
-                        <li>Princeton</li>
-                        <li>Carrollton</li>
-                        <li>Irving</li>
-                        <li>Grand Prairie</li>
-                    </ul>
-                </div>
-                <div class="area-column">
-                    <ul class="areas-list">
-                        <li>Rowlett</li>
-                        <li>Sachse</li>
-                        <li>Wylie</li>
-                        <li>Addison</li>
-                        <li>Highland Park</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Additional Services Section -->
-    <section class="additional-services section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Additional Services</h2>
-                <p>We offer a comprehensive range of locksmith solutions</p>
-            </div>
-            <div class="services-list">
-                <div class="service-item">Home Lockout Service</div>
-                <div class="service-item">Electronic Door Lock Installation</div>
-                <div class="service-item">Replace Locks on House</div>
-                <div class="service-item">Smart Lock Installation</div>
-                <div class="service-item">Locksmith for Apartment</div>
-                <div class="service-item">Emergency Commercial Locksmith</div>
-                <div class="service-item">Door Lock Installation Service</div>
-                <div class="service-item">Home Rekey Service</div>
-                <div class="service-item">Digital Door Lock Installation</div>
-                <div class="service-item">Lock Installation Service</div>
-                <div class="service-item">Lock Change Service</div>
-                <div class="service-item">Door Knob Change</div>
-                <div class="service-item">Fix Broken Lock on Door</div>
-                <div class="service-item">Unlock Door Without Key</div>
-                <div class="service-item">Change Sliding Door Lock</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Work</h2>
-                <p>See our professional locksmith services in action</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.42_c4534c23.jpg" alt="Locksmith Service">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.41_178420af.jpg" alt="Smart Lock Installation">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.41_34456c15.jpg" alt="Car Key Replacement">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://vineethnj.github.io/WhatsApp%20Image%202025-04-10%20at%2008.23.41_84948d85.jpg" alt="Commercial Lock Installation">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section-padding">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch for fast, reliable locksmith services</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service" required>
-                                <option value="">Select a service</option>
-                                <option value="residential">Residential Locksmith</option>
-                                <option value="commercial">Commercial Locksmith</option>
-                                <option value="automotive">Automotive Locksmith</option>
-                                <option value="emergency">Emergency Lockout</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <img src="https://img.icons8.com/fluency/96/000000/phone.png" alt="Phone">
-                        </div>
-                        <div>
-                            <p>Phone:</p>
-                            <p><strong>(123) 456-7890</strong></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <img src="https://img.icons8.com/fluency/96/000000/email.png" alt="Email">
-                        </div>
-                        <div>
-                            <p>Email:</p>
-                            <p><strong>info@nearmelocksmiths.com</strong></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <img src="https://img.icons8.com/fluency/96/000000/marker.png" alt="Address">
-                        </div>
-                        <div>
-                            <p>Address:</p>
-                            <p><strong>123 Security Ave, Dallas, TX 75201</strong></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <img src="https://img.icons8.com/fluency/96/000000/clock--v1.png" alt="Hours">
-                        </div>
-                        <div>
-                            <p>Hours:</p>
-                            <p><strong>24/7 Emergency Service</strong></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d214587.14265798645!2d-96.98673863275994!3d32.82054909605082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c19f77b45974b%3A0xb9ec9ba4f647678f!2sDallas%2C%20TX!5e0!3m2!1sen!2sus!4v1681304405256!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 11L7.5 11C7.5 11 4 11 4 8C4 5 7.5 5 7.5 5L19 5"></path>
-                            <circle cx="21" cy="8" r="2"></circle>
-                            <path d="M9 11L9 15"></path>
-                            <path d="M6 11L6 15"></path>
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        NearMe<span>Locksmiths</span>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#why-us">Why Choose Us</a>
-                    <a href="#testimonials">Testimonials</a>
-                    <a href="#service-areas">Service Areas</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <div class="social-icons">
-                <a href="#"><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt="Facebook"></a>
-                <a href="#"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram"></a>
-                <a href="#"><img src="https://img.icons8.com/fluency/48/000000/twitter.png" alt="Twitter"></a>
-                <a href="#"><img src="https://img.icons8.com/fluency/48/000000/yelp.png" alt="Yelp"></a>
-            </div>
-            <p>&copy; 2025 NearMe Locksmiths. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-toggle').addEventListener('click', function() {
-            document.getElementById('nav-menu').classList.toggle('show');
-        });
-
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Close mobile menu after clicking a link
-                document.getElementById('nav-menu').classList.remove('show');
-            });
-        });
-
-        // Form Submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form values
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-
-            // Simple form validation
-            if (!name || !phone || !email || !service || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-
-            // In a real implementation, you would send this data to a server
-            alert('Thank you for your message! We will contact you shortly.');
-            this.reset();
-        });
-
-        // Add scroll event to change header style
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                document.querySelector('header').style.padding = '0.5rem 0';
-                document.querySelector('header').style.backgroundColor = 'rgba(10, 35, 81, 0.95)';
-            } else {
-                document.querySelector('header').style.padding = '1rem 0';
-                document.querySelector('header').style.backgroundColor = 'var(--secondary)';
-            }
-        });
-
-        // Testimonial Slider Implementation
-        let testimonialIndex = 0;
-        const testimonials = [
-            {
-                content: "NearMe Locksmiths saved me when I was locked out of my car. They arrived in less than 20 minutes!",
-                author: "Sarah T."
-            },
-            {
-                content: "Professional, fast and reasonably priced. I highly recommend their services for home security.",
-                author: "Michael R."
-            },
-            {
-                content: "The technician who helped with our office lock system was knowledgeable and efficient. Great service!",
-                author: "Dallas Business Owner"
-            }
-        ];
-
-        function changeTestimonial(index) {
-            testimonialIndex = index;
-            const contentElement = document.getElementById('testimonial-content');
-            const authorElement = document.getElementById('testimonial-author');
-
-            // Fade out effect
-            contentElement.style.opacity = 0;
-            authorElement.style.opacity = 0;
-
-            setTimeout(() => {
-                contentElement.textContent = testimonials[testimonialIndex].content;
-                authorElement.textContent = testimonials[testimonialIndex].author;
-
-                // Update active dot
-                document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
-                    if (i === testimonialIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-
-                // Fade in effect
-                contentElement.style.opacity = 1;
-                authorElement.style.opacity = 1;
-            }, 300);
-        }
-
-        // Auto-rotate testimonials
-        setInterval(() => {
-            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-            changeTestimonial(testimonialIndex);
-        }, 5000);
-
-        // Add click event to testimonial dots
-        document.querySelectorAll('.testimonial-dot').forEach(dot => {
-            dot.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-index'));
-                changeTestimonial(index);
-            });
-        });
-
-        // Initialize CSS transitions for testimonial content
-        document.getElementById('testimonial-content').style.transition = 'opacity 0.3s ease';
-        document.getElementById('testimonial-author').style.transition = 'opacity 0.3s ease';
-    </script>
-</body>
-</html>
+            transform: translateY(30px);
+            transition: opacity 0.8s
