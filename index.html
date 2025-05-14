@@ -3,1314 +3,1023 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vineeth N - AI/ML Developer Journey</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <title>Orbitrar - AI & Cybersecurity Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #0F1624;
-            --dark-surface: #171F31;
-            --accent-1: #64FFDA;
-            --accent-2: #F15BB5;
-            --accent-3: #9B5DE5;
-            --accent-4: #FCA311;
-            --dark-text-primary: #E6F1FF;
-            --dark-text-secondary: #8892B0;
-            --timeline-width: 6px;
-            --node-size: 22px;
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --light: #f8fafc;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--dark-text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--dark);
+            color: var(--light);
         }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-
-        /* Header Section */
-        .header {
-            padding: 5rem 0 3rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
         }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1), transparent 60%);
-            z-index: 0;
-            animation: pulse 8s ease-in-out infinite alternate;
+        
+        .cyber-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1.05); }
-        }
-
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--dark-text-primary);
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-            animation: fadeInDown 1.2s ease-out;
-        }
-
-        .header-subtitle {
-            color: var(--accent-1);
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1.2s ease-out 0.3s both;
-        }
-
-        .location-info {
-            color: var(--dark-text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1.2s ease-out 0.6s both;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .profile-summary {
-            background-color: var(--dark-surface);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            overflow: hidden;
-        }
-
-        .profile-summary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
-            transform-origin: 0 0;
-            transform: scaleX(0);
-            transition: transform 0.6s ease-out;
-        }
-
-        .profile-summary:hover::before {
-            transform: scaleX(1);
-        }
-
-        .profile-summary h2 {
-            color: var(--accent-1);
-            margin-bottom: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-        }
-
-        .profile-summary h2::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent-1);
-            transition: width 0.4s ease;
-        }
-
-        .profile-summary:hover h2::after {
-            width: 100px;
-        }
-
-        /* Journey Timeline */
-        .journey-title {
-            text-align: center;
-            color: var(--accent-1);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin: 3rem 0;
-            position: relative;
-        }
-
-        .journey-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .timeline-container {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline-center {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: var(--timeline-width);
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
-            z-index: 1;
-            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
-            animation: timelinePulse 3s infinite alternate;
-        }
-
-        @keyframes timelinePulse {
-            from { box-shadow: 0 0 5px rgba(100, 255, 218, 0.3); }
-            to { box-shadow: 0 0 15px rgba(100, 255, 218, 0.7); }
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 6rem;
-            position: relative;
-            min-height: 150px;
-            opacity: 0.3;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            padding: 1.5rem;
-            background: var(--dark-surface);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            position: relative;
-            z-index: 2;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            overflow: hidden;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(100, 255, 218, 0.05);
-            z-index: -1;
-            transition: width 0.4s ease;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            right: 0;
-        }
-
-        .timeline-content:hover {
+        
+        .cyber-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
         }
-
-        .timeline-content:hover::before {
-            width: 100%;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: auto;
-            border-left: 4px solid var(--accent-1);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: auto;
-            border-right: 4px solid var(--accent-2);
-        }
-
-        .timeline-node {
-            position: absolute;
-            left: 50%;
-            top: 30px;
-            transform: translate(-50%, -50%);
-            width: var(--node-size);
-            height: var(--node-size);
-            border-radius: 50%;
-            background-color: var(--dark-bg);
-            border: 4px solid var(--accent-1);
-            z-index: 3;
-            transition: all 0.3s ease;
-            animation: nodeScale 2s infinite alternate;
-        }
-
-        @keyframes nodeScale {
-            from { transform: translate(-50%, -50%) scale(1); }
-            to { transform: translate(-50%, -50%) scale(1.2); }
-        }
-
-        .timeline-item:hover .timeline-node {
-            transform: translate(-50%, -50%) scale(1.3);
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.8);
-        }
-
-        .timeline-connector {
-            position: absolute;
-            top: 30px;
-            width: calc(50% - var(--node-size)/2 - 5px);
-            height: 3px;
-            z-index: 2;
-            transform: scaleX(0);
-            transition: transform 1s ease;
-        }
-
-        .timeline-item.visible .timeline-connector {
-            transform: scaleX(1);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-connector {
-            right: 50%;
-            transform-origin: right;
-            background: linear-gradient(90deg, var(--accent-1), var(--dark-bg));
-        }
-
-        .timeline-item:nth-child(even) .timeline-connector {
-            left: 50%;
-            transform-origin: left;
-            background: linear-gradient(90deg, var(--dark-bg), var(--accent-2));
-        }
-
-        .timeline-date {
-            position: absolute;
-            top: -20px;
-            font-size: 0.85rem;
-            padding: 5px 10px;
-            border-radius: 4px;
-            color: var(--dark-bg);
-            font-weight: 600;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .timeline-item:hover .timeline-date {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-date {
-            right: 0;
-            background-color: var(--accent-1);
-        }
-
-        .timeline-item:nth-child(even) .timeline-date {
-            left: 0;
-            background-color: var(--accent-2);
-        }
-
-        .timeline-content h3 {
-            margin-bottom: 10px;
-            font-family: 'Montserrat', sans-serif;
+        
+        .animated-border {
             position: relative;
-            display: inline-block;
-        }
-
-        .timeline-content h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            transition: width 0.4s ease;
-        }
-
-        .timeline-content:hover h3::after {
-            width: 100%;
-        }
-
-        .timeline-content p {
-            color: var(--dark-text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        /* Featured Projects Styling */
-        .projects-title {
-            text-align: center;
-            color: var(--accent-1);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin: 3rem 0;
-            position: relative;
-        }
-
-        .projects-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
-        }
-
-        .projects-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project-item {
-            background-color: var(--dark-surface);
-            padding: 1.5rem;
-            border-radius: 8px;
-            width: calc(33.33% - 20px);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 3px solid var(--accent-4);
-            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
-        .project-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        
+        .animated-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: animateBorder 3s linear infinite;
         }
-
-        .project-item h3 {
-            color: var(--accent-4);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .project-item p {
-            color: var(--dark-text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .project-item {
-                width: 100%;
+        
+        @keyframes animateBorder {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
             }
         }
-
-        /* Education Section */
-        .education {
-            background-color: var(--dark-surface);
-            padding: 2rem;
-            margin: 3rem 0;
-            border-radius: 10px;
+        
+        .nav-link {
             position: relative;
-            border-left: 4px solid var(--accent-3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: color 0.3s;
         }
-
-        .education::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-3), transparent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s ease;
-        }
-
-        .education:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .education:hover::before {
-            transform: scaleX(1);
-        }
-
-        .education h2 {
-            color: var(--accent-3);
-            margin-bottom: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            display: inline-block;
-        }
-
-        .education h2::after {
+        
+        .nav-link::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
-            width: 40px;
+            width: 0;
             height: 2px;
-            background-color: var(--accent-3);
-            transition: width 0.4s ease;
+            background: var(--accent);
+            transition: width 0.3s;
         }
-
-        .education:hover h2::after {
+        
+        .nav-link:hover::after {
             width: 100%;
         }
-
-        .education-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        .education-item {
-            padding-left: 1rem;
-            border-left: 2px solid var(--accent-3);
-            transition: transform 0.3s ease, padding-left 0.3s ease;
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
-
-        .education-item:hover {
-            transform: translateX(10px);
-            padding-left: 1.5rem;
+        
+        .btn-outline {
+            border: 1px solid var(--accent);
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        .education-item h3 {
-            color: var(--dark-text-primary);
-            margin-bottom: 0.3rem;
-            transition: color 0.3s ease;
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--dark);
         }
-
-        .education-item:hover h3 {
-            color: var(--accent-3);
+        
+        .testimonial-card {
+            transition: transform 0.3s;
         }
-
-        .education-item p {
-            color: var(--dark-text-secondary);
-            font-size: 0.9rem;
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
         }
-
-        /* Certifications Section */
-        .certifications {
-            margin: 3rem 0;
-        }
-
-        .certifications h2 {
-            color: var(--accent-4);
-            margin-bottom: 1.5rem;
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .certifications h2::after {
-            content: '';
+        
+        /* Particle background */
+        #particles-js {
             position: absolute;
-            bottom: -10px;
-            left: 0;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-4), transparent);
-        }
-
-        .certifications-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            perspective: 1000px;
-        }
-
-        .cert-item {
-            background-color: var(--dark-surface);
-            padding: 1.5rem;
-            border-radius: 8px;
-            width: calc(50% - 15px);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 3px solid var(--accent-4);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transform-style: preserve-3d;
-        }
-
-        .cert-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(252, 163, 17, 0.1) 0%, transparent 100%);
-            transform: translateZ(-10px);
+            height: 100vh;
             z-index: -1;
         }
-
-        .cert-item:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .cert-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, transparent 50%, var(--accent-4) 50%);
-            border-radius: 0 0 8px 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .cert-item:hover::after {
-            opacity: 1;
-        }
-
-        .cert-item h3 {
-            color: var(--accent-4);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .cert-item h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -3px;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-4);
-            transition: width 0.4s ease;
-        }
-
-        .cert-item:hover h3::after {
-            width: 100%;
-        }
-
-        .cert-item p {
-            color: var(--dark-text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Skills Section */
-        .skills {
-            margin: 4rem 0;
-        }
-
-        .skills-title {
-            text-align: center;
-            color: var(--accent-1);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .skills-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
-        }
-
-        .skills-category {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .skills-category.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .skills-category h3 {
-            color: var(--accent-2);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            border-bottom: 1px solid var(--accent-2);
-            padding-bottom: 0.3rem;
-            display: inline-block;
-            position: relative;
-        }
-
-        .skills-category h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -1px;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-2);
-            transition: width 0.5s ease;
-            z-index: 1;
-        }
-
-        .skills-category:hover h3::before {
-            width: 100%;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill-item {
-            background-color: var(--dark-surface);
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: var(--dark-text-primary);
-            font-size: 0.9rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.05);
+        
+        /* Mobile menu */
+        .mobile-menu {
             transform: translateX(-100%);
-            transition: transform 0.4s ease;
-            z-index: -1;
+            transition: transform 0.3s ease-in-out;
         }
-
-        .skill-item:hover::before {
+        
+        .mobile-menu.active {
             transform: translateX(0);
         }
 
-        .skill-category-1 .skill-item {
-            border: 2px solid var(--accent-1);
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .skill-category-2 .skill-item {
-            border: 2px solid var(--accent-2);
+        /* Glowing effect */
+        .glow {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+            animation: glow 3s infinite alternate;
         }
-
-        .skill-category-3 .skill-item {
-            border: 2px solid var(--accent-3);
-        }
-
-        .skill-category-4 .skill-item {
-            border: 2px solid var(--accent-4);
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--dark-surface);
-            padding: 3rem 0;
-            text-align: center;
-            border-radius: 10px;
-            margin-top: 4rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(155, 93, 229, 0.1), transparent 70%);
-            z-index: 0;
-            animation: contactGlow 8s infinite alternate;
-        }
-
-        @keyframes contactGlow {
-            0% { opacity: 0.3; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1.1); }
-        }
-
-        .contact h2 {
-            color: var(--accent-3);
-            margin-bottom: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-3);
-            transition: width 0.6s ease;
-        }
-
-        .contact:hover h2::after {
-            width: 100%;
-        }
-
-        .contact-info {
-            color: var(--dark-text-secondary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links a {
-            color: var(--accent-1);
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 10px 20px;
-            border: 2px solid var(--accent-1);
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: rgba(100, 255, 218, 0.1);
-            transition: width 0.4s ease;
-            z-index: -1;
-        }
-
-        .social-links a:hover::before {
-            width: 100%;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
             }
-
-            .container {
-                width: 95%;
-                padding: 0 10px;
-            }
-
-            .timeline-center {
-                left: 30px;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-                padding-left: 60px;
-                margin-bottom: 3rem;
-            }
-
-            .timeline-content {
-                width: 100%;
-                margin: 0 !important;
-            }
-
-            .timeline-node {
-                left: 30px;
-            }
-
-            .timeline-connector {
-                display: none;
-            }
-
-            .timeline-date {
-                position: relative;
-                top: 0;
-                margin-bottom: 10px;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-date,
-            .timeline-item:nth-child(even) .timeline-date {
-                left: 0;
-                right: auto;
-            }
-
-            .cert-item {
-                width: 100%;
-            }
-
-            .social-links {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
+            100% {
+                box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
             }
         }
 
-        /* Scrollbar styling */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
-
+        
         ::-webkit-scrollbar-track {
-            background: var(--dark-bg);
+            background: var(--dark);
         }
-
+        
         ::-webkit-scrollbar-thumb {
-            background: var(--dark-surface);
-            border-radius: 5px;
-            border: 2px solid var(--dark-bg);
+            background: var(--primary);
+            border-radius: 4px;
         }
-
+        
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-1);
-        }
-
-        /* Loading Animation Styles */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dark-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-word {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            font-family: 'Montserrat', sans-serif;
-            opacity: 0;
-            animation: fadeInOut 2s ease-in-out;
-        }
-
-        .word-1 {
-            color: var(--accent-1);
-            animation-delay: 0s;
-        }
-
-        .word-2 {
-            color: var(--accent-2);
-            animation-delay: 1s;
-        }
-
-        .word-3 {
-            color: var(--accent-3);
-            animation-delay: 2s;
-        }
-
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        }
-
-        /* Remove unused styles */
-        .loader-content, .loader-spinner, .loader-text {
-            display: none; /* No longer needed */
+            background: var(--accent);
         }
     </style>
 </head>
-<body>
-    <!-- Loading Screen -->
-    <div class="loader">
-        <div class="loader-word word-1">Welcome</div>
-        <div class="loader-word word-2">നമസ്കാരം</div>
-        <div class="loader-word word-3">नमस्ते</div>
-    </div>
-
-    <header class="header">
-        <div class="container">
-            <h1>VINEETH N</h1>
-            <p class="header-subtitle">AI/ML ENGINEER</p>
-            <p class="location-info">Kerala, India — +91 9995511967 — nvineeth672@gmail.com</p>
+<body class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-gray-100">
+    <div id="particles-js"></div>
+    
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-opacity-80 bg-gray-900 backdrop-filter backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold mr-10">
+                        <span class="gradient-text">Orbitrar</span>
+                    </a>
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-white">About Us</a>
+                        <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
+                        <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                        <a href="#testimonials" class="nav-link text-gray-300 hover:text-white">Testimonials</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                    </nav>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#contact" class="btn-primary py-2 px-6 rounded-full text-white font-medium">Get in Touch</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 h-full w-64 bg-gray-900 bg-opacity-95 z-40 shadow-lg p-5">
+            <nav class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white">About Us</a>
+                <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                <a href="#testimonials" class="nav-link text-gray-300 hover:text-white">Testimonials</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+            </nav>
         </div>
     </header>
 
-    <div class="container">
-        <section class="profile-summary" data-aos="fade-up" data-aos-duration="1000">
-            <h2>Professional Summary</h2>
-            <p>AI/ML engineer with 2 years of hands-on experience in Machine Learning, Deep Learning, and LLMs AGENTS with 10 months of professional work experience in Generative AI focusing on LLM, Langchain, CrewAI, and LlamaIndex.</p>
-        </section>
+    <!-- Hero section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-purple-900/60"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 reveal">
+                Securing the Future with 
+                <span class="gradient-text">Advanced AI</span> and 
+                <span class="gradient-text">Cybersecurity</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto reveal">
+                Orbitrar delivers cutting-edge solutions to protect your digital assets and harness the power of artificial intelligence for your business.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6 reveal">
+                <a href="#services" class="btn-primary py-3 px-8 rounded-full text-white font-medium text-lg">
+                    Explore Our Solutions
+                </a>
+                <a href="#contact" class="btn-outline py-3 px-8 rounded-full text-white font-medium text-lg">
+                    Schedule a Consultation
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <a href="#about" class="text-white animate-bounce">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
 
-        <!-- My Path to AI Section -->
-        <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">My Path to AI</h2>
-        <section class="timeline-container">
-            <div class="timeline-center"></div>
-
-            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000">
-                <div class="timeline-content">
-                    <span class="timeline-date">2021</span>
-                    <h3>The Spark</h3>
-                    <p>Ever since I was young, I’ve been excited to uncover my life’s purpose and make a meaningful impact. This curiosity set me on a path toward technology, though I didn’t know it yet.</p>
+    <!-- About section -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">About <span class="gradient-text">Orbitrar</span></h2>
+                <p class="text-gray-400 max-w-3xl mx-auto reveal">Discover our mission and vision to create a secure digital future through innovation and expertise.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="cyber-card rounded-2xl p-1 glow">
+                        <div class="bg-gray-800 rounded-2xl p-8 h-full">
+                            <h3 class="text-2xl font-bold mb-6">Our Mission</h3>
+                            <p class="text-gray-300 mb-6">
+                                At Orbitrar, we're committed to providing state-of-the-art AI and cybersecurity solutions that protect organizations from evolving threats while enabling them to leverage the full potential of artificial intelligence.
+                            </p>
+                            <p class="text-gray-300">
+                                Our team of experts combines deep technical knowledge with a customer-focused approach to deliver customized solutions that meet the unique needs of each client.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <div class="timeline-content">
-                    <span class="timeline-date">2021</span>
-                    <h3>First Steps into Coding</h3>
-                    <p>I dove into coding to build applications, mastering logic and syntax. But debugging a loop for hours over a typo taught me patience—and that coding alone wasn’t my end goal.</p>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-                <div class="timeline-content">
-                    <span class="timeline-date">2022</span>
-                    <h3>Introduction to AI</h3>
-                    <p>Discovering AI was like magic—machines learning and deciding on their own! I realized this could be the key to solving big problems, igniting my passion.</p>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
-                <div class="timeline-content">
-                    <span class="timeline-date">2023</span>
-                    <h3>Deep Dive into ML/DL</h3>
-                    <p>I immersed myself in machine learning and deep learning, tackling complex algorithms. It was tough but thrilling—every breakthrough felt like unlocking a new level.</p>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
-                <div class="timeline-content">
-                    <span class="timeline-date">2023</span>
-                    <h3>Hands-On Projects</h3>
-                    <p>I built intermediate AI apps, from classifiers to NLP systems, pouring in relentless effort. Each project deepened my skills and fueled my drive.</p>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
-                <div class="timeline-content">
-                    <span class="timeline-date">2023</span>
-                    <h3>Freelance AI Researcher</h3>
-                    <p>During my BCA, I freelanced as an AI Researcher at a startup, navigating a flawed education system. It was scary but invaluable—my first taste of real-world AI.</p>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="700">
-                <div class="timeline-content">
-                    <span class="timeline-date">2024 - Present</span>
-                    <h3>AI/ML</h3>
-                    <p>Now at Gaude Business & Infrastructure Solutions, I explore LLMs, AI agents, and frameworks like LangChain and CrewAI. I even sank into Django—surprisingly fun!</p>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-        </section>
-
-        <!-- Featured Projects Section -->
-        <h2 class="projects-title" data-aos="fade-up" data-aos-duration="1000">Featured Projects</h2>
-        <section class="projects-container">
-            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                <h3>Game Simulation with AI Agents</h3>
-                <p>Developed a game simulation environment with LangGraph, Python, and Llama, exploring multi-agent interactions and decision-making.</p>
-                <p><strong>Technologies:</strong> LangGraph, Python, Llama</p>
-            </div>
-
-            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <h3>LLM Finetuning</h3>
-                <p>Fine-tuned LLaMA-3.2-3B and Mistral-7B models for Malayalam using Unsloth and Hugging Face Transformers.</p>
-                <p><strong>Technologies:</strong> Unsloth, Hugging Face Transformers, LLaMA, Mistral</p>
-            </div>
-
-            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                <h3>AI-Powered Chatbot</h3>
-                <p>Built a chatbot with LLMs, LangChain, and RAG, featuring document uploads, live search, and email capabilities.</p>
-                <p><strong>Technologies:</strong> LLMs, LangChain, RAG</p>
-            </div>
-
-            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                <h3>Multi-Agent Flight Management System</h3>
-                <p>Created a CrewAI-based flight coordination system with a Django web interface for real-time management.</p>
-                <p><strong>Technologies:</strong> CrewAI, ChatGroq LLM, Django</p>
-            </div>
-
-            <div class="project-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                <h3>YouTube Content Q&A System</h3>
-                <p>Developed a system to index YouTube content with LangChain and OpenAI Whisper for natural language Q&A.</p>
-                <p><strong>Technologies:</strong> LangChain, OpenAI Whisper</p>
-            </div>
-        </section>
-
-        <!-- Professional Experience Section -->
-        <h2 class="journey-title" data-aos="fade-up" data-aos-duration="1000">Professional Experience</h2>
-        <section class="timeline-container">
-            <div class="timeline-center"></div>
-
-            <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="300">
-                <div class="timeline-content">
-                    <span class="timeline-date">June 2024 - Present</span>
-                    <h3>AI/ML Engineer</h3>
-                    <p>Gaude Business & Infrastructure Solutions</p>
-                    <ul>
-                        <li>Designed and developed an AI-powered chatbot using advanced LLM-RAG architecture</li>
-                        <li>Built an agentic LLM-RAG chatbot utilizing LangChain and CrewAI frameworks</li>
-                        <li>Enabled PDF document upload with context-specific QA capabilities</li>
-                        <li>Integrated live internet search for real-time information retrieval</li>
-                        <li>Added email functionality for sending generated outputs</li>
-                    </ul>
-                </div>
-                <div class="timeline-node"></div>
-                <div class="timeline-connector"></div>
-            </div>
-        </section>
-
-        <section class="education" data-aos="fade-up" data-aos-duration="1000">
-            <h2>Education</h2>
-            <div class="education-content">
-                <div class="education-item">
-                    <h3>Bachelor of Computer Application</h3>
-                    <p>Michaels Institute of Management and Technology, University of Kerala</p>
-                    <p>2021 - 2024</p>
+                
+                <div class="reveal">
+                    <div class="animated-border rounded-2xl p-8 bg-gray-800/50 backdrop-blur-sm">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">10+</div>
+                                <p class="text-gray-300">Years of Experience</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">200+</div>
+                                <p class="text-gray-300">Satisfied Clients</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+                                <p class="text-gray-300">Cybersecurity Experts</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold gradient-text mb-2">24/7</div>
+                                <p class="text-gray-300">Support</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <section class="certifications" data-aos="fade-up" data-aos-duration="1000">
-            <h2>Certifications</h2>
-            <div class="certifications-container">
-                <div class="cert-item" data-aos="flip-left" data-aos-delay="100">
-                    <h3>Multi AI Agent Systems with CrewAI</h3>
-                    <p>Deeplearning.ai</p>
+            
+            <div class="mt-20 reveal">
+                <div class="cyber-card rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Our Core Values</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                        <div class="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm">
+                            <div class="text-accent text-4xl mb-4">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">Security First</h4>
+                            <p class="text-gray-300">
+                                We prioritize security in everything we do, ensuring our solutions provide maximum protection against evolving threats.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm">
+                            <div class="text-accent text-4xl mb-4">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">Innovation</h4>
+                            <p class="text-gray-300">
+                                We continuously explore new technologies and approaches to stay ahead of the curve in AI and cybersecurity.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm">
+                            <div class="text-accent text-4xl mb-4">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">Partnership</h4>
+                            <p class="text-gray-300">
+                                We work closely with our clients, building long-term relationships based on trust, transparency, and mutual success.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="cert-item" data-aos="flip-right" data-aos-delay="200">
-                    <h3>AI Agents in LangGraph</h3>
-                    <p>Deeplearning.ai</p>
-                </div>
-                <div class="cert-item" data-aos="flip-left" data-aos-delay="300">
-                    <h3>Pretraining LLMs</h3>
-                    <p>Deeplearning.ai</p>
-                </div>
-                <div class="cert-item" data-aos="flip-right" data-aos-delay="400">
-                    <h3>IBM Data Science Professional Certificate</h3>
-                    <p>Coursera</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="skills">
-            <h2 class="skills-title" data-aos="fade-up" data-aos-duration="1000">Technical Expertise</h2>
-
-            <div class="skills-category skill-category-1" data-aos="fade-up" data-aos-duration="1000">
-                <h3>AI/ML</h3>
-                <div class="skills-container">
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Machine Learning</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Generative AI</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">AI Agents</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">Large Language Models (LLMs)</div>
-                </div>
-            </div>
-
-            <div class="skills-category skill-category-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <h3>Frameworks</h3>
-                <div class="skills-container">
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Langchain</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">CrewAI</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">LlamaIndex</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="250">LangGraph</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="300">Scikit-Learn</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="350">TensorFlow</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">PyTorch</div>
-                </div>
-            </div>
-
-            <div class="skills-category skill-category-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                <h3>Web Development</h3>
-                <div class="skills-container">
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Django</div>
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="150">Flask</div>
-                </div>
-            </div>
-
-            <div class="skills-category skill-category-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-                <h3>Programming</h3>
-                <div class="skills-container">
-                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">Python</div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <section class="contact" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="contact-info">nvineeth672@gmail.com | +91 9995511967</p>
-            <div class="social-links">
-                <a href="https://github.com/vineethnj" target="_blank" data-aos="fade-up" data-aos-delay="200">GitHub</a>
-                <a href="https://huggingface.co/vineethn" target="_blank" data-aos="fade-up" data-aos-delay="400">Hugging Face</a>
             </div>
         </div>
     </section>
 
+    <!-- Services section -->
+    <section id="services" class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-0 left-0 w-1/2 h-full bg-blue-500/10 rounded-full blur-3xl transform -translate-x-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-1/2 h-full bg-purple-500/10 rounded-full blur-3xl transform translate-x-1/2"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Our <span class="gradient-text">Services</span></h2>
+                <p class="text-gray-400 max-w-3xl mx-auto reveal">Comprehensive solutions tailored to meet your AI and cybersecurity needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="cyber-card rounded-2xl p-8 reveal">
+                    <div class="flex items-start mb-6">
+                        <div class="mr-4 p-3 rounded-full bg-blue-500/20 text-blue-400">
+                            <i class="fas fa-robot text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">AI Solutions</h3>
+                            <p class="text-gray-300">Harnessing the power of artificial intelligence to transform your business</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Machine Learning Development</h4>
+                                <p class="text-gray-400">Custom ML models designed to solve your specific business challenges</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Natural Language Processing</h4>
+                                <p class="text-gray-400">Build intelligent systems that understand and generate human language</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Computer Vision</h4>
+                                <p class="text-gray-400">Image and video analysis solutions for automated visual insights</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">AI Consulting</h4>
+                                <p class="text-gray-400">Expert guidance on AI strategy, implementation, and optimization</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <a href="#contact" class="btn-outline py-2 px-6 rounded-full inline-block">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="cyber-card rounded-2xl p-8 reveal">
+                    <div class="flex items-start mb-6">
+                        <div class="mr-4 p-3 rounded-full bg-purple-500/20 text-purple-400">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Cybersecurity Services</h3>
+                            <p class="text-gray-300">Protecting your digital assets against evolving threats</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Penetration Testing</h4>
+                                <p class="text-gray-400">Identify vulnerabilities in your systems before hackers exploit them</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Security Operations Center (SOC)</h4>
+                                <p class="text-gray-400">24/7 monitoring and response to security incidents</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Security Assessment & Compliance</h4>
+                                <p class="text-gray-400">Comprehensive evaluation of your security posture and regulatory compliance</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Incident Response</h4>
+                                <p class="text-gray-400">Rapid and effective handling of security breaches</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <a href="#contact" class="btn-outline py-2 px-6 rounded-full inline-block">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cyber-card rounded-2xl p-8 reveal">
+                <div class="flex items-start mb-6">
+                    <div class="mr-4 p-3 rounded-full bg-cyan-500/20 text-cyan-400">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">AI-Powered Cybersecurity</h3>
+                        <p class="text-gray-300">Combining our AI expertise with cybersecurity for next-generation protection</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h4 class="text-xl font-semibold mb-3">Threat Detection & Intelligence</h4>
+                        <p class="text-gray-400 mb-4">
+                            AI-driven systems that identify and respond to threats in real-time, with advanced pattern recognition capabilities.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-angle-right mr-2 text-accent"></i>
+                                Anomaly detection
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-angle-right mr-2 text-accent"></i>
+                                Behavioral analytics
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-angle-right mr-2 text-accent"></i>
+                                Predictive threat modeling
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 rounded-xl p-6">
+                        <h4 class="text-xl font-semibold mb-3">Autonomous Security</h4>
+                        <p class="text-gray-400 mb-4">
+                            Self-learning systems that continuously adapt to new threats and vulnerabilities without human intervention.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-angle-right mr-2 text-accent"></i>
+                                Automated response protocols
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-angle-right mr-2 text-accent"></i>
+                                Self-healing networks
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-angle-right mr-2 text-accent"></i>
+                                Continuous learning
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <a href="#contact" class="btn-primary py-2 px-8 rounded-full inline-block">Schedule a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects section -->
+    <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Our <span class="gradient-text">Projects</span></h2>
+                <p class="text-gray-400 max-w-3xl mx-auto reveal">Explore our successful implementations across various industries.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="cyber-card rounded-2xl overflow-hidden reveal">
+                    <div class="h-48 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Finance</span>
+                            <span class="text-gray-400">2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">AI-Powered Fraud Detection</h3>
+                        <p class="text-gray-300 mb-4">
+                            Developed a machine learning system that reduced fraudulent transactions by 87% for a major financial institution.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Machine Learning</span>
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Fraud Prevention</span>
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Financial Security</span>
+                        </div>
+                        <a href="#" class="text-accent hover:underline">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="cyber-card rounded-2xl overflow-hidden reveal">
+                    <div class="h-48 bg-gradient-to-r from-purple-600 to-purple-400"></div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Healthcare</span>
+                            <span class="text-gray-400">2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Secure Health Data Platform</h3>
+                        <p class="text-gray-300 mb-4">
+                            Built a HIPAA-compliant data platform with advanced encryption and threat protection for healthcare providers.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Data Security</span>
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">HIPAA Compliance</span>
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Healthcare IT</span>
+                        </div>
+                        <a href="#" class="text-accent hover:underline">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="cyber-card rounded-2xl overflow-hidden reveal">
+                    <div class="h-48 bg-gradient-to-r from-cyan-600 to-cyan-400"></div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-sm">Manufacturing</span>
+                            <span class="text-gray-400">2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Smart Factory Security</h3>
+                        <p class="text-gray-300 mb-4">
+                            Implemented IoT security protocols and AI monitoring for a smart manufacturing facility, preventing potential breaches.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">IoT Security</span>
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Industrial IoT</span>
+                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">OT Security</span>
+                        </div>
+                        <a href="#" class="text-accent hover:underline">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center reveal">
+                <a href="#" class="btn-outline py-2 px-6 rounded-full inline-block">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials section -->
+    <section id="testimonials" class="py-20 bg-black relative">
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-1/3 h-full bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Client <span class="gradient-text">Testimonials</span></h2>
+                <p class="text-gray-400 max-w-3xl mx-auto reveal">Hear what our clients have to say about working with Orbitrar.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl font-bold">
+                            JD
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">John Doe</h4>
+                            <p class="text-gray-400">CTO, TechCorp</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Orbitrar's AI security solution has transformed our approach to threat detection. Their team's expertise and dedication to our success made the implementation process seamless. We've seen a 60% reduction in false positives and much faster incident response times."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold">
+                            JS
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Jane Smith</h4>
+                            <p class="text-gray-400">CISO, HealthCare Systems</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "We needed a partner who understood both AI and healthcare security compliance. Orbitrar not only met but exceeded our expectations. Their team's deep knowledge of regulatory requirements and cutting-edge security practices has been invaluable to our organization."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">
+                            MJ
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Michael Johnson</h4>
+                            <p class="text-gray-400">CEO, Retail Innovations</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Implementing Orbitrar's AI-based customer behavior analysis has given us insights we never thought possible, all while maintaining the highest level of data security. The ROI has been substantial, and their ongoing support is excellent."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold">
+                            SL
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sarah Lee</h4>
+                            <p class="text-gray-400">Director of IT, Global Manufacturing</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "After experiencing a security incident, we turned to Orbitrar for help. Their incident response team was exceptional, and the preventive measures they've put in place have given us confidence in our security posture. Their AI-driven monitoring system catches threats we would have missed."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 reveal">
+                <div class="cyber-card rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-8 text-center">Trusted by Industry Leaders</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
+                            <span class="text-lg font-bold text-gray-300">TechCorp</span>
+                        </div>
+                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
+                            <span class="text-lg font-bold text-gray-300">HealthSys</span>
+                        </div>
+                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
+                            <span class="text-lg font-bold text-gray-300">RetailX</span>
+                        </div>
+                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
+                            <span class="text-lg font-bold text-gray-300">ManufacturePro</span>
+                        </div>
+                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
+                            <span class="text-lg font-bold text-gray-300">FinanceCo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Get in <span class="gradient-text">Touch</span></h2>
+                <p class="text-gray-400 max-w-3xl mx-auto reveal">Ready to secure your business and leverage the power of AI? Contact us today.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="cyber-card rounded-2xl p-8 reveal">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="mr-4 p-3 rounded-full bg-blue-500/20 text-blue-400">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Address</h4>
+                                <p class="text-gray-300">
+                                    123 Tech Boulevard<br>
+                                    Innovation District<br>
+                                    San Francisco, CA 94103
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mr-4 p-3 rounded-full bg-purple-500/20 text-purple-400">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Phone</h4>
+                                <p class="text-gray-300">
+                                    +1 (555) 123-4567
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mr-4 p-3 rounded-full bg-cyan-500/20 text-cyan-400">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email</h4>
+                                <p class="text-gray-300">
+                                    info@orbitrar.com
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="mr-4 p-3 rounded-full bg-green-500/20 text-green-400">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Business Hours</h4>
+                                <p class="text-gray-300">
+                                    Monday - Friday: 9am - 6pm<br>
+                                    Weekend: Closed
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <h4 class="font-semibold mb-3">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+                                    <i class="fab fa-linkedin-in text-gray-300"></i>
+                                </a>
+                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+                                    <i class="fab fa-twitter text-gray-300"></i>
+                                </a>
+                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+                                    <i class="fab fa-github text-gray-300"></i>
+                                </a>
+                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+                                    <i class="fab fa-facebook-f text-gray-300"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animated-border rounded-2xl p-1 reveal">
+                    <div class="bg-gray-800 rounded-2xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                        
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Full Name</label>
+                                    <input type="text" id="name" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="John Doe" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Email</label>
+                                    <input type="email" id="email" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="company" class="block mb-2 text-sm font-medium text-gray-300">Company</label>
+                                <input type="text" id="company" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="Your company name">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="subject" class="block mb-2 text-sm font-medium text-gray-300">Subject</label>
+                                <input type="text" id="subject" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="How can we help?" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-300">Message</label>
+                                <textarea id="message" rows="4" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="Tell us about your project or inquiry..." required></textarea>
+                            </div>
+                            
+                            <div class="flex items-center mb-6">
+                                <input id="privacy" type="checkbox" class="w-4 h-4 bg-gray-700 border-gray-600 rounded" required>
+                                <label for="privacy" class="ml-2 text-sm text-gray-300">I agree to the <a href="#" class="text-accent hover:underline">Privacy Policy</a></label>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary py-3 px-8 w-full rounded-lg text-white font-medium">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">
+                        <span class="gradient-text">Orbitrar</span>
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        Securing the future with advanced AI and cybersecurity solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Solutions</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cybersecurity Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Threat Intelligence</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Security Operations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Compliance & Risk</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">News & Insights</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Partners</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Whitepapers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Webinars</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 Orbitrar. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: false,
-                mirror: false
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
             });
-
-            // Hide loader after the last word's animation ends
-            const lastWord = document.querySelector('.loader-word.word-3');
-            lastWord.addEventListener('animationend', () => {
-                document.querySelector('.loader').classList.add('hidden');
+        });
+        
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+            
+            revealElements.forEach(element => {
+                const revealTop = element.getBoundingClientRect().top;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
             });
-
-            // Intersection Observer for timeline items
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+        }
+        
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+        
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
                     }
-                });
-            }, { threshold: 0.2 });
-
-            timelineItems.forEach(item => {
-                observer.observe(item);
-            });
-
-            // Intersection Observer for skills categories
-            const skillsCategories = document.querySelectorAll('.skills-category');
-            const skillsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            skillsCategories.forEach(category => {
-                skillsObserver.observe(category);
-            });
-
-            // Mouse move parallax effect for header
-            const header = document.querySelector('.header');
-            header.addEventListener('mousemove', (e) => {
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                header.style.transform = perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg);
-            });
-
-            header.addEventListener('mouseleave', () => {
-                header.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-            });
-
-            // Smooth scroll for links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
+                },
+                color: {
+                    value: ['#3b82f6', '#8b5cf6', '#06b6d4']
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#3b82f6',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    out_mode: 'out'
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
         });
     </script>
 </body>
