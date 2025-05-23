@@ -6,86 +6,67 @@
     <title>Orbitrar - AI & Cybersecurity Solutions</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3b82f6;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --dark: #0f172a;
-            --light: #f8fafc;
+            --primary: #1f2937;
+            --secondary: #374151;
+            --accent: #2563eb;
+            --light-accent: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --border: #e5e7eb;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            background-color: var(--dark);
-            color: var(--light);
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
         }
         
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .heading-font {
+            font-family: 'Playfair Display', serif;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+        .business-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
         
-        .cyber-card {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .accent-text {
+            color: var(--accent);
         }
         
-        .cyber-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
+        .professional-card {
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
         }
         
-        .animated-border {
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
-        
-        .animated-border::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            animation: animateBorder 3s linear infinite;
-        }
-        
-        @keyframes animateBorder {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
+        .professional-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
         }
         
         .nav-link {
             position: relative;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            font-weight: 500;
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--accent);
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
         
         .nav-link:hover::after {
@@ -93,76 +74,102 @@
         }
         
         .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--accent);
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
         }
         
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+            background: #1d4ed8;
+            border-color: #1d4ed8;
+            transform: translateY(-1px);
         }
         
-        .btn-outline {
-            border: 1px solid var(--accent);
-            transition: background-color 0.3s, color 0.3s;
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
-        .btn-outline:hover {
-            background-color: var(--accent);
-            color: var(--dark);
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%);
+            height: 1px;
+            width: 100%;
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
         }
         
         .testimonial-card {
-            transition: transform 0.3s;
+            background: white;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease;
         }
         
         .testimonial-card:hover {
-            transform: scale(1.03);
+            transform: translateX(4px);
         }
         
-        /* Particle background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Professional form styling */
+        .form-input {
+            border: 2px solid var(--border);
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
         /* Mobile menu */
         .mobile-menu {
             transform: translateX(-100%);
             transition: transform 0.3s ease-in-out;
+            background: white;
+            border-right: 1px solid var(--border);
         }
         
         .mobile-menu.active {
             transform: translateX(0);
         }
 
-        /* Scroll reveal */
+        /* Reveal animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* Glowing effect */
-        .glow {
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-            animation: glow 3s infinite alternate;
-        }
-        
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
-            }
         }
 
         /* Custom scrollbar */
@@ -171,171 +178,189 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: var(--dark);
+            background: var(--surface);
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--accent);
             border-radius: 4px;
         }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
+        .hero-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.1) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        
+        .company-logo {
+            height: 40px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        
+        .company-logo:hover {
+            opacity: 1;
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-gray-100">
-    <div id="particles-js"></div>
+<body class="bg-white text-gray-900">
     
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-opacity-80 bg-gray-900 backdrop-filter backdrop-blur-lg border-b border-gray-800">
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold mr-10">
-                        <span class="gradient-text">Orbitrar</span>
+                    <a href="#" class="text-2xl font-bold heading-font mr-16">
+                        <span class="text-gray-900">Orbit</span><span class="accent-text">rar</span>
                     </a>
-                    <nav class="hidden md:flex space-x-8">
-                        <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
-                        <a href="#about" class="nav-link text-gray-300 hover:text-white">About Us</a>
-                        <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
-                        <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
-                        <a href="#testimonials" class="nav-link text-gray-300 hover:text-white">Testimonials</a>
-                        <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                    <nav class="hidden lg:flex space-x-10">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-gray-900">Home</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-gray-900">About</a>
+                        <a href="#services" class="nav-link text-gray-700 hover:text-gray-900">Services</a>
+                        <a href="#solutions" class="nav-link text-gray-700 hover:text-gray-900">Solutions</a>
+                        <a href="#testimonials" class="nav-link text-gray-700 hover:text-gray-900">Clients</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-gray-900">Contact</a>
                     </nav>
                 </div>
-                <div class="hidden md:block">
-                    <a href="#contact" class="btn-primary py-2 px-6 rounded-full text-white font-medium">Get in Touch</a>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:+1555123456" class="text-gray-600 hover:text-gray-900 flex items-center">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </a>
+                    <a href="#contact" class="btn-primary py-2 px-6 rounded-md">Get Consultation</a>
                 </div>
-                <button id="mobile-menu-button" class="md:hidden text-white">
-                    <i class="fas fa-bars text-2xl"></i>
+                <button id="mobile-menu-button" class="lg:hidden text-gray-900">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 h-full w-64 bg-gray-900 bg-opacity-95 z-40 shadow-lg p-5">
-            <nav class="flex flex-col space-y-4">
-                <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
-                <a href="#about" class="nav-link text-gray-300 hover:text-white">About Us</a>
-                <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
-                <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
-                <a href="#testimonials" class="nav-link text-gray-300 hover:text-white">Testimonials</a>
-                <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+        <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 h-full w-80 z-50 shadow-lg p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-xl font-bold heading-font">
+                    <span class="text-gray-900">Orbit</span><span class="accent-text">rar</span>
+                </span>
+                <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-900">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6">
+                <a href="#home" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-gray-900 font-medium">About</a>
+                <a href="#services" class="text-gray-700 hover:text-gray-900 font-medium">Services</a>
+                <a href="#solutions" class="text-gray-700 hover:text-gray-900 font-medium">Solutions</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-gray-900 font-medium">Clients</a>
+                <a href="#contact" class="text-gray-700 hover:text-gray-900 font-medium">Contact</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="#contact" class="btn-primary py-2 px-6 rounded-md inline-block">Get Consultation</a>
+                </div>
             </nav>
         </div>
     </header>
 
     <!-- Hero section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-purple-900/60"></div>
-        </div>
-        <div class="container mx-auto px-4 z-10 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 reveal">
-                Securing the Future with 
-                <span class="gradient-text">Advanced AI</span> and 
-                <span class="gradient-text">Cybersecurity</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto reveal">
-                Orbitrar delivers cutting-edge solutions to protect your digital assets and harness the power of artificial intelligence for your business.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6 reveal">
-                <a href="#services" class="btn-primary py-3 px-8 rounded-full text-white font-medium text-lg">
-                    Explore Our Solutions
-                </a>
-                <a href="#contact" class="btn-outline py-3 px-8 rounded-full text-white font-medium text-lg">
-                    Schedule a Consultation
-                </a>
+    <section id="home" class="pt-20 pb-16 business-gradient hero-pattern min-h-screen flex items-center">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold heading-font mb-6 reveal text-gray-900">
+                    Enterprise <span class="accent-text">AI</span> & 
+                    <span class="accent-text">Cybersecurity</span> Excellence
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto reveal leading-relaxed">
+                    Orbitrar delivers enterprise-grade solutions that protect your digital infrastructure while unlocking the transformative power of artificial intelligence for sustainable business growth.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 reveal mb-16">
+                    <a href="#services" class="btn-primary py-4 px-8 rounded-md text-lg">
+                        Explore Solutions
+                    </a>
+                    <a href="#contact" class="btn-secondary py-4 px-8 rounded-md text-lg">
+                        Schedule Consultation
+                    </a>
+                </div>
+                
+                <!-- Key metrics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
+                    <div class="text-center">
+                        <div class="stats-number">15+</div>
+                        <p class="text-gray-600 font-medium">Years Experience</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-number">500+</div>
+                        <p class="text-gray-600 font-medium">Enterprise Clients</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-number">99.9%</div>
+                        <p class="text-gray-600 font-medium">Uptime SLA</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-number">24/7</div>
+                        <p class="text-gray-600 font-medium">Expert Support</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-            <a href="#about" class="text-white animate-bounce">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
         </div>
     </section>
 
     <!-- About section -->
-    <section id="about" class="py-20 bg-gray-900">
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">About <span class="gradient-text">Orbitrar</span></h2>
-                <p class="text-gray-400 max-w-3xl mx-auto reveal">Discover our mission and vision to create a secure digital future through innovation and expertise.</p>
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font mb-6 reveal">About Orbitrar</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-gray-600 text-lg reveal">Leading the future of enterprise technology with innovative AI solutions and uncompromising cybersecurity standards.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
                 <div class="reveal">
-                    <div class="cyber-card rounded-2xl p-1 glow">
-                        <div class="bg-gray-800 rounded-2xl p-8 h-full">
-                            <h3 class="text-2xl font-bold mb-6">Our Mission</h3>
-                            <p class="text-gray-300 mb-6">
-                                At Orbitrar, we're committed to providing state-of-the-art AI and cybersecurity solutions that protect organizations from evolving threats while enabling them to leverage the full potential of artificial intelligence.
-                            </p>
-                            <p class="text-gray-300">
-                                Our team of experts combines deep technical knowledge with a customer-focused approach to deliver customized solutions that meet the unique needs of each client.
-                            </p>
+                    <h3 class="text-2xl font-bold heading-font mb-6">Our Commitment to Excellence</h3>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Since our founding, Orbitrar has been dedicated to providing Fortune 500 companies and growing enterprises with cutting-edge technology solutions that drive measurable business outcomes.
+                    </p>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        Our team of certified experts combines deep industry knowledge with innovative approaches to deliver solutions that not only meet today's challenges but anticipate tomorrow's opportunities.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
+                            <span class="text-gray-700 font-medium">ISO 27001 Certified Security Standards</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
+                            <span class="text-gray-700 font-medium">SOC 2 Type II Compliance</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
+                            <span class="text-gray-700 font-medium">GDPR & CCPA Data Protection</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="reveal">
-                    <div class="animated-border rounded-2xl p-8 bg-gray-800/50 backdrop-blur-sm">
+                    <div class="professional-card rounded-lg p-8">
+                        <h4 class="text-xl font-bold mb-6">Industry Recognition & Certifications</h4>
+                        
                         <div class="grid grid-cols-2 gap-6">
-                            <div class="text-center">
-                                <div class="text-4xl font-bold gradient-text mb-2">10+</div>
-                                <p class="text-gray-300">Years of Experience</p>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-award text-2xl text-blue-600 mb-2"></i>
+                                <p class="font-medium text-gray-900">Gartner Magic Quadrant</p>
+                                <p class="text-sm text-gray-600">Cybersecurity Leader</p>
                             </div>
-                            <div class="text-center">
-                                <div class="text-4xl font-bold gradient-text mb-2">200+</div>
-                                <p class="text-gray-300">Satisfied Clients</p>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-certificate text-2xl text-blue-600 mb-2"></i>
+                                <p class="font-medium text-gray-900">AWS Premier Partner</p>
+                                <p class="text-sm text-gray-600">Cloud Excellence</p>
                             </div>
-                            <div class="text-center">
-                                <div class="text-4xl font-bold gradient-text mb-2">50+</div>
-                                <p class="text-gray-300">Cybersecurity Experts</p>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-star text-2xl text-blue-600 mb-2"></i>
+                                <p class="font-medium text-gray-900">Microsoft Gold Partner</p>
+                                <p class="text-sm text-gray-600">AI & Analytics</p>
                             </div>
-                            <div class="text-center">
-                                <div class="text-4xl font-bold gradient-text mb-2">24/7</div>
-                                <p class="text-gray-300">Support</p>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-shield-alt text-2xl text-blue-600 mb-2"></i>
+                                <p class="font-medium text-gray-900">CISSP Certified Team</p>
+                                <p class="text-sm text-gray-600">Security Expertise</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-20 reveal">
-                <div class="cyber-card rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-center">Our Core Values</h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                        <div class="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm">
-                            <div class="text-accent text-4xl mb-4">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold mb-3">Security First</h4>
-                            <p class="text-gray-300">
-                                We prioritize security in everything we do, ensuring our solutions provide maximum protection against evolving threats.
-                            </p>
-                        </div>
-                        
-                        <div class="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm">
-                            <div class="text-accent text-4xl mb-4">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold mb-3">Innovation</h4>
-                            <p class="text-gray-300">
-                                We continuously explore new technologies and approaches to stay ahead of the curve in AI and cybersecurity.
-                            </p>
-                        </div>
-                        
-                        <div class="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm">
-                            <div class="text-accent text-4xl mb-4">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold mb-3">Partnership</h4>
-                            <p class="text-gray-300">
-                                We work closely with our clients, building long-term relationships based on trust, transparency, and mutual success.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -344,382 +369,329 @@
     </section>
 
     <!-- Services section -->
-    <section id="services" class="py-20 bg-black relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10">
-            <div class="absolute top-0 left-0 w-1/2 h-full bg-blue-500/10 rounded-full blur-3xl transform -translate-x-1/2"></div>
-            <div class="absolute bottom-0 right-0 w-1/2 h-full bg-purple-500/10 rounded-full blur-3xl transform translate-x-1/2"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Our <span class="gradient-text">Services</span></h2>
-                <p class="text-gray-400 max-w-3xl mx-auto reveal">Comprehensive solutions tailored to meet your AI and cybersecurity needs.</p>
+    <section id="services" class="py-20 business-gradient">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font mb-6 reveal">Professional Services</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-gray-600 text-lg reveal">Comprehensive technology solutions designed to accelerate your digital transformation while maintaining enterprise-grade security.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div class="cyber-card rounded-2xl p-8 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="professional-card rounded-lg p-8 reveal">
                     <div class="flex items-start mb-6">
-                        <div class="mr-4 p-3 rounded-full bg-blue-500/20 text-blue-400">
-                            <i class="fas fa-robot text-2xl"></i>
+                        <div class="service-icon mr-6">
+                            <i class="fas fa-brain"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold mb-2">AI Solutions</h3>
-                            <p class="text-gray-300">Harnessing the power of artificial intelligence to transform your business</p>
+                            <h3 class="text-2xl font-bold heading-font mb-2">Artificial Intelligence Solutions</h3>
+                            <p class="text-gray-600">Transform your business operations with enterprise AI implementation</p>
                         </div>
                     </div>
                     
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Machine Learning Development</h4>
-                                <p class="text-gray-400">Custom ML models designed to solve your specific business challenges</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Natural Language Processing</h4>
-                                <p class="text-gray-400">Build intelligent systems that understand and generate human language</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Computer Vision</h4>
-                                <p class="text-gray-400">Image and video analysis solutions for automated visual insights</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">AI Consulting</h4>
-                                <p class="text-gray-400">Expert guidance on AI strategy, implementation, and optimization</p>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <div class="mt-8">
-                        <a href="#contact" class="btn-outline py-2 px-6 rounded-full inline-block">Learn More</a>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Machine Learning & Analytics</h4>
+                            <p class="text-gray-600">Custom ML models for predictive analytics, customer insights, and operational optimization</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Natural Language Processing</h4>
+                            <p class="text-gray-600">Intelligent document processing, chatbots, and automated content analysis</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Computer Vision</h4>
+                            <p class="text-gray-600">Advanced image recognition, quality control, and visual inspection systems</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">AI Strategy Consulting</h4>
+                            <p class="text-gray-600">Strategic roadmaps for AI adoption, ROI optimization, and governance frameworks</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="cyber-card rounded-2xl p-8 reveal">
+                <div class="professional-card rounded-lg p-8 reveal">
                     <div class="flex items-start mb-6">
-                        <div class="mr-4 p-3 rounded-full bg-purple-500/20 text-purple-400">
-                            <i class="fas fa-shield-alt text-2xl"></i>
+                        <div class="service-icon mr-6">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold mb-2">Cybersecurity Services</h3>
-                            <p class="text-gray-300">Protecting your digital assets against evolving threats</p>
+                            <h3 class="text-2xl font-bold heading-font mb-2">Cybersecurity Services</h3>
+                            <p class="text-gray-600">Comprehensive security solutions for enterprise-grade protection</p>
                         </div>
                     </div>
                     
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Penetration Testing</h4>
-                                <p class="text-gray-400">Identify vulnerabilities in your systems before hackers exploit them</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Security Operations Center (SOC)</h4>
-                                <p class="text-gray-400">24/7 monitoring and response to security incidents</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Security Assessment & Compliance</h4>
-                                <p class="text-gray-400">Comprehensive evaluation of your security posture and regulatory compliance</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="mr-3 text-accent mt-1"><i class="fas fa-check-circle"></i></div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Incident Response</h4>
-                                <p class="text-gray-400">Rapid and effective handling of security breaches</p>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <div class="mt-8">
-                        <a href="#contact" class="btn-outline py-2 px-6 rounded-full inline-block">Learn More</a>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Security Assessment & Penetration Testing</h4>
+                            <p class="text-gray-600">Comprehensive vulnerability assessments and ethical hacking services</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Managed Security Operations (SOC)</h4>
+                            <p class="text-gray-600">24/7 threat monitoring, incident response, and security management</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Compliance & Risk Management</h4>
+                            <p class="text-gray-600">GDPR, HIPAA, SOX compliance auditing and risk assessment frameworks</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-gray-900">Security Architecture Design</h4>
+                            <p class="text-gray-600">Zero-trust architecture, network segmentation, and security infrastructure</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="cyber-card rounded-2xl p-8 reveal">
-                <div class="flex items-start mb-6">
-                    <div class="mr-4 p-3 rounded-full bg-cyan-500/20 text-cyan-400">
-                        <i class="fas fa-brain text-2xl"></i>
+            <div class="professional-card rounded-lg p-8 reveal">
+                <div class="flex items-start mb-8">
+                    <div class="service-icon mr-6">
+                        <i class="fas fa-cogs"></i>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold mb-2">AI-Powered Cybersecurity</h3>
-                        <p class="text-gray-300">Combining our AI expertise with cybersecurity for next-generation protection</p>
+                        <h3 class="text-2xl font-bold heading-font mb-2">AI-Powered Security Intelligence</h3>
+                        <p class="text-gray-600">Next-generation security solutions powered by artificial intelligence and machine learning</p>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <div class="bg-gray-800/50 rounded-xl p-6">
-                        <h4 class="text-xl font-semibold mb-3">Threat Detection & Intelligence</h4>
-                        <p class="text-gray-400 mb-4">
-                            AI-driven systems that identify and respond to threats in real-time, with advanced pattern recognition capabilities.
-                        </p>
-                        <ul class="space-y-2 text-gray-300">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg p-6 border border-gray-200">
+                        <h4 class="text-lg font-semibold mb-3">Threat Intelligence & Detection</h4>
+                        <p class="text-gray-600 mb-4">AI-driven threat hunting, behavioral analytics, and predictive security modeling</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
                             <li class="flex items-center">
-                                <i class="fas fa-angle-right mr-2 text-accent"></i>
-                                Anomaly detection
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Advanced persistent threat detection
                             </li>
                             <li class="flex items-center">
-                                <i class="fas fa-angle-right mr-2 text-accent"></i>
-                                Behavioral analytics
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Behavioral anomaly analysis
                             </li>
                             <li class="flex items-center">
-                                <i class="fas fa-angle-right mr-2 text-accent"></i>
-                                Predictive threat modeling
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Predictive risk modeling
                             </li>
                         </ul>
                     </div>
                     
-                    <div class="bg-gray-800/50 rounded-xl p-6">
-                        <h4 class="text-xl font-semibold mb-3">Autonomous Security</h4>
-                        <p class="text-gray-400 mb-4">
-                            Self-learning systems that continuously adapt to new threats and vulnerabilities without human intervention.
-                        </p>
-                        <ul class="space-y-2 text-gray-300">
+                    <div class="bg-white rounded-lg p-6 border border-gray-200">
+                        <h4 class="text-lg font-semibold mb-3">Automated Response Systems</h4>
+                        <p class="text-gray-600 mb-4">Intelligent security orchestration and automated incident response protocols</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
                             <li class="flex items-center">
-                                <i class="fas fa-angle-right mr-2 text-accent"></i>
-                                Automated response protocols
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Automated threat containment
                             </li>
                             <li class="flex items-center">
-                                <i class="fas fa-angle-right mr-2 text-accent"></i>
-                                Self-healing networks
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Intelligent alert prioritization
                             </li>
                             <li class="flex items-center">
-                                <i class="fas fa-angle-right mr-2 text-accent"></i>
-                                Continuous learning
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Self-healing security systems
                             </li>
                         </ul>
                     </div>
-                </div>
-                
-                <div class="mt-8 text-center">
-                    <a href="#contact" class="btn-primary py-2 px-8 rounded-full inline-block">Schedule a Demo</a>
+                    
+                    <div class="bg-white rounded-lg p-6 border border-gray-200">
+                        <h4 class="text-lg font-semibold mb-3">Security Analytics Platform</h4>
+                        <p class="text-gray-600 mb-4">Comprehensive security data analysis and executive reporting dashboards</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Real-time security metrics
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Compliance reporting automation
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                Executive dashboard insights
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects section -->
-    <section id="projects" class="py-20 bg-gray-900">
+    <!-- Solutions section -->
+    <section id="solutions" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Our <span class="gradient-text">Projects</span></h2>
-                <p class="text-gray-400 max-w-3xl mx-auto reveal">Explore our successful implementations across various industries.</p>
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font mb-6 reveal">Industry Solutions</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-gray-600 text-lg reveal">Tailored solutions designed for specific industry requirements and regulatory compliance standards.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="cyber-card rounded-2xl overflow-hidden reveal">
-                    <div class="h-48 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+                <div class="professional-card rounded-lg overflow-hidden reveal">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-university text-white text-4xl"></i>
+                    </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Finance</span>
-                            <span class="text-gray-400">2024</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Financial Services</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">AI-Powered Fraud Detection</h3>
-                        <p class="text-gray-300 mb-4">
-                            Developed a machine learning system that reduced fraudulent transactions by 87% for a major financial institution.
+                        <h3 class="text-xl font-bold heading-font mb-3">Enterprise Banking Security</h3>
+                        <p class="text-gray-600 mb-4">
+                            Comprehensive fraud detection, regulatory compliance, and risk management solutions for financial institutions.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Machine Learning</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Fraud Prevention</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Financial Security</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">PCI DSS</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">SOX</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">Anti-Money Laundering</span>
                         </div>
-                        <a href="#" class="text-accent hover:underline">View Case Study →</a>
+                        <a href="#contact" class="text-blue-600 hover:text-blue-800 font-medium">Learn More →</a>
                     </div>
                 </div>
                 
-                <div class="cyber-card rounded-2xl overflow-hidden reveal">
-                    <div class="h-48 bg-gradient-to-r from-purple-600 to-purple-400"></div>
+                <div class="professional-card rounded-lg overflow-hidden reveal">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-white text-4xl"></i>
+                    </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Healthcare</span>
-                            <span class="text-gray-400">2023</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Healthcare</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Secure Health Data Platform</h3>
-                        <p class="text-gray-300 mb-4">
-                            Built a HIPAA-compliant data platform with advanced encryption and threat protection for healthcare providers.
+                        <h3 class="text-xl font-bold heading-font mb-3">Healthcare Data Protection</h3>
+                        <p class="text-gray-600 mb-4">
+                            HIPAA-compliant solutions for patient data security, medical AI applications, and healthcare analytics.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Data Security</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">HIPAA Compliance</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Healthcare IT</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">HIPAA</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">HITECH</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">Medical AI</span>
                         </div>
-                        <a href="#" class="text-accent hover:underline">View Case Study →</a>
+                        <a href="#contact" class="text-green-600 hover:text-green-800 font-medium">Learn More →</a>
                     </div>
                 </div>
                 
-                <div class="cyber-card rounded-2xl overflow-hidden reveal">
-                    <div class="h-48 bg-gradient-to-r from-cyan-600 to-cyan-400"></div>
+                <div class="professional-card rounded-lg overflow-hidden reveal">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-industry text-white text-4xl"></i>
+                    </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-sm">Manufacturing</span>
-                            <span class="text-gray-400">2023</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Manufacturing</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Smart Factory Security</h3>
-                        <p class="text-gray-300 mb-4">
-                            Implemented IoT security protocols and AI monitoring for a smart manufacturing facility, preventing potential breaches.
+                        <h3 class="text-xl font-bold heading-font mb-3">Industrial IoT Security</h3>
+                        <p class="text-gray-600 mb-4">
+                            Secure Industry 4.0 implementations with IoT protection, operational technology security, and predictive maintenance.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">IoT Security</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Industrial IoT</span>
-                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">OT Security</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">IIoT Security</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">OT Protection</span>
+                            <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-700">Industry 4.0</span>
                         </div>
-                        <a href="#" class="text-accent hover:underline">View Case Study →</a>
+                        <a href="#contact" class="text-purple-600 hover:text-purple-800 font-medium">Learn More →</a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="mt-12 text-center reveal">
-                <a href="#" class="btn-outline py-2 px-6 rounded-full inline-block">View All Projects</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials section -->
-    <section id="testimonials" class="py-20 bg-black relative">
-        <div class="absolute top-0 left-0 w-full h-full opacity-20">
-            <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-500/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-1/3 h-full bg-purple-500/20 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Client <span class="gradient-text">Testimonials</span></h2>
-                <p class="text-gray-400 max-w-3xl mx-auto reveal">Hear what our clients have to say about working with Orbitrar.</p>
+    <!-- Testimonials section -->
+    <section id="testimonials" class="py-20 business-gradient">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font mb-6 reveal">Client Success Stories</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-gray-600 text-lg reveal">Trusted by industry leaders worldwide to deliver exceptional results and drive digital transformation.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl font-bold">
-                            JD
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="testimonial-card p-6 rounded-lg shadow-lg reveal">
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">John Doe</h4>
-                            <p class="text-gray-400">CTO, TechCorp</p>
+                        <p class="text-gray-600 italic">"Orbitrar's AI implementation reduced our operational costs by 40% while improving security posture significantly. Their team's expertise is unmatched."</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">JD</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">John Davidson</p>
+                            <p class="text-sm text-gray-600">CTO, Fortune 500 Financial Corp</p>
                         </div>
                     </div>
-                    <div class="mb-6">
-                        <div class="text-yellow-400 flex">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "Orbitrar's AI security solution has transformed our approach to threat detection. Their team's expertise and dedication to our success made the implementation process seamless. We've seen a 60% reduction in false positives and much faster incident response times."
-                    </p>
                 </div>
                 
-                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold">
-                            JS
+                <div class="testimonial-card p-6 rounded-lg shadow-lg reveal">
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Jane Smith</h4>
-                            <p class="text-gray-400">CISO, HealthCare Systems</p>
+                        <p class="text-gray-600 italic">"The cybersecurity solutions implemented by Orbitrar have given us complete peace of mind. Zero incidents in 18 months of operation."</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-green-600 font-bold">SM</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Sarah Mitchell</p>
+                            <p class="text-sm text-gray-600">CISO, Healthcare Systems Inc</p>
                         </div>
                     </div>
-                    <div class="mb-6">
-                        <div class="text-yellow-400 flex">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "We needed a partner who understood both AI and healthcare security compliance. Orbitrar not only met but exceeded our expectations. Their team's deep knowledge of regulatory requirements and cutting-edge security practices has been invaluable to our organization."
-                    </p>
                 </div>
                 
-                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl font-bold">
-                            MJ
+                <div class="testimonial-card p-6 rounded-lg shadow-lg reveal">
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Michael Johnson</h4>
-                            <p class="text-gray-400">CEO, Retail Innovations</p>
+                        <p class="text-gray-600 italic">"Their AI-powered predictive maintenance solution has revolutionized our manufacturing operations. ROI achieved within 6 months."</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-purple-600 font-bold">RJ</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Robert Johnson</p>
+                            <p class="text-sm text-gray-600">VP Operations, Global Manufacturing</p>
                         </div>
                     </div>
-                    <div class="mb-6">
-                        <div class="text-yellow-400 flex">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "Implementing Orbitrar's AI-based customer behavior analysis has given us insights we never thought possible, all while maintaining the highest level of data security. The ROI has been substantial, and their ongoing support is excellent."
-                    </p>
-                </div>
-                
-                <div class="testimonial-card cyber-card rounded-2xl p-8 reveal">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold">
-                            SL
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Sarah Lee</h4>
-                            <p class="text-gray-400">Director of IT, Global Manufacturing</p>
-                        </div>
-                    </div>
-                    <div class="mb-6">
-                        <div class="text-yellow-400 flex">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "After experiencing a security incident, we turned to Orbitrar for help. Their incident response team was exceptional, and the preventive measures they've put in place have given us confidence in our security posture. Their AI-driven monitoring system catches threats we would have missed."
-                    </p>
                 </div>
             </div>
             
-            <div class="mt-16 reveal">
-                <div class="cyber-card rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold mb-8 text-center">Trusted by Industry Leaders</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
-                            <span class="text-lg font-bold text-gray-300">TechCorp</span>
-                        </div>
-                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
-                            <span class="text-lg font-bold text-gray-300">HealthSys</span>
-                        </div>
-                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
-                            <span class="text-lg font-bold text-gray-300">RetailX</span>
-                        </div>
-                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
-                            <span class="text-lg font-bold text-gray-300">ManufacturePro</span>
-                        </div>
-                        <div class="flex items-center justify-center h-16 bg-gray-800/50 rounded-lg">
-                            <span class="text-lg font-bold text-gray-300">FinanceCo</span>
-                        </div>
+            <!-- Trusted by section -->
+            <div class="text-center reveal">
+                <h3 class="text-xl font-semibold mb-8 text-gray-900">Trusted by Leading Organizations</h3>
+                <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                    <div class="h-12 flex items-center">
+                        <span class="text-2xl font-bold text-gray-600">TechCorp</span>
+                    </div>
+                    <div class="h-12 flex items-center">
+                        <span class="text-2xl font-bold text-gray-600">GlobalBank</span>
+                    </div>
+                    <div class="h-12 flex items-center">
+                        <span class="text-2xl font-bold text-gray-600">MediHealth</span>
+                    </div>
+                    <div class="h-12 flex items-center">
+                        <span class="text-2xl font-bold text-gray-600">IndustryLeader</span>
+                    </div>
+                    <div class="h-12 flex items-center">
+                        <span class="text-2xl font-bold text-gray-600">Innovation Inc</span>
                     </div>
                 </div>
             </div>
@@ -727,127 +699,152 @@
     </section>
 
     <!-- Contact section -->
-    <section id="contact" class="py-20 bg-gray-900">
+    <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Get in <span class="gradient-text">Touch</span></h2>
-                <p class="text-gray-400 max-w-3xl mx-auto reveal">Ready to secure your business and leverage the power of AI? Contact us today.</p>
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font mb-6 reveal">Get In Touch</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-gray-600 text-lg reveal">Ready to transform your business with AI and cybersecurity excellence? Let's discuss your specific requirements.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="cyber-card rounded-2xl p-8 reveal">
-                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="mr-4 p-3 rounded-full bg-blue-500/20 text-blue-400">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="reveal">
+                    <div class="professional-card rounded-lg p-8">
+                        <h3 class="text-2xl font-bold heading-font mb-6">Schedule Your Consultation</h3>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-gray-700 font-medium mb-2">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required 
+                                           class="form-input w-full px-4 py-3 rounded-md">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-gray-700 font-medium mb-2">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required 
+                                           class="form-input w-full px-4 py-3 rounded-md">
+                                </div>
                             </div>
+                            
                             <div>
-                                <h4 class="font-semibold mb-1">Address</h4>
-                                <p class="text-gray-300">
-                                    123 Tech Boulevard<br>
-                                    Innovation District<br>
-                                    San Francisco, CA 94103
-                                </p>
+                                <label for="company" class="block text-gray-700 font-medium mb-2">Company *</label>
+                                <input type="text" id="company" name="company" required 
+                                       class="form-input w-full px-4 py-3 rounded-md">
                             </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="mr-4 p-3 rounded-full bg-purple-500/20 text-purple-400">
-                                <i class="fas fa-phone-alt text-xl"></i>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">Business Email *</label>
+                                    <input type="email" id="email" name="email" required 
+                                           class="form-input w-full px-4 py-3 rounded-md">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" 
+                                           class="form-input w-full px-4 py-3 rounded-md">
+                                </div>
                             </div>
+                            
                             <div>
-                                <h4 class="font-semibold mb-1">Phone</h4>
-                                <p class="text-gray-300">
-                                    +1 (555) 123-4567
-                                </p>
+                                <label for="service" class="block text-gray-700 font-medium mb-2">Service Interest *</label>
+                                <select id="service" name="service" required 
+                                        class="form-input w-full px-4 py-3 rounded-md">
+                                    <option value="">Select a service</option>
+                                    <option value="ai-solutions">AI Solutions</option>
+                                    <option value="cybersecurity">Cybersecurity Services</option>
+                                    <option value="ai-security">AI-Powered Security</option>
+                                    <option value="consulting">Strategy Consulting</option>
+                                    <option value="compliance">Compliance & Risk Management</option>
+                                </select>
                             </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="mr-4 p-3 rounded-full bg-cyan-500/20 text-cyan-400">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </div>
+                            
                             <div>
-                                <h4 class="font-semibold mb-1">Email</h4>
-                                <p class="text-gray-300">
-                                    info@orbitrar.com
-                                </p>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Project Details</label>
+                                <textarea id="message" name="message" rows="4" 
+                                          placeholder="Tell us about your project requirements, timeline, and budget considerations..."
+                                          class="form-input w-full px-4 py-3 rounded-md resize-none"></textarea>
                             </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="mr-4 p-3 rounded-full bg-green-500/20 text-green-400">
-                                <i class="fas fa-clock text-xl"></i>
+                            
+                            <div class="flex items-start">
+                                <input type="checkbox" id="privacy" name="privacy" required 
+                                       class="mt-1 mr-3 rounded text-blue-600">
+                                <label for="privacy" class="text-sm text-gray-600">
+                                    I agree to the <a href="#" class="text-blue-600 hover:text-blue-800">Privacy Policy</a> 
+                                    and consent to being contacted about Orbitrar services. *
+                                </label>
                             </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Business Hours</h4>
-                                <p class="text-gray-300">
-                                    Monday - Friday: 9am - 6pm<br>
-                                    Weekend: Closed
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-4">
-                            <h4 class="font-semibold mb-3">Follow Us</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-linkedin-in text-gray-300"></i>
-                                </a>
-                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-twitter text-gray-300"></i>
-                                </a>
-                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-github text-gray-300"></i>
-                                </a>
-                                <a href="#" class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
-                                    <i class="fab fa-facebook-f text-gray-300"></i>
-                                </a>
-                            </div>
-                        </div>
+                            
+                            <button type="submit" class="btn-primary w-full py-4 rounded-md text-lg font-medium">
+                                Schedule Consultation
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 
-                <div class="animated-border rounded-2xl p-1 reveal">
-                    <div class="bg-gray-800 rounded-2xl p-8 h-full">
-                        <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                <!-- Contact Information -->
+                <div class="reveal">
+                    <div class="space-y-8">
+                        <div class="professional-card rounded-lg p-6">
+                            <div class="flex items-start">
+                                <div class="service-icon mr-4" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2">Phone Support</h4>
+                                    <p class="text-gray-600 mb-2">24/7 Emergency Support Available</p>
+                                    <p class="text-blue-600 font-medium">+1 (555) 123-4567</p>
+                                    <p class="text-gray-600 text-sm">Mon-Fri: 8:00 AM - 6:00 PM EST</p>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <form>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div>
-                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Full Name</label>
-                                    <input type="text" id="name" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="John Doe" required>
+                        <div class="professional-card rounded-lg p-6">
+                            <div class="flex items-start">
+                                <div class="service-icon mr-4" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Email</label>
-                                    <input type="email" id="email" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="john@example.com" required>
+                                    <h4 class="text-lg font-semibold mb-2">Email Contact</h4>
+                                    <p class="text-gray-600 mb-2">For detailed inquiries and proposals</p>
+                                    <p class="text-blue-600 font-medium">info@orbitrar.com</p>
+                                    <p class="text-gray-600 text-sm">Response within 4 business hours</p>
                                 </div>
                             </div>
-                            
-                            <div class="mb-6">
-                                <label for="company" class="block mb-2 text-sm font-medium text-gray-300">Company</label>
-                                <input type="text" id="company" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="Your company name">
+                        </div>
+                        
+                        <div class="professional-card rounded-lg p-6">
+                            <div class="flex items-start">
+                                <div class="service-icon mr-4" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2">Headquarters</h4>
+                                    <p class="text-gray-600 mb-2">Visit our main office</p>
+                                    <p class="text-gray-900">123 Technology Drive</p>
+                                    <p class="text-gray-900">Innovation District</p>
+                                    <p class="text-gray-900">San Francisco, CA 94105</p>
+                                </div>
                             </div>
-                            
-                            <div class="mb-6">
-                                <label for="subject" class="block mb-2 text-sm font-medium text-gray-300">Subject</label>
-                                <input type="text" id="subject" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="How can we help?" required>
+                        </div>
+                        
+                        <div class="professional-card rounded-lg p-6">
+                            <h4 class="text-lg font-semibold mb-4">Global Offices</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">New York</span>
+                                    <span class="text-gray-900">+1 (555) 123-4568</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">London</span>
+                                    <span class="text-gray-900">+44 20 7123 4567</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Singapore</span>
+                                    <span class="text-gray-900">+65 6123 4567</span>
+                                </div>
                             </div>
-                            
-                            <div class="mb-6">
-                                <label for="message" class="block mb-2 text-sm font-medium text-gray-300">Message</label>
-                                <textarea id="message" rows="4" class="bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" placeholder="Tell us about your project or inquiry..." required></textarea>
-                            </div>
-                            
-                            <div class="flex items-center mb-6">
-                                <input id="privacy" type="checkbox" class="w-4 h-4 bg-gray-700 border-gray-600 rounded" required>
-                                <label for="privacy" class="ml-2 text-sm text-gray-300">I agree to the <a href="#" class="text-accent hover:underline">Privacy Policy</a></label>
-                            </div>
-                            
-                            <button type="submit" class="btn-primary py-3 px-8 w-full rounded-lg text-white font-medium">Send Message</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -855,171 +852,204 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-12 border-t border-gray-800">
+    <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <h3 class="text-2xl font-bold mb-6">
-                        <span class="gradient-text">Orbitrar</span>
-                    </h3>
-                    <p class="text-gray-400 mb-6">
-                        Securing the future with advanced AI and cybersecurity solutions.
+                    <div class="mb-6">
+                        <span class="text-2xl font-bold heading-font">
+                            <span class="text-white">Orbit</span><span class="text-blue-400">rar</span>
+                        </span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Leading enterprise AI and cybersecurity solutions provider, delivering innovation and security excellence to Fortune 500 companies worldwide.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fab fa-linkedin text-xl"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-twitter text-xl"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-github text-xl"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Solutions</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI Development</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cybersecurity Services</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Threat Intelligence</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Security Operations</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Compliance & Risk</a></li>
+                    <h4 class="text-lg font-semibold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">AI Solutions</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Cybersecurity</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">AI-Powered Security</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Strategy Consulting</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Compliance Management</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2">
+                    <h4 class="text-lg font-semibold mb-6">Industries</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#solutions" class="text-gray-400 hover:text-white transition-colors">Financial Services</a></li>
+                        <li><a href="#solutions" class="text-gray-400 hover:text-white transition-colors">Healthcare</a></li>
+                        <li><a href="#solutions" class="text-gray-400 hover:text-white transition-colors">Manufacturing</a></li>
+                        <li><a href="#solutions" class="text-gray-400 hover:text-white transition-colors">Technology</a></li>
+                        <li><a href="#solutions" class="text-gray-400 hover:text-white transition-colors">Government</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Company</h4>
+                    <ul class="space-y-3">
                         <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">News & Insights</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Partners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">News</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Resources</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Whitepapers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Webinars</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 Orbitrar. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-gray-400 text-sm">
+                            © 2025 Orbitrar Technologies. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- JavaScript -->
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+            mobileMenu.classList.add('active');
         });
-        
-        // Close mobile menu when clicking a link
-        const mobileLinks = document.querySelectorAll('#mobile-menu a');
-        mobileLinks.forEach(link => {
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
             });
         });
-        
-        // Scroll reveal
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        function checkReveal() {
-            const windowHeight = window.innerHeight;
-            const revealPoint = 150;
-            
-            revealElements.forEach(element => {
-                const revealTop = element.getBoundingClientRect().top;
-                
-                if (revealTop < windowHeight - revealPoint) {
-                    element.classList.add('active');
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-        }
+        });
+
+        // Reveal animation on scroll
+        const revealElements = document.querySelectorAll('.reveal');
         
-        window.addEventListener('scroll', checkReveal);
-        window.addEventListener('load', checkReveal);
-        
-        // Initialize particles.js
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#3b82f6', '#8b5cf6', '#06b6d4']
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#3b82f6',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1,
-                    direction: 'none',
-                    random: true,
-                    out_mode: 'out'
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            const requiredFields = ['firstName', 'lastName', 'company', 'email', 'service'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!data[field]) {
+                    isValid = false;
+                    const input = document.getElementById(field);
+                    input.style.borderColor = '#ef4444';
+                    setTimeout(() => {
+                        input.style.borderColor = '';
+                    }, 3000);
                 }
-            },
-            retina_detect: true
+            });
+            
+            if (!data.privacy) {
+                isValid = false;
+                alert('Please accept the privacy policy to continue.');
+                return;
+            }
+            
+            if (isValid) {
+                // Simulate form submission
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                submitButton.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your inquiry! We will contact you within 24 hours.');
+                    form.reset();
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                }, 2000);
+            }
+        });
+
+        // Add active class to navigation items based on current section
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-600');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-blue-600');
+                }
+            });
         });
     </script>
 </body>
