@@ -605,6 +605,125 @@
             z-index: 1;
         }
 
+        /* Contact Section */
+        .contact {
+            background: white;
+            padding: 8rem 0;
+        }
+
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            padding: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-details a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .contact-cta {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-cta h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            display: inline-block;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
@@ -647,6 +766,45 @@
             margin-bottom: 1rem;
             font-size: 1.1rem;
             line-height: 1.6;
+        }
+
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #cbd5e1;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .footer-contact-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+        }
+
+        .footer-contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact-item a:hover {
+            color: white;
         }
 
         .footer-bottom {
@@ -698,6 +856,17 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-contacts {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
             }
         }
     </style>
@@ -920,13 +1089,63 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Contact Us</div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to transform your business with AI? Let's start the conversation</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>Call Us</h4>
+                                <p><a href="tel:+919995511967">+91 9995511967</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-cta">
+                        <h3>Ready to Get Started?</h3>
+                        <p>Transform your business with our cutting-edge AI solutions. Contact us today to discuss your requirements and discover how Orbitrar can help you achieve your goals.</p>
+                        <a href="mailto:vineeth.n@orbitrar.com" class="contact-button">Start Your AI Journey</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Orbitrar</div>
                 <p class="footer-text">Leading the future of AI software and cybersecurity solutions</p>
                 <p class="footer-text">Contact us to learn how we can transform your business with intelligent automation</p>
+                
+                <div class="footer-contacts">
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">📧</div>
+                        <a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">📞</div>
+                        <a href="tel:+919995511967">+91 9995511967</a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Orbitrar. All rights reserved.</p>
