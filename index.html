@@ -50,33 +50,26 @@
             cursor: none;
         }
 
-        /* --- Custom Cursor --- */
+        /* --- NEW: Moon Cursor Design --- */
         .cursor {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--color-text-secondary);
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
+            background-color: transparent; /* The element itself is invisible */
+            box-shadow: -5px 5px 0 0 var(--color-text-primary); /* This creates the crescent shape */
             position: fixed;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) rotate(0deg); /* Added rotate for potential future effects */
             pointer-events: none;
             z-index: 9999;
-            transition: all 0.1s ease-out;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out;
         }
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--color-accent);
-            border-radius: 50%;
-            position: fixed;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 9999;
-        }
+
+        /* REMOVED .cursor-dot styles */
+
         .cursor.hovered {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(59, 130, 246, 0.1);
-            border-color: var(--color-accent);
+            transform: translate(-50%, -50%) scale(1.3) rotate(-15deg);
+            box-shadow: -4px 4px 0 0 var(--color-accent); /* Crescent turns to accent color */
+            filter: drop-shadow(0 0 8px var(--color-accent)); /* A glow is added around the crescent shape */
         }
 
         .container {
@@ -653,8 +646,8 @@
     </style>
 </head>
 <body>
+    <!-- MODIFIED: .cursor-dot has been removed -->
     <div class="cursor"></div>
-    <div class="cursor-dot"></div>
 
     <header>
         <nav class="container">
@@ -843,11 +836,11 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // 1. Cursor and Spotlight Effect
+            // MODIFIED: Simplified to only handle the single .cursor element
             const cursor = document.querySelector('.cursor');
-            const cursorDot = document.querySelector('.cursor-dot');
             const body = document.body;
 
-            if (cursor && cursorDot) {
+            if (cursor) { // Check if the cursor element exists
                 window.addEventListener('mousemove', e => {
                     const posX = e.clientX;
                     const posY = e.clientY;
@@ -855,8 +848,6 @@
                     requestAnimationFrame(() => {
                         cursor.style.left = `${posX}px`;
                         cursor.style.top = `${posY}px`;
-                        cursorDot.style.left = `${posX}px`;
-                        cursorDot.style.top = `${posY}px`;
                         body.style.setProperty('--spotlight-x', `${posX}px`);
                         body.style.setProperty('--spotlight-y', `${posY}px`);
                     });
