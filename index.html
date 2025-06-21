@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbitrar - AI Software & Cybersecurity Solutions</title>
+    <title>Orbitrar - Advanced AI Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
+        /* --- Global Styles & Resets --- */
+        :root {
+            --color-bg: #111827; /* Dark Slate Blue */
+            --color-bg-secondary: #1F2937; /* Lighter Slate Blue */
+            --color-border: #374151;
+            --color-text-primary: #F3F4F6; /* Light Gray */
+            --color-text-secondary: #9CA3AF; /* Medium Gray */
+            --color-accent: #3B82F6; /* Vibrant Blue */
+            --color-accent-hover: #2563EB;
+            --gradient-text: linear-gradient(90deg, #3B82F6, #A78BFA);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,694 +31,492 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
             line-height: 1.6;
-            color: #0f172a;
-            background: #ffffff;
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            opacity: 0.03;
+        a {
+            text-decoration: none;
+            color: var(--color-accent);
+            transition: color 0.3s ease;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        a:hover {
+            color: var(--color-accent-hover);
         }
 
-        /* Header */
+        ul {
+            list-style: none;
+        }
+
+        /* --- Header & Navigation --- */
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
             z-index: 1000;
-            transition: all 0.3s ease;
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
         }
 
-        nav {
+        header nav.container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            height: 80px;
         }
 
         .logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .nav-links a {
-            color: #475569;
-            text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            color: var(--color-text-secondary);
             position: relative;
-            padding: 0.5rem 0;
+            padding: 5px 0;
         }
 
-        .nav-links a::before {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background-color: var(--color-accent);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #1e293b;
+            color: var(--color-text-primary);
         }
-
-        .nav-links a:hover::before {
+        
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 1000px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        .hero-gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: #64748b;
-            margin-bottom: 3rem;
-            font-weight: 400;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .cta-container {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .cta-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-primary:hover::before {
-            left: 100%;
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
-        }
-
-        .cta-secondary {
-            background: white;
-            color: #1e293b;
-            border: 2px solid #e2e8f0;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-secondary:hover {
-            border-color: #667eea;
-            color: #667eea;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Section Styles */
+        /* --- Generic Section Styling --- */
         .section {
-            padding: 8rem 0;
-            position: relative;
+            padding: 6rem 0;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
         }
 
         .section-badge {
             display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
+            background-color: var(--color-bg-secondary);
+            color: var(--color-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--color-border);
         }
 
         .section-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
-            color: #64748b;
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.6;
         }
 
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        /* --- Hero Section --- */
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            text-align: center;
         }
 
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background-color: var(--color-accent);
+            color: white; /* CORRECTED: Black text was unreadable */
+        }
+
+        .cta-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-secondary {
+            background-color: transparent;
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+
+        .cta-secondary:hover {
+            background-color: var(--color-bg-secondary);
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        /* --- About Section --- */
         .about-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
         .about-text {
-            font-size: 1.3rem;
-            color: #475569;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
         }
-
-        /* Products Section */
-        .products {
-            background: white;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 24px;
-            padding: 3.5rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            border: 1px solid #f1f5f9;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .product-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
-        }
-
+        
+        /* --- Products Section --- */
         .product-header {
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 2.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .product-name {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
         }
 
         .product-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
+            background: var(--gradient-text);
+            color: rgb(0, 0, 0); /* CORRECTED: Black text was unreadable */
+            padding: 0.2rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
 
         .product-description {
-            font-size: 1.2rem;
-            color: #475569;
-            line-height: 1.7;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
         }
 
-        .feature-section {
-            margin-bottom: 3rem;
+        /* --- NEW Advanced Main Product Spotlight --- */
+        .main-product-spotlight {
+            background-color: var(--color-bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 4rem;
+            padding: 3rem;
+            border-top: 4px solid;
+            border-image-slice: 1;
+            border-image-source: var(--gradient-text);
+            box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.4);
+            /* CSS for 3D effect */
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.4s ease-out; /* Smooths return on mouse leave */
+        }
+        
+        .main-product-card {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            /* Prevents child elements from interfering with mouse events */
+            pointer-events: none;
+        }
+
+        .main-product-info {
+            flex: 1.2;
+        }
+        
+        .main-product-card .product-name {
+            font-size: 2rem;
+            line-height: 1.3;
+            color: var(--color-text-primary);
+        }
+
+        .main-product-card .product-description {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+        }
+
+        .main-product-feature {
+            flex: 1;
+            padding-left: 3rem;
+            border-left: 1px solid var(--color-border);
         }
 
         .feature-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
-
-        .feature-title::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .performance-highlight {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            border: 2px solid rgba(102, 126, 234, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
+        
         .performance-highlight p {
             font-size: 1.1rem;
-            color: #1e293b;
-            margin: 0;
-        }
-
-        .highlight-number {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.4rem 1rem;
+            background-color: var(--color-bg);
+            padding: 1rem;
             border-radius: 8px;
-            font-weight: 800;
-            font-size: 1.1rem;
         }
-
-        .feature-tags {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            color: #475569;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
+        
+        .highlight-number {
             font-weight: 600;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            color: var(--color-text-primary);
         }
 
-        .tag:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            transform: translateY(-2px);
+        /* --- Side Projects --- */
+        .side-projects-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        .side-projects-header h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .side-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .side-product-card {
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .side-product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
         }
 
         .features-list {
-            list-style: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .features-list li {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #f1f5f9;
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .features-list li:hover {
-            background: rgba(102, 126, 234, 0.02);
-            margin: 0 -1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            border-radius: 12px;
-        }
-
-        .features-list li:last-child {
-            border-bottom: none;
+            gap: 1rem;
         }
 
         .feature-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
             flex-shrink: 0;
-            margin-top: 2px;
-            position: relative;
-        }
-
-        .feature-icon::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
+            margin-top: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
         }
 
         .feature-content h4 {
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            font-size: 1rem;
         }
-
         .feature-content p {
-            color: #64748b;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
         }
-
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
+        
+        /* --- Services Section --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .service-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f1f5f9;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
+        
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .service-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 25px;
-            margin: 0 auto 2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 2.5rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 1rem;
+            line-height: 1;
         }
 
         .service-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .service-description {
-            color: #64748b;
-            line-height: 1.7;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
+            color: var(--color-text-secondary);
         }
 
-        /* Footer */
+        /* --- Footer --- */
         footer {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 5rem 0 3rem 0;
+            background-color: var(--color-bg-secondary);
+            padding: 4rem 0;
+            border-top: 1px solid var(--color-border);
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="700" r="200" fill="url(%23a)"/></svg>') no-repeat center center;
-            background-size: cover;
-        }
-
+        
         .footer-content {
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 2rem;
         }
 
         .footer-logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-text {
-            color: #cbd5e1;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
             margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
+        }
+        
+        .footer-text {
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0.5rem auto;
         }
 
         .footer-bottom {
-            border-top: 1px solid #475569;
             padding-top: 2rem;
-            color: #94a3b8;
-            position: relative;
-            z-index: 1;
+            border-top: 1px solid var(--color-border);
         }
 
-        /* Responsive Design */
+        .footer-contact p {
+            color: var(--color-text-secondary);
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            .main-product-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+            .main-product-feature {
+                padding-left: 0;
+                padding-top: 2rem;
+                border-left: none;
+                border-top: 1px solid var(--color-border);
+                width: 100%;
+            }
+        }
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
             }
 
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
-
+            
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .product-card {
-                padding: 2.5rem;
-            }
-
-            .hero-stats {
-                gap: 2rem;
-            }
-
+            
             .cta-container {
                 flex-direction: column;
-                align-items: center;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
 
-    <!-- Header -->
     <header>
         <nav class="container">
             <div class="logo">Orbitrar</div>
@@ -726,7 +537,6 @@
                 <div class="hero-badge">🚀 Next-Generation AI Technology</div>
                 <h1>Advanced <span class="hero-gradient-text">AI Solutions</span></h1>
                 <p class="hero-subtitle">Transforming businesses with cutting-edge AI software and cybersecurity solutions</p>
-                
                 <div class="cta-container">
                     <a href="#products" class="cta-primary">Explore Our Products</a>
                     <a href="#contact" class="cta-secondary">Get In Touch</a>
@@ -736,7 +546,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
+    <section id="about" class="section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">About Orbitrar</div>
@@ -744,7 +554,7 @@
                 <p class="section-subtitle">Pioneering the future of intelligent automation</p>
             </div>
             <div class="about-content">
-                <p class="about-text">We are a leading technology company specializing in AI-powered software solutions and cybersecurity services. Our mission is to empower businesses with intelligent automation and robust security frameworks.</p>
+                <p class="about-text">We are a leading technology company specializing in AI-powered software solutions and cybersecurity services.</p>
             </div>
         </div>
     </section>
@@ -753,36 +563,44 @@
     <section id="products" class="section products">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Our Products</div>
-                <h2 class="section-title">Future Revolutionary AI Products</h2>
-                <p class="section-subtitle">Transform your business with our flagship AI solutions</p>
+                <div class="section-badge">Our Flagship Product</div>
+                <p class="section-subtitle">The core of our innovation, built for next-generation integration.</p>
             </div>
-            
-            <div class="products-grid">
+
+            <!-- Main Product Spotlight with 3D Tilt Effect -->
+            <div class="main-product-spotlight">
+                <div class="main-product-card">
+                    <div class="main-product-info">
+                        <div class="product-header">
+                            <div class="product-badge">MCP Enabled</div>
+                            <h3 class="product-name">AI-powered Conversational Assistant</h3>
+                            <p class="product-description">Advanced AI-powered conversational assistant agent with Model Context Protocol capabilities</p>
+                        </div>
+                    </div>
+                    <div class="main-product-feature">
+                        <h4 class="feature-title">Intelligent Conversational Assistant</h4>
+                        <div class="performance-highlight">
+                            <p>Next-generation conversational AI with <span class="highlight-number">MCP enabled</span> capabilities for seamless system integration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Projects Section -->
+            <div class="side-projects-header">
+                <h3>Future Revolutionary AI Products</h3>
+            </div>
+            <div class="side-projects-grid">
                 <!-- Vox AI -->
-                <div class="product-card">
+                <div class="side-product-card">
                     <div class="product-header">
                         <h3 class="product-name">Vox AI</h3>
                         <div class="product-badge">Attendance System</div>
                         <p class="product-description">AI-powered attendance notification system for educational institutions</p>
                     </div>
-                    
-                    <div class="feature-section">
-                        <h4 class="feature-title">Student Attendance Management</h4>
-                        <div class="performance-highlight">
-                            <p>Monitors student attendance and <span class="highlight-number">automatically notifies</span> homes when students are absent</p>
-                        </div>
-
-                        <div class="feature-tags">
-                            <span class="tag">Attendance Tracking</span>
-                            <span class="tag">Automated Calling</span>
-                            <span class="tag">Home Notification</span>
-                        </div>
-                    </div>
-
-                    <div class="feature-section">
+                    <div class="features-list">
                         <h4 class="feature-title">Core Features</h4>
-                        <ul class="features-list">
+                        <ul>
                             <li>
                                 <div class="feature-icon"></div>
                                 <div class="feature-content">
@@ -807,31 +625,15 @@
                         </ul>
                     </div>
                 </div>
-
                 <!-- NeuraHire AI -->
-                <div class="product-card">
+                <div class="side-product-card">
                     <div class="product-header">
                         <h3 class="product-name">NeuraHire AI</h3>
-                        <div class="product-badge">HR Revolution</div>
                         <p class="product-description">Intelligent recruitment platform that conducts first-round interviews automatically</p>
                     </div>
-                    
-                    <div class="feature-section">
-                        <h4 class="feature-title">Automated Interview Process</h4>
-                        <div class="performance-highlight">
-                            <p>Upload candidate resumes and let AI conduct <span class="highlight-number">first-round interviews</span> to qualify candidates</p>
-                        </div>
-                        
-                        <div class="feature-tags">
-                            <span class="tag">Resume Upload</span>
-                            <span class="tag">AI Interviewer</span>
-                            <span class="tag">Candidate Qualification</span>
-                        </div>
-                    </div>
-
-                    <div class="feature-section">
+                    <div class="features-list">
                         <h4 class="feature-title">Recruitment Features</h4>
-                        <ul class="features-list">
+                        <ul>
                             <li>
                                 <div class="feature-icon"></div>
                                 <div class="feature-content">
@@ -853,13 +655,6 @@
                                     <p>AI evaluates and qualifies candidates based on interview</p>
                                 </div>
                             </li>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>Recruiter Dashboard</h4>
-                                    <p>View qualified candidates and interview results</p>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -875,20 +670,17 @@
                 <h2 class="section-title">Comprehensive AI Services</h2>
                 <p class="section-subtitle">End-to-end AI solutions tailored for your success</p>
             </div>
-            
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
                     <h3 class="service-title">AI Agents</h3>
                     <p class="service-description">Deploy intelligent AI agents that can handle complex tasks, make decisions, and interact with your systems autonomously to streamline operations.</p>
                 </div>
-                
                 <div class="service-card">
                     <div class="service-icon">⚡</div>
                     <h3 class="service-title">Advanced MCP Assistants</h3>
                     <p class="service-description">Leverage cutting-edge MCP (Model Context Protocol) enabled assistants for enhanced AI capabilities and seamless integration.</p>
                 </div>
-                
                 <div class="service-card">
                     <div class="service-icon">🔒</div>
                     <h3 class="service-title">Cybersecurity Solutions</h3>
@@ -906,7 +698,38 @@
                 <p class="footer-text">Leading the future of AI software and cybersecurity solutions</p>
                 <p class="footer-text">Contact us to learn how we can transform your business with intelligent automation</p>
             </div>
+            <div class="footer-bottom">
+                <div class="footer-contact">
+                    <p>Business inquiries: <a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // JavaScript for the 3D Tilt Effect on the main product card
+        const card = document.querySelector('.main-product-spotlight');
+
+        if (card) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the element.
+                const y = e.clientY - rect.top;  // y position within the element.
+
+                const { width, height } = rect;
+                const rotateX = (y / height - 0.5) * -14; // Invert y-axis for natural tilt
+                const rotateY = (x / width - 0.5) * 14;
+
+                // Apply the transform
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Reset transform when mouse leaves
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+        }
+    </script>
+
 </body>
 </html>
