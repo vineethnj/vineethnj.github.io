@@ -10,14 +10,17 @@
     <style>
         /* --- Global Styles & Resets --- */
         :root {
-            --color-bg: #111827; /* Dark Slate Blue */
-            --color-bg-secondary: #1F2937; /* Lighter Slate Blue */
+            --color-bg: #111827;
+            --color-bg-alt: #1F2937;
+            --color-bg-card: #1f2937;
             --color-border: #374151;
-            --color-text-primary: #F3F4F6; /* Light Gray */
-            --color-text-secondary: #9CA3AF; /* Medium Gray */
-            --color-accent: #3B82F6; /* Vibrant Blue */
+            --color-text-primary: #F3F4F6;
+            --color-text-secondary: #9CA3AF;
+            --color-accent: #3B82F6;
             --color-accent-hover: #2563EB;
             --gradient-text: linear-gradient(90deg, #3B82F6, #A78BFA);
+            --shadow-color: rgba(59, 130, 246, 0.2);
+            --shadow-glow: 0 0 40px -10px var(--color-accent);
         }
 
         * {
@@ -34,7 +37,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -56,6 +61,18 @@
         ul {
             list-style: none;
         }
+
+        /* --- Animation for Scroll --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         /* --- Header & Navigation --- */
         header {
@@ -114,17 +131,21 @@
 
         /* --- Generic Section Styling --- */
         .section {
-            padding: 6rem 0;
+            padding: 7rem 0;
+            overflow: hidden; /* Contains animations */
+        }
+        .section-alt-bg {
+             background-color: var(--color-bg-alt);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-badge {
             display: inline-block;
-            background-color: var(--color-bg-secondary);
+            background-color: var(--color-bg);
             color: var(--color-accent);
             padding: 0.5rem 1rem;
             border-radius: 999px;
@@ -135,9 +156,9 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: var(--color-text-primary);
         }
 
@@ -153,31 +174,32 @@
             min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
-            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            flex: 1;
+            max-width: 600px;
+            text-align: left;
         }
 
         .hero-badge {
-            display: inline-block;
-            background-color: var(--color-bg-secondary);
-            color: var(--color-text-primary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 500;
             margin-bottom: 1.5rem;
-            border: 1px solid var(--color-border);
         }
         
         .hero h1 {
-            font-size: 3.8rem;
+            font-size: 4.2rem;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
         }
 
         .hero-gradient-text {
@@ -192,11 +214,13 @@
             font-size: 1.25rem;
             color: var(--color-text-secondary);
             margin-bottom: 2.5rem;
+            text-align: left;
+            margin-left: 0;
         }
 
         .cta-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 1rem;
         }
 
@@ -211,13 +235,13 @@
 
         .cta-primary {
             background-color: var(--color-accent);
-            color: white; /* CORRECTED: Black text was unreadable */
+            color: white;
         }
 
         .cta-primary:hover {
             background-color: var(--color-accent-hover);
             transform: translateY(-3px);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 25px var(--shadow-color);
         }
 
         .cta-secondary {
@@ -227,28 +251,72 @@
         }
 
         .cta-secondary:hover {
-            background-color: var(--color-bg-secondary);
-            border-color: var(--color-accent);
+            background-color: var(--color-bg-card);
+            border-color: var(--color-text-primary);
             transform: translateY(-3px);
         }
-        
+
+        /* --- Hero Visual Element (AI Orb) --- */
+        .hero-visual {
+            flex: 0 0 400px;
+            height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        @keyframes rotate-reverse { 100% { transform: rotate(-360deg); } }
+
+        .ai-orb, .ai-orb::before, .ai-orb::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+            animation: rotate 15s linear infinite;
+        }
+
+        .ai-orb {
+            width: 300px;
+            height: 300px;
+            border-color: var(--color-border);
+            opacity: 0.5;
+        }
+        .ai-orb::before {
+            width: 350px;
+            height: 350px;
+            border-color: var(--color-border) transparent;
+            animation-duration: 10s;
+        }
+        .ai-orb::after {
+            width: 250px;
+            height: 250px;
+            border-color: transparent var(--color-border);
+            animation: rotate-reverse 12s linear infinite;
+        }
+        .ai-orb-core {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--color-accent) 0%, var(--color-bg) 70%);
+            border-radius: 50%;
+            box-shadow: var(--shadow-glow);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
+
         /* --- About Section --- */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
-
         .about-text {
             font-size: 1.2rem;
             color: var(--color-text-secondary);
         }
         
         /* --- Products Section --- */
-        .product-header {
-            margin-bottom: 1.5rem;
-        }
-
         .product-name {
             font-size: 1.5rem;
             font-weight: 600;
@@ -259,11 +327,11 @@
         .product-badge {
             display: inline-block;
             background: var(--gradient-text);
-            color: rgb(0, 0, 0); /* CORRECTED: Black text was unreadable */
+            color: white;
             padding: 0.2rem 0.8rem;
             border-radius: 6px;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
@@ -272,149 +340,82 @@
             font-size: 0.95rem;
         }
 
-        /* --- NEW Advanced Main Product Spotlight --- */
+        /* Main Product Spotlight */
         .main-product-spotlight {
-            background-color: var(--color-bg-secondary);
-            border-radius: 12px;
+            background-image: linear-gradient(145deg, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.7));
+            border-radius: 16px;
             margin-bottom: 4rem;
             padding: 3rem;
             border-top: 4px solid;
             border-image-slice: 1;
             border-image-source: var(--gradient-text);
-            box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.4);
-            /* CSS for 3D effect */
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.4);
             transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.4s ease-out; /* Smooths return on mouse leave */
+            perspective: 1500px;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        
-        .main-product-card {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            /* Prevents child elements from interfering with mouse events */
-            pointer-events: none;
+        .main-product-spotlight:hover {
+             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
         }
-
-        .main-product-info {
-            flex: 1.2;
-        }
-        
-        .main-product-card .product-name {
-            font-size: 2rem;
-            line-height: 1.3;
-            color: var(--color-text-primary);
-        }
-
-        .main-product-card .product-description {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-        }
-
-        .main-product-feature {
-            flex: 1;
-            padding-left: 3rem;
-            border-left: 1px solid var(--color-border);
-        }
-
-        .feature-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        
-        .performance-highlight p {
-            font-size: 1.1rem;
-            background-color: var(--color-bg);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .highlight-number {
-            font-weight: 600;
-            color: var(--color-text-primary);
-        }
+        .main-product-card { display: flex; align-items: center; gap: 3rem; pointer-events: none; }
+        .main-product-info { flex: 1.2; }
+        .main-product-card .product-name { font-size: 2rem; }
+        .main-product-card .product-description { font-size: 1.1rem; }
+        .main-product-feature { flex: 1; padding-left: 3rem; border-left: 1px solid var(--color-border); }
+        .feature-title { font-size: 1rem; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .performance-highlight p { font-size: 1.1rem; background-color: var(--color-bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border); }
+        .highlight-number { font-weight: 700; color: var(--color-text-primary); }
 
         /* --- Side Projects --- */
-        .side-projects-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            margin-top: 1rem;
-        }
-
-        .side-projects-header h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--color-text-secondary);
-        }
-
-        .side-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
+        .side-projects-header { text-align: center; margin: 3rem 0 2rem; }
+        .side-projects-header h3 { font-size: 1.8rem; font-weight: 600; color: var(--color-text-secondary); }
+        .side-projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
 
         .side-product-card {
-            background-color: var(--color-bg-secondary);
+            background-image: linear-gradient(145deg, var(--color-bg-card), var(--color-bg));
             border: 1px solid var(--color-border);
             border-radius: 12px;
             padding: 2rem;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .side-product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow);
         }
 
-        .features-list {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--color-border);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .features-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
+        .features-list { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 1rem; }
+        .features-list li { display: flex; align-items: flex-start; gap: 0.75rem; }
+        
+        /* Upgraded Feature Icon to a Checkmark */
         .feature-icon {
             flex-shrink: 0;
-            margin-top: 8px;
-            width: 8px;
-            height: 8px;
-            background: var(--color-accent);
+            margin-top: 5px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
+            background-color: rgba(59, 130, 246, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-icon::before {
+            content: '✓';
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 12px;
         }
 
-        .feature-content h4 {
-            font-weight: 600;
-            color: var(--color-text-primary);
-            font-size: 1rem;
-        }
-        .feature-content p {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-        }
+        .feature-content h4 { font-weight: 600; color: var(--color-text-primary); font-size: 1rem; margin-bottom: 0.1rem; }
+        .feature-content p { font-size: 0.9rem; color: var(--color-text-secondary); }
         
         /* --- Services Section --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 
         .service-card {
-            background-color: var(--color-bg-secondary);
+            background-image: linear-gradient(145deg, var(--color-bg-card), var(--color-bg));
             border: 1px solid var(--color-border);
             border-radius: 12px;
             padding: 2.5rem 2rem;
@@ -423,95 +424,53 @@
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow);
         }
 
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            line-height: 1;
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-description {
-            color: var(--color-text-secondary);
-        }
+        .service-icon-wrapper { display: inline-flex; align-items: center; justify-content: center; width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 16px; background: var(--gradient-text); }
+        .service-icon { font-size: 2.5rem; line-height: 1; }
+        .service-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .service-description { color: var(--color-text-secondary); }
 
         /* --- Footer --- */
         footer {
-            background-color: var(--color-bg-secondary);
-            padding: 4rem 0;
-            border-top: 1px solid var(--color-border);
-            text-align: center;
-        }
-        
-        .footer-content {
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            margin-bottom: 1rem;
-        }
-        
-        .footer-text {
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0.5rem auto;
-        }
-
-        .footer-bottom {
-            padding-top: 2rem;
+            background-color: #0d121c;
+            padding: 5rem 0 2rem 0;
             border-top: 1px solid var(--color-border);
         }
-
-        .footer-contact p {
-            color: var(--color-text-secondary);
-        }
-
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
+        .footer-about .footer-logo { font-size: 2rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 1rem; }
+        .footer-about p { color: var(--color-text-secondary); max-width: 300px; }
+        .footer-links h4, .footer-contact h4 { font-size: 1.1rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 1.5rem; }
+        .footer-links ul li { margin-bottom: 0.75rem; }
+        .footer-links ul a { color: var(--color-text-secondary); }
+        .footer-links ul a:hover { color: var(--color-accent); }
+        .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
+        
         /* --- Responsive Adjustments --- */
         @media (max-width: 992px) {
-            .main-product-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2rem;
-            }
-            .main-product-feature {
-                padding-left: 0;
-                padding-top: 2rem;
-                border-left: none;
-                border-top: 1px solid var(--color-border);
-                width: 100%;
-            }
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-content { text-align: center; max-width: 700px; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-subtitle { text-align: center; margin-left: auto; margin-right: auto;}
+            .cta-container { justify-content: center; }
+            .hero-visual { flex: 0 0 300px; height: 300px; margin-top: 2rem; }
+            .ai-orb { width: 250px; height: 250px;}
+            .ai-orb::before { width: 300px; height: 300px; }
+            .ai-orb::after { width: 200px; height: 200px; }
+            .ai-orb-core { width: 120px; height: 120px;}
+            .main-product-card { flex-direction: column; align-items: flex-start; gap: 2rem; }
+            .main-product-feature { padding-left: 0; padding-top: 2rem; border-left: none; border-top: 1px solid var(--color-border); width: 100%; }
         }
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .cta-container {
-                flex-direction: column;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2.2rem; }
+            .cta-container { flex-direction: column; align-items: center; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-about p { margin: 0 auto; }
         }
     </style>
 </head>
@@ -533,7 +492,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content fade-in-section">
                 <div class="hero-badge">🚀 Next-Generation AI Technology</div>
                 <h1>Advanced <span class="hero-gradient-text">AI Solutions</span></h1>
                 <p class="hero-subtitle">Transforming businesses with cutting-edge AI software and cybersecurity solutions</p>
@@ -542,18 +501,23 @@
                     <a href="#contact" class="cta-secondary">Get In Touch</a>
                 </div>
             </div>
+            <div class="hero-visual fade-in-section">
+                <div class="ai-orb">
+                    <div class="ai-orb-core"></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section section-alt-bg">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-section">
                 <div class="section-badge">About Orbitrar</div>
                 <h2 class="section-title">Leading AI Innovation</h2>
                 <p class="section-subtitle">Pioneering the future of intelligent automation</p>
             </div>
-            <div class="about-content">
+            <div class="about-content fade-in-section">
                 <p class="about-text">We are a leading technology company specializing in AI-powered software solutions and cybersecurity services.</p>
             </div>
         </div>
@@ -562,13 +526,12 @@
     <!-- Products Section -->
     <section id="products" class="section products">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-section">
                 <div class="section-badge">Our Flagship Product</div>
                 <p class="section-subtitle">The core of our innovation, built for next-generation integration.</p>
             </div>
 
-            <!-- Main Product Spotlight with 3D Tilt Effect -->
-            <div class="main-product-spotlight">
+            <div class="main-product-spotlight fade-in-section">
                 <div class="main-product-card">
                     <div class="main-product-info">
                         <div class="product-header">
@@ -586,103 +549,60 @@
                 </div>
             </div>
 
-            <!-- Side Projects Section -->
-            <div class="side-projects-header">
+            <div class="side-projects-header fade-in-section">
                 <h3>Future Revolutionary AI Products</h3>
             </div>
             <div class="side-projects-grid">
-                <!-- Vox AI -->
-                <div class="side-product-card">
+                <div class="side-product-card fade-in-section">
                     <div class="product-header">
                         <h3 class="product-name">Vox AI</h3>
                         <div class="product-badge">Attendance System</div>
                         <p class="product-description">AI-powered attendance notification system for educational institutions</p>
                     </div>
-                    <div class="features-list">
+                    <ul class="features-list">
                         <h4 class="feature-title">Core Features</h4>
-                        <ul>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>Student Database</h4>
-                                    <p>Manage student names and contact numbers</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>Absence Detection</h4>
-                                    <p>Real-time tracking of student attendance</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>AI Voice Calls</h4>
-                                    <p>Automated calls to notify parents of absences</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Student Database</h4><p>Manage student names and contact numbers</p></div></li>
+                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Absence Detection</h4><p>Real-time tracking of student attendance</p></div></li>
+                        <li><span class="feature-icon"></span><div class="feature-content"><h4>AI Voice Calls</h4><p>Automated calls to notify parents of absences</p></div></li>
+                    </ul>
                 </div>
-                <!-- NeuraHire AI -->
-                <div class="side-product-card">
+                <div class="side-product-card fade-in-section">
                     <div class="product-header">
                         <h3 class="product-name">NeuraHire AI</h3>
                         <p class="product-description">Intelligent recruitment platform that conducts first-round interviews automatically</p>
                     </div>
-                    <div class="features-list">
+                    <ul class="features-list">
                         <h4 class="feature-title">Recruitment Features</h4>
-                        <ul>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>Resume Processing</h4>
-                                    <p>Upload and process candidates numbers</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>AI Interview</h4>
-                                    <p>Automated first-round interview for each candidate</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="feature-icon"></div>
-                                <div class="feature-content">
-                                    <h4>Candidate Qualification</h4>
-                                    <p>AI evaluates and qualifies candidates based on interview</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Resume Processing</h4><p>Upload and process candidates numbers</p></div></li>
+                        <li><span class="feature-icon"></span><div class="feature-content"><h4>AI Interview</h4><p>Automated first-round interview for each candidate</p></div></li>
+                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Candidate Qualification</h4><p>AI evaluates and qualifies candidates based on interview</p></div></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section services">
+    <section id="services" class="section section-alt-bg services">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-section">
                 <div class="section-badge">Our Services</div>
                 <h2 class="section-title">Comprehensive AI Services</h2>
                 <p class="section-subtitle">End-to-end AI solutions tailored for your success</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
+                <div class="service-card fade-in-section">
+                    <div class="service-icon-wrapper"><div class="service-icon">🤖</div></div>
                     <h3 class="service-title">AI Agents</h3>
                     <p class="service-description">Deploy intelligent AI agents that can handle complex tasks, make decisions, and interact with your systems autonomously to streamline operations.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
+                <div class="service-card fade-in-section" style="transition-delay: 0.1s;">
+                    <div class="service-icon-wrapper"><div class="service-icon">⚡</div></div>
                     <h3 class="service-title">Advanced MCP Assistants</h3>
                     <p class="service-description">Leverage cutting-edge MCP (Model Context Protocol) enabled assistants for enhanced AI capabilities and seamless integration.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🔒</div>
+                <div class="service-card fade-in-section" style="transition-delay: 0.2s;">
+                    <div class="service-icon-wrapper"><div class="service-icon">🔒</div></div>
                     <h3 class="service-title">Cybersecurity Solutions</h3>
                     <p class="service-description">Comprehensive security frameworks designed to protect your business from modern cyber threats with AI-powered monitoring and response.</p>
                 </div>
@@ -693,15 +613,28 @@
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Orbitrar</div>
-                <p class="footer-text">Leading the future of AI software and cybersecurity solutions</p>
-                <p class="footer-text">Contact us to learn how we can transform your business with intelligent automation</p>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Orbitrar</div>
+                    <p>Leading the future of AI software and cybersecurity solutions. Contact us to learn how we can transform your business.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Business inquiries:</p>
+                    <p><a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
+                </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-contact">
-                    <p>Business inquiries: <a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
-                </div>
+                <p>© 2024 Orbitrar. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -709,26 +642,36 @@
     <script>
         // JavaScript for the 3D Tilt Effect on the main product card
         const card = document.querySelector('.main-product-spotlight');
-
         if (card) {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // x position within the element.
-                const y = e.clientY - rect.top;  // y position within the element.
-
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 const { width, height } = rect;
-                const rotateX = (y / height - 0.5) * -14; // Invert y-axis for natural tilt
-                const rotateY = (x / width - 0.5) * 14;
-
-                // Apply the transform
+                const rotateX = (y / height - 0.5) * -10;
+                const rotateY = (x / width - 0.5) * 10;
                 card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
-
             card.addEventListener('mouseleave', () => {
-                // Reset transform when mouse leaves
                 card.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
         }
+
+        // JavaScript for fade-in animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const sections = document.querySelectorAll('.fade-in-section');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 
 </body>
