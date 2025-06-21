@@ -121,12 +121,15 @@
             align-items: center;
             height: 80px;
         }
+        
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-text-primary);
+        /* Styling for the image-based logo text */
+        .logo-text-img {
+            height: 32px; /* Adjust this value to your liking */
+            width: auto;  /* Maintains the image's aspect ratio */
         }
+        /* --- End of CSS Logo --- */
+
 
         .nav-links {
             display: flex;
@@ -627,7 +630,11 @@
             background: var(--gradient-text);
         }
         .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
-        .footer-about .footer-logo { font-size: 2rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 1rem; }
+        
+        .footer-about .logo {
+             margin-bottom: 1rem;
+        }
+        
         .footer-about p { color: var(--color-text-secondary); max-width: 300px; }
         .footer-links h4, .footer-contact h4 { font-size: 1.1rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 1.5rem; }
         .footer-links ul li { margin-bottom: 0.75rem; }
@@ -659,6 +666,7 @@
             .section-title { font-size: 2.2rem; }
             .cta-container { flex-direction: column; align-items: center; }
             .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-about .logo { justify-content: center; }
             .footer-about p { margin: 0 auto; }
             .side-projects-grid, .services-grid { grid-template-columns: 1fr; }
         }
@@ -669,7 +677,15 @@
 
     <header>
         <nav class="container">
-            <div class="logo">Orbitrar</div>
+            <a href="#home" class="logo">
+                <div class="logo-icon"></div>
+                <!-- 
+                    IMPORTANT: I've added a placeholder for your logo image.
+                    To make it work, rename your screenshot to "orbitrar-logo-text.png" 
+                    and save it in the same folder as this HTML file.
+                -->
+                <img src="https://github.com/vineethnj/vineethnj.github.io/blob/main/Screenshot%202025-06-21%20220503.png?raw=true" alt="Orbitrar Logo" class="logo-text-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -701,7 +717,6 @@
 
     <!-- About Section -->
     <section id="about" class="section">
-        <!-- MODIFIED: New ethereal cosmic background -->
         <div class="cosmic-background">
             <div class="nebula"></div>
             <div class="stars" id="stars1"></div>
@@ -828,7 +843,10 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <div class="footer-logo">Orbitrar</div>
+                    <a href="#home" class="logo">
+                        <div class="logo-icon"></div>
+                        <img src="https://github.com/vineethnj/vineethnj.github.io/blob/main/Screenshot%202025-06-21%20220503.png?raw=true" alt="Orbitrar Logo" class="logo-text-img">
+                    </a>
                     <p>Leading the future of AI software and cybersecurity solutions. Contact us to learn how we can transform your business.</p>
                 </div>
                 <div class="footer-links">
@@ -860,7 +878,7 @@
             const cursor = document.querySelector('.cursor');
             const body = document.body;
 
-            if (cursor) { // Check if the cursor element exists
+            if (cursor && !window.matchMedia("(max-width: 992px)").matches) {
                 window.addEventListener('mousemove', e => {
                     const posX = e.clientX;
                     const posY = e.clientY;
@@ -877,11 +895,14 @@
                     el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
                     el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
                 });
+            } else if(cursor) {
+                cursor.style.display = 'none';
             }
+
 
             // 2. 3D Tilt Effect + Enhanced Glow for Main Product Card
             const mainProductCard = document.querySelector('.main-product-spotlight');
-            if (mainProductCard) {
+            if (mainProductCard && !window.matchMedia("(max-width: 992px)").matches) {
                 const starContainer = mainProductCard.querySelector('.star-border-container');
                 let starCreationInterval;
 
@@ -899,7 +920,6 @@
                 // Start glowing on Enter
                 mainProductCard.addEventListener('mouseenter', () => {
                     if (!starContainer) return;
-                    // Create stars at a regular interval for a continuous effect
                     starCreationInterval = setInterval(() => {
                         const star = document.createElement('div');
                         star.classList.add('star');
@@ -911,14 +931,13 @@
                         let x, y;
 
                         switch(edge) {
-                            case 0: x = Math.random() * width; y = 0; break; // Top
-                            case 1: x = width; y = Math.random() * height; break; // Right
-                            case 2: x = Math.random() * width; y = height; break; // Bottom
-                            case 3: x = 0; y = Math.random() * height; break; // Left
+                            case 0: x = Math.random() * width; y = 0; break;
+                            case 1: x = width; y = Math.random() * height; break;
+                            case 2: x = Math.random() * width; y = height; break;
+                            case 3: x = 0; y = Math.random() * height; break;
                         }
 
-                        // Set star properties
-                        const size = Math.random() * 4 + 2; // Size between 2px and 6px
+                        const size = Math.random() * 4 + 2;
                         star.style.width = `${size}px`;
                         star.style.height = `${size}px`;
                         star.style.left = `${x}px`;
@@ -928,18 +947,16 @@
 
                         starContainer.appendChild(star);
                         
-                        // Remove the star after its animation is done to prevent buildup
                         setTimeout(() => {
                             star.remove();
-                        }, 2500); // Must be >= animation-duration
+                        }, 2500);
 
-                    }, 50); // Create a new star every 50ms
+                    }, 50);
                 });
                 
-                // Cleanup on Leave
                 mainProductCard.addEventListener('mouseleave', () => {
                     mainProductCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-                    clearInterval(starCreationInterval); // Stop creating new stars
+                    clearInterval(starCreationInterval);
                 });
             }
 
@@ -954,7 +971,7 @@
                 threshold: 0.1
             });
 
-            document.querySelectorAll('.fade-in-section').forEach((section) => {
+            document.querySelectorAll('.fade-in-section').forEach((section, index) => {
                 if (section.parentElement.classList.contains('side-projects-grid') || section.parentElement.classList.contains('services-grid')) {
                     let itemIndex = Array.from(section.parentElement.children).indexOf(section);
                     section.style.transitionDelay = `${itemIndex * 0.1}s`;
