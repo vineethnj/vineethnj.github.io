@@ -83,6 +83,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative; /* Ensure content is above background animations */
+            z-index: 2;
         }
 
         a {
@@ -196,6 +198,7 @@
             background-size: 50px 50px;
             opacity: 0.05;
             pointer-events: none;
+            z-index: 1;
         }
 
         .section-header {
@@ -205,7 +208,7 @@
 
         .section-badge {
             display: inline-block;
-            background-color: var(--color-bg);
+            background-color: var(--color-bg-alt);
             color: var(--color-accent);
             padding: 0.5rem 1rem;
             border-radius: 999px;
@@ -412,6 +415,7 @@
             perspective: 1500px;
             transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative; /* Needed for star container */
+            z-index: 5; /* Ensure it's above general section backgrounds */
         }
         .main-product-spotlight:hover {
              box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
@@ -429,10 +433,8 @@
         .star {
             position: absolute;
             border-radius: 50%;
-            /* This is the key change: using a radial gradient for a soft glow */
             background: radial-gradient(circle, rgba(220, 220, 255, 0.8) 0%, rgba(167, 139, 250, 0.4) 30%, transparent 70%);
             opacity: 0;
-            /* New animation for a continuous twinkle/pulse effect */
             animation: twinkle 2s ease-in-out infinite;
         }
         @keyframes twinkle {
@@ -472,6 +474,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex; /* Make it a flex container to push features list down */
             flex-direction: column;
+            z-index: 5;
         }
         .simple-hover-card:hover {
             transform: translateY(-8px);
@@ -560,6 +563,67 @@
         .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
         
+        /* --- NEW: Cosmic Dust Animation for About Section --- */
+        .cosmic-dust-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-1000px); }
+        }
+
+        .dust-layer {
+            position: absolute;
+            top: 100%; /* Start below the viewport */
+            width: 100%;
+            height: 1000px; /* Make the layer tall so it can drift up */
+            animation-name: drift;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+        /* Helper function for random box-shadow values */
+        /* This is a static representation. In a real project, you'd use a script or SASS/SCSS to generate this. */
+        
+        /* Layer 1: Small, slow particles (background) */
+        #dust1 {
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: 75vw 13vh 0px 0px #A78BFA, 6vw 53vh 1px 1px #A78BFA, 4vw 71vh 0px 1px #F3F4F6, 8vw 2vh 1px 0px #A78BFA, 63vw 49vh 1px 0px #F3F4F6, 12vw 61vh 1px 1px #A78BFA, 15vw 63vh 0px 0px #F3F4F6, 75vw 6vh 0px 0px #F3F4F6, 68vw 80vh 1px 1px #A78BFA, 54vw 2vh 0px 1px #A78BFA, 43vw 95vh 0px 1px #F3F4F6, 60vw 6vh 1px 1px #A78BFA, 9vw 90vh 1px 0px #F3F4F6, 17vw 91vh 1px 0px #A78BFA, 79vw 48vh 1px 0px #F3F4F6, 8vw 45vh 0px 0px #F3F4F6, 32vw 77vh 0px 1px #A78BFA, 5vw 41vh 0px 0px #F3F4F6, 6vw 42vh 0px 0px #A78BFA, 97vw 41vh 0px 0px #F3F4F6, 52vw 52vh 1px 1px #A78BFA, 97vw 11vh 1px 1px #F3F4F6, 7vw 80vh 0px 1px #A78BFA, 60vw 5vh 1px 0px #F3F4F6, 92vw 36vh 0px 1px #A78BFA, 22vw 9vh 1px 0px #A78BFA, 44vw 61vh 0px 1px #F3F4F6, 50vw 80vh 1px 0px #A78BFA, 69vw 70vh 0px 1px #F3F4F6, 83vw 32vh 0px 0px #F3F4F6;
+            animation-duration: 250s; /* Slowest */
+            opacity: 0.5;
+        }
+
+        /* Layer 2: Medium, mid-speed particles (middle-ground) */
+        #dust2 {
+            width: 2px;
+            height: 2px;
+            background: transparent;
+            box-shadow: 20vw 15vh 0px 0px #A78BFA, 80vw 30vh 1px 1px #F3F4F6, 5vw 80vh 0px 1px #F3F4F6, 95vw 50vh 1px 0px #A78BFA, 40vw 60vh 1px 1px #A78BFA, 60vw 90vh 0px 0px #F3F4F6, 70vw 10vh 0px 1px #F3F4F6, 30vw 5vh 1px 0px #A78BFA, 85vw 95vh 0px 1px #F3F4F6, 15vw 5vh 1px 0px #A78BFA, 50vw 50vh 0px 1px #F3F4F6, 90vw 20vh 1px 1px #A78BFA, 10vw 10vh 1px 1px #F3F4F6, 35vw 70vh 0px 0px #A78BFA;
+            animation-duration: 200s; /* Medium speed */
+            opacity: 0.7;
+        }
+
+        /* Layer 3: Large, fast particles (foreground) */
+        #dust3 {
+            width: 3px;
+            height: 3px;
+            background: transparent;
+            box-shadow: 10vw 80vh 0px 0px #F3F4F6, 90vw 10vh 1px 1px #A78BFA, 25vw 5vh 0px 1px #F3F4F6, 75vw 90vh 1px 0px #F3F4F6, 50vw 40vh 0px 0px #A78BFA, 80vw 60vh 1px 1px #F3F4F6;
+            animation-duration: 150s; /* Fastest */
+            opacity: 0.9;
+        }
+
+
         /* --- Responsive Adjustments --- */
         @media (max-width: 992px) {
             body { cursor: auto; }
@@ -625,7 +689,14 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section section-alt-bg">
+    <section id="about" class="section">
+        <!-- NEW: Background animation container -->
+        <div class="cosmic-dust-container">
+            <div class="dust-layer" id="dust1"></div>
+            <div class="dust-layer" id="dust2"></div>
+            <div class="dust-layer" id="dust3"></div>
+        </div>
+        
         <div class="container">
             <div class="section-header fade-in-section">
                 <div class="section-badge">About Orbitrar</div>
