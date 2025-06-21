@@ -50,33 +50,31 @@
             cursor: none;
         }
 
-        /* --- NEW: Moon Cursor Design --- */
+        /* --- Moon Cursor Design --- */
         .cursor {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background-color: transparent; /* The element itself is invisible */
-            box-shadow: -5px 5px 0 0 var(--color-text-primary); /* This creates the crescent shape */
+            background-color: transparent;
+            box-shadow: -5px 5px 0 0 var(--color-text-primary);
             position: fixed;
-            transform: translate(-50%, -50%) rotate(0deg); /* Added rotate for potential future effects */
+            transform: translate(-50%, -50%) rotate(0deg);
             pointer-events: none;
             z-index: 9999;
             transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out;
         }
 
-        /* REMOVED .cursor-dot styles */
-
         .cursor.hovered {
             transform: translate(-50%, -50%) scale(1.3) rotate(-15deg);
-            box-shadow: -4px 4px 0 0 var(--color-accent); /* Crescent turns to accent color */
-            filter: drop-shadow(0 0 8px var(--color-accent)); /* A glow is added around the crescent shape */
+            box-shadow: -4px 4px 0 0 var(--color-accent);
+            filter: drop-shadow(0 0 8px var(--color-accent));
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative; /* Ensure content is above background animations */
+            position: relative;
             z-index: 2;
         }
 
@@ -172,13 +170,13 @@
         /* --- Generic Section Styling --- */
         .section {
             padding: 7rem 0;
-            overflow: hidden; /* Contains animations */
+            overflow: hidden;
             position: relative;
         }
         .section-alt-bg {
              background-color: var(--color-bg-alt);
         }
-        .section::before { /* Grid pattern overlay */
+        .section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -233,7 +231,7 @@
             align-items: center;
             padding: 4rem 0;
         }
-        .hero::before { display: none; } /* No grid on hero */
+        .hero::before { display: none; }
 
         .hero .container {
             display: flex;
@@ -372,6 +370,88 @@
             color: var(--color-text-secondary);
         }
         
+        /* --- NEW: Ethereal Cosmic Background for About Section --- */
+        .cosmic-background {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* 1. Soft Nebula Cloud */
+        .nebula {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.1) 0%, rgba(59, 130, 246, 0.05) 40%, transparent 70%);
+            filter: blur(60px);
+            animation: pulse-nebula 20s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-nebula {
+            to { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; }
+        }
+
+        /* 2. Twinkling Stars */
+        .stars {
+            position: absolute;
+            top: 0; left: 0;
+            width: 1px; height: 1px;
+            background: transparent;
+            animation: twinkle 10s linear infinite alternate;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* Using box-shadow to create multiple stars from one element */
+        #stars1 {
+            box-shadow: 15vw 80vh 1px 1px #fff, 90vw 10vh 0px 0px #fff, 5vw 30vh 1px 0px #fff, 70vw 60vh 1px 1px #fff, 30vw 90vh 0 0 #fff, 50vw 5vh 1px 0 #fff;
+            animation-duration: 15s;
+        }
+        #stars2 {
+            box-shadow: 40vw 40vh 0 0 #fff, 80vw 75vh 1px 0px #fff, 20vw 5vh 1px 1px #fff, 95vw 50vh 0 0 #fff, 55vw 95vh 1px 0 #fff, 5vw 90vh 0 1px #fff;
+            animation-duration: 12s;
+            animation-delay: -3s;
+        }
+        
+        /* 3. Shooting Stars */
+        .shooting-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, var(--color-accent), rgba(255, 255, 255, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px var(--color-accent));
+            animation: shoot 10s ease-in-out infinite;
+        }
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; width: 0; }
+            3% { width: 150px; }
+            100% { transform: translateX(80vw) translateY(-80vh) rotate(-45deg); opacity: 0; width: 150px; }
+        }
+
+        /* Create variations of shooting stars */
+        .shooting-star:nth-child(2) {
+            top: 20%;
+            left: -50%;
+            animation-delay: 2.3s;
+            animation-duration: 8s;
+        }
+        .shooting-star:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 5.7s;
+            animation-duration: 12s;
+        }
+
+
         /* --- Products Section --- */
         .product-name {
             font-size: 1.5rem;
@@ -407,8 +487,8 @@
             transform-style: preserve-3d;
             perspective: 1500px;
             transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative; /* Needed for star container */
-            z-index: 5; /* Ensure it's above general section backgrounds */
+            position: relative;
+            z-index: 5;
         }
         .main-product-spotlight:hover {
              box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
@@ -428,9 +508,9 @@
             border-radius: 50%;
             background: radial-gradient(circle, rgba(220, 220, 255, 0.8) 0%, rgba(167, 139, 250, 0.4) 30%, transparent 70%);
             opacity: 0;
-            animation: twinkle 2s ease-in-out infinite;
+            animation: twinkle-border 2s ease-in-out infinite;
         }
-        @keyframes twinkle {
+        @keyframes twinkle-border {
             0%, 100% {
                 opacity: 0;
                 transform: scale(0.5);
@@ -465,7 +545,7 @@
             border-radius: 12px;
             padding: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            display: flex; /* Make it a flex container to push features list down */
+            display: flex;
             flex-direction: column;
             z-index: 5;
         }
@@ -482,7 +562,7 @@
         }
         
         .product-header {
-             flex-grow: 1; /* Allow header to grow, pushing list down */
+             flex-grow: 1;
         }
 
         .features-list { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 1rem; }
@@ -556,71 +636,10 @@
         .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
         
-        /* --- NEW: Cosmic Dust Animation for About Section --- */
-        .cosmic-dust-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        @keyframes drift {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-1000px); }
-        }
-
-        .dust-layer {
-            position: absolute;
-            top: 100%; /* Start below the viewport */
-            width: 100%;
-            height: 1000px; /* Make the layer tall so it can drift up */
-            animation-name: drift;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-        
-        /* Helper function for random box-shadow values */
-        /* This is a static representation. In a real project, you'd use a script or SASS/SCSS to generate this. */
-        
-        /* Layer 1: Small, slow particles (background) */
-        #dust1 {
-            width: 1px;
-            height: 1px;
-            background: transparent;
-            box-shadow: 75vw 13vh 0px 0px #A78BFA, 6vw 53vh 1px 1px #A78BFA, 4vw 71vh 0px 1px #F3F4F6, 8vw 2vh 1px 0px #A78BFA, 63vw 49vh 1px 0px #F3F4F6, 12vw 61vh 1px 1px #A78BFA, 15vw 63vh 0px 0px #F3F4F6, 75vw 6vh 0px 0px #F3F4F6, 68vw 80vh 1px 1px #A78BFA, 54vw 2vh 0px 1px #A78BFA, 43vw 95vh 0px 1px #F3F4F6, 60vw 6vh 1px 1px #A78BFA, 9vw 90vh 1px 0px #F3F4F6, 17vw 91vh 1px 0px #A78BFA, 79vw 48vh 1px 0px #F3F4F6, 8vw 45vh 0px 0px #F3F4F6, 32vw 77vh 0px 1px #A78BFA, 5vw 41vh 0px 0px #F3F4F6, 6vw 42vh 0px 0px #A78BFA, 97vw 41vh 0px 0px #F3F4F6, 52vw 52vh 1px 1px #A78BFA, 97vw 11vh 1px 1px #F3F4F6, 7vw 80vh 0px 1px #A78BFA, 60vw 5vh 1px 0px #F3F4F6, 92vw 36vh 0px 1px #A78BFA, 22vw 9vh 1px 0px #A78BFA, 44vw 61vh 0px 1px #F3F4F6, 50vw 80vh 1px 0px #A78BFA, 69vw 70vh 0px 1px #F3F4F6, 83vw 32vh 0px 0px #F3F4F6;
-            animation-duration: 250s; /* Slowest */
-            opacity: 0.5;
-        }
-
-        /* Layer 2: Medium, mid-speed particles (middle-ground) */
-        #dust2 {
-            width: 2px;
-            height: 2px;
-            background: transparent;
-            box-shadow: 20vw 15vh 0px 0px #A78BFA, 80vw 30vh 1px 1px #F3F4F6, 5vw 80vh 0px 1px #F3F4F6, 95vw 50vh 1px 0px #A78BFA, 40vw 60vh 1px 1px #A78BFA, 60vw 90vh 0px 0px #F3F4F6, 70vw 10vh 0px 1px #F3F4F6, 30vw 5vh 1px 0px #A78BFA, 85vw 95vh 0px 1px #F3F4F6, 15vw 5vh 1px 0px #A78BFA, 50vw 50vh 0px 1px #F3F4F6, 90vw 20vh 1px 1px #A78BFA, 10vw 10vh 1px 1px #F3F4F6, 35vw 70vh 0px 0px #A78BFA;
-            animation-duration: 200s; /* Medium speed */
-            opacity: 0.7;
-        }
-
-        /* Layer 3: Large, fast particles (foreground) */
-        #dust3 {
-            width: 3px;
-            height: 3px;
-            background: transparent;
-            box-shadow: 10vw 80vh 0px 0px #F3F4F6, 90vw 10vh 1px 1px #A78BFA, 25vw 5vh 0px 1px #F3F4F6, 75vw 90vh 1px 0px #F3F4F6, 50vw 40vh 0px 0px #A78BFA, 80vw 60vh 1px 1px #F3F4F6;
-            animation-duration: 150s; /* Fastest */
-            opacity: 0.9;
-        }
-
-
         /* --- Responsive Adjustments --- */
         @media (max-width: 992px) {
             body { cursor: auto; }
-            .cursor, .cursor-dot { display: none; }
+            .cursor { display: none; }
             .hero .container { flex-direction: column; text-align: center; }
             .hero-content { text-align: center; max-width: 700px; }
             .hero h1 { font-size: 3.5rem; }
@@ -646,7 +665,6 @@
     </style>
 </head>
 <body>
-    <!-- MODIFIED: .cursor-dot has been removed -->
     <div class="cursor"></div>
 
     <header>
@@ -683,11 +701,14 @@
 
     <!-- About Section -->
     <section id="about" class="section">
-        <!-- NEW: Background animation container -->
-        <div class="cosmic-dust-container">
-            <div class="dust-layer" id="dust1"></div>
-            <div class="dust-layer" id="dust2"></div>
-            <div class="dust-layer" id="dust3"></div>
+        <!-- MODIFIED: New ethereal cosmic background -->
+        <div class="cosmic-background">
+            <div class="nebula"></div>
+            <div class="stars" id="stars1"></div>
+            <div class="stars" id="stars2"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
         </div>
         
         <div class="container">
@@ -836,7 +857,6 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // 1. Cursor and Spotlight Effect
-            // MODIFIED: Simplified to only handle the single .cursor element
             const cursor = document.querySelector('.cursor');
             const body = document.body;
 
