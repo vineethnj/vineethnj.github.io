@@ -12,7 +12,7 @@
         :root {
             --color-bg: #111827;
             --color-bg-alt: #1F2937;
-            --color-bg-card: #1f2937;
+            --color-bg-card: #1f2937; 
             --color-border: #374151;
             --color-text-primary: #F3F4F6;
             --color-text-secondary: #9CA3AF;
@@ -122,14 +122,10 @@
             height: 80px;
         }
         
-
-        /* Styling for the image-based logo text */
         .logo-text-img {
-            height: 32px; /* Adjust this value to your liking */
-            width: auto;  /* Maintains the image's aspect ratio */
+            height: 32px;
+            width: auto;
         }
-        /* --- End of CSS Logo --- */
-
 
         .nav-links {
             display: flex;
@@ -373,7 +369,6 @@
             color: var(--color-text-secondary);
         }
         
-        /* --- NEW: Ethereal Cosmic Background for About Section --- */
         .cosmic-background {
             position: absolute;
             top: 0; left: 0;
@@ -383,7 +378,6 @@
             overflow: hidden;
         }
 
-        /* 1. Soft Nebula Cloud */
         .nebula {
             position: absolute;
             width: 800px;
@@ -399,7 +393,6 @@
             to { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; }
         }
 
-        /* 2. Twinkling Stars */
         .stars {
             position: absolute;
             top: 0; left: 0;
@@ -412,7 +405,6 @@
             50% { opacity: 1; }
         }
         
-        /* Using box-shadow to create multiple stars from one element */
         #stars1 {
             box-shadow: 15vw 80vh 1px 1px #fff, 90vw 10vh 0px 0px #fff, 5vw 30vh 1px 0px #fff, 70vw 60vh 1px 1px #fff, 30vw 90vh 0 0 #fff, 50vw 5vh 1px 0 #fff;
             animation-duration: 15s;
@@ -423,7 +415,6 @@
             animation-delay: -3s;
         }
         
-        /* 3. Shooting Stars */
         .shooting-star {
             position: absolute;
             top: 50%;
@@ -440,7 +431,6 @@
             100% { transform: translateX(80vw) translateY(-80vh) rotate(-45deg); opacity: 0; width: 150px; }
         }
 
-        /* Create variations of shooting stars */
         .shooting-star:nth-child(2) {
             top: 20%;
             left: -50%;
@@ -479,7 +469,6 @@
             font-size: 0.95rem;
         }
 
-        /* --- Main Product Spotlight (With Enhanced Glow Animation) --- */
         .main-product-spotlight {
             background-color: var(--color-bg-alt);
             border-radius: 16px;
@@ -533,7 +522,6 @@
         .performance-highlight p { font-size: 1.1rem; background-color: var(--color-bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border); }
         .highlight-number { font-weight: 700; color: var(--color-text-primary); }
 
-        /* --- Side Projects & Services Shared Card Style --- */
         .side-projects-header { text-align: center; margin: 3rem 0 2rem; }
         .side-projects-header h3 { font-size: 1.8rem; font-weight: 600; color: var(--color-text-secondary); }
         .side-projects-grid, .services-grid { 
@@ -613,6 +601,49 @@
         .service-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
         .service-description { color: var(--color-text-secondary); }
 
+        /* --- Quotes Section (Ultra-Minimal) --- */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: 3rem; 
+            margin-top: 3rem;
+        }
+
+        .quote-item {
+            margin-bottom: 2rem;
+        }
+
+        .quote-text {
+            font-size: 1.2rem; 
+            font-style: italic; 
+            color: var(--color-text-secondary); 
+            line-height: 1.8; 
+            margin-bottom: 1rem; 
+        }
+        
+        .quote-author {
+            font-size: 1rem; 
+            font-style: normal;
+            font-weight: 400; 
+            color: var(--color-text-primary); 
+            text-align: left; 
+        }
+        
+        /* Responsive adjustments for quotes */
+        @media (max-width: 768px) {
+            .quotes-grid {
+                gap: 2.5rem;
+            }
+            .quote-text {
+                font-size: 1.1rem;
+                line-height: 1.75;
+                margin-bottom: 0.75rem;
+            }
+            .quote-author {
+                font-size: 0.95rem; 
+            }
+        }
+
         /* --- Footer --- */
         footer {
             background-color: #0d121c;
@@ -643,7 +674,7 @@
         .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
         
-        /* --- Responsive Adjustments --- */
+        /* --- Responsive Adjustments (General) --- */
         @media (max-width: 992px) {
             body { cursor: auto; }
             .cursor { display: none; }
@@ -661,13 +692,13 @@
             .main-product-feature { padding-left: 0; padding-top: 2rem; border-left: none; border-top: 1px solid var(--color-border); width: 100%; }
         }
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links { display: none; } 
             .hero h1 { font-size: 2.8rem; }
             .section-title { font-size: 2.2rem; }
             .cta-container { flex-direction: column; align-items: center; }
             .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .footer-about .logo { justify-content: center; }
-            .footer-about p { margin: 0 auto; }
+            .footer-about .logo { display: flex; justify-content: center; } 
+            .footer-about p { margin-left: auto; margin-right: auto; } 
             .side-projects-grid, .services-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -678,12 +709,6 @@
     <header>
         <nav class="container">
             <a href="#home" class="logo">
-                <div class="logo-icon"></div>
-                <!-- 
-                    IMPORTANT: I've added a placeholder for your logo image.
-                    To make it work, rename your screenshot to "orbitrar-logo-text.png" 
-                    and save it in the same folder as this HTML file.
-                -->
                 <img src="https://github.com/vineethnj/vineethnj.github.io/blob/main/Screenshot%202025-06-21%20220503.png?raw=true" alt="Orbitrar Logo" class="logo-text-img">
             </a>
             <ul class="nav-links">
@@ -691,6 +716,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#inspiration">Inspiration</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -816,7 +842,7 @@
                     <h3 class="service-title">AI Agents</h3>
                     <p class="service-description">Deploy intelligent AI agents that can handle complex tasks, make decisions, and interact with your systems autonomously to streamline operations.</p>
                 </div>
-                <div class="simple-hover-card service-card fade-in-section" style="transition-delay: 0.1s;">
+                <div class="simple-hover-card service-card fade-in-section">
                     <div class="service-icon-wrapper">
                         <div class="service-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
@@ -825,7 +851,7 @@
                     <h3 class="service-title">Advanced MCP Assistants</h3>
                     <p class="service-description">Leverage cutting-edge MCP (Model Context Protocol) enabled assistants for enhanced AI capabilities and seamless integration.</p>
                 </div>
-                <div class="simple-hover-card service-card fade-in-section" style="transition-delay: 0.2s;">
+                <div class="simple-hover-card service-card fade-in-section">
                     <div class="service-icon-wrapper">
                         <div class="service-icon">
                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
@@ -838,13 +864,44 @@
         </div>
     </section>
 
+    <!-- Quotes Section -->
+    <section id="inspiration" class="section">
+        <div class="container">
+            <div class="section-header fade-in-section">
+                <div class="section-badge">Words of Wisdom</div>
+                <h2 class="section-title">Quotes That Inspire Us</h2>
+                <p class="section-subtitle">Guiding principles from visionaries who shaped our thinking.</p>
+            </div>
+            <div class="quotes-grid">
+                <div class="quote-item fade-in-section"> 
+                    <p class="quote-text">"Start out by making 100 users really happy, rather than a lot more users only a little happy. If everything you do works, then you're not taking many risks and probably aren't innovating either."</p>
+                    <p class="quote-author">- Paul Buchheit</p>
+                </div>
+
+                <div class="quote-item fade-in-section">
+                    <p class="quote-text">"Your most unhappy customers are your greatest source of learning."</p>
+                    <p class="quote-author">- Bill Gates</p>
+                </div>
+
+                <div class="quote-item fade-in-section">
+                    <p class="quote-text">"When something is important enough, you do it even if the odds are not in your favor."</p>
+                    <p class="quote-author">- Elon Musk</p>
+                </div>
+
+                <div class="quote-item fade-in-section">
+                    <p class="quote-text">"Genius is one percent inspiration, ninety-nine percent perspiration."</p>
+                    <p class="quote-author">- Tesla</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
                     <a href="#home" class="logo">
-                        <div class="logo-icon"></div>
                         <img src="https://github.com/vineethnj/vineethnj.github.io/blob/main/Screenshot%202025-06-21%20220503.png?raw=true" alt="Orbitrar Logo" class="logo-text-img">
                     </a>
                     <p>Leading the future of AI software and cybersecurity solutions. Contact us to learn how we can transform your business.</p>
@@ -856,6 +913,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#services">Services</a></li>
+                        <li><a href="#inspiration">Inspiration</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -863,6 +921,9 @@
                     <p>Business inquiries:</p>
                     <p><a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Orbitrar. All rights reserved. Pioneering the AI Evolution.</p>
             </div>
         </div>
     </footer>
@@ -903,7 +964,6 @@
                 const starContainer = mainProductCard.querySelector('.star-border-container');
                 let starCreationInterval;
 
-                // Tilt Effect
                 mainProductCard.addEventListener('mousemove', (e) => {
                     const rect = mainProductCard.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -914,26 +974,21 @@
                     mainProductCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                 });
 
-                // Start glowing on Enter
                 mainProductCard.addEventListener('mouseenter', () => {
                     if (!starContainer) return;
                     starCreationInterval = setInterval(() => {
                         const star = document.createElement('div');
                         star.classList.add('star');
-                        
                         const width = mainProductCard.offsetWidth;
                         const height = mainProductCard.offsetHeight;
-                        
                         const edge = Math.floor(Math.random() * 4);
                         let x, y;
-
                         switch(edge) {
                             case 0: x = Math.random() * width; y = 0; break;
                             case 1: x = width; y = Math.random() * height; break;
                             case 2: x = Math.random() * width; y = height; break;
                             case 3: x = 0; y = Math.random() * height; break;
                         }
-
                         const size = Math.random() * 4 + 2;
                         star.style.width = `${size}px`;
                         star.style.height = `${size}px`;
@@ -941,13 +996,8 @@
                         star.style.top = `${y}px`;
                         star.style.animationDelay = `${Math.random() * 0.5}s`;
                         star.style.animationDuration = `${1.5 + Math.random()}s`;
-
                         starContainer.appendChild(star);
-                        
-                        setTimeout(() => {
-                            star.remove();
-                        }, 2500);
-
+                        setTimeout(() => star.remove(), 2500);
                     }, 50);
                 });
                 
@@ -968,12 +1018,37 @@
                 threshold: 0.1
             });
 
-            document.querySelectorAll('.fade-in-section').forEach((section, index) => {
-                if (section.parentElement.classList.contains('side-projects-grid') || section.parentElement.classList.contains('services-grid')) {
-                    let itemIndex = Array.from(section.parentElement.children).indexOf(section);
-                    section.style.transitionDelay = `${itemIndex * 0.1}s`;
+            document.querySelectorAll('.fade-in-section').forEach((section) => {
+                const parent = section.parentElement;
+                if (parent && (parent.classList.contains('side-projects-grid') || 
+                               parent.classList.contains('services-grid') ||
+                               parent.classList.contains('quotes-grid'))) { 
+                    const fadeInSiblings = Array.from(parent.children).filter(child => child.classList.contains('fade-in-section'));
+                    const itemIndex = fadeInSiblings.indexOf(section);
+                    if (itemIndex > -1) {
+                         section.style.transitionDelay = `${itemIndex * 0.1}s`;
+                    }
                 }
                 observer.observe(section);
+            });
+
+            // Smooth scroll for nav links
+            document.querySelectorAll('header .nav-links a[href^="#"], footer .footer-links a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80; // Height of the sticky header
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
             });
         });
     </script>
