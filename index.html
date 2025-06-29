@@ -12,7 +12,7 @@
         :root {
             --color-bg: #111827;
             --color-bg-alt: #1F2937;
-            --color-bg-card: #1f2937; 
+            --color-bg-card: #1f2937;
             --color-border: #374151;
             --color-text-primary: #F3F4F6;
             --color-text-secondary: #9CA3AF;
@@ -146,7 +146,7 @@
             border-radius: 8px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
-        
+
         .nav-links a:hover {
             color: var(--color-accent);
             text-shadow: 0 0 15px var(--color-accent-hover);
@@ -222,7 +222,7 @@
             text-align: center;
         }
         .hero::before { display: none; }
-        
+
         #hero-video-background {
             position: absolute;
             top: 0;
@@ -252,7 +252,7 @@
         .hero-content {
             max-width: 800px;
         }
-       
+
         .hero h1 {
             font-size: 4.2rem;
             font-weight: 700;
@@ -319,6 +319,14 @@
             transform: translateY(-4px);
         }
 
+        /* Mobile responsiveness for hero section */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 60vh;
+                padding: 2rem 0;
+            }
+        }
+
         /* --- About Section --- */
         .about-content {
             max-width: 800px;
@@ -329,7 +337,7 @@
             font-size: 1.2rem;
             color: var(--color-text-secondary);
         }
-       
+
         .cosmic-background {
             position: absolute;
             top: 0; left: 0;
@@ -365,7 +373,7 @@
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
         }
-       
+
         #stars1 {
             box-shadow: 15vw 80vh 1px 1px #fff, 90vw 10vh 0px 0px #fff, 5vw 30vh 1px 0px #fff, 70vw 60vh 1px 1px #fff, 30vw 90vh 0 0 #fff, 50vw 5vh 1px 0 #fff;
             animation-duration: 15s;
@@ -375,7 +383,7 @@
             animation-duration: 12s;
             animation-delay: -3s;
         }
-       
+
         .shooting-star {
             position: absolute;
             top: 50%;
@@ -445,7 +453,7 @@
         .main-product-spotlight:hover {
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
         }
-       
+
         .star-border-container {
             position: absolute;
             top: 0; left: 0;
@@ -484,12 +492,12 @@
 
         .side-projects-header { text-align: center; margin: 3rem 0 2rem; }
         .side-projects-header h3 { font-size: 1.8rem; font-weight: 600; color: var(--color-text-secondary); }
-        .side-projects-grid, .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
-            gap: 2rem; 
+        .side-projects-grid, .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
         }
-       
+
         .simple-hover-card {
             background-color: var(--color-bg-card);
             border: 1px solid var(--color-border);
@@ -505,20 +513,20 @@
             box-shadow: var(--shadow-glow);
             border-color: var(--color-accent);
         }
-       
+
         .service-card {
             padding: 2.5rem 2rem;
             text-align: center;
             align-items: center;
         }
-       
+
         .product-header {
             flex-grow: 1;
         }
 
         .features-list { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 1rem; }
         .features-list li { display: flex; align-items: flex-start; gap: 0.75rem; }
-       
+
         .feature-icon {
             flex-shrink: 0;
             margin-top: 5px;
@@ -539,22 +547,22 @@
 
         .feature-content h4 { font-weight: 600; color: var(--color-text-primary); font-size: 1rem; margin-bottom: 0.1rem; }
         .feature-content p { font-size: 0.9rem; color: var(--color-text-secondary); }
-       
+
         /* --- Services Section --- */
         .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-       
-        .service-icon-wrapper { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 70px; 
-            height: 70px; 
-            margin-bottom: 1.5rem; 
-            border-radius: 16px; 
-            background: var(--gradient-text); 
+
+        .service-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            background: var(--gradient-text);
         }
-        .service-icon svg { 
-            width: 2.5rem; 
+        .service-icon svg {
+            width: 2.5rem;
             height: 2.5rem;
             color: white;
         }
@@ -565,7 +573,7 @@
         .quotes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-            gap: 3rem; 
+            gap: 3rem;
             margin-top: 3rem;
         }
 
@@ -574,21 +582,21 @@
         }
 
         .quote-text {
-            font-size: 1.2rem; 
-            font-style: italic; 
-            color: var(--color-text-secondary); 
-            line-height: 1.8; 
-            margin-bottom: 1rem; 
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
-       
+
         .quote-author {
-            font-size: 1rem; 
+            font-size: 1rem;
             font-style: normal;
-            font-weight: 400; 
-            color: var(--color-text-primary); 
-            text-align: left; 
+            font-weight: 400;
+            color: var(--color-text-primary);
+            text-align: left;
         }
-       
+
         /* Responsive adjustments for quotes */
         @media (max-width: 768px) {
             .quotes-grid {
@@ -600,7 +608,7 @@
                 margin-bottom: 0.75rem;
             }
             .quote-author {
-                font-size: 0.95rem; 
+                font-size: 0.95rem;
             }
         }
 
@@ -621,11 +629,11 @@
             background: var(--gradient-text);
         }
         .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
-       
+
         .footer-about .logo {
             margin-bottom: 1rem;
         }
-       
+
         .footer-about p { color: var(--color-text-secondary); max-width: 300px; }
         .footer-links h4, .footer-contact h4 { font-size: 1.1rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 1.5rem; }
         .footer-links ul li { margin-bottom: 0.75rem; }
@@ -633,7 +641,7 @@
         .footer-links ul a:hover { color: var(--color-accent); text-shadow: 0 0 10px var(--color-accent-hover); }
         .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
-       
+
         /* --- Responsive Adjustments (General) --- */
         @media (max-width: 992px) {
             body { cursor: auto; }
@@ -648,8 +656,8 @@
             .section-title { font-size: 2.2rem; }
             .cta-container { flex-direction: column; align-items: center; }
             .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .footer-about .logo { display: flex; justify-content: center; } 
-            .footer-about p { margin-left: auto; margin-right: auto; } 
+            .footer-about .logo { display: flex; justify-content: center; }
+            .footer-about p { margin-left: auto; margin-right: auto; }
             .side-projects-grid, .services-grid { grid-template-columns: 1fr; }
             .logo-text { font-size: 1.5rem; }
         }
@@ -675,7 +683,7 @@
 
     <section id="home" class="section hero">
         <video id="hero-video-background" autoplay muted loop playsinline>
-            <source src="https://github.com/vineethnj/vineethnj.github.io/raw/main/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+            <source src="https://github.com/vineethnj/vineethnj.github.io/raw/main/AI_Evolution_Video_Ready.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
@@ -700,7 +708,7 @@
             <div class="shooting-star"></div>
             <div class="shooting-star"></div>
         </div>
-       
+
         <div class="container">
             <div class="section-header fade-in-section">
                 <div class="section-badge">About Orbitrar</div>
@@ -801,7 +809,7 @@
                 <div class="simple-hover-card service-card fade-in-section">
                     <div class="service-icon-wrapper">
                         <div class="service-icon">
-                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
                         </div>
                     </div>
                     <h3 class="service-title">Cybersecurity Solutions</h3>
@@ -819,7 +827,7 @@
                 <p class="section-subtitle">Guiding principles from visionaries who shaped our thinking.</p>
             </div>
             <div class="quotes-grid">
-                <div class="quote-item fade-in-section"> 
+                <div class="quote-item fade-in-section">
                     <p class="quote-text">"Start out by making 100 users really happy, rather than a lot more users only a little happy. If everything you do works, then you're not taking many risks and probably aren't innovating either."</p>
                     <p class="quote-author">- Paul Buchheit</p>
                 </div>
@@ -934,7 +942,7 @@
                         setTimeout(() => star.remove(), 2500);
                     }, 50);
                 });
-               
+
                 mainProductCard.addEventListener('mouseleave', () => {
                     mainProductCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
                     clearInterval(starCreationInterval);
@@ -954,9 +962,9 @@
 
             document.querySelectorAll('.fade-in-section').forEach((section) => {
                 const parent = section.parentElement;
-                if (parent && (parent.classList.contains('side-projects-grid') || 
-                                parent.classList.contains('services-grid') ||
-                                parent.classList.contains('quotes-grid'))) { 
+                if (parent && (parent.classList.contains('side-projects-grid') ||
+                               parent.classList.contains('services-grid') ||
+                               parent.classList.contains('quotes-grid'))) {
                     const fadeInSiblings = Array.from(parent.children).filter(child => child.classList.contains('fade-in-section'));
                     const itemIndex = fadeInSiblings.indexOf(section);
                     if (itemIndex > -1) {
