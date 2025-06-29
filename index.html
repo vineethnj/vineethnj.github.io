@@ -103,68 +103,56 @@
             transform: translateY(0);
         }
 
-
-        /* --- Header & Navigation --- */
-        header {
-            position: sticky;
+        /* --- Transparent Fixed Navigation --- */
+        .main-navigation {
+            position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            background-color: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 0;
         }
 
-        header nav.container {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
         }
-       
-        .logo-text-img {
-            height: 32px;
-            width: auto;
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .nav-links {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
         }
 
         .nav-links a {
             font-weight: 500;
-            color: var(--color-text-secondary);
-            position: relative;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: color 0.4s ease;
-            z-index: 1;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--color-bg-alt);
-            border-radius: 8px;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            z-index: -1;
-        }
-       
-        .nav-links a:hover {
             color: var(--color-text-primary);
+            padding: 0.75rem 1.25rem;
+            transition: all 0.4s ease;
+            border-radius: 8px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
-       
-        .nav-links a:hover::before {
-            transform: scaleX(1);
+        
+        .nav-links a:hover {
+            color: var(--color-accent);
+            text-shadow: 0 0 15px var(--color-accent-hover);
+            background: rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
         }
-
 
         /* --- Generic Section Styling --- */
         .section {
@@ -225,7 +213,7 @@
 
         /* --- Hero Section --- */
         .hero {
-            min-height: calc(100vh - 80px);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -242,7 +230,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 0;
+            z-index: -1;
         }
 
         .hero::after {
@@ -252,8 +240,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(17, 24, 39, 0.6);
-            z-index: 1;
+            background: rgba(17, 24, 39, 0.4);
+            z-index: 0;
         }
 
         .hero .container {
@@ -271,6 +259,7 @@
             line-height: 1.15;
             margin-bottom: 1.5rem;
             letter-spacing: -2.5px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .hero-gradient-text {
@@ -288,6 +277,7 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
         }
 
         .cta-container {
@@ -318,7 +308,7 @@
         }
 
         .cta-secondary {
-            background-color: transparent;
+            background-color: rgba(31, 41, 55, 0.8);
             color: var(--color-text-primary);
             border: 1px solid var(--color-border);
         }
@@ -414,7 +404,6 @@
             animation-delay: 5.7s;
             animation-duration: 12s;
         }
-
 
         /* --- Products Section --- */
         .product-name {
@@ -654,7 +643,7 @@
             .main-product-feature { padding-left: 0; padding-top: 2rem; border-left: none; border-top: 1px solid var(--color-border); width: 100%; }
         }
         @media (max-width: 768px) {
-            .nav-links { display: none; } 
+            .nav-links { display: none; }
             .hero h1 { font-size: 2.8rem; }
             .section-title { font-size: 2.2rem; }
             .cta-container { flex-direction: column; align-items: center; }
@@ -662,17 +651,17 @@
             .footer-about .logo { display: flex; justify-content: center; } 
             .footer-about p { margin-left: auto; margin-right: auto; } 
             .side-projects-grid, .services-grid { grid-template-columns: 1fr; }
+            .logo-text { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="cursor"></div>
 
-    <header>
-        <nav class="container">
-            <a href="#home" class="logo">
-                <img src="https://github.com/vineethnj/vineethnj.github.io/blob/main/Screenshot%202025-06-21%20220503.png?raw=true" alt="Orbitrar Logo" class="logo-text-img">
-            </a>
+    <!-- Transparent Fixed Navigation -->
+    <nav class="main-navigation">
+        <div class="nav-container">
+            <a href="#home" class="logo-text">Orbitrar</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -681,14 +670,15 @@
                 <li><a href="#inspiration">Inspiration</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <section id="home" class="hero">
+    <section id="home" class="section hero">
         <video id="hero-video-background" autoplay muted loop playsinline>
             <source src="https://github.com/vineethnj/vineethnj.github.io/raw/main/AI_Evolution_Video_Ready.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+
         <div class="container">
             <div class="hero-content fade-in-section">
                 <h1>Leading the <span class="hero-gradient-text">AI Evolution</span></h1>
@@ -834,7 +824,6 @@
                     <p class="quote-author">- Paul Buchheit</p>
                 </div>
 
-
                 <div class="quote-item fade-in-section">
                     <p class="quote-text">"When something is important enough, you do it even if the odds are not in your favor."</p>
                     <p class="quote-author">- Elon Musk</p>
@@ -844,8 +833,6 @@
                     <p class="quote-text">"Your most unhappy customers are your greatest source of learning."</p>
                     <p class="quote-author">- Bill Gates</p>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -854,9 +841,7 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="#home" class="logo">
-                        <img src="https://github.com/vineethnj/vineethnj.github.io/blob/main/Screenshot%202025-06-21%20220503.png?raw=true" alt="Orbitrar Logo" class="logo-text-img">
-                    </a>
+                    <a href="#home" class="logo logo-text">Orbitrar</a>
                     <p>Leading the future of AI software and cybersecurity solutions. Contact us to learn how we can transform your business.</p>
                 </div>
                 <div class="footer-links">
@@ -906,7 +891,6 @@
             } else if(cursor) {
                 cursor.style.display = 'none';
             }
-
 
             // 2. 3D Tilt Effect + Enhanced Glow for Main Product Card
             const mainProductCard = document.querySelector('.main-product-spotlight');
@@ -983,15 +967,16 @@
             });
 
             // Smooth scroll for nav links
-            document.querySelectorAll('header .nav-links a[href^="#"], footer .footer-links a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('.nav-links a[href^="#"], footer .footer-links a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const headerOffset = 80; // Height of the sticky header
+                        // Account for fixed navigation height
+                        const navHeight = 80; // Approximate nav height
                         const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
 
                         window.scrollTo({
                             top: offsetPosition,
