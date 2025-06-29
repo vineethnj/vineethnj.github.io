@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -121,7 +121,7 @@
             align-items: center;
             height: 80px;
         }
-        
+       
         .logo-text-img {
             height: 32px;
             width: auto;
@@ -156,11 +156,11 @@
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             z-index: -1;
         }
-        
+       
         .nav-links a:hover {
             color: var(--color-text-primary);
         }
-        
+       
         .nav-links a:hover::before {
             transform: scaleX(1);
         }
@@ -173,7 +173,7 @@
             position: relative;
         }
         .section-alt-bg {
-             background-color: var(--color-bg-alt);
+            background-color: var(--color-bg-alt);
         }
         .section::before {
             content: '';
@@ -228,23 +228,43 @@
             min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 4rem 0;
+            position: relative;
+            text-align: center;
         }
         .hero::before { display: none; }
+        
+        #hero-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 24, 39, 0.6);
+            z-index: 1;
+        }
 
         .hero .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
-            flex: 1;
-            max-width: 600px;
-            text-align: left;
+            max-width: 800px;
         }
-        
+       
         .hero h1 {
             font-size: 4.2rem;
             font-weight: 700;
@@ -265,13 +285,14 @@
             font-size: 1.25rem;
             color: var(--color-text-secondary);
             margin-bottom: 2.5rem;
-            text-align: left;
-            margin-left: 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-container {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 1rem;
         }
 
@@ -308,56 +329,6 @@
             transform: translateY(-4px);
         }
 
-        /* --- Hero Visual Element (AI Orb) --- */
-        .hero-visual {
-            flex: 0 0 400px;
-            height: 400px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-        @keyframes rotate-reverse { 100% { transform: rotate(-360deg); } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
-
-        .ai-orb, .ai-orb::before, .ai-orb::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid;
-            animation: rotate 20s linear infinite;
-        }
-
-        .ai-orb {
-            width: 350px;
-            height: 350px;
-            border-color: var(--color-border);
-            opacity: 0.3;
-        }
-        .ai-orb::before {
-            width: 400px;
-            height: 400px;
-            border-color: var(--color-border) transparent;
-            animation-duration: 15s;
-        }
-        .ai-orb::after {
-            width: 300px;
-            height: 300px;
-            border-color: transparent var(--color-border);
-            animation: rotate-reverse 18s linear infinite;
-        }
-        .ai-orb-core {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, var(--color-accent) 0%, var(--color-bg) 70%);
-            border-radius: 50%;
-            box-shadow: var(--shadow-glow);
-            filter: blur(5px);
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
         /* --- About Section --- */
         .about-content {
             max-width: 800px;
@@ -368,7 +339,7 @@
             font-size: 1.2rem;
             color: var(--color-text-secondary);
         }
-        
+       
         .cosmic-background {
             position: absolute;
             top: 0; left: 0;
@@ -404,7 +375,7 @@
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
         }
-        
+       
         #stars1 {
             box-shadow: 15vw 80vh 1px 1px #fff, 90vw 10vh 0px 0px #fff, 5vw 30vh 1px 0px #fff, 70vw 60vh 1px 1px #fff, 30vw 90vh 0 0 #fff, 50vw 5vh 1px 0 #fff;
             animation-duration: 15s;
@@ -414,7 +385,7 @@
             animation-duration: 12s;
             animation-delay: -3s;
         }
-        
+       
         .shooting-star {
             position: absolute;
             top: 50%;
@@ -483,9 +454,9 @@
             z-index: 5;
         }
         .main-product-spotlight:hover {
-             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
         }
-        
+       
         .star-border-container {
             position: absolute;
             top: 0; left: 0;
@@ -529,7 +500,7 @@
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
             gap: 2rem; 
         }
-        
+       
         .simple-hover-card {
             background-color: var(--color-bg-card);
             border: 1px solid var(--color-border);
@@ -545,20 +516,20 @@
             box-shadow: var(--shadow-glow);
             border-color: var(--color-accent);
         }
-        
+       
         .service-card {
-             padding: 2.5rem 2rem;
-             text-align: center;
-             align-items: center;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            align-items: center;
         }
-        
+       
         .product-header {
-             flex-grow: 1;
+            flex-grow: 1;
         }
 
         .features-list { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 1rem; }
         .features-list li { display: flex; align-items: flex-start; gap: 0.75rem; }
-        
+       
         .feature-icon {
             flex-shrink: 0;
             margin-top: 5px;
@@ -579,10 +550,10 @@
 
         .feature-content h4 { font-weight: 600; color: var(--color-text-primary); font-size: 1rem; margin-bottom: 0.1rem; }
         .feature-content p { font-size: 0.9rem; color: var(--color-text-secondary); }
-        
+       
         /* --- Services Section --- */
         .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        
+       
         .service-icon-wrapper { 
             display: inline-flex; 
             align-items: center; 
@@ -620,7 +591,7 @@
             line-height: 1.8; 
             margin-bottom: 1rem; 
         }
-        
+       
         .quote-author {
             font-size: 1rem; 
             font-style: normal;
@@ -628,7 +599,7 @@
             color: var(--color-text-primary); 
             text-align: left; 
         }
-        
+       
         /* Responsive adjustments for quotes */
         @media (max-width: 768px) {
             .quotes-grid {
@@ -661,11 +632,11 @@
             background: var(--gradient-text);
         }
         .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
-        
+       
         .footer-about .logo {
-             margin-bottom: 1rem;
+            margin-bottom: 1rem;
         }
-        
+       
         .footer-about p { color: var(--color-text-secondary); max-width: 300px; }
         .footer-links h4, .footer-contact h4 { font-size: 1.1rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 1.5rem; }
         .footer-links ul li { margin-bottom: 0.75rem; }
@@ -673,21 +644,12 @@
         .footer-links ul a:hover { color: var(--color-accent); text-shadow: 0 0 10px var(--color-accent-hover); }
         .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
-        
+       
         /* --- Responsive Adjustments (General) --- */
         @media (max-width: 992px) {
             body { cursor: auto; }
             .cursor { display: none; }
-            .hero .container { flex-direction: column; text-align: center; }
-            .hero-content { text-align: center; max-width: 700px; }
             .hero h1 { font-size: 3.5rem; }
-            .hero-subtitle { text-align: center; margin-left: auto; margin-right: auto;}
-            .cta-container { justify-content: center; }
-            .hero-visual { flex: 0 0 300px; height: 300px; margin-top: 2rem; }
-            .ai-orb { width: 250px; height: 250px;}
-            .ai-orb::before { width: 300px; height: 300px; }
-            .ai-orb::after { width: 200px; height: 200px; }
-            .ai-orb-core { width: 120px; height: 120px;}
             .main-product-card { flex-direction: column; align-items: flex-start; gap: 2rem; }
             .main-product-feature { padding-left: 0; padding-top: 2rem; border-left: none; border-top: 1px solid var(--color-border); width: 100%; }
         }
@@ -722,8 +684,11 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
+        <video id="hero-video-background" autoplay muted loop playsinline>
+            <source src="https://github.com/vineethnj/vineethnj.github.io/raw/main/AI_Evolution_Video_Ready.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="container">
             <div class="hero-content fade-in-section">
                 <h1>Leading the <span class="hero-gradient-text">AI Evolution</span></h1>
@@ -733,15 +698,9 @@
                     <a href="#contact" class="cta-secondary">Get In Touch</a>
                 </div>
             </div>
-            <div class="hero-visual fade-in-section">
-                <div class="ai-orb">
-                    <div class="ai-orb-core"></div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="cosmic-background">
             <div class="nebula"></div>
@@ -751,7 +710,7 @@
             <div class="shooting-star"></div>
             <div class="shooting-star"></div>
         </div>
-        
+       
         <div class="container">
             <div class="section-header fade-in-section">
                 <div class="section-badge">About Orbitrar</div>
@@ -764,7 +723,6 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section id="products" class="section products">
         <div class="container">
             <div class="section-header fade-in-section">
@@ -824,7 +782,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="section section-alt-bg services">
         <div class="container">
             <div class="section-header fade-in-section">
@@ -864,7 +821,6 @@
         </div>
     </section>
 
-    <!-- Quotes Section -->
     <section id="inspiration" class="section">
         <div class="container">
             <div class="section-header fade-in-section">
@@ -894,7 +850,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-container">
@@ -995,7 +950,7 @@
                         setTimeout(() => star.remove(), 2500);
                     }, 50);
                 });
-                
+               
                 mainProductCard.addEventListener('mouseleave', () => {
                     mainProductCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
                     clearInterval(starCreationInterval);
@@ -1016,12 +971,12 @@
             document.querySelectorAll('.fade-in-section').forEach((section) => {
                 const parent = section.parentElement;
                 if (parent && (parent.classList.contains('side-projects-grid') || 
-                               parent.classList.contains('services-grid') ||
-                               parent.classList.contains('quotes-grid'))) { 
+                                parent.classList.contains('services-grid') ||
+                                parent.classList.contains('quotes-grid'))) { 
                     const fadeInSiblings = Array.from(parent.children).filter(child => child.classList.contains('fade-in-section'));
                     const itemIndex = fadeInSiblings.indexOf(section);
                     if (itemIndex > -1) {
-                         section.style.transitionDelay = `${itemIndex * 0.1}s`;
+                        section.style.transitionDelay = `${itemIndex * 0.1}s`;
                     }
                 }
                 observer.observe(section);
