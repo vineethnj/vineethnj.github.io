@@ -319,11 +319,205 @@
             transform: translateY(-4px);
         }
 
-        /* Mobile responsiveness for hero section */
+        /* --- Black Hole Section --- */
+        .blackhole-section {
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 50%, #1e293b 100%);
+            background-image:
+                radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.1), transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(31, 41, 55, 0.8), transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .blackhole-section::before {
+            display: none;
+        }
+
+        #blackhole {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .blackhole-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .blackhole-intro {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .blackhole-intro.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .blackhole-intro h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .blackhole-intro p {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            background: rgba(17, 24, 39, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .experience-prompt {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(59, 130, 246, 0.15);
+            border: 2px solid var(--color-accent);
+            border-radius: 50px;
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse-glow 2s ease-in-out infinite;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .experience-prompt:hover {
+            background: rgba(59, 130, 246, 0.25);
+            transform: translateY(-2px);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        .centerHover {
+            width: 255px;
+            height: 255px;
+            background-color: transparent;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -128px;
+            margin-left: -128px;
+            z-index: 15;
+            cursor: pointer;
+            line-height: 255px;
+            text-align: center;
+            transition: all 500ms;
+        }
+
+        .centerHover.open {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .centerHover:hover span {
+            color: var(--color-accent);
+            text-shadow: 0 0 20px var(--color-accent);
+        }
+
+        .centerHover:hover span:before { 
+            background-color: var(--color-accent);
+            box-shadow: 0 0 10px var(--color-accent);
+        }
+
+        .centerHover:hover span:after { 
+            background-color: var(--color-accent);
+            box-shadow: 0 0 10px var(--color-accent);
+        }
+
+        .centerHover span {
+            color: var(--color-text-secondary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+            transition: all 500ms;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .centerHover span:before {
+            content: '';
+            display: inline-block;
+            height: 2px;
+            width: 20px;
+            margin-right: 15px;
+            margin-bottom: 4px;
+            background-color: var(--color-text-secondary);
+            transition: all 500ms;
+        }
+
+        .centerHover span:after {
+            content: '';
+            display: inline-block;
+            height: 2px;
+            width: 20px;
+            margin-left: 15px;
+            margin-bottom: 4px;
+            background-color: var(--color-text-secondary);
+            transition: all 500ms;
+        }
+
+        .blackhole-canvas {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mobile responsiveness for hero and blackhole sections */
         @media (max-width: 768px) {
             .hero {
                 min-height: 60vh;
                 padding: 2rem 0;
+            }
+            
+            .blackhole-section {
+                min-height: 80vh;
+            }
+            
+            .blackhole-intro h2 {
+                font-size: 2.2rem;
+            }
+            
+            .centerHover {
+                width: 200px;
+                height: 200px;
+                margin-top: -100px;
+                margin-left: -100px;
+                line-height: 200px;
+            }
+            
+            .centerHover span {
+                font-size: 16px;
             }
         }
 
@@ -672,6 +866,7 @@
             <a href="#home" class="logo-text">Orbitrar</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#services">Services</a></li>
@@ -692,9 +887,26 @@
                 <h1>Leading the <span class="hero-gradient-text">AI Evolution</span></h1>
                 <p class="hero-subtitle">"what if' into 'watch this"</p>
                 <div class="cta-container">
-                    <a href="#products" class="cta-primary">Explore Our Products</a>
+                    <a href="#experience" class="cta-primary">Experience the Journey</a>
                     <a href="#contact" class="cta-secondary">Get In Touch</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Black Hole Interactive Experience Section -->
+    <section id="experience" class="blackhole-section">
+        <div id="blackhole">
+            <canvas class="blackhole-canvas"></canvas>
+            <div class="centerHover">
+                <span>Enter</span>
+            </div>
+        </div>
+        
+        <div class="blackhole-content">
+            <div class="blackhole-intro">
+                <h2>The Event Horizon of Innovation</h2>
+                <p>Experience the gravitational pull of technological advancement. Where conventional thinking bends, and new possibilities emerge from the singularity of human creativity and artificial intelligence.</p>
             </div>
         </div>
     </section>
@@ -858,6 +1070,7 @@
                     <h4>Navigation</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#experience">Experience</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#services">Services</a></li>
@@ -894,7 +1107,7 @@
                     });
                 });
 
-                document.querySelectorAll('a, button, .simple-hover-card, .main-product-spotlight').forEach(el => {
+                document.querySelectorAll('a, button, .simple-hover-card, .main-product-spotlight, .centerHover').forEach(el => {
                     el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
                     el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
                 });
@@ -995,6 +1208,230 @@
                     }
                 });
             });
+
+            // 4. Black Hole Animation
+            function blackhole(element) {
+                const container = document.querySelector(element);
+                if (!container) return;
+                
+                const h = container.offsetHeight;
+                const w = container.offsetWidth;
+                const cw = w;
+                const ch = h;
+                const maxorbit = 255; // distance from center
+                const centery = ch / 2;
+                const centerx = cw / 2;
+
+                const startTime = new Date().getTime();
+                let currentTime = 0;
+
+                const stars = [];
+                let collapse = false; // if hovered
+                let expanse = false; // if clicked
+                let returning = false; // if particles are returning to orbit
+
+                // Create canvas
+                const canvas = container.querySelector('.blackhole-canvas');
+                canvas.width = cw;
+                canvas.height = ch;
+                const context = canvas.getContext("2d");
+
+                context.globalCompositeOperation = "multiply";
+
+                function setDPI(canvas, dpi) {
+                    // Set up CSS size if it's not set up already
+                    if (!canvas.style.width)
+                        canvas.style.width = canvas.width + 'px';
+                    if (!canvas.style.height)
+                        canvas.style.height = canvas.height + 'px';
+
+                    const scaleFactor = dpi / 96;
+                    canvas.width = Math.ceil(canvas.width * scaleFactor);
+                    canvas.height = Math.ceil(canvas.height * scaleFactor);
+                    const ctx = canvas.getContext('2d');
+                    ctx.scale(scaleFactor, scaleFactor);
+                }
+
+                function rotate(cx, cy, x, y, angle) {
+                    const radians = angle;
+                    const cos = Math.cos(radians);
+                    const sin = Math.sin(radians);
+                    const nx = (cos * (x - cx)) + (sin * (y - cy)) + cx;
+                    const ny = (cos * (y - cy)) - (sin * (x - cx)) + cy;
+                    return [nx, ny];
+                }
+
+                setDPI(canvas, 192);
+
+                class Star {
+                    constructor() {
+                        // Get a weighted random number, so that the majority of stars will form in the center of the orbit
+                        const rands = [];
+                        rands.push(Math.random() * (maxorbit / 2) + 1);
+                        rands.push(Math.random() * (maxorbit / 2) + maxorbit);
+
+                        this.orbital = (rands.reduce((p, c) => p + c, 0) / rands.length);
+                        
+                        this.x = centerx; // All of these stars are at the center x position at all times
+                        this.y = centery + this.orbital; // Set Y position starting at the center y + the position in the orbit
+
+                        this.yOrigin = centery + this.orbital; // this is used to track the particles origin
+
+                        this.speed = (Math.floor(Math.random() * 2.5) + 1.5) * Math.PI / 180; // The rate at which this star will orbit
+                        this.rotation = 0; // current Rotation
+                        this.startRotation = (Math.floor(Math.random() * 360) + 1) * Math.PI / 180; // Starting rotation
+
+                        this.id = stars.length; // This will be used when expansion takes place
+
+                        this.collapseBonus = this.orbital - (maxorbit * 0.7); // This "bonus" is used to randomly place some stars outside of the blackhole on hover
+                        if (this.collapseBonus < 0) { // if the collapse "bonus" is negative
+                            this.collapseBonus = 0; // set it to 0, this way no stars will go inside the blackhole
+                        }
+
+                        // Create color variety using the brand gradient colors
+                        const colorVariant = Math.random();
+                        const opacity = 0.3 + (1 - (this.orbital / 255)) * 0.7;
+                        if (colorVariant < 0.6) {
+                            this.color = `rgba(59, 130, 246, ${opacity})`; // Blue particles
+                        } else {
+                            this.color = `rgba(167, 139, 250, ${opacity})`; // Purple particles
+                        }
+
+                        this.hoverPos = centery + (maxorbit / 2) + this.collapseBonus; // Where the star will go on hover of the blackhole
+                        this.expansePos = centery + (this.id % 100) * -10 + (Math.floor(Math.random() * 20) + 1); // Where the star will go when expansion takes place
+
+                        this.prevR = this.startRotation;
+                        this.prevX = this.x;
+                        this.prevY = this.y;
+                        
+                        // Store original position for returning
+                        this.originalY = this.yOrigin;
+
+                        stars.push(this);
+                    }
+
+                    draw() {
+                        if (!expanse && !returning) {
+                            this.rotation = this.startRotation + (currentTime * this.speed);
+                            if (!collapse) { // not hovered
+                                if (this.y > this.yOrigin) {
+                                    this.y -= 2.5;
+                                }
+                                if (this.y < this.yOrigin - 4) {
+                                    this.y += (this.yOrigin - this.y) / 10;
+                                }
+                            } else { // on hover
+                                this.trail = 1;
+                                if (this.y > this.hoverPos) {
+                                    this.y -= (this.hoverPos - this.y) / -5;
+                                }
+                                if (this.y < this.hoverPos - 4) {
+                                    this.y += 2.5;
+                                }
+                            }
+                        } else if (expanse && !returning) {
+                            this.rotation = this.startRotation + (currentTime * (this.speed / 2));
+                            if (this.y > this.expansePos) {
+                                this.y -= Math.floor(this.expansePos - this.y) / -80; // Slower expansion for better visibility
+                            }
+                        } else if (returning) {
+                            // Returning to original orbit slowly
+                            this.rotation = this.startRotation + (currentTime * this.speed);
+                            if (Math.abs(this.y - this.originalY) > 2) {
+                                this.y += (this.originalY - this.y) / 50; // Much slower return
+                            } else {
+                                this.y = this.originalY;
+                                this.yOrigin = this.originalY;
+                            }
+                        }
+
+                        context.save();
+                        context.fillStyle = this.color;
+                        context.strokeStyle = this.color;
+                        context.beginPath();
+                        const oldPos = rotate(centerx, centery, this.prevX, this.prevY, -this.prevR);
+                        context.moveTo(oldPos[0], oldPos[1]);
+                        context.translate(centerx, centery);
+                        context.rotate(this.rotation);
+                        context.translate(-centerx, -centery);
+                        context.lineTo(this.x, this.y);
+                        context.stroke();
+                        context.restore();
+
+                        this.prevR = this.rotation;
+                        this.prevX = this.x;
+                        this.prevY = this.y;
+                    }
+                }
+
+                // Event listeners
+                const centerHover = container.querySelector('.centerHover');
+                const blackholeIntro = document.querySelector('.blackhole-intro');
+                
+                centerHover.addEventListener('click', function() {
+                    collapse = false;
+                    expanse = true;
+                    returning = false;
+                    this.classList.add('open');
+                    blackholeIntro.classList.add('hidden');
+                    
+                    // Start the return cycle after full expansion (20-30 seconds)
+                    setTimeout(() => {
+                        expanse = false;
+                        returning = true;
+                        
+                        // After particles return, reset to normal orbit
+                        setTimeout(() => {
+                            returning = false;
+                            this.classList.remove('open');
+                            blackholeIntro.classList.remove('hidden');
+                        }, 8000); // 8 seconds to return slowly
+                    }, 25000); // 25 seconds of expansion experience
+                });
+                
+                centerHover.addEventListener('mouseover', function() {
+                    if (expanse === false) {
+                        collapse = true;
+                    }
+                });
+                
+                centerHover.addEventListener('mouseout', function() {
+                    if (expanse === false) {
+                        collapse = false;
+                    }
+                });
+
+                // Animation loop
+                function loop() {
+                    const now = new Date().getTime();
+                    currentTime = (now - startTime) / 50;
+
+                    context.fillStyle = 'rgba(17, 24, 39, 0.15)'; // Use theme background color with transparency for trails
+                    context.fillRect(0, 0, cw, ch);
+
+                    for (let i = 0; i < stars.length; i++) { // For each star
+                        if (stars[i] !== undefined) {
+                            stars[i].draw(); // Draw it
+                        }
+                    }
+
+                    requestAnimationFrame(loop);
+                }
+
+                function init() {
+                    context.fillStyle = 'rgba(17, 24, 39, 0.95)'; // Initial clear with theme background color
+                    context.fillRect(0, 0, cw, ch);
+                    for (let i = 0; i < 2500; i++) { // create 2500 stars
+                        new Star();
+                    }
+                    loop();
+                }
+
+                init();
+            }
+
+            // Initialize black hole
+            blackhole('#blackhole');
         });
     </script>
 </body>
