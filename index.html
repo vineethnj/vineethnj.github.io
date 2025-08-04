@@ -822,19 +822,38 @@
             height: 2px;
             background: var(--gradient-text);
         }
-        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
+        .footer-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 3rem; 
+            margin-bottom: 4rem; 
+        }
 
         .footer-about .logo {
             margin-bottom: 1rem;
         }
 
         .footer-about p { color: var(--color-text-secondary); max-width: 300px; }
-        .footer-links h4, .footer-contact h4 { font-size: 1.1rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 1.5rem; }
-        .footer-links ul li { margin-bottom: 0.75rem; }
-        .footer-links ul a { color: var(--color-text-secondary); }
-        .footer-links ul a:hover { color: var(--color-accent); text-shadow: 0 0 10px var(--color-accent-hover); }
+        .footer-links h4, .footer-contact h4, .footer-legal h4 { 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            color: var(--color-text-primary); 
+            margin-bottom: 1.5rem; 
+        }
+        .footer-links ul li, .footer-legal ul li { margin-bottom: 0.75rem; }
+        .footer-links ul a, .footer-legal ul a { color: var(--color-text-secondary); }
+        .footer-links ul a:hover, .footer-legal ul a:hover { 
+            color: var(--color-accent); 
+            text-shadow: 0 0 10px var(--color-accent-hover); 
+        }
         .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
-        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; }
+        .footer-bottom { 
+            padding-top: 2rem; 
+            border-top: 1px solid var(--color-border); 
+            text-align: center; 
+            color: var(--color-text-secondary); 
+            font-size: 0.9rem; 
+        }
 
         /* --- Responsive Adjustments (General) --- */
         @media (max-width: 992px) {
@@ -891,16 +910,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
-        
-        <!-- <div class="blackhole-content">
-            <div class="blackhole-intro">
-                <h2>The Event Horizon of Innovation</h2>
-                <p>Experience the gravitational pull of technological advancement. Where conventional thinking bends, and new possibilities emerge from the singularity of human creativity and artificial intelligence.</p>
-            </div>
-        </div> -->
     </section>
 
     <section id="about" class="section">
@@ -1074,6 +1083,16 @@
                     <p>Business inquiries:</p>
                     <p><a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
                 </div>
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://www.termsfeed.com/live/116afb29-8918-4324-9255-ec2ef34b1f38" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="https://www.termsfeed.com/live/00f8bd80-222e-4bd1-9839-1d753d97301c" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Orbitrar. All rights reserved.</p>
             </div>
         </div>
     </footer>
