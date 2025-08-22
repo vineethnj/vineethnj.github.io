@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbitrar - Google Ads API Demo</title>
+    <title>AdsGen - Google Ads API Demo</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
@@ -134,7 +134,7 @@
         <div class="content-area">
             <!-- Screen 1: Homepage -->
             <div id="homepage" class="screen" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <div class="logo">Orbitr<span class="highlight">ar</span></div>
+                <div class="logo">Ads<span class="highlight">Gen</span></div>
                 <p class="tagline">Automate and Optimize Your Google Ads</p>
                 <button id="signin-btn" class="google-btn">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google logo">
@@ -146,7 +146,7 @@
             <div id="oauth-screen" class="screen">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="google-logo">
                 <h1>Choose an account</h1>
-                <p class="app-info">to continue to <strong>Orbitrar</strong></p>
+                <p class="app-info">to continue to <strong>AdsGen</strong></p>
                 <div class="scope-list">
                     <div class="scope-item"><span class="scope-icon">&#128100;</span><div class="scope-description"><strong>See your personal info...</strong><span>(userinfo.profile)</span></div></div>
                     <div class="scope-item"><span class="scope-icon">&#9993;</span><div class="scope-description"><strong>View your email address</strong><span>(userinfo.email)</span></div></div>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="info-box">
                     <h4>Verification Information</h4>
-                    This app, <strong>Orbitrar</strong>, is requesting access to your Google Account data. Make sure you trust this app.<br><br>
+                    This app, <strong>AdsGen</strong>, is requesting access to your Google Account data. Make sure you trust this app.<br><br>
                     <strong>Project ID:</strong> <code>grand-song-464212-u4</code><br>
                     <strong>Client ID:</strong> <code>1071808823811-2n6bvfv1hciui0de5am7bohl1pl2kepe.apps.googleusercontent.com</code>
                 </div>
@@ -163,7 +163,7 @@
 
             <!-- Screen 3: App Dashboard (Using Ads API) -->
             <div id="app-dashboard" class="screen">
-                <h1>Orbitrar Dashboard</h1>
+                <h1>AdsGen Dashboard</h1>
 
                 <div class="card">
                     <h2>1. Retrieve Performance Data (Read)</h2>
@@ -203,12 +203,10 @@
         const screens = document.querySelectorAll('.screen');
         const addressBar = document.getElementById('address-bar');
         const confirmationMessage = document.getElementById('confirmation-message');
-
         const signinBtn = document.getElementById('signin-btn');
         const allowBtn = document.getElementById('allow-btn');
         const createBtn = document.getElementById('create-btn');
         const updateBtn = document.getElementById('update-btn');
-        
         const clientId = "1071808823811-2n6bvfv1hciui0de5am7bohl1pl2kepe.apps.googleusercontent.com";
 
         function showScreen(screenId) {
@@ -220,7 +218,7 @@
             } else if (screenId === 'oauth-screen') {
                 addressBar.textContent = `https://accounts.google.com/o/oauth2/v2/auth?scope=...&client_id=${clientId}`;
             } else {
-                addressBar.textContent = 'https://app.orbitrar.com/dashboard';
+                addressBar.textContent = 'https://app.orbitrar.com/dashboard'; // This can stay generic
             }
         }
 
