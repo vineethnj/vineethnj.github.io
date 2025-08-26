@@ -238,26 +238,17 @@
         const successMessageDiv = document.getElementById('success-message');
         
         // --- Simulated Data Store ---
-        // This array acts as our "database" for the demo.
         let campaigns = [
             { id: 1, name: 'Winter Sale', status: 'ENABLED', clicks: 1204, impressions: 85320, cost: 2408.00 },
             { id: 2, name: 'Brand Awareness Q1', status: 'ENABLED', clicks: 850, impressions: 150100, cost: 1150.50 }
         ];
 
         // --- Core Functions ---
-        
-        /**
-         * Renders all campaigns to the table and updates the dropdown.
-         * This function is the single source of truth for our UI.
-         */
         function renderCampaigns() {
-            // Clear existing content
             campaignTableBody.innerHTML = '';
             selectCampaignDropdown.innerHTML = '';
 
-            // Populate table and dropdown
             campaigns.forEach(campaign => {
-                // Add row to table
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${campaign.name}</td>
@@ -268,7 +259,6 @@
                 `;
                 campaignTableBody.appendChild(row);
 
-                // Add option to dropdown
                 const option = document.createElement('option');
                 option.value = campaign.id;
                 option.textContent = campaign.name;
@@ -276,13 +266,9 @@
             });
         }
 
-        /**
-         * Displays a success message and hides it after 3 seconds.
-         */
         function showSuccessMessage(message) {
             successMessageDiv.textContent = '✅ Success! ' + message;
             successMessageDiv.classList.remove('hidden');
-            // Scroll to the top to make the message visible
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setTimeout(() => {
                 successMessageDiv.classList.add('hidden');
@@ -290,51 +276,34 @@
         }
 
         // --- OAuth Callback ---
-
-        /**
-         * This function is called by the Google library after a successful sign-in.
-         */
         function handleCredentialResponse(response) {
-            console.log("Encoded JWT ID token: " + response.credential);
-            // In a real app, you'd send this to your backend for verification.
-            // For this demo, we just switch the views.
+            console.log("Login successful. Scopes granted.");
             loginSection.classList.add('hidden');
             dashboardSection.classList.remove('hidden');
-
-            // Initial render of the campaigns after login
             renderCampaigns();
         }
 
         // --- Event Listeners ---
-
-        // Handle UPDATE form submission
         updateForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            
             const campaignIdToUpdate = parseInt(selectCampaignDropdown.value);
             const newStatus = document.getElementById('change-status').value;
-            
-            // Find the campaign in our data store and update it
             const campaign = campaigns.find(c => c.id === campaignIdToUpdate);
             if (campaign) {
                 campaign.status = newStatus;
-                // Re-render the UI to show the change
                 renderCampaigns();
                 showSuccessMessage(`The campaign "${campaign.name}" status has been updated.`);
             }
         });
         
-        // Handle CREATE form submission
         createForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            
             const newCampaignName = campaignNameInput.value;
             const newDailyBudget = parseFloat(dailyBudgetInput.value);
             
             if (newCampaignName && newDailyBudget > 0) {
-                // Create a new campaign object and add it to our data store
                 const newCampaign = {
-                    id: Date.now(), // Use timestamp for a unique ID in this demo
+                    id: Date.now(),
                     name: newCampaignName,
                     status: 'ENABLED',
                     clicks: 0,
@@ -342,14 +311,11 @@
                     cost: 0.00
                 };
                 campaigns.push(newCampaign);
-                
-                // Re-render the UI to show the new campaign
                 renderCampaigns();
                 showSuccessMessage(`The campaign "${newCampaignName}" has been successfully created.`);
-
-                // Clear input fields for the next creation
-                campaignNameInput.value = '';
-                dailyBudgetInput.value = '';
+                createForm.reset();
+                campaignNameInput.value = 'Summer Sale ' + new Date().getFullYear();
+                dailyBudgetInput.value = 50;
             }
         });
     </script>
