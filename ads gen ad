@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdsGen - Google Ads API Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .browser-window {
+            width: 100%;
+            max-width: 900px;
+            min-height: 700px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .browser-header {
+            background-color: #e8eaed;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .dots { display: flex; }
+        .dot { height: 12px; width: 12px; border-radius: 50%; margin-right: 8px; }
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .address-bar {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin-left: 20px;
+            flex-grow: 1;
+            font-size: 14px;
+            color: #5f6368;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .content-area {
+            padding: 30px 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .screen { display: none; width: 100%; text-align: center; }
+
+        /* --- Homepage Styles --- */
+        #homepage .logo { font-size: 48px; font-weight: 700; color: #2c3e50; margin-bottom: 10px; }
+        #homepage .logo .highlight { color: #3498db; }
+        #homepage .tagline { font-size: 18px; color: #7f8c8d; margin-bottom: 40px; }
+        
+        .google-btn {
+            display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 4px;
+            background-color: #4285F4; color: white; font-size: 16px; font-weight: 500;
+            cursor: pointer; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background-color 0.2s;
+        }
+        .google-btn:hover { background-color: #3367D6; }
+        .google-btn img { width: 20px; height: 20px; margin-right: 15px; background-color: white; padding: 2px; border-radius: 2px; }
+
+        /* --- OAuth Screen Styles --- */
+        #oauth-screen { border: 1px solid #dadce0; border-radius: 8px; padding: 40px; max-width: 500px; margin: 0 auto; }
+        #oauth-screen .google-logo { width: 75px; margin-bottom: 15px; }
+        #oauth-screen h1 { font-size: 24px; font-weight: 400; margin: 0 0 10px 0; }
+        #oauth-screen .app-info { font-size: 16px; margin-bottom: 25px; }
+        #oauth-screen .app-info strong { font-weight: 500; }
+        .scope-list { text-align: left; margin: 25px 0; font-size: 14px; }
+        .scope-item { display: flex; align-items: flex-start; margin-bottom: 15px; }
+        .scope-icon { margin-right: 15px; color: #5f6368; font-size: 20px; }
+        .scope-description strong { display: block; font-weight: 500; }
+        .scope-description span { color: #5f6368; }
+        .info-box { background-color: #f8f9fa; border: 1px solid #e8eaed; border-radius: 8px; padding: 15px; text-align: left; font-size: 12px; color: #5f6368; margin-top: 20px; line-height: 1.5; }
+        .info-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #202124;}
+        .info-box strong { color: #202124; }
+        .info-box code { background-color: #e8eaed; padding: 2px 4px; border-radius: 4px; word-break: break-all; }
+
+        /* --- App Dashboard Styles --- */
+        #app-dashboard { width: 100%; text-align: left; }
+        #app-dashboard h1 { font-size: 28px; color: #2c3e50; margin-bottom: 20px; text-align: center; }
+        .card { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card h2 { font-size: 20px; margin-top: 0; margin-bottom: 20px; color: #3498db; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #555; }
+        .form-group input, .form-group select { width: calc(100% - 22px); padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .api-usage-note { font-size: 13px; color: #7f8c8d; background-color: #f8f9fa; padding: 10px; border-radius: 4px; margin-top: 20px; border-left: 3px solid #3498db; }
+        .api-usage-note code { font-weight: bold; color: #2c3e50; }
+        .primary-btn { background-color: #27ae60; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: 500; transition: background-color 0.2s; }
+        .primary-btn:hover { background-color: #229954; }
+        .secondary-btn { background-color: #e67e22; }
+        .secondary-btn:hover { background-color: #d35400; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .data-table th, .data-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .data-table th { background-color: #f2f2f2; font-weight: 500; }
+        
+        /* --- Confirmation Styles --- */
+        #confirmation-screen { text-align: center; }
+        #confirmation-screen .icon { font-size: 60px; color: #27ae60; margin-bottom: 20px; }
+        #confirmation-screen h1 { font-size: 28px; color: #2c3e50; margin-bottom: 10px; }
+        #confirmation-screen p { font-size: 18px; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="browser-window">
+        <div class="browser-header">
+            <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+            <div id="address-bar" class="address-bar">https://orbitrar.com</div>
+        </div>
+        <div class="content-area">
+            <!-- Screen 1: Homepage -->
+            <div id="homepage" class="screen" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="logo">Ads<span class="highlight">Gen</span></div>
+                <p class="tagline">Automate and Optimize Your Google Ads</p>
+                <button id="signin-btn" class="google-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google logo">
+                    Sign in with Google
+                </button>
+            </div>
+
+            <!-- Screen 2: Google OAuth Consent Screen -->
+            <div id="oauth-screen" class="screen">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="google-logo">
+                <h1>Choose an account</h1>
+                <p class="app-info">to continue to <strong>AdsGen</strong></p>
+                <div class="scope-list">
+                    <div class="scope-item"><span class="scope-icon">&#128100;</span><div class="scope-description"><strong>See your personal info...</strong><span>(userinfo.profile)</span></div></div>
+                    <div class="scope-item"><span class="scope-icon">&#9993;</span><div class="scope-description"><strong>View your email address</strong><span>(userinfo.email)</span></div></div>
+                    <div class="scope-item"><span class="scope-icon">&#128202;</span><div class="scope-description"><strong>Manage your Google Ads campaigns</strong><span>(adwords)</span></div></div>
+                </div>
+                <div class="info-box">
+                    <h4>Verification Information</h4>
+                    This app, <strong>AdsGen</strong>, is requesting access to your Google Account data. Make sure you trust this app.<br><br>
+                    <strong>Project ID:</strong> <code>grand-song-464212-u4</code><br>
+                    <strong>Client ID:</strong> <code>1071808823811-2n6bvfv1hciui0de5am7bohl1pl2kepe.apps.googleusercontent.com</code>
+                </div>
+                <button id="allow-btn" class="google-btn" style="margin-top: 30px; width: 100%;">Allow</button>
+            </div>
+
+            <!-- Screen 3: App Dashboard (Using Ads API) -->
+            <div id="app-dashboard" class="screen">
+                <h1>AdsGen Dashboard</h1>
+
+                <div class="card">
+                    <h2>1. Retrieve Performance Data (Read)</h2>
+                    <table class="data-table"><thead><tr><th>Campaign</th><th>Clicks</th><th>Impressions</th><th>Cost</th></tr></thead>
+                        <tbody><tr><td>Winter Sale</td><td>1,204</td><td>85,320</td><td>$2,408.00</td></tr>
+                               <tr><td>Brand Awareness Q1</td><td>850</td><td>150,100</td><td>$1,150.50</td></tr></tbody></table>
+                    <div class="api-usage-note"><strong>API Usage:</strong> This demonstrates a <strong>read-only</strong> use of the <code>adwords</code> scope to fetch and display campaign data.</div>
+                </div>
+                
+                <div class="card">
+                    <h2>2. Edit Campaign Settings (Update)</h2>
+                    <div class="form-group"><label for="campaign-select">Select Campaign</label><select id="campaign-select"><option>Winter Sale</option><option>Brand Awareness Q1</option></select></div>
+                    <div class="form-group"><label for="campaign-status">Change Status</label><select id="campaign-status"><option>Enabled</option><option selected>Paused</option></select></div>
+                    <button id="update-btn" class="primary-btn secondary-btn" style="margin-top: 15px;">Update Status</button>
+                    <div class="api-usage-note"><strong>API Usage:</strong> This demonstrates a <strong>write</strong> use of the <code>adwords</code> scope to update the status of an existing campaign.</div>
+                </div>
+
+                <div class="card">
+                    <h2>3. Create a New Campaign (Create)</h2>
+                    <div class="form-group"><label for="campaign-name">Campaign Name</label><input type="text" id="campaign-name" value="Summer Sale 2024"></div>
+                    <div class="form-group"><label for="daily-budget">Daily Budget ($)</label><input type="number" id="daily-budget" value="50"></div>
+                    <button id="create-btn" class="primary-btn" style="margin-top: 15px;">Create Campaign</button>
+                    <div class="api-usage-note"><strong>API Usage:</strong> This demonstrates another <strong>write</strong> use of the <code>adwords</code> scope to create a new campaign from scratch.</div>
+                </div>
+            </div>
+
+            <!-- Screen 4: Confirmation -->
+            <div id="confirmation-screen" class="screen">
+                <div class="icon">&#10004;</div>
+                <h1>Success!</h1>
+                <p id="confirmation-message">The action was completed successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const screens = document.querySelectorAll('.screen');
+        const addressBar = document.getElementById('address-bar');
+        const confirmationMessage = document.getElementById('confirmation-message');
+        const signinBtn = document.getElementById('signin-btn');
+        const allowBtn = document.getElementById('allow-btn');
+        const createBtn = document.getElementById('create-btn');
+        const updateBtn = document.getElementById('update-btn');
+        const clientId = "1071808823811-2n6bvfv1hciui0de5am7bohl1pl2kepe.apps.googleusercontent.com";
+
+        function showScreen(screenId) {
+            screens.forEach(screen => screen.style.display = 'none');
+            document.getElementById(screenId).style.display = 'block';
+
+            if (screenId === 'homepage') {
+                addressBar.textContent = 'https://orbitrar.com';
+            } else if (screenId === 'oauth-screen') {
+                addressBar.textContent = `https://accounts.google.com/o/oauth2/v2/auth?scope=...&client_id=${clientId}`;
+            } else {
+                addressBar.textContent = 'https://app.orbitrar.com/dashboard'; // This can stay generic
+            }
+        }
+
+        signinBtn.addEventListener('click', () => showScreen('oauth-screen'));
+        allowBtn.addEventListener('click', () => showScreen('app-dashboard'));
+
+        createBtn.addEventListener('click', () => {
+            const campaignName = document.getElementById('campaign-name').value;
+            confirmationMessage.textContent = `The campaign "${campaignName}" has been successfully created.`;
+            showScreen('confirmation-screen');
+        });
+
+        updateBtn.addEventListener('click', () => {
+            const campaignName = document.getElementById('campaign-select').value;
+            confirmationMessage.textContent = `The status for campaign "${campaignName}" has been successfully updated.`;
+            showScreen('confirmation-screen');
+        });
+
+        showScreen('homepage');
+    </script>
+</body>
+</html>
