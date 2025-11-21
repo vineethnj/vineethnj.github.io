@@ -137,6 +137,24 @@
                 );
             };
 
+            const testAPICall = () => {
+                FB.api('/me/adaccounts', 
+                    { 
+                        fields: 'id,name,account_id',
+                        access_token: accessToken 
+                    }, 
+                    function(response) {
+                        console.log('✅ API Test Success:', response);
+                        if (response && !response.error) {
+                            alert('✅ API call successful!\n\nCheck browser console (F12) for details.\n\nWait 24 hours, then go to Meta Developer Console to request advanced access.');
+                        } else {
+                            alert('❌ API call failed: ' + (response.error?.message || 'Unknown error'));
+                            console.error('API Error:', response.error);
+                        }
+                    }
+                );
+            };
+
             const handleLogout = () => {
                 FB.logout(function(response) {
                     setIsLoggedIn(false);
@@ -214,6 +232,12 @@
                                 </div>
                                 <div className="flex items-center space-x-4">
                                     <span className="text-sm text-gray-700">Welcome, <span className="font-semibold">{user?.name}</span></span>
+                                    <button 
+                                        onClick={testAPICall}
+                                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+                                    >
+                                        Test API
+                                    </button>
                                     <button 
                                         onClick={handleLogout}
                                         className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition"
