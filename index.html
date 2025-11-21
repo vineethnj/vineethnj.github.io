@@ -3,1448 +3,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbitrar - Leading the AI Evolution</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- Global Styles & Resets --- */
-        :root {
-            --color-bg: #111827;
-            --color-bg-alt: #1F2937;
-            --color-bg-card: #1f2937;
-            --color-border: #374151;
-            --color-text-primary: #F3F4F6;
-            --color-text-secondary: #9CA3AF;
-            --color-accent: #3B82F6;
-            --color-accent-hover: #2563EB;
-            --gradient-text: linear-gradient(90deg, #3B82F6, #A78BFA);
-            --shadow-color: rgba(59, 130, 246, 0.2);
-            --shadow-glow: 0 0 50px -10px var(--color-accent);
-            --spotlight-x: 50%;
-            --spotlight-y: 50%;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text-primary);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-image:
-                radial-gradient(circle at var(--spotlight-x) var(--spotlight-y), rgba(31, 41, 55, 0.8) 0%, transparent 30%),
-                radial-gradient(at 20% 80%, rgba(59, 130, 246, 0.1), transparent 40%),
-                radial-gradient(at 80% 10%, rgba(167, 139, 250, 0.1), transparent 40%);
-            background-attachment: fixed;
-            cursor: none;
-        }
-
-        /* --- Moon Cursor Design --- */
-        .cursor {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background-color: transparent;
-            box-shadow: -5px 5px 0 0 var(--color-text-primary);
-            position: fixed;
-            transform: translate(-50%, -50%) rotate(0deg);
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out;
-        }
-
-        .cursor.hovered {
-            transform: translate(-50%, -50%) scale(1.3) rotate(-15deg);
-            box-shadow: -4px 4px 0 0 var(--color-accent);
-            filter: drop-shadow(0 0 8px var(--color-accent));
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--color-accent);
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--color-accent-hover);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* --- Animation for Scroll --- */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Transparent Fixed Navigation --- */
-        .main-navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.5rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--color-text-primary);
-            padding: 0.75rem 1.25rem;
-            transition: all 0.4s ease;
-            border-radius: 8px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-        }
-
-        .nav-links a:hover {
-            color: var(--color-accent);
-            text-shadow: 0 0 15px var(--color-accent-hover);
-            background: rgba(59, 130, 246, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* --- Generic Section Styling --- */
-        .section {
-            padding: 7rem 0;
-            overflow: hidden;
-            position: relative;
-        }
-        .section-alt-bg {
-            background-color: var(--color-bg-alt);
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-badge {
-            display: inline-block;
-            background-color: var(--color-bg-alt);
-            color: var(--color-accent);
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            border: 1px solid var(--color-border);
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--color-text-primary);
-            letter-spacing: -1px;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 0;
-            position: relative;
-            text-align: center;
-        }
-        .hero::before { display: none; }
-
-        #hero-video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(17, 24, 39, 0.4);
-            z-index: 0;
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 4.2rem;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2.5px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .hero-gradient-text {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-        }
-
-        .cta-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .cta-primary, .cta-secondary {
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: 1px solid transparent;
-        }
-
-        .cta-primary {
-            background: var(--gradient-text);
-            color: white;
-            border: none;
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px var(--shadow-color);
-        }
-
-        .cta-secondary {
-            background-color: rgba(31, 41, 55, 0.8);
-            color: var(--color-text-primary);
-            border: 1px solid var(--color-border);
-        }
-
-        .cta-secondary:hover {
-            background-color: var(--color-bg-card);
-            border-color: var(--color-accent);
-            transform: translateY(-4px);
-        }
-
-        /* --- Black Hole Section --- */
-        .blackhole-section {
-            min-height: 100vh;
-            position: relative;
-            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 50%, #1e293b 100%);
-            background-image:
-                radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15), transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.1), transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(31, 41, 55, 0.8), transparent 70%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .blackhole-section::before {
-            display: none;
-        }
-
-        #blackhole {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .blackhole-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .blackhole-intro {
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .blackhole-intro.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .blackhole-intro h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-        }
-
-        .blackhole-intro p {
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            background: rgba(17, 24, 39, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .experience-prompt {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: rgba(59, 130, 246, 0.15);
-            border: 2px solid var(--color-accent);
-            border-radius: 50px;
-            color: var(--color-accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: pulse-glow 2s ease-in-out infinite;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .experience-prompt:hover {
-            background: rgba(59, 130, 246, 0.25);
-            transform: translateY(-2px);
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
-            }
-        }
-
-        .centerHover {
-            width: 255px;
-            height: 255px;
-            background-color: transparent;
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin-top: -128px;
-            margin-left: -128px;
-            z-index: 15;
-            cursor: pointer;
-            line-height: 255px;
-            text-align: center;
-            transition: all 500ms;
-        }
-
-        .centerHover.open {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .centerHover:hover span {
-            color: var(--color-accent);
-            text-shadow: 0 0 20px var(--color-accent);
-        }
-
-        .centerHover:hover span:before { 
-            background-color: var(--color-accent);
-            box-shadow: 0 0 10px var(--color-accent);
-        }
-
-        .centerHover:hover span:after { 
-            background-color: var(--color-accent);
-            box-shadow: 0 0 10px var(--color-accent);
-        }
-
-        .centerHover span {
-            color: var(--color-text-secondary);
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            position: relative;
-            transition: all 500ms;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .centerHover span:before {
-            content: '';
-            display: inline-block;
-            height: 2px;
-            width: 20px;
-            margin-right: 15px;
-            margin-bottom: 4px;
-            background-color: var(--color-text-secondary);
-            transition: all 500ms;
-        }
-
-        .centerHover span:after {
-            content: '';
-            display: inline-block;
-            height: 2px;
-            width: 20px;
-            margin-left: 15px;
-            margin-bottom: 4px;
-            background-color: var(--color-text-secondary);
-            transition: all 500ms;
-        }
-
-        .blackhole-canvas {
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Mobile responsiveness for hero and blackhole sections */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 60vh;
-                padding: 2rem 0;
-            }
-            
-            .blackhole-section {
-                min-height: 80vh;
-            }
-            
-            .blackhole-intro h2 {
-                font-size: 2.2rem;
-            }
-            
-            .centerHover {
-                width: 200px;
-                height: 200px;
-                margin-top: -100px;
-                margin-left: -100px;
-                line-height: 200px;
-            }
-            
-            .centerHover span {
-                font-size: 16px;
-            }
-        }
-
-        /* --- About Section --- */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .about-text {
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-        }
-
-        .cosmic-background {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .nebula {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.1) 0%, rgba(59, 130, 246, 0.05) 40%, transparent 70%);
-            filter: blur(60px);
-            animation: pulse-nebula 20s ease-in-out infinite alternate;
-        }
-        @keyframes pulse-nebula {
-            to { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; }
-        }
-
-        .stars {
-            position: absolute;
-            top: 0; left: 0;
-            width: 1px; height: 1px;
-            background: transparent;
-            animation: twinkle 10s linear infinite alternate;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        #stars1 {
-            box-shadow: 15vw 80vh 1px 1px #fff, 90vw 10vh 0px 0px #fff, 5vw 30vh 1px 0px #fff, 70vw 60vh 1px 1px #fff, 30vw 90vh 0 0 #fff, 50vw 5vh 1px 0 #fff;
-            animation-duration: 15s;
-        }
-        #stars2 {
-            box-shadow: 40vw 40vh 0 0 #fff, 80vw 75vh 1px 0px #fff, 20vw 5vh 1px 1px #fff, 95vw 50vh 0 0 #fff, 55vw 95vh 1px 0 #fff, 5vw 90vh 0 1px #fff;
-            animation-duration: 12s;
-            animation-delay: -3s;
-        }
-
-        .shooting-star {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            height: 2px;
-            background: linear-gradient(-45deg, var(--color-accent), rgba(255, 255, 255, 0));
-            border-radius: 999px;
-            filter: drop-shadow(0 0 6px var(--color-accent));
-            animation: shoot 10s ease-in-out infinite;
-        }
-        @keyframes shoot {
-            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; width: 0; }
-            3% { width: 150px; }
-            100% { transform: translateX(80vw) translateY(-80vh) rotate(-45deg); opacity: 0; width: 150px; }
-        }
-
-        .shooting-star:nth-child(2) {
-            top: 20%;
-            left: -50%;
-            animation-delay: 2.3s;
-            animation-duration: 8s;
-        }
-        .shooting-star:nth-child(3) {
-            top: 80%;
-            left: 20%;
-            animation-delay: 5.7s;
-            animation-duration: 12s;
-        }
-
-        /* --- Products Section --- */
-        .product-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--color-text-primary);
-        }
-
-        .product-badge {
-            display: inline-block;
-            background: var(--gradient-text);
-            color: black;
-            padding: 0.2rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .product-description {
-            color: var(--color-text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .main-product-spotlight {
-            background-color: var(--color-bg-alt);
-            border-radius: 16px;
-            margin-bottom: 4rem;
-            padding: 3rem;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.4);
-            transform-style: preserve-3d;
-            perspective: 1500px;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            z-index: 5;
-        }
-        .main-product-spotlight:hover {
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3), var(--shadow-glow);
-        }
-
-        .star-border-container {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            border-radius: inherit;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(220, 220, 255, 0.8) 0%, rgba(167, 139, 250, 0.4) 30%, transparent 70%);
-            opacity: 0;
-            animation: twinkle-border 2s ease-in-out infinite;
-        }
-        @keyframes twinkle-border {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
-        .main-product-card { display: flex; align-items: center; gap: 3rem; pointer-events: none; }
-        .main-product-info { flex: 1.2; }
-        .main-product-card .product-name { font-size: 2rem; }
-        .main-product-card .product-description { font-size: 1.1rem; }
-        .main-product-feature { flex: 1; padding-left: 3rem; border-left: 1px solid var(--color-border); }
-        .feature-title { font-size: 1rem; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-        .performance-highlight p { font-size: 1.1rem; background-color: var(--color-bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border); }
-        .highlight-number { font-weight: 700; color: var(--color-text-primary); }
-
-        .side-projects-header { text-align: center; margin: 3rem 0 2rem; }
-        .side-projects-header h3 { font-size: 1.8rem; font-weight: 600; color: var(--color-text-secondary); }
-        .side-projects-grid, .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .simple-hover-card {
-            background-color: var(--color-bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            z-index: 5;
-        }
-        .simple-hover-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--color-accent);
-        }
-
-        .service-card {
-            padding: 2.5rem 2rem;
-            text-align: center;
-            align-items: center;
-        }
-
-        .product-header {
-            flex-grow: 1;
-        }
-
-        .features-list { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 1rem; }
-        .features-list li { display: flex; align-items: flex-start; gap: 0.75rem; }
-
-        .feature-icon {
-            flex-shrink: 0;
-            margin-top: 5px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: rgba(59, 130, 246, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .feature-icon::before {
-            content: '✓';
-            color: var(--color-accent);
-            font-weight: 700;
-            font-size: 12px;
-        }
-
-        .feature-content h4 { font-weight: 600; color: var(--color-text-primary); font-size: 1rem; margin-bottom: 0.1rem; }
-        .feature-content p { font-size: 0.9rem; color: var(--color-text-secondary); }
-
-        /* --- Services Section --- */
-        .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-
-        .service-icon-wrapper {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            margin-bottom: 1.5rem;
-            border-radius: 16px;
-            background: var(--gradient-text);
-        }
-        .service-icon svg {
-            width: 2.5rem;
-            height: 2.5rem;
-            color: white;
-        }
-        .service-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .service-description { color: var(--color-text-secondary); }
-
-        /* --- Quotes Section (Ultra-Minimal) --- */
-        .quotes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .quote-item {
-            margin-bottom: 2rem;
-        }
-
-        .quote-text {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .quote-author {
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 400;
-            color: var(--color-text-primary);
-            text-align: left;
-        }
-
-        /* Responsive adjustments for quotes */
-        @media (max-width: 768px) {
-            .quotes-grid {
-                gap: 2.5rem;
-            }
-            .quote-text {
-                font-size: 1.1rem;
-                line-height: 1.75;
-                margin-bottom: 0.75rem;
-            }
-            .quote-author {
-                font-size: 0.95rem;
-            }
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #0d121c;
-            padding: 5rem 0 2rem 0;
-            border-top: 1px solid var(--color-border);
-            position: relative;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-text);
-        }
-        .footer-container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 3rem; 
-            margin-bottom: 4rem; 
-        }
-
-        .footer-about .logo {
-            margin-bottom: 1rem;
-        }
-
-        .footer-about p { color: var(--color-text-secondary); max-width: 300px; }
-        .footer-links h4, .footer-contact h4, .footer-legal h4 { 
-            font-size: 1.1rem; 
-            font-weight: 600; 
-            color: var(--color-text-primary); 
-            margin-bottom: 1.5rem; 
-        }
-        .footer-links ul li, .footer-legal ul li { margin-bottom: 0.75rem; }
-        .footer-links ul a, .footer-legal ul a { color: var(--color-text-secondary); }
-        .footer-links ul a:hover, .footer-legal ul a:hover { 
-            color: var(--color-accent); 
-            text-shadow: 0 0 10px var(--color-accent-hover); 
-        }
-        .footer-contact p { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
-        .footer-bottom { 
-            padding-top: 2rem; 
-            border-top: 1px solid var(--color-border); 
-            text-align: center; 
-            color: var(--color-text-secondary); 
-            font-size: 0.9rem; 
-        }
-
-        /* --- Responsive Adjustments (General) --- */
-        @media (max-width: 992px) {
-            body { cursor: auto; }
-            .cursor { display: none; }
-            .hero h1 { font-size: 3.5rem; }
-            .main-product-card { flex-direction: column; align-items: flex-start; gap: 2rem; }
-            .main-product-feature { padding-left: 0; padding-top: 2rem; border-left: none; border-top: 1px solid var(--color-border); width: 100%; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.8rem; }
-            .section-title { font-size: 2.2rem; }
-            .cta-container { flex-direction: column; align-items: center; }
-            .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .footer-about .logo { display: flex; justify-content: center; }
-            .footer-about p { margin-left: auto; margin-right: auto; }
-            .side-projects-grid, .services-grid { grid-template-columns: 1fr; }
-            .logo-text { font-size: 1.5rem; }
-        }
-    </style>
+    <title>Meta Ads Manager - Dashboard</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="cursor"></div>
+    <div id="root"></div>
 
-    <!-- Transparent Fixed Navigation -->
-    <nav class="main-navigation">
-        <div class="nav-container">
-            <a href="#home" class="logo-text">Orbitrar</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#inspiration">Inspiration</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
 
-    <section id="home" class="section hero">
-        <video id="hero-video-background" autoplay muted loop playsinline>
-            <!-- <source src="https://github.com/vineethnj/vineethnj.github.io/raw/main/AI_Evolution_Video_Ready.mp4" type="video/mp4"> -->
-            Your browser does not support the video tag.
-        </video>
+        const APP_ID = '1279825253905326';
+        
+        function AdsManagerApp() {
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+            const [user, setUser] = useState(null);
+            const [accessToken, setAccessToken] = useState(null);
+            const [adAccounts, setAdAccounts] = useState([]);
+            const [selectedAccount, setSelectedAccount] = useState(null);
+            const [campaigns, setCampaigns] = useState([]);
+            const [insights, setInsights] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [activeTab, setActiveTab] = useState('accounts');
 
-        <div class="container">
-            <div class="hero-content fade-in-section">
-                <h1>Leading the <span class="hero-gradient-text">AI Evolution</span></h1>
-                <p class="hero-subtitle">"what if' into 'watch this"</p>
-                <div class="cta-container">
-                    <a href="#experience" class="cta-primary">Experience the Journey</a>
-                    <a href="#contact" class="cta-secondary">Get In Touch</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="cosmic-background">
-            <div class="nebula"></div>
-            <div class="stars" id="stars1"></div>
-            <div class="stars" id="stars2"></div>
-            <div class="shooting-star"></div>
-            <div class="shooting-star"></div>
-            <div class="shooting-star"></div>
-        </div>
-
-        <div class="container">
-            <div class="section-header fade-in-section">
-                <div class="section-badge">About Orbitrar</div>
-                <h2 class="section-title">AI Mastery at the Speed of Now</h2>
-                <p class="section-subtitle">Pioneering the future of intelligent automation</p>
-            </div>
-            <div class="about-content fade-in-section">
-                <p class="about-text">We transform business visions into AI reality at lightning speed, delivering cutting-edge proof-of-concepts in days, not months—while fortifying your digital assets with bulletproof cybersecurity. Turning your 'what if' into 'watch this,' securely.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="products" class="section products">
-        <div class="container">
-            <div class="section-header fade-in-section">
-                <div class="section-badge">Our Flagship Product</div>
-                <p class="section-subtitle">The core of our Mastery, built for next-generation integration.</p>
-            </div>
-
-            <div class="main-product-spotlight fade-in-section">
-                <div class="star-border-container"></div>
-                <div class="main-product-card">
-                    <div class="main-product-info">
-                        <div class="product-header">
-                            <div class="product-badge">MCP Enabled</div>
-                            <h3 class="product-name">AI-powered Conversational Assistant</h3>
-                            <p class="product-description">Advanced AI-powered conversational assistant agent with Model Context Protocol capabilities</p>
-                        </div>
-                    </div>
-                    <div class="main-product-feature">
-                        <h4 class="feature-title">Intelligent Conversational Assistant</h4>
-                        <div class="performance-highlight">
-                            <p>Next-generation conversational AI with <span class="highlight-number">MCP enabled</span> capabilities for seamless system integration</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="side-projects-header fade-in-section">
-                <h3>Future Revolutionary AI Products</h3>
-            </div>
-            <div class="side-projects-grid">
-                <div class="simple-hover-card fade-in-section">
-                    <div class="product-header">
-                        <h3 class="product-name">Catalyst AI</h3>
-                        <div class="product-badge">AI Creation Platform</div>
-                        <p class="product-description">The world's first AI that creates, trains, and deploys specialized AI agents autonomously</p>
-                    </div>
-                    <ul class="features-list">
-                        <h4 class="feature-title">Revolutionary Features</h4>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>AI Architect</h4><p>Automatically designs optimal neural architectures for any business problem</p></div></li>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Self-Training</h4><p>Finds, cleans, and trains on relevant data sources without human intervention</p></div></li>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Auto-Deployment</h4><p>Deploys custom AI solutions in 2 hours instead of 2 months</p></div></li>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Continuous Evolution</h4><p>Monitors performance and automatically improves deployed AIs</p></div></li>
-                    </ul>
-                </div>
-                <div class="simple-hover-card fade-in-section">
-                    <div class="product-header">
-                        <h3 class="product-name">Vox AI</h3>
-                        <div class="product-badge">Attendance System</div>
-                        <p class="product-description">AI-powered attendance notification system for educational institutions</p>
-                    </div>
-                    <ul class="features-list">
-                        <h4 class="feature-title">Core Features</h4>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Student Database</h4><p>Manage student names and contact numbers</p></div></li>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>Absence Detection</h4><p>Real-time tracking of student attendance</p></div></li>
-                        <li><span class="feature-icon"></span><div class="feature-content"><h4>AI Voice Calls</h4><p>Automated calls to notify parents of absences</p></div></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="section section-alt-bg services">
-        <div class="container">
-            <div class="section-header fade-in-section">
-                <div class="section-badge">Our Services</div>
-                <h2 class="section-title">Comprehensive AI Services</h2>
-                <p class="section-subtitle">End-to-end AI solutions tailored for your success</p>
-            </div>
-            <div class="services-grid">
-                <div class="simple-hover-card service-card fade-in-section">
-                    <div class="service-icon-wrapper">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5M19.5 8.25h1.5m-15 3.75h1.5m15 0h1.5m-15 3.75h1.5m15 0h1.5M12 6.75a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Zm-10.5 9.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm10.5-9.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm10.5 9.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" /></svg>
-                        </div>
-                    </div>
-                    <h3 class="service-title">AI Agents</h3>
-                    <p class="service-description">Deploy intelligent AI agents that can handle complex tasks, make decisions, and interact with your systems autonomously to streamline operations.</p>
-                </div>
-                <div class="simple-hover-card service-card fade-in-section">
-                    <div class="service-icon-wrapper">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
-                        </div>
-                    </div>
-                    <h3 class="service-title">Advanced MCP Assistants</h3>
-                    <p class="service-description">Leverage cutting-edge MCP (Model Context Protocol) enabled assistants for enhanced AI capabilities and seamless integration.</p>
-                </div>
-                <div class="simple-hover-card service-card fade-in-section">
-                    <div class="service-icon-wrapper">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
-                        </div>
-                    </div>
-                    <h3 class="service-title">Cybersecurity Solutions</h3>
-                    <p class="service-description">Comprehensive security frameworks designed to protect your business from modern cyber threats with AI-powered monitoring and response.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="inspiration" class="section">
-        <div class="container">
-            <div class="section-header fade-in-section">
-                <div class="section-badge">Words of Wisdom</div>
-                <h2 class="section-title">Quotes That Inspire Us</h2>
-                <p class="section-subtitle">Guiding principles from visionaries who shaped our thinking.</p>
-            </div>
-            <div class="quotes-grid">
-                <div class="quote-item fade-in-section">
-                    <p class="quote-text">"Start out by making 100 users really happy, rather than a lot more users only a little happy. If everything you do works, then you're not taking many risks and probably aren't innovating either."</p>
-                    <p class="quote-author">- Paul Buchheit</p>
-                </div>
-
-                <div class="quote-item fade-in-section">
-                    <p class="quote-text">"When something is important enough, you do it even if the odds are not in your favor."</p>
-                    <p class="quote-author">- Elon Musk</p>
-                </div>
-
-                <div class="quote-item fade-in-section">
-                    <p class="quote-text">"Dance above the surface of the world. Let your thoughts lift you into creativity that is not hampered by opinion."</p>
-                    <p class="quote-author">- Sefin Joseph</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="#home" class="logo logo-text">Orbitrar</a>
-                    <p>Leading the future of AI software and cybersecurity solutions. Contact us to learn how we can transform your business.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#inspiration">Inspiration</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p>Business inquiries:</p>
-                    <p><a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
-                </div>
-                <div class="footer-legal">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="https://orbitrar.com/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-                        <li><a href="https://orbitrar.com/terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
-                        <li><a href="https://orbitrar.com/delete-data" target="_blank" rel="noopener noreferrer">Data Deletion</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Orbitrar. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // --- Enhanced Interactivity Script ---
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // 1. Cursor and Spotlight Effect
-            const cursor = document.querySelector('.cursor');
-            const body = document.body;
-
-            if (cursor && !window.matchMedia("(max-width: 992px)").matches) {
-                window.addEventListener('mousemove', e => {
-                    const posX = e.clientX;
-                    const posY = e.clientY;
-
-                    requestAnimationFrame(() => {
-                        cursor.style.left = `${posX}px`;
-                        cursor.style.top = `${posY}px`;
-                        body.style.setProperty('--spotlight-x', `${posX}px`);
-                        body.style.setProperty('--spotlight-y', `${posY}px`);
+            // Initialize Facebook SDK
+            useEffect(() => {
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId: APP_ID,
+                        cookie: true,
+                        xfbml: true,
+                        version: 'v21.0'
                     });
-                });
-
-                document.querySelectorAll('a, button, .simple-hover-card, .main-product-spotlight, .centerHover').forEach(el => {
-                    el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-                    el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-                });
-            } else if(cursor) {
-                cursor.style.display = 'none';
-            }
-
-            // 2. 3D Tilt Effect + Enhanced Glow for Main Product Card
-            const mainProductCard = document.querySelector('.main-product-spotlight');
-            if (mainProductCard && !window.matchMedia("(max-width: 992px)").matches) {
-                const starContainer = mainProductCard.querySelector('.star-border-container');
-                let starCreationInterval;
-
-                mainProductCard.addEventListener('mousemove', (e) => {
-                    const rect = mainProductCard.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const { width, height } = rect;
-                    const rotateX = (y / height - 0.5) * -12;
-                    const rotateY = (x / width - 0.5) * 12;
-                    mainProductCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-                });
-
-                mainProductCard.addEventListener('mouseenter', () => {
-                    if (!starContainer) return;
-                    starCreationInterval = setInterval(() => {
-                        const star = document.createElement('div');
-                        star.classList.add('star');
-                        const width = mainProductCard.offsetWidth;
-                        const height = mainProductCard.offsetHeight;
-                        const edge = Math.floor(Math.random() * 4);
-                        let x, y;
-                        switch(edge) {
-                            case 0: x = Math.random() * width; y = 0; break;
-                            case 1: x = width; y = Math.random() * height; break;
-                            case 2: x = Math.random() * width; y = height; break;
-                            case 3: x = 0; y = Math.random() * height; break;
-                        }
-                        const size = Math.random() * 4 + 2;
-                        star.style.width = `${size}px`;
-                        star.style.height = `${size}px`;
-                        star.style.left = `${x}px`;
-                        star.style.top = `${y}px`;
-                        star.style.animationDelay = `${Math.random() * 0.5}s`;
-                        star.style.animationDuration = `${1.5 + Math.random()}s`;
-                        starContainer.appendChild(star);
-                        setTimeout(() => star.remove(), 2500);
-                    }, 50);
-                });
-
-                mainProductCard.addEventListener('mouseleave', () => {
-                    mainProductCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-                    clearInterval(starCreationInterval);
-                });
-            }
-
-            // 3. Staggered Fade-in Animation on Scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            document.querySelectorAll('.fade-in-section').forEach((section) => {
-                const parent = section.parentElement;
-                if (parent && (parent.classList.contains('side-projects-grid') ||
-                               parent.classList.contains('services-grid') ||
-                               parent.classList.contains('quotes-grid'))) {
-                    const fadeInSiblings = Array.from(parent.children).filter(child => child.classList.contains('fade-in-section'));
-                    const itemIndex = fadeInSiblings.indexOf(section);
-                    if (itemIndex > -1) {
-                        section.style.transitionDelay = `${itemIndex * 0.1}s`;
-                    }
-                }
-                observer.observe(section);
-            });
-
-            // Smooth scroll for nav links
-            document.querySelectorAll('.nav-links a[href^="#"], footer .footer-links a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Account for fixed navigation height
-                        const navHeight = 80; // Approximate nav height
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                    }
-                });
-            });
-
-            // 4. Black Hole Animation
-            function blackhole(element) {
-                const container = document.querySelector(element);
-                if (!container) return;
-                
-                const h = container.offsetHeight;
-                const w = container.offsetWidth;
-                const cw = w;
-                const ch = h;
-                const maxorbit = 255; // distance from center
-                const centery = ch / 2;
-                const centerx = cw / 2;
-
-                const startTime = new Date().getTime();
-                let currentTime = 0;
-
-                const stars = [];
-                let collapse = false; // if hovered
-                let expanse = false; // if clicked
-                let returning = false; // if particles are returning to orbit
-
-                // Create canvas
-                const canvas = container.querySelector('.blackhole-canvas');
-                canvas.width = cw;
-                canvas.height = ch;
-                const context = canvas.getContext("2d");
-
-                context.globalCompositeOperation = "multiply";
-
-                function setDPI(canvas, dpi) {
-                    // Set up CSS size if it's not set up already
-                    if (!canvas.style.width)
-                        canvas.style.width = canvas.width + 'px';
-                    if (!canvas.style.height)
-                        canvas.style.height = canvas.height + 'px';
-
-                    const scaleFactor = dpi / 96;
-                    canvas.width = Math.ceil(canvas.width * scaleFactor);
-                    canvas.height = Math.ceil(canvas.height * scaleFactor);
-                    const ctx = canvas.getContext('2d');
-                    ctx.scale(scaleFactor, scaleFactor);
-                }
-
-                function rotate(cx, cy, x, y, angle) {
-                    const radians = angle;
-                    const cos = Math.cos(radians);
-                    const sin = Math.sin(radians);
-                    const nx = (cos * (x - cx)) + (sin * (y - cy)) + cx;
-                    const ny = (cos * (y - cy)) - (sin * (x - cx)) + cy;
-                    return [nx, ny];
-                }
-
-                setDPI(canvas, 192);
-
-                class Star {
-                    constructor() {
-                        // Get a weighted random number, so that the majority of stars will form in the center of the orbit
-                        const rands = [];
-                        rands.push(Math.random() * (maxorbit / 2) + 1);
-                        rands.push(Math.random() * (maxorbit / 2) + maxorbit);
-
-                        this.orbital = (rands.reduce((p, c) => p + c, 0) / rands.length);
-                        
-                        this.x = centerx; // All of these stars are at the center x position at all times
-                        this.y = centery + this.orbital; // Set Y position starting at the center y + the position in the orbit
-
-                        this.yOrigin = centery + this.orbital; // this is used to track the particles origin
-
-                        this.speed = (Math.floor(Math.random() * 2.5) + 1.5) * Math.PI / 180; // The rate at which this star will orbit
-                        this.rotation = 0; // current Rotation
-                        this.startRotation = (Math.floor(Math.random() * 360) + 1) * Math.PI / 180; // Starting rotation
-
-                        this.id = stars.length; // This will be used when expansion takes place
-
-                        this.collapseBonus = this.orbital - (maxorbit * 0.7); // This "bonus" is used to randomly place some stars outside of the blackhole on hover
-                        if (this.collapseBonus < 0) { // if the collapse "bonus" is negative
-                            this.collapseBonus = 0; // set it to 0, this way no stars will go inside the blackhole
-                        }
-
-                        // Create color variety using the brand gradient colors
-                        const colorVariant = Math.random();
-                        const opacity = 0.3 + (1 - (this.orbital / 255)) * 0.7;
-                        if (colorVariant < 0.6) {
-                            this.color = `rgba(59, 130, 246, ${opacity})`; // Blue particles
-                        } else {
-                            this.color = `rgba(167, 139, 250, ${opacity})`; // Purple particles
-                        }
-
-                        this.hoverPos = centery + (maxorbit / 2) + this.collapseBonus; // Where the star will go on hover of the blackhole
-                        this.expansePos = centery + (this.id % 100) * -10 + (Math.floor(Math.random() * 20) + 1); // Where the star will go when expansion takes place
-
-                        this.prevR = this.startRotation;
-                        this.prevX = this.x;
-                        this.prevY = this.y;
-                        
-                        // Store original position for returning
-                        this.originalY = this.yOrigin;
-
-                        stars.push(this);
-                    }
-
-                    draw() {
-                        if (!expanse && !returning) {
-                            this.rotation = this.startRotation + (currentTime * this.speed);
-                            if (!collapse) { // not hovered
-                                if (this.y > this.yOrigin) {
-                                    this.y -= 2.5;
-                                }
-                                if (this.y < this.yOrigin - 4) {
-                                    this.y += (this.yOrigin - this.y) / 10;
-                                }
-                            } else { // on hover
-                                this.trail = 1;
-                                if (this.y > this.hoverPos) {
-                                    this.y -= (this.hoverPos - this.y) / -5;
-                                }
-                                if (this.y < this.hoverPos - 4) {
-                                    this.y += 2.5;
-                                }
-                            }
-                        } else if (expanse && !returning) {
-                            this.rotation = this.startRotation + (currentTime * (this.speed / 2));
-                            if (this.y > this.expansePos) {
-                                this.y -= Math.floor(this.expansePos - this.y) / -80; // Slower expansion for better visibility
-                            }
-                        } else if (returning) {
-                            // Returning to original orbit slowly
-                            this.rotation = this.startRotation + (currentTime * this.speed);
-                            if (Math.abs(this.y - this.originalY) > 2) {
-                                this.y += (this.originalY - this.y) / 50; // Much slower return
-                            } else {
-                                this.y = this.originalY;
-                                this.yOrigin = this.originalY;
-                            }
-                        }
-
-                        context.save();
-                        context.fillStyle = this.color;
-                        context.strokeStyle = this.color;
-                        context.beginPath();
-                        const oldPos = rotate(centerx, centery, this.prevX, this.prevY, -this.prevR);
-                        context.moveTo(oldPos[0], oldPos[1]);
-                        context.translate(centerx, centery);
-                        context.rotate(this.rotation);
-                        context.translate(-centerx, -centery);
-                        context.lineTo(this.x, this.y);
-                        context.stroke();
-                        context.restore();
-
-                        this.prevR = this.rotation;
-                        this.prevX = this.x;
-                        this.prevY = this.y;
-                    }
-                }
-
-                // Event listeners
-                const centerHover = container.querySelector('.centerHover');
-                const blackholeIntro = document.querySelector('.blackhole-intro');
-                
-                centerHover.addEventListener('click', function() {
-                    collapse = false;
-                    expanse = true;
-                    returning = false;
-                    this.classList.add('open');
-                    blackholeIntro.classList.add('hidden');
                     
-                    // Start the return cycle after full expansion (20-30 seconds)
-                    setTimeout(() => {
-                        expanse = false;
-                        returning = true;
-                        
-                        // After particles return, reset to normal orbit
-                        setTimeout(() => {
-                            returning = false;
-                            this.classList.remove('open');
-                            blackholeIntro.classList.remove('hidden');
-                        }, 8000); // 8 seconds to return slowly
-                    }, 25000); // 25 seconds of expansion experience
-                });
-                
-                centerHover.addEventListener('mouseover', function() {
-                    if (expanse === false) {
-                        collapse = true;
-                    }
-                });
-                
-                centerHover.addEventListener('mouseout', function() {
-                    if (expanse === false) {
-                        collapse = false;
-                    }
-                });
-
-                // Animation loop
-                function loop() {
-                    const now = new Date().getTime();
-                    currentTime = (now - startTime) / 50;
-
-                    context.fillStyle = 'rgba(17, 24, 39, 0.15)'; // Use theme background color with transparency for trails
-                    context.fillRect(0, 0, cw, ch);
-
-                    for (let i = 0; i < stars.length; i++) { // For each star
-                        if (stars[i] !== undefined) {
-                            stars[i].draw(); // Draw it
+                    // Check login status
+                    FB.getLoginStatus(function(response) {
+                        if (response.status === 'connected') {
+                            handleLoginSuccess(response);
                         }
+                    });
+                };
+
+                // Load Facebook SDK
+                (function(d, s, id){
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            }, []);
+
+            const handleLogin = () => {
+                FB.login(function(response) {
+                    if (response.authResponse) {
+                        handleLoginSuccess(response);
                     }
+                }, {
+                    scope: 'ads_management,ads_read,business_management',
+                    auth_type: 'rerequest'
+                });
+            };
 
-                    requestAnimationFrame(loop);
+            const handleLoginSuccess = (response) => {
+                const token = response.authResponse.accessToken;
+                setAccessToken(token);
+                setIsLoggedIn(true);
+                
+                // Get user info
+                FB.api('/me', { fields: 'id,name,email' }, function(userResponse) {
+                    setUser(userResponse);
+                });
+
+                // Get ad accounts
+                fetchAdAccounts(token);
+            };
+
+            const fetchAdAccounts = async (token) => {
+                setLoading(true);
+                try {
+                    FB.api('/me/adaccounts', 
+                        { 
+                            fields: 'id,name,account_id,account_status,currency,balance,amount_spent,spend_cap',
+                            access_token: token 
+                        }, 
+                        function(response) {
+                            if (response && response.data) {
+                                setAdAccounts(response.data);
+                            }
+                            setLoading(false);
+                        }
+                    );
+                } catch (error) {
+                    console.error('Error fetching ad accounts:', error);
+                    setLoading(false);
                 }
+            };
 
-                function init() {
-                    context.fillStyle = 'rgba(17, 24, 39, 0.95)'; // Initial clear with theme background color
-                    context.fillRect(0, 0, cw, ch);
-                    for (let i = 0; i < 2500; i++) { // create 2500 stars
-                        new Star();
+            const fetchCampaigns = (accountId) => {
+                setLoading(true);
+                FB.api(`/${accountId}/campaigns`,
+                    {
+                        fields: 'id,name,status,objective,daily_budget,lifetime_budget,created_time,updated_time',
+                        access_token: accessToken
+                    },
+                    function(response) {
+                        if (response && response.data) {
+                            setCampaigns(response.data);
+                            setActiveTab('campaigns');
+                        }
+                        setLoading(false);
                     }
-                    loop();
-                }
+                );
+            };
 
-                init();
+            const fetchInsights = (accountId) => {
+                setLoading(true);
+                FB.api(`/${accountId}/insights`,
+                    {
+                        fields: 'impressions,clicks,spend,cpc,cpm,ctr,reach,frequency',
+                        date_preset: 'last_30d',
+                        access_token: accessToken
+                    },
+                    function(response) {
+                        if (response && response.data && response.data[0]) {
+                            setInsights(response.data[0]);
+                            setActiveTab('insights');
+                        }
+                        setLoading(false);
+                    }
+                );
+            };
+
+            const handleLogout = () => {
+                FB.logout(function(response) {
+                    setIsLoggedIn(false);
+                    setUser(null);
+                    setAccessToken(null);
+                    setAdAccounts([]);
+                    setSelectedAccount(null);
+                    setCampaigns([]);
+                    setInsights(null);
+                });
+            };
+
+            if (!isLoggedIn) {
+                return (
+                    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+                        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+                            <div className="text-center mb-8">
+                                <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                                    </svg>
+                                </div>
+                                <h1 className="text-3xl font-bold text-gray-900 mb-2">Meta Ads Manager</h1>
+                                <p className="text-gray-600">Manage your Facebook ad campaigns efficiently</p>
+                            </div>
+                            
+                            <div className="space-y-4 mb-6">
+                                <div className="flex items-start space-x-3">
+                                    <svg className="w-5 h-5 text-green-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <p className="text-sm text-gray-700">View and manage all your ad accounts</p>
+                                </div>
+                                <div className="flex items-start space-x-3">
+                                    <svg className="w-5 h-5 text-green-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <p className="text-sm text-gray-700">Monitor campaign performance and insights</p>
+                                </div>
+                                <div className="flex items-start space-x-3">
+                                    <svg className="w-5 h-5 text-green-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <p className="text-sm text-gray-700">Track spending and key metrics</p>
+                                </div>
+                            </div>
+
+                            <button 
+                                onClick={handleLogin}
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center space-x-2"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                                </svg>
+                                <span>Login with Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                );
             }
 
-            // Initialize black hole
-            blackhole('#blackhole');
-        });
+            return (
+                <div className="min-h-screen bg-gray-50">
+                    {/* Header */}
+                    <header className="bg-white shadow-sm border-b border-gray-200">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center space-x-3">
+                                    <div className="bg-blue-600 w-10 h-10 rounded-lg flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                                        </svg>
+                                    </div>
+                                    <h1 className="text-xl font-bold text-gray-900">Meta Ads Manager</h1>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <span className="text-sm text-gray-700">Welcome, <span className="font-semibold">{user?.name}</span></span>
+                                    <button 
+                                        onClick={handleLogout}
+                                        className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Main Content */}
+                    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                        {/* Tabs */}
+                        <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                            <div className="border-b border-gray-200">
+                                <nav className="flex space-x-8 px-6" aria-label="Tabs">
+                                    <button
+                                        onClick={() => setActiveTab('accounts')}
+                                        className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                                            activeTab === 'accounts'
+                                                ? 'border-blue-500 text-blue-600'
+                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                                        }`}
+                                    >
+                                        Ad Accounts
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveTab('campaigns')}
+                                        className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                                            activeTab === 'campaigns'
+                                                ? 'border-blue-500 text-blue-600'
+                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                                        }`}
+                                        disabled={!selectedAccount}
+                                    >
+                                        Campaigns
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveTab('insights')}
+                                        className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                                            activeTab === 'insights'
+                                                ? 'border-blue-500 text-blue-600'
+                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                                        }`}
+                                        disabled={!selectedAccount}
+                                    >
+                                        Insights
+                                    </button>
+                                </nav>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6">
+                                {loading && (
+                                    <div className="flex items-center justify-center py-12">
+                                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                                    </div>
+                                )}
+
+                                {!loading && activeTab === 'accounts' && (
+                                    <div>
+                                        <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Ad Accounts</h2>
+                                        {adAccounts.length === 0 ? (
+                                            <p className="text-gray-500">No ad accounts found</p>
+                                        ) : (
+                                            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                                {adAccounts.map(account => (
+                                                    <div 
+                                                        key={account.id}
+                                                        className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition cursor-pointer"
+                                                        onClick={() => {
+                                                            setSelectedAccount(account);
+                                                            fetchCampaigns(account.id);
+                                                        }}
+                                                    >
+                                                        <div className="flex items-start justify-between mb-3">
+                                                            <h3 className="font-semibold text-gray-900">{account.name}</h3>
+                                                            <span className={`px-2 py-1 text-xs rounded-full ${
+                                                                account.account_status === 1 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                                                            }`}>
+                                                                {account.account_status === 1 ? 'Active' : 'Inactive'}
+                                                            </span>
+                                                        </div>
+                                                        <div className="space-y-2 text-sm text-gray-600">
+                                                            <p>ID: {account.account_id}</p>
+                                                            <p>Currency: {account.currency}</p>
+                                                            <p>Spent: ${(account.amount_spent / 100).toFixed(2)}</p>
+                                                        </div>
+                                                        <button className="mt-4 w-full bg-blue-50 text-blue-600 py-2 rounded-md text-sm font-medium hover:bg-blue-100 transition">
+                                                            View Details
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                                {!loading && activeTab === 'campaigns' && (
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <h2 className="text-lg font-semibold text-gray-900">
+                                                Campaigns {selectedAccount && `- ${selectedAccount.name}`}
+                                            </h2>
+                                            {selectedAccount && (
+                                                <button
+                                                    onClick={() => fetchInsights(selectedAccount.id)}
+                                                    className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+                                                >
+                                                    View Insights
+                                                </button>
+                                            )}
+                                        </div>
+                                        {campaigns.length === 0 ? (
+                                            <p className="text-gray-500">No campaigns found</p>
+                                        ) : (
+                                            <div className="space-y-3">
+                                                {campaigns.map(campaign => (
+                                                    <div key={campaign.id} className="border border-gray-200 rounded-lg p-4">
+                                                        <div className="flex items-start justify-between">
+                                                            <div className="flex-1">
+                                                                <h3 className="font-semibold text-gray-900 mb-2">{campaign.name}</h3>
+                                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                                    <div>
+                                                                        <p className="text-gray-500">Status</p>
+                                                                        <p className="font-medium">{campaign.status}</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p className="text-gray-500">Objective</p>
+                                                                        <p className="font-medium">{campaign.objective || 'N/A'}</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p className="text-gray-500">Daily Budget</p>
+                                                                        <p className="font-medium">${campaign.daily_budget ? (campaign.daily_budget / 100).toFixed(2) : 'N/A'}</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p className="text-gray-500">Campaign ID</p>
+                                                                        <p className="font-medium text-xs">{campaign.id}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                                {!loading && activeTab === 'insights' && insights && (
+                                    <div>
+                                        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                                            Performance Insights (Last 30 Days) - {selectedAccount?.name}
+                                        </h2>
+                                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                                <p className="text-sm text-blue-600 font-medium mb-1">Impressions</p>
+                                                <p className="text-2xl font-bold text-gray-900">{parseInt(insights.impressions).toLocaleString()}</p>
+                                            </div>
+                                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                                                <p className="text-sm text-green-600 font-medium mb-1">Clicks</p>
+                                                <p className="text-2xl font-bold text-gray-900">{parseInt(insights.clicks).toLocaleString()}</p>
+                                            </div>
+                                            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                                <p className="text-sm text-purple-600 font-medium mb-1">Spend</p>
+                                                <p className="text-2xl font-bold text-gray-900">${parseFloat(insights.spend).toFixed(2)}</p>
+                                            </div>
+                                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                                                <p className="text-sm text-orange-600 font-medium mb-1">CTR</p>
+                                                <p className="text-2xl font-bold text-gray-900">{parseFloat(insights.ctr).toFixed(2)}%</p>
+                                            </div>
+                                            <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
+                                                <p className="text-sm text-pink-600 font-medium mb-1">CPC</p>
+                                                <p className="text-2xl font-bold text-gray-900">${parseFloat(insights.cpc).toFixed(2)}</p>
+                                            </div>
+                                            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                                <p className="text-sm text-indigo-600 font-medium mb-1">CPM</p>
+                                                <p className="text-2xl font-bold text-gray-900">${parseFloat(insights.cpm).toFixed(2)}</p>
+                                            </div>
+                                            <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
+                                                <p className="text-sm text-teal-600 font-medium mb-1">Reach</p>
+                                                <p className="text-2xl font-bold text-gray-900">{parseInt(insights.reach).toLocaleString()}</p>
+                                            </div>
+                                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                                <p className="text-sm text-yellow-600 font-medium mb-1">Frequency</p>
+                                                <p className="text-2xl font-bold text-gray-900">{parseFloat(insights.frequency).toFixed(2)}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<AdsManagerApp />, document.getElementById('root'));
     </script>
 </body>
 </html>
