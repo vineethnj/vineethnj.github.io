@@ -997,7 +997,6 @@
         </div>
     </section>
 
-    <!-- Services and Inspiration sections kept similar but with general "AdsGen" vibe implied -->
     <section id="services" class="section section-alt-bg services">
         <div class="container">
             <div class="section-header fade-in-section">
@@ -1035,6 +1034,21 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- ADDED: Inspiration/Blackhole Section (Linked to Nav #inspiration and CTA #experience) -->
+    <section id="inspiration" class="blackhole-section">
+        <canvas id="blackhole"></canvas>
+        <div class="blackhole-content">
+            <div class="blackhole-intro fade-in-section">
+                <h2>The Singularity</h2>
+                <p>Where data streams converge to create the perfect campaign strategy. Experience the event horizon of AI marketing.</p>
+                <div class="experience-prompt" id="enter-experience">Initialize AI Core</div>
+            </div>
+        </div>
+        <div class="centerHover" id="exploreBtn"><span>EXPLORE</span></div>
+        <!-- Hidden target for smooth scroll alias -->
+        <div id="experience" style="position:absolute; top:0;"></div>
     </section>
 
     <footer id="contact">
@@ -1075,7 +1089,7 @@
     </footer>
 
     <script>
-        // --- Enhanced Interactivity Script (Unchanged) ---
+        // --- Enhanced Interactivity Script ---
         document.addEventListener('DOMContentLoaded', () => {
 
             // 1. Cursor and Spotlight Effect
@@ -1178,7 +1192,7 @@
             });
 
             // Smooth scroll
-            document.querySelectorAll('.nav-links a[href^="#"], footer .footer-links a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('.nav-links a[href^="#"], footer .footer-links a[href^="#"], .cta-container a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
@@ -1195,6 +1209,87 @@
                     }
                 });
             });
+
+            // 4. ADDED: Black Hole Animation Script
+            const canvas = document.getElementById('blackhole');
+            if(canvas) {
+                const ctx = canvas.getContext('2d');
+                let width, height;
+                let particles = [];
+                const particleCount = 200;
+
+                function resize() {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                }
+                window.addEventListener('resize', resize);
+                resize();
+
+                class Particle {
+                    constructor() {
+                        this.reset();
+                    }
+                    reset() {
+                        this.angle = Math.random() * Math.PI * 2;
+                        this.radius = Math.random() * 200 + 50; // Distance from center
+                        this.speed = Math.random() * 0.01 + 0.005;
+                        this.size = Math.random() * 2 + 0.5;
+                        this.opacity = Math.random() * 0.5 + 0.1;
+                    }
+                    update() {
+                        this.angle += this.speed;
+                        this.radius -= 0.1; // Spiral in
+                        if(this.radius < 10) this.reset();
+                    }
+                    draw() {
+                        const x = width/2 + Math.cos(this.angle) * this.radius;
+                        const y = height/2 + Math.sin(this.angle) * this.radius;
+                        ctx.fillStyle = `rgba(167, 139, 250, ${this.opacity})`;
+                        ctx.beginPath();
+                        ctx.arc(x, y, this.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                for(let i=0; i<particleCount; i++) particles.push(new Particle());
+
+                function animateBlackhole() {
+                    ctx.fillStyle = 'rgba(17, 24, 39, 0.1)'; // Trail effect
+                    ctx.fillRect(0, 0, width, height);
+                    
+                    particles.forEach(p => {
+                        p.update();
+                        p.draw();
+                    });
+
+                    // Draw Event Horizon (Circle)
+                    ctx.beginPath();
+                    ctx.arc(width/2, height/2, 40, 0, Math.PI*2);
+                    ctx.fillStyle = 'black';
+                    ctx.fill();
+                    ctx.strokeStyle = 'rgba(59, 130, 246, 0.5)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    requestAnimationFrame(animateBlackhole);
+                }
+                animateBlackhole();
+
+                // Interactive Click
+                const exploreBtn = document.getElementById('exploreBtn');
+                const intro = document.querySelector('.blackhole-intro');
+                if(exploreBtn && intro) {
+                    exploreBtn.addEventListener('click', () => {
+                        intro.classList.toggle('hidden');
+                        exploreBtn.classList.toggle('open');
+                        // Reset after delay for demo
+                        setTimeout(() => {
+                            intro.classList.remove('hidden');
+                            exploreBtn.classList.remove('open');
+                        }, 5000);
+                    });
+                }
+            }
         });
     </script>
 </body>
