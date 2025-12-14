@@ -116,6 +116,44 @@
     })();
     </script>
 
+    <!-- ✅ GCLID CONVERSION TRACKING SCRIPT -->
+    <script>
+        (function () {
+            const ZID = 'CLIENT_1765715616196';  // Unique client ID
+            const API = 'https://d12aada87e56.ngrok-free.app/track';  // Your public backend
+
+            function captureGclid() {
+                const g = new URLSearchParams(location.search).get('gclid');
+                if (g) {
+                    localStorage.setItem('gclid', g);
+                    localStorage.setItem('gclid_time', Date.now());
+                    console.log('✓ GCLID captured:', g);
+                }
+            }
+
+            window.trackConversion = function (e) {
+                const g = localStorage.getItem('gclid');
+                const t = localStorage.getItem('gclid_time');
+                if (!g || Date.now() - t > 7776000000) {
+                    console.log('⚠️ No valid GCLID');
+                    return;
+                }
+                console.log('📤 Sending conversion:', e);
+                fetch(API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ zid: ZID, gclid: g, event: e })
+                })
+                    .then(res => res.json())
+                    .then(data => console.log('✓ Response:', data))
+                    .catch(err => console.error('❌ Error:', err));
+            };
+
+            captureGclid();
+            console.log('✓ Tracking initialized');
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1019,8 +1057,8 @@
                 <h1>Welcome to <span class="hero-gradient-text">AdsGen</span></h1>
                 <p class="hero-subtitle">The Ultimate AI Automation for Google Ads</p>
                 <div class="cta-container">
-                    <a href="#experience" class="cta-primary">Launch Campaign</a>
-                    <a href="#contact" class="cta-secondary">Get In Touch</a>
+                    <a href="#experience" class="cta-primary" onclick="trackConversion('launch_campaign_click')">Launch Campaign</a>
+                    <a href="#contact" class="cta-secondary" onclick="trackConversion('get_in_touch_click')">Get In Touch</a>
                 </div>
             </div>
         </div>
@@ -1154,7 +1192,7 @@
             <div class="blackhole-intro fade-in-section">
                 <h2>The Singularity</h2>
                 <p>Where data streams converge to create the perfect campaign strategy. Experience the event horizon of AI marketing.</p>
-                <div class="experience-prompt" id="enter-experience">Initialize AI Core</div>
+                <div class="experience-prompt" id="enter-experience" onclick="trackConversion('initialize_ai_core')">Initialize AI Core</div>
             </div>
         </div>
         <div class="centerHover" id="exploreBtn"><span>EXPLORE</span></div>
@@ -1182,7 +1220,7 @@
                     <h4>Contact Us</h4>
                     <p>Business inquiries:</p>
                     <!-- UPDATED EMAIL (You can keep your email, but the branding implies AdsGen) -->
-                    <p><a href="mailto:vineeth.n@orbitrar.com">vineeth.n@orbitrar.com</a></p>
+                    <p><a href="mailto:vineeth.n@orbitrar.com" onclick="trackConversion('contact_email_click')">vineeth.n@orbitrar.com</a></p>
                 </div>
                 <div class="footer-legal">
                     <h4>Legal</h4>
@@ -1393,6 +1431,7 @@
                     exploreBtn.addEventListener('click', () => {
                         intro.classList.toggle('hidden');
                         exploreBtn.classList.toggle('open');
+                        trackConversion('explore_blackhole_click');
                         // Reset after delay for demo
                         setTimeout(() => {
                             intro.classList.remove('hidden');
