@@ -5,6 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- UPDATED TITLE FOR GOOGLE VERIFICATION -->
     <title>AdsGen - AI Powered Google Ads Automation</title>
+
+    <!-- Zephra Tracking -->
+    <script>
+    (function() {
+        const CLIENT_ID = 'orbitrar_com';
+        const API_URL = 'https://a2d08f1e03e5.ngrok-free.app/event';
+        
+        function generateZUID() {
+            return 'ZUID_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+        }
+        
+        let zuid = localStorage.getItem('zephra_zuid');
+        if (!zuid) {
+            zuid = generateZUID();
+            localStorage.setItem('zephra_zuid', zuid);
+        }
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const utm = {};
+        ['source', 'medium', 'campaign', 'term', 'content'].forEach(key => {
+            const val = urlParams.get('utm_' + key);
+            if (val) {
+                utm['utm_' + key] = val;
+                sessionStorage.setItem('zephra_utm_' + key, val);
+            } else {
+                const stored = sessionStorage.getItem('zephra_utm_' + key);
+                if (stored) utm['utm_' + key] = stored;
+            }
+        });
+        
+        let eventQueue = [];
+        let sending = false;
+        
+        function track(eventName, data = {}) {
+            const payload = {
+                event: eventName,
+                zuid: zuid,
+                client_id: CLIENT_ID,
+                url: window.location.href,
+                referrer: document.referrer,
+                timestamp: Date.now(),
+                utm: utm,
+                viewport: { width: window.innerWidth, height: window.innerHeight },
+                ...data
+            };
+            eventQueue.push(payload);
+            sendEvents();
+        }
+        
+        async function sendEvents() {
+            if (sending || eventQueue.length === 0) return;
+            sending = true;
+            const batch = eventQueue.splice(0, 10);
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({events: batch}),
+                    keepalive: true
+                });
+            } catch (e) {
+                eventQueue.unshift(...batch);
+                localStorage.setItem('zephra_queue', JSON.stringify(eventQueue));
+            }
+            sending = false;
+            if (eventQueue.length > 0) setTimeout(sendEvents, 100);
+        }
+        
+        try {
+            const stored = localStorage.getItem('zephra_queue');
+            if (stored) {
+                eventQueue = JSON.parse(stored);
+                localStorage.removeItem('zephra_queue');
+                sendEvents();
+            }
+        } catch (e) {}
+        
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const percent = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+            [25, 50, 75, 90].forEach(t => {
+                if (percent >= t && maxScroll < t) {
+                    track('scroll', {depth: t});
+                }
+            });
+            maxScroll = Math.max(maxScroll, percent);
+        });
+
+        let startTime = Date.now();
+        window.addEventListener('beforeunload', () => {
+            track('time_on_page', {seconds: Math.round((Date.now() - startTime) / 1000)});
+        });
+
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (link && link.href && !link.href.includes(window.location.hostname)) {
+                track('outbound_click', {url: link.href, text: link.innerText});
+            }
+            
+            const tel = e.target.closest('a[href^="tel:"]');
+            if (tel) track('phone_click', {number: tel.href.replace('tel:', '')});
+            
+            const wa = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
+            if (wa) track('whatsapp_click', {url: wa.href});
+        });
+        
+        track('page_view', {title: document.title, path: window.location.pathname});
+        window.zephraTrack = track;
+    })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
