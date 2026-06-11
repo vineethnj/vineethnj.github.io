@@ -1,389 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orbira - AI Solutions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Landing Page</title>
 
-  <!-- Orbira Tracking SDK -->
-  <script src="http://localhost:3000/sdk.js?cid=cli_OC5g6UyACTU" async></script>
+    <!-- Tracking Script -->
+    <script src="http://localhost:3000/sdk.js?cid=cli_vtQ7zUMEFJA" async></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0b1020;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+        }
 
-    .navbar {
-      width: 100%;
-      padding: 22px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(11, 16, 32, 0.7);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: #4f8cff;
-    }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-    }
+        .explore-btn {
+            display: inline-block;
+            background: white;
+            color: #4f46e5;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #d1d5db;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #ffffff;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 140px 8% 80px;
-      gap: 60px;
-    }
-
-    .hero-text {
-      max-width: 620px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(79, 140, 255, 0.15);
-      color: #7fb0ff;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(79, 140, 255, 0.3);
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      line-height: 1.05;
-      margin-bottom: 24px;
-      font-weight: 800;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #b6bfd3;
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: #4f8cff;
-      color: white;
-      padding: 16px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: #3b7cff;
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.15);
-      color: white;
-      padding: 16px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-card {
-      width: 420px;
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.08),
-        rgba(255,255,255,0.03)
-      );
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 30px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 20px 80px rgba(0,0,0,0.35);
-    }
-
-    .analytics-box {
-      background: rgba(255,255,255,0.05);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 18px;
-    }
-
-    .analytics-title {
-      color: #b6bfd3;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .analytics-number {
-      font-size: 42px;
-      font-weight: 700;
-      color: #4f8cff;
-    }
-
-    .stats {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-
-    .stat h3 {
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
-
-    .stat p {
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    .section {
-      padding: 100px 8%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-title h2 {
-      font-size: 42px;
-      margin-bottom: 16px;
-    }
-
-    .section-title p {
-      color: #aeb7cb;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.7;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: rgba(255,255,255,0.04);
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: 0.3s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .feature-icon {
-      font-size: 34px;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 14px;
-      font-size: 22px;
-    }
-
-    .feature-card p {
-      color: #b6bfd3;
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .footer {
-      padding: 40px 8%;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      text-align: center;
-      color: #8e98ad;
-    }
-
-    @media (max-width: 950px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-card {
-        width: 100%;
-        max-width: 420px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+        .explore-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="logo">Orbira</div>
+    <div class="container">
+        <h1>Accelerate Your Growth with AI</h1>
 
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Solutions</a>
-      <a href="#">Technology</a>
-      <a href="#">Pricing</a>
-      <a href="#">Contact</a>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-text">
-      <div class="badge">
-        Next Generation AI Platform
-      </div>
-
-      <h1>
-        Build Smarter <br>
-        AI Experiences
-      </h1>
-
-      <p>
-        Orbira helps companies launch intelligent AI-powered products,
-        automate workflows, and scale modern digital experiences with speed.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#" class="btn-primary">Get Started</a>
-        <a href="#" class="btn-secondary">View Demo</a>
-      </div>
-    </div>
-
-    <div class="hero-card">
-      <div class="analytics-box">
-        <div class="analytics-title">AI Requests Processed</div>
-        <div class="analytics-number">12.4M</div>
-      </div>
-
-      <div class="analytics-box">
-        <div class="analytics-title">Automation Efficiency</div>
-        <div class="analytics-number">98%</div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <h3>500+</h3>
-          <p>Clients</p>
-        </div>
-
-        <div class="stat">
-          <h3>24/7</h3>
-          <p>Monitoring</p>
-        </div>
-
-        <div class="stat">
-          <h3>99.9%</h3>
-          <p>Uptime</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <h2>Why Companies Choose Orbira</h2>
-
-      <p>
-        Modern AI infrastructure designed for startups, enterprises,
-        and fast-growing digital businesses.
-      </p>
-    </div>
-
-    <div class="features">
-
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Fast Integration</h3>
         <p>
-          Deploy AI-powered workflows into your applications
-          within minutes using simple APIs and SDKs.
+            Discover innovative AI-powered solutions designed to optimize your marketing,
+            automate workflows, and drive business growth.
         </p>
-      </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🧠</div>
-        <h3>Advanced Intelligence</h3>
-        <p>
-          Leverage modern AI systems for automation,
-          analytics, recommendations, and customer support.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3>Enterprise Security</h3>
-        <p>
-          Secure infrastructure with scalable architecture,
-          monitoring, and privacy-focused deployments.
-        </p>
-      </div>
-
+        <a href="https://growthsynth.com/"
+           class="explore-btn"
+           target="_blank"
+           rel="noopener noreferrer">
+            Explore More
+        </a>
     </div>
-  </section>
-
-  <footer class="footer">
-    © 2026 Orbira. All rights reserved.
-  </footer>
 
 </body>
 </html>
